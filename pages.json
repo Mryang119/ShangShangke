@@ -22,52 +22,53 @@
 				"navigationBarTitleText": "我的",
 				"navigationStyle": "custom"
 			}
+		}, {
+			"path": "views/singlePage/classify/classify",
+			"style": {
+				"navigationBarTitleText": "全部分类"
+			}
+		}, {
+			"path": "views/singlePage/search/search",
+			"style": {
+				"navigationBarTitleText": "搜索"
+			}
+		}, {
+			"path": "views/singlePage/position/position",
+			"style": {
+				"navigationBarTitleText": "定位"
+			}
+		}, {
+			"path": "views/singlePage/timeKill/timeKill",
+			"style": {
+				"navigationBarTitleText": "限时秒杀"
+			}
+		}, {
+			"path": "views/singlePage/getCoupon/getCoupon",
+			"style": {
+				"navigationBarTitleText": "每日领好券"
+			}
+		}, {
+			"path": "views/singlePage/buyGive/buyGive",
+			"style": {
+				"navigationBarTitleText": "买就送"
+			}
+		}, {
+			"path": "views/singlePage/dailyGoods/dailyGoods",
+			"style": {
+				"navigationBarTitleText": "每日一品"
+			}
+		}, {
+			"path": "views/singlePage/groupPurchase/groupPurchase",
+			"style": {
+				"navigationBarTitleText": "超值团购"
+			}
+		}, {
+			"path": "views/singlePage/everydayRob/everydayRob",
+			"style": {
+				"navigationBarTitleText": "天天免费抢"
+			}
 		}
-	    ,{
-            "path" : "views/singlePage/classify/classify",
-            "style" : {
-				"navigationBarTitleText":"全部分类"
-			}
-        }
-        ,{
-            "path" : "views/singlePage/search/search",
-            "style" : {
-				"navigationBarTitleText":"搜索"
-			}
-        }
-        ,{
-            "path" : "views/singlePage/position/position",
-            "style" : {
-				"navigationBarTitleText":"定位"
-			}
-        }
-        ,{
-            "path" : "views/singlePage/timeKill/timeKill",
-            "style" : {
-				"navigationBarTitleText":"限时秒杀"
-			}
-        }
-        ,{
-            "path" : "views/singlePage/getCoupon/getCoupon",
-            "style" : {}
-        }
-        ,{
-            "path" : "views/singlePage/buyGive/buyGive",
-            "style" : {}
-        }
-        ,{
-            "path" : "views/singlePage/dailyGoods/dailyGoods",
-            "style" : {}
-        }
-        ,{
-            "path" : "views/singlePage/groupPurchase/groupPurchase",
-            "style" : {}
-        }
-        ,{
-            "path" : "views/singlePage/everydayRob/everydayRob",
-            "style" : {}
-        }
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

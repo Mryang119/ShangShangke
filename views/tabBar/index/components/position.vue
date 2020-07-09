@@ -1,8 +1,8 @@
 <template>
 	<!-- 定位模块 -->
 	<view class="c_position">
-		<text>{{city}}</text>
-		<image src="../../../../static/images/iconfont/下箭头.png" mode=""></image>
+		<text class="city">{{city}}</text>
+		<text class="iconfont myionfont icon-iconfonticonfonti2"></text>
 	</view>
 </template>
 
@@ -21,13 +21,15 @@
 	.c_position {
 		display: flex;
 		justify-content: center;
-		text{
+		align-items: center;
+		margin-left: 30rpx;
+		.city {
 			font-size: 32rpx;
-			font-weight:bold;
+			font-weight: bold;
 		}
-		image {
-			width: 15.2rpx;
-			height: 7.2rpx;
+		.myionfont {
+			margin-left: 12rpx;
+			font-size: 24rpx;
 		}
 	}
 </style>

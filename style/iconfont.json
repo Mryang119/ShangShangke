@@ -1,0 +1,23 @@
+{
+  "id": "1933114",
+  "name": "上上客",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "15796531",
+      "name": "红包",
+      "font_class": "hongbao",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "584242",
+      "name": "下箭头",
+      "font_class": "iconfonticonfonti2",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    }
+  ]
+}
