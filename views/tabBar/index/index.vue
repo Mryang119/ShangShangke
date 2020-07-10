@@ -12,7 +12,7 @@
 						<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval"
 						 indicator-active-color="#FFFFFF" :duration="duration">
 							<swiper-item v-for="(item,index) in 3" :key="index">
-								<image class="swiperImage" src="../../../static/images/tabBarImage/未标题23232-2@2x.png" mode=""></image>
+								<image class="swiperImage" src="@/static/images/tabBarImage/bannerlunbotu.png" mode=""></image>
 							</swiper-item>
 						</swiper>
 					</view>
@@ -44,7 +44,67 @@
 					<shopItem v-for="(item,index) in 4" :key="index"></shopItem>
 				</view>
 			</view>
-			
+			<!-- 每日一品 -->
+			<view class="dailyYipin">
+				<image class="meiriyipin son" src="@/static/images/Product/meiriyipin.png" mode=""></image>
+				<view class="meiriyipin-text son" mode="">
+					每日一品
+				</view>
+			</view>
+			<!-- 领好券 -->
+			<view class="getCoupon">
+				<!-- 标题部分 -->
+				<view class="getCoupon-titleBar">
+					<text class="getCoupon-titleBar-item linghaoquan">领好券</text>
+					<view class="textBg getCoupon-titleBar-item">
+						抢大额优惠券
+					</view>
+					<more></more>
+				</view>
+				<!-- 横向滚动部分 -->
+				<scroll-view scroll-x="true" class="scorll-H">
+					<view class="scorll-H-container">
+						<view class="scorll-item" v-for="(item,index) in list" :key="index+item.price" :class="{'scorll-item-active':temp.indexOf(index)!==-1}"
+						 @click="click(index)">
+							<view class="scorll-item-son radiusBox">
+								<text>{{item.store}}</text>
+							</view>
+							<view class="scorll-item-son priceTextBox">
+								<text :style="{fontSize:'28rpx',color:'#624118'}">￥</text>
+								<text :style="{fontSize:'44rpx',lineHeight:'38rpx',color:'#624118'}">{{item.price}}</text>
+								<br />
+								<text :style="{fontSize:'20rpx',color:'#624118'}">{{item.typeMessge}}</text>
+								<br />
+								<text :style="{fontSize:'20rpx',color:'#624118'}">{{item.store}}</text>
+							</view>
+							<view class="scorll-item-son lijilingqu" v-if="false">
+								<text :style="{fontSize:'24rpx'}">立即</text>
+								<br />
+								<text :style="{fontSize:'24rpx'}">领取</text>
+							</view>
+							<view class="scorll-item-son yilingqu" v-else>
+								<text :style="{fontSize:'24rpx'}">去使用</text>
+							</view>
+						</view>
+					</view>
+				</scroll-view>
+			</view>
+			<!-- 广告位 -->
+			<view class="bannerAd">
+				<image src="@/static/images/Product/banner4@2x.png" mode=""></image>
+			</view>
+			<!-- 秒杀 -->
+			<view class="timeKill">
+				<view class="timeKill-titleBar">
+					<view class="title-item title-text">限时秒杀</view>
+					<view class="title-item time">
+						<text class="time-item h" :style="{marginLeft:'3rpx',marginRight:'27rpx'}">22</text>
+						<text class="time-item m" :style="{marginRight:'28rpx'}">22</text>
+						<text class="time-item s" >22</text>
+					</view>
+					<more></more>
+				</view>
+			</view>
 		</view>
 	</view>
 </template>
@@ -54,6 +114,9 @@
 	import position from './components/position.vue'
 	import more from './components/more.vue'
 	import shopItem from './components/daydayShop.vue'
+	import {
+		list
+	} from '@/src/utils/fakeData.js'
 	export default {
 		components: {
 			uniNavBar,
@@ -67,17 +130,29 @@
 				autoplay: true,
 				duration: 500,
 				interval: 2000,
-				city: '深圳'
+				city: '深圳',
+				scrollTop: 0,
+				old: {
+					scrollTop: 0
+				},
+				list: list,
+				temp: [],
+				time:null
 			};
 		},
-		onLoad() {
-			console.log(this.$store)
-		}
+		methods: {
+			click(i) {
+				if (this.temp.length >= 10) return
+				this.temp.push(i)
+			}
+		},
+		onLoad() {}
 	}
 </script>
 
 <style lang="less" scoped>
-	@font:PingFang SC;
+	@font: PingFang SC;
+
 	.root_index {
 
 		// 自定义标题栏
@@ -89,7 +164,7 @@
 
 		// 轮播图部分
 		.swiper-container {
-		
+
 			width: 750rpx;
 			height: 596rpx;
 			position: relative;
@@ -149,6 +224,8 @@
 			width: 100%;
 			padding: 20rpx 20rpx;
 			box-sizing: border-box;
+
+			// 天天免费抢
 			.everyDayBob {
 				box-sizing: border-box;
 				width: 710rpx;
@@ -156,12 +233,15 @@
 				background: rgba(255, 246, 231, 1);
 				opacity: 1;
 				border-radius: 12rpx;
-				padding:30rpx 20rpx 20rpx 20rpx;
+				padding: 30rpx 20rpx 20rpx 20rpx;
+
 				.titleBar {
 					height: 34rpx;
 					display: flex;
 					align-items: center;
-					margin-bottom: 36rpx;
+					margin-bottom: 30rpx;
+					position: relative;
+
 					.daydayRob {
 						width: 164rpx;
 						height: 33.12rpx;
@@ -181,6 +261,194 @@
 						line-height: 34rpx;
 						margin-left: 24rpx;
 						margin-right: 204rpx;
+					}
+				}
+			}
+
+			// 每日一品
+			.dailyYipin {
+				width: 710rpx;
+				height: 404rpx;
+				margin-top: 20rpx;
+				position: relative;
+
+				.meiriyipin {
+					width: 100%;
+					height: 100%;
+				}
+
+				.son {
+					position: absolute;
+
+				}
+
+				.meiriyipin-text {
+					width: 170rpx;
+					height: 58rpx;
+					color: #FFFFFF;
+					font-size: 32rpx;
+					font-weight: bold;
+					top: 20rpx;
+					left: 0;
+					z-index: 1;
+					background: url(@/static/images/Product/meiriyipinText.png);
+					background-size: cover;
+					text-align: center;
+					line-height: 58rpx;
+				}
+			}
+
+			// 领好券
+			.getCoupon {
+				width: 710rpx;
+				height: 386rpx;
+				margin-top: 20rpx;
+				padding: 30rpx 0 20rpx 20rpx;
+				box-sizing: border-box;
+
+				.getCoupon-titleBar {
+					position: relative;
+					height: 42rpx;
+					width: 100%;
+					margin-bottom: ;
+
+					.getCoupon-titleBar-item {
+						position: absolute;
+						top: 50%;
+						transform: translateY(-50%);
+						left:14rpx;
+					}
+
+					.linghaoquan {
+						font-size: 36rpx;
+						font-weight: bold;
+						line-height: 42rpx;
+						color: rgba(51, 51, 51, 1);
+						opacity: 1;
+					}
+
+					.textBg {
+						width: 160rpx;
+						height: 32rpx;
+						background: url(../../../static/images/Product/linghaoquanTextBg.png);
+						background-size: cover;
+						left: 144rpx;
+						font-size: 20rpx;
+						color: #624118;
+						line-height: 32rpx;
+						text-align: center;
+					}
+				}
+
+				.scorll-H {
+					width: 100%;
+					height: 268rpx;
+					margin-top: 20rpx;
+
+					.scorll-H-container {
+						width: 1920rpx;
+						height: 268rpx;
+						display: flex;
+						flex-wrap: wrap;
+						// margin-left: -20rpx;
+						align-content: space-between;
+
+						.scorll-item {
+							width: 364rpx;
+							height: 124rpx;
+							background: url(@/static/images/Product/youhuiquanlijilingqu.png);
+							margin-right: 20rpx;
+							background-size: cover;
+							padding: 14rpx;
+							box-sizing: border-box;
+							position: relative;
+
+							.scorll-item-son {
+								position: absolute;
+								line-height: 19rpx;
+								top: 50%;
+								transform: translateY(-50%);
+							}
+
+							.priceTextBox {
+								left: 124rpx;
+							}
+
+							.radiusBox {
+								width: 96rpx;
+								height: 96rpx;
+								border-radius: 50%;
+								background-color: red;
+								line-height: 96rpx;
+								text-align: center;
+								font-size: 20rpx;
+								color: #FFF;
+							}
+
+							.yilingqu {
+								color: #621818;
+								left: 266rpx;
+								font-weight: bold;
+							}
+
+							.lijilingqu {
+								color: #624118;
+								line-height: 20rpx;
+								left: 276rpx;
+								font-weight: bold;
+							}
+						}
+
+						.scorll-item-active {
+							width: 364rpx;
+							height: 124rpx;
+							margin-right: 20rpx;
+							background: url(@/static/images/Product/youhuiquanyilingqu.png);
+							background-size: cover;
+						}
+
+					}
+
+				}
+
+			}
+			// 广告位
+			.bannerAd {
+				width: 710rpx;
+				height: 232rpx;
+				image {
+					width: 100%;
+					height: 100%;
+				}
+			}
+			// 秒杀模块
+			.timeKill {
+				width: 710rpx;
+				height: 414rpx;
+				margin-top: 20rpx;
+				padding: 30rpx 0 20rpx 20rpx;
+				box-sizing: border-box;
+				.timeKill-titleBar {
+					position: relative;
+					font-size: 36rpx;
+					font-weight: bold;
+					color: #333333;
+					height: 48rpx;
+					.title-item {
+						position: absolute;
+						top: 50%;
+						transform: translateY(-50%);
+					}
+					.time {
+						width: 148rpx;
+						height: 36rpx;
+						background: url(../../../static/images/Product/timeBg.png);
+						background-size: cover;
+						left: 158rpx;
+						font-size: 24rpx;
+						color: #FFFFFF;
+						.time-item {
+						}
 					}
 				}
 			}

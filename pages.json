@@ -80,30 +80,37 @@
 		"backgroundColor": "#FFFFFF",
 		"selectedColor": "#24A7FF",
 		"borderStyle": "white",
+		"iconWidth": "32px",
 		"list": [{
 				"pagePath": "views/tabBar/index/index",
 				"text": "首页",
-				"iconPath": "static/images/tabBarImage/首页-默认@3x-8@2x.png",
-				"selectedIconPath": "static/images/tabBarImage/首页-选中@3x-8.png"
+				"iconPath": "static/images/tabBarImage/shouyemoren.png",
+				"selectedIconPath": "static/images/tabBarImage/shouyexuanzhong.png"
 			},
 			{
 				"pagePath": "views/tabBar/discover/discover",
 				"text": "发现",
-				"iconPath": "static/images/tabBarImage/发现-默认@3x-8.png",
-				"selectedIconPath": "static/images/tabBarImage/发现-选中@3x-8@2x.png"
+				"iconPath": "static/images/tabBarImage/faxianmoren.png",
+				"selectedIconPath": "static/images/tabBarImage/faxianxuanzhong.png"
 			},
 			{
 				"pagePath": "views/tabBar/store/store",
-				"text": "店铺",
-				"iconPath": "static/images/tabBarImage/店面-默认@3x-8.png",
-				"selectedIconPath": "static/images/tabBarImage/店面-默认@3x-8.png"
+				"text": "店面",
+				"iconPath": "static/images/tabBarImage/dianmianmoren.png",
+				"selectedIconPath": "static/images/tabBarImage/dianmianxuanzhong.png"
 			},
 			{
 				"pagePath": "views/tabBar/my/my",
 				"text": "我的",
-				"iconPath": "static/images/tabBarImage/我的-默认@3x-8.png",
-				"selectedIconPath": "static/images/tabBarImage/我的-选中@3x-8@2x.png"
+				"iconPath": "static/images/tabBarImage/wodemoren.png",
+				"selectedIconPath": "static/images/tabBarImage/wodexuanzhong.png"
 			}
 		]
+	},
+	"easycom": {
+	  "autoscan": true,
+	  "custom": {
+	    "^van-(.*)": "@/wxcomponents/vant/$1/index.vue" // 匹配node_modules内的vue文件
+	  }
 	}
 }

@@ -1,8 +1,11 @@
 <template>
 	<!-- 更多组件 -->
 	<view class="c_more">
-		<navigator class="c-more-text" :url="url">更多</navigator>
-		<image src="../../../../static/images/iconfont/更多@2x.png" mode=""></image>
+		<navigator class="c-more-text" :url="url">
+			更多{{"  "}}
+			<image src="@/static/images/iconfont/more.png" mode="" />
+			</navigator>
+		
 	</view>
 </template>
 
@@ -27,14 +30,15 @@
 
 <style lang="less">
 	.c_more {
+		position: absolute;
 		display: flex;
 		color: #666666;
 		font-size: 24rpx;
 		height: 28rpx;
 		align-items: center;
-		.c-more-text {
-			margin-right: 12rpx;
-		}
+		top: 50%;
+		transform: translateY(-50%);
+		right: 0;
 		image {
 			width: 8.5rpx;
 			height: 16.94rpx;
