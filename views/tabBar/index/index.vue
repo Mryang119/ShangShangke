@@ -98,9 +98,9 @@
 				<view class="timeKill-titleBar">
 					<view class="title-item title-text">限时秒杀</view>
 					<view class="title-item time">
-						<text class="time-item h" :style="{marginLeft:'3rpx',marginRight:'27rpx'}">22</text>
-						<text class="time-item m" :style="{marginRight:'28rpx'}">22</text>
-						<text class="time-item s" >22</text>
+						<text class="time-item h">22</text>
+						<text class="time-item m">22</text>
+						<text class="time-item s">22</text>
 					</view>
 					<more></more>
 				</view>
@@ -447,7 +447,11 @@
 						left: 158rpx;
 						font-size: 24rpx;
 						color: #FFFFFF;
+						display: flex;
+						justify-content: space-between;
 						.time-item {
+							padding-left: 4rpx;
+							padding-right: 4rpx;
 						}
 					}
 				}
