@@ -19,9 +19,14 @@
 			</view>
 			<view class="item-price">
 				<text class="price">￥{{price.toFixed(2)}}</text>
-				<view class="buttonRob">
+				<!-- 未抢完 -->
+				<view class="button Rob" v-if="now!==sum">
 					<text class="buttonRob-text">马上抢</text>
 					<text class="iconfont myionfont icon-youjiantou"></text>
+				</view>
+				<!-- 抢完了 -->
+				<view class="button No" v-else-if="now>=sum">
+					<text class="buttonNo-text">已抢完</text>
 				</view>
 			</view>
 			<view class="item-sum">
@@ -31,12 +36,21 @@
 					</text>
 				</view>
 				<!-- 计算百分比 -->
-				<view class="percentage-content">
-					已抢{{now/sum*100}}%
+				<!-- 未抢完-文字 -->
+				<view class="percentage-content" v-if="now!==sum">
+					已抢{{percentage}}%
+				</view>
+				<view class="percentage-content-No" v-if="now>=sum">
+					已抢完
 				</view>
 				<!-- 计算绘画图表 -->
-				<view class="percentage-graph">
+				<!-- 未抢完-图表 -->
+				<view class="percentage-graph graphRob" v-if="now!==sum">
 					<view class="percentage-color" :style="{width:now/sum*100+'%'}"></view>
+				</view>
+				<!-- 已抢完 -->
+				<view class="percentage-graph graphNo " v-if="now>=sum">
+					<view class="percentage-color-No" :style="{width:now/sum*100+'%'}"></view>
 				</view>
 			</view>
 		</view>
@@ -67,11 +81,17 @@
 			},
 			sum: {
 				type: Number,
-				default: 100
+				default: 50
 			},
 			now: {
 				type: Number,
 				default: 50
+			}
+		},
+		computed:{
+			percentage:function (){
+				let number = this.now/this.sum*100
+				return number.toFixed(0)
 			}
 		}
 	}
@@ -152,17 +172,19 @@
 					flex: 1;
 					text-align: left;
 				}
-
-				.buttonRob {
+				
+				.button {
 					width: 146rpx;
 					height: 48rpx;
-					background: linear-gradient(90deg, rgba(254, 99, 60, 1) 0%, rgba(250, 40, 0, 1) 100%);
 					opacity: 1;
 					border-radius: 24rpx;
 					display: flex;
 					align-items: center;
 					justify-content: center;
-
+					
+				}
+				.Rob {
+					background: linear-gradient(90deg, rgba(254, 99, 60, 1) 0%, rgba(250, 40, 0, 1) 100%);
 					text {
 						font-size: 24rpx;
 						color: #FFFFFF;
@@ -179,37 +201,67 @@
 						font-weight: 400;
 					}
 				}
+				
+				.No {
+					background: linear-gradient(90deg, rgba(255, 192, 177, 1) 0%, rgba(255, 169, 153, 1) 100%);
+					.buttonNo-text {
+						font-size:24rpx;
+						color:rgba(255,255,255,1);
+						font-weight: 400;
+						line-height: 48rpx;
+					}
+				}
 
 			}
+
 			.item-sum {
 				display: flex;
 				align-items: center;
-				// justify-content: center;
+				position: relative;
+
 				.oldPrice {
-					margin-right: 102rpx;
 					.oldPriceText {
-						text-decoration:line-through;
+						text-decoration: line-through;
 						color: #A9A9A9;
 					}
 				}
+
 				.percentage-content {
 					// box-sizing: border-box;
-					height: 26rpx;
+					height: 29rpx;
 					width: 84rpx;
 					font-size: 20rpx;
 					color: #858585;
+					margin-left:110rpx;
+				}
+				.percentage-content-No {
+					// box-sizing: border-box;
+					height: 29rpx;
+					width: 84rpx;
+					font-size: 20rpx;
+					color: #858585;
+					margin-left:130rpx;
 				}
 				.percentage-graph {
+					position: absolute;
+					right: 0;
 					width: 98rpx;
 					height: 8rpx;
-					border-radius:6rpx;
+					border-radius: 6rpx;
 					box-sizing: border-box;
 					overflow: hidden;
+				}
+				.graphRob {
 					border: 1px solid #FB2B03;
-					margin-left: 12rpx;
 					.percentage-color {
 						height: 8rpx;
 						background-color: #FB2B03;
+					}
+				}
+				.graphNo {
+					.percentage-color-No {
+						height: 8rpx;
+						background:rgba(250,182,169,1);
 					}
 				}
 			}

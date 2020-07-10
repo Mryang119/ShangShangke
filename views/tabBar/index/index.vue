@@ -22,10 +22,10 @@
 			<view class="topNav">
 				<position :city="city"></position>
 				<view class="searchBar">
-					<image src="../../../static/images/iconfont/搜索.png" mode=""></image>
+					<image src="@/static/images/iconfont/search.png" mode=""></image>
 					<view class="fakerInput">搜索商家/商品</view>
 				</view>
-				<image class="classify" src="../../../static/images/iconfont/分类.png" mode=""></image>
+				<image class="classify" src="@/static/images/iconfont/fenlei.png" mode=""></image>
 			</view>
 		</view>
 		<!-- 下半部分主体 -->
@@ -163,9 +163,9 @@
 					align-items: center;
 					margin-bottom: 36rpx;
 					.daydayRob {
-						width: 205.86rpx;
-						height: 33rpx;
-						background: url(../../../static/images/iconfont/组%20657@2x.png) no-repeat;
+						width: 164rpx;
+						height: 33.12rpx;
+						background: url(@/static/images/iconfont/tiantianmianfeiqiang.png) no-repeat;
 						background-size: cover;
 					}
 
@@ -175,12 +175,12 @@
 						font-size: 20rpx;
 						color: #FFFFFF;
 						font-family: @font;
-						background: url(../../../static/images/iconfont/矩形%20204@2x.png) no-repeat;
+						background: url(@/static/images/iconfont/textBackground.png) no-repeat;
 						background-size: cover;
 						text-align: center;
 						line-height: 34rpx;
 						margin-left: 24rpx;
-						margin-right: 165rpx;
+						margin-right: 204rpx;
 					}
 				}
 			}
