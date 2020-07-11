@@ -2,6 +2,7 @@
 	<!-- 满就减组件 -->
 	<view>
 		满就减
+		<input type="text" v-model="value">
 	</view>
 </template>
 
@@ -9,6 +10,7 @@
 	export default {
 		data() {
 			return {
+				value:'11'
 			}
 		},
 	}

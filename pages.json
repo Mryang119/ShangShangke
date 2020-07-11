@@ -109,7 +109,8 @@
 	"easycom": {
 	  "autoscan": true,
 	  "custom": {
-	    "^van-(.*)": "@/wxcomponents/vant/$1/index.vue" // 匹配node_modules内的vue文件
+	    "^van-(.*)": "@/wxcomponents/vant/$1/index.vue", // 匹配node_modules内的vue文件
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
 	  }
 	}
 }

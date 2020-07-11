@@ -64,7 +64,7 @@
 				<!-- 横向滚动部分 -->
 				<scroll-view scroll-x="true" class="scorll-H">
 					<view class="scorll-H-container">
-						<view class="scorll-item" v-for="(item,index) in list" :key="index+item.price" :class="{'scorll-item-active':temp.indexOf(index)!==-1}"
+						<view class="scorll-item" v-for="(item,index) in list" :key="price" :class="{'scorll-item-active':temp.indexOf(index)!==-1}"
 						 @click="click(index)">
 							<view class="scorll-item-son radiusBox">
 								<text>{{item.store}}</text>
@@ -107,7 +107,7 @@
 				<scroll-view scroll-x="true" class="scorll-H-S">
 					<!-- 宽度 商品数量*组件宽度+总边距 -->
 					<view class="scorll-H-S-container">
-						<view class="scorll-H-S-container-item" v-for="(item,index) in 10">
+						<view class="scorll-H-S-container-item" v-for="(item,index) in 10" :key="index">
 							<spitem></spitem>
 						</view>
 					</view>
@@ -122,7 +122,7 @@
 				<scroll-view scroll-x="true" class="scorll-H-S">
 					<!-- 宽度 商品数量*组件宽度+总边距 -->
 					<view class="scorll-H-S-container">
-						<view class="scorll-H-S-container-item" v-for="(item,index) in 10">
+						<view class="scorll-H-S-container-item" v-for="(item,index) in 10" :key="index">
 							<spitem></spitem>
 						</view>
 					</view>
@@ -130,13 +130,33 @@
 			</view>
 			<!-- 买就送满就减 -->
 			<view class="buyGive">
-				<button @click="toggl('buy')">买就送</button>
-				<button @click="toggl('give')">满就减</button>
-				<buy v-if="cp==='buy'"></buy>
-				<give v-else-if="cp==='give'"></give>
+				<view class="button-container">
+					<view class="toggle-button" @click="toggl('buy')" :class="{'toogle-button-yes':cp==='buy'}">
+						<text class="not-text">买就送</text>
+						<br />
+						<text class="not-mini-text">买就送商品</text>
+						<br />
+						<image v-if="cp==='buy'" src="@/static/images/iconfont/selectBg.png" mode=""></image>
+					</view>
+					<view class="line"></view>
+					<view class="toggle-button" @click="toggl('give')" :class="{'toogle-button-yes':cp==='give'}">
+						<text class="not-text">满就减</text>
+						<br />
+						<text class="not-mini-text">满额立即减</text>
+						<br />
+						<image v-if="cp==='give'" src="@/static/images/iconfont/selectBg.png" mode=""></image>
+					</view>
+				</view>
 			</view>
-			
+			<view class="vShowbox" v-if="cp==='buy'">
+				<buy :dataList="dataList"></buy>
+			</view>
+			<view class="vShowbox" v-show="cp==='give'">
+				<give></give>
+			</view>
+
 		</view>
+	</view>
 	</view>
 </template>
 
@@ -149,7 +169,8 @@
 	import buy from './components/buy.vue'
 	import give from './components/give.vue'
 	import {
-		list
+		list,
+		dataList
 	} from '@/src/utils/fakeData.js'
 	export default {
 		components: {
@@ -174,8 +195,10 @@
 				},
 				list: list,
 				temp: [],
-				time:null,
-				cp:'buy'
+				time: null,
+				cp: 'buy',
+				dataList: dataList,
+				ajaxList:dataList
 			};
 		},
 		methods: {
@@ -188,7 +211,16 @@
 				this.cp = e
 			}
 		},
-		onLoad() {}
+		onLoad() {
+			console.log('主页')
+		},
+		// 触碰底部懒加载
+		onReachBottom: function() {
+			// 模拟请求数据
+			let fakeAjaxList = JSON.parse(JSON.stringify(this.ajaxList))
+			this.dataList = this.dataList.concat(fakeAjaxList)
+			console.log(this.dataList)
+		}
 	}
 </script>
 
@@ -267,6 +299,7 @@
 			padding: 20rpx 20rpx;
 			box-sizing: border-box;
 			background-color: #F6F6F6;
+
 			// 天天免费抢
 			.everyDayBob {
 				box-sizing: border-box;
@@ -348,7 +381,8 @@
 				padding: 36rpx 0 20rpx 20rpx;
 				box-sizing: border-box;
 				background-color: #FFF;
-				border-radius:6px;
+				border-radius: 6px;
+
 				.getCoupon-titleBar {
 					position: relative;
 					height: 42rpx;
@@ -356,13 +390,14 @@
 					margin-bottom: ;
 					padding-right: 10rpx;
 					box-sizing: border-box;
+
 					.getCoupon-titleBar-item {
 						position: absolute;
 						top: 50%;
 						transform: translateY(-50%);
-						left:14rpx;
+						left: 14rpx;
 					}
-					
+
 					.linghaoquan {
 						font-size: 36rpx;
 						font-weight: bold;
@@ -409,7 +444,7 @@
 
 							.scorll-item-son {
 								position: absolute;
-								line-height: 19rpx;
+								line-height: 24rpx;
 								top: 50%;
 								transform: translateY(-50%);
 							}
@@ -456,16 +491,19 @@
 				}
 
 			}
+
 			// 广告位
 			.bannerAd {
 				width: 710rpx;
 				height: 232rpx;
 				margin-top: 20rpx;
+
 				image {
 					width: 100%;
 					height: 100%;
 				}
 			}
+
 			// 秒杀模块
 			.timeKill {
 				width: 710rpx;
@@ -474,8 +512,9 @@
 				padding: 30rpx 0 20rpx 20rpx;
 				box-sizing: border-box;
 				background-color: #FFF;
-				border-radius:6px;
+				border-radius: 6px;
 				overflow: hidden;
+
 				.timeKill-titleBar {
 					position: relative;
 					width: 98%;
@@ -483,14 +522,17 @@
 					color: #333333;
 					height: 48rpx;
 					margin-bottom: 30rpx;
+
 					.title-text {
 						font-weight: bold;
 					}
+
 					.title-item {
 						position: absolute;
 						top: 50%;
 						transform: translateY(-50%);
 					}
+
 					.time {
 						width: 148rpx;
 						height: 36rpx;
@@ -501,6 +543,7 @@
 						color: #FFFFFF;
 						display: flex;
 						justify-content: space-between;
+
 						.time-item {
 							padding-left: 4rpx;
 							padding-right: 4rpx;
@@ -508,42 +551,102 @@
 					}
 				}
 			}
+
 			// 两个差不多模块的公用类名
 			.scorll-H-S {
 				width: 100%;
+
 				.scorll-H-S-container {
 					width: 2200rpx;
 					height: 285.6rpx;
 					display: flex;
 					justify-content: space-between;
+
 					.scorll-H-S-container-item {
 						width: 204rpx;
 						height: 285.6rpx;
 					}
 				}
 			}
+
 			// 超值拼团
 			.groupPurchase {
 				margin-top: 20rpx;
-				width:710rpx;
-				height:414rpx;
-				background:rgba(255,255,255,1);
-				opacity:1;
-				border-radius:12rpx;
+				width: 710rpx;
+				height: 414rpx;
+				background: rgba(255, 255, 255, 1);
+				opacity: 1;
+				border-radius: 12rpx;
 				padding: 30rpx 0 20rpx 20rpx;
 				box-sizing: border-box;
-				
+
 				.groupPurchase-titleBar {
 					width: 98%;
 					position: relative;
 					height: 42rpx;
 					margin-bottom: 30rpx;
+
 					.groupPurchase-titleBar-text {
 						position: absolute;
 						font-size: 36rpx;
 						font-weight: bold;
 						color: #333333;
 						top: 0;
+					}
+				}
+			}
+
+			// 买就送满就减
+			.buyGive {
+				width: 710rpx;
+				margin-top: 24rpx;
+
+				.button-container {
+					display: flex;
+					align-items: center;
+					height: 131rpx;
+
+					// 未选中
+					.toggle-button {
+						flex: 1;
+						text-align: center;
+						height: 131rpx;
+
+						image {
+							width: 42.56rpx;
+							height: 14.68rpx;
+						}
+
+						.not-text {
+							font-size: 36rpx;
+							color: #333333;
+							font-weight: bold;
+						}
+
+						.not-mini-text {
+							font-size: 24rpx;
+							color: #A9A9A9;
+						}
+					}
+
+					.line {
+						width: 2rpx;
+						height: 38rpx;
+						background-color: #ccc;
+					}
+
+					// 选中
+					.toogle-button-yes {
+						.not-text {
+							font-size: 36rpx;
+							color: #FA2901;
+							font-weight: bold;
+						}
+
+						.not-mini-text {
+							font-size: 24rpx;
+							color: #FA2901;
+						}
 					}
 				}
 			}
