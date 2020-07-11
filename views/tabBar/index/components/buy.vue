@@ -15,7 +15,8 @@
 			uniLoadMore
 		},
 		props:{
-			dataList:Array
+			dataList:Array,
+			
 		},
 		data() {
 			return {
