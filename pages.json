@@ -80,7 +80,6 @@
 		"backgroundColor": "#FFFFFF",
 		"selectedColor": "#24A7FF",
 		"borderStyle": "white",
-		"iconWidth": "32px",
 		"list": [{
 				"pagePath": "views/tabBar/index/index",
 				"text": "首页",

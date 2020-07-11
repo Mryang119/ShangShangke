@@ -113,6 +113,29 @@
 					</view>
 				</scroll-view>
 			</view>
+			<!-- 超值拼团 -->
+			<view class="groupPurchase">
+				<view class="groupPurchase-titleBar">
+					<view class="groupPurchase-titleBar-text">超值拼团</view>
+					<more></more>
+				</view>
+				<scroll-view scroll-x="true" class="scorll-H-S">
+					<!-- 宽度 商品数量*组件宽度+总边距 -->
+					<view class="scorll-H-S-container">
+						<view class="scorll-H-S-container-item" v-for="(item,index) in 10">
+							<spitem></spitem>
+						</view>
+					</view>
+				</scroll-view>
+			</view>
+			<!-- 买就送满就减 -->
+			<view class="buyGive">
+				<button @click="toggl('buy')">买就送</button>
+				<button @click="toggl('give')">满就减</button>
+				<buy v-if="cp==='buy'"></buy>
+				<give v-else-if="cp==='give'"></give>
+			</view>
+			
 		</view>
 	</view>
 </template>
@@ -123,6 +146,8 @@
 	import more from './components/more.vue'
 	import shopItem from './components/daydayShop.vue'
 	import spitem from './components/spitem.vue'
+	import buy from './components/buy.vue'
+	import give from './components/give.vue'
 	import {
 		list
 	} from '@/src/utils/fakeData.js'
@@ -132,7 +157,9 @@
 			position,
 			more,
 			shopItem,
-			spitem
+			spitem,
+			buy,
+			give
 		},
 		data() {
 			return {
@@ -147,13 +174,18 @@
 				},
 				list: list,
 				temp: [],
-				time:null
+				time:null,
+				cp:'buy'
 			};
 		},
 		methods: {
 			click(i) {
 				if (this.temp.length >= 10) return
 				this.temp.push(i)
+			},
+			toggl(e) {
+				console.log(e)
+				this.cp = e
 			}
 		},
 		onLoad() {}
@@ -445,14 +477,15 @@
 				border-radius:6px;
 				overflow: hidden;
 				.timeKill-titleBar {
-					
 					position: relative;
 					width: 98%;
 					font-size: 36rpx;
-					font-weight: bold;
 					color: #333333;
 					height: 48rpx;
 					margin-bottom: 30rpx;
+					.title-text {
+						font-weight: bold;
+					}
 					.title-item {
 						position: absolute;
 						top: 50%;
@@ -486,6 +519,31 @@
 					.scorll-H-S-container-item {
 						width: 204rpx;
 						height: 285.6rpx;
+					}
+				}
+			}
+			// 超值拼团
+			.groupPurchase {
+				margin-top: 20rpx;
+				width:710rpx;
+				height:414rpx;
+				background:rgba(255,255,255,1);
+				opacity:1;
+				border-radius:12rpx;
+				padding: 30rpx 0 20rpx 20rpx;
+				box-sizing: border-box;
+				
+				.groupPurchase-titleBar {
+					width: 98%;
+					position: relative;
+					height: 42rpx;
+					margin-bottom: 30rpx;
+					.groupPurchase-titleBar-text {
+						position: absolute;
+						font-size: 36rpx;
+						font-weight: bold;
+						color: #333333;
+						top: 0;
 					}
 				}
 			}
