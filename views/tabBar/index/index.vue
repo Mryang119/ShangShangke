@@ -59,7 +59,7 @@
 					<view class="textBg getCoupon-titleBar-item">
 						抢大额优惠券
 					</view>
-					<more></more>
+					<more class="more"></more>
 				</view>
 				<!-- 横向滚动部分 -->
 				<scroll-view scroll-x="true" class="scorll-H">
@@ -77,7 +77,7 @@
 								<br />
 								<text :style="{fontSize:'20rpx',color:'#624118'}">{{item.store}}</text>
 							</view>
-							<view class="scorll-item-son lijilingqu" v-if="false">
+							<view class="scorll-item-son lijilingqu" v-if="true">
 								<text :style="{fontSize:'24rpx'}">立即</text>
 								<br />
 								<text :style="{fontSize:'24rpx'}">领取</text>
@@ -104,6 +104,14 @@
 					</view>
 					<more></more>
 				</view>
+				<scroll-view scroll-x="true" class="scorll-H-S">
+					<!-- 宽度 商品数量*组件宽度+总边距 -->
+					<view class="scorll-H-S-container">
+						<view class="scorll-H-S-container-item" v-for="(item,index) in 10">
+							<spitem></spitem>
+						</view>
+					</view>
+				</scroll-view>
 			</view>
 		</view>
 	</view>
@@ -114,6 +122,7 @@
 	import position from './components/position.vue'
 	import more from './components/more.vue'
 	import shopItem from './components/daydayShop.vue'
+	import spitem from './components/spitem.vue'
 	import {
 		list
 	} from '@/src/utils/fakeData.js'
@@ -122,7 +131,8 @@
 			uniNavBar,
 			position,
 			more,
-			shopItem
+			shopItem,
+			spitem
 		},
 		data() {
 			return {
@@ -224,7 +234,7 @@
 			width: 100%;
 			padding: 20rpx 20rpx;
 			box-sizing: border-box;
-
+			background-color: #F6F6F6;
 			// 天天免费抢
 			.everyDayBob {
 				box-sizing: border-box;
@@ -303,22 +313,24 @@
 				width: 710rpx;
 				height: 386rpx;
 				margin-top: 20rpx;
-				padding: 30rpx 0 20rpx 20rpx;
+				padding: 36rpx 0 20rpx 20rpx;
 				box-sizing: border-box;
-
+				background-color: #FFF;
+				border-radius:6px;
 				.getCoupon-titleBar {
 					position: relative;
 					height: 42rpx;
-					width: 100%;
+					width: 98%;
 					margin-bottom: ;
-
+					padding-right: 10rpx;
+					box-sizing: border-box;
 					.getCoupon-titleBar-item {
 						position: absolute;
 						top: 50%;
 						transform: translateY(-50%);
 						left:14rpx;
 					}
-
+					
 					.linghaoquan {
 						font-size: 36rpx;
 						font-weight: bold;
@@ -416,6 +428,7 @@
 			.bannerAd {
 				width: 710rpx;
 				height: 232rpx;
+				margin-top: 20rpx;
 				image {
 					width: 100%;
 					height: 100%;
@@ -428,12 +441,18 @@
 				margin-top: 20rpx;
 				padding: 30rpx 0 20rpx 20rpx;
 				box-sizing: border-box;
+				background-color: #FFF;
+				border-radius:6px;
+				overflow: hidden;
 				.timeKill-titleBar {
+					
 					position: relative;
+					width: 98%;
 					font-size: 36rpx;
 					font-weight: bold;
 					color: #333333;
 					height: 48rpx;
+					margin-bottom: 30rpx;
 					.title-item {
 						position: absolute;
 						top: 50%;
@@ -453,6 +472,20 @@
 							padding-left: 4rpx;
 							padding-right: 4rpx;
 						}
+					}
+				}
+			}
+			// 两个差不多模块的公用类名
+			.scorll-H-S {
+				width: 100%;
+				.scorll-H-S-container {
+					width: 2200rpx;
+					height: 285.6rpx;
+					display: flex;
+					justify-content: space-between;
+					.scorll-H-S-container-item {
+						width: 204rpx;
+						height: 285.6rpx;
 					}
 				}
 			}
