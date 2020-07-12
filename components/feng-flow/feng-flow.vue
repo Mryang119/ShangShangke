@@ -103,7 +103,7 @@ export default {
 		hideLoadFlag(){
 			if(this.showLoad) {
 				uni.hideLoading();
-				this.showLoad = true;
+				this.showLoad = false;
 			}
 		}
 	},
