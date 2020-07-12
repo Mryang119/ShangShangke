@@ -149,7 +149,7 @@
 				</view>
 			</view>
 			<view class="vShowbox" v-show="cp==='buy'">
-				<buy :showItemList="showItemList"></buy>
+				<buy :status="status" :showItemList="showItemList"></buy>
 			</view>
 			<view class="vShowbox" v-show="cp==='give'">
 				<give :showItemList="showItemList"></give>
@@ -199,7 +199,10 @@
 				time: null,
 				cp: 'buy',
 				showItemList: showItemList,
-				ajaxList: showItemList
+				ajaxList: showItemList,
+				endPage: 5,
+				startPage: 1,
+				status: 'loading'
 			};
 		},
 		methods: {
@@ -218,8 +221,15 @@
 		// 触碰底部懒加载
 		onReachBottom: function() {
 			// 模拟请求数据
-			let fakeAjaxList = JSON.parse(JSON.stringify(this.ajaxList))
-			this.showItemList = this.showItemList.concat(fakeAjaxList)
+			this.startPage++
+			if (this.endPage > this.startPage) {
+				setTimeout(() => {
+					let fakeAjaxList = JSON.parse(JSON.stringify(this.ajaxList))
+					this.showItemList = this.showItemList.concat(fakeAjaxList)
+				}, 1000)
+			} else {
+				this.status = "noMore"
+			}
 		}
 	}
 </script>

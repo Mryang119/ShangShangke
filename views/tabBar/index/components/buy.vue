@@ -4,7 +4,19 @@
 		<!-- 	<view class="flex-item" v-for="(item,index) in showItemList" :key="index">
 			<show :type="item"></show>
 		</view> -->
-		
+		<view class="flexBox">
+			<view class="block-content">
+				<view class="block" v-for="item1 in list1 " :key="item1">
+					<show :type="item1"></show>
+				</view>
+			</view>
+			<view class="block-content">
+				<view class="block" v-for="item2 in list2" :key="item2">
+					<show :type="item2"></show>
+				</view>
+			</view>
+		</view>
+		<uni-load-more :status="status"></uni-load-more>
 	</view>
 </template>
 <script>
@@ -18,34 +30,59 @@
 			fengflow
 		},
 		props: {
-			showItemList: Array
+			showItemList: Array,
+			status:{
+				type:String,
+				default:'loading'
+			}
 		},
 		data() {
 			return {
 				more: 'loading',
-				list1:[],
-				list2:[]
+				list1: [],
+				list2: []
 			}
 		},
-		created(){
-			// 切割数组
-			//计算起始位置和结束位
-			let length = this.showItemList.length
-			let list1End = Math.floor(length/2)
-			console.log(list1End)
-			let list2End = length
-			this.list1 = this.showItemList.slice(0,list1End)
-			this.list2 = this.showItemList.slice(list1End+1,list2End)
-			console.log("list1",this.list1)
-			console.log("list2",this.list2)
+		created() {
+			this.computedList()
 		},
 		methods: {
-			moreList() {
-				console.log('111')
+			// 计算数组位置
+			computedList() {
+				// 切割数组
+				//计算起始位置和结束位
+				let length = this.showItemList.length
+				let list1End = Math.floor(length / 2)
+				console.log(list1End)
+				let list2End = length
+				console.log(list2End)
+				this.list1 = this.showItemList.slice(0, list1End)
+				this.list2 = this.showItemList.slice(list1End, list2End)
+			}
+		},
+		watch:{
+			showItemList:function(){
+				this.computedList()
 			}
 		}
 	}
 </script>
 <style lang="less">
-	.c_buy {}
+	.c_buy {
+		box-sizing: border-box;
+		.flexBox {
+			display: flex;
+			justify-content: space-between;
+			width: 710rpx;
+			box-sizing: border-box;
+			.block-content {
+				display: flex;
+				flex-direction: column;
+				.block {
+					margin-bottom: 20rpx;
+				}
+			}
+		}
+		
+	}
 </style>
