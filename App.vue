@@ -12,11 +12,12 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="sass">
 	/*每个页面公共css */
+ 
+
+	//@import "uview-ui/index.scss";
+
 	/* 自定义导航栏的border去掉 */
-	.uni-navbar--border.data-v-4afea59e {
-		border: none !important;
-	}
 	
 </style>

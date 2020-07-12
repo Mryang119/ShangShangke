@@ -148,11 +148,11 @@
 					</view>
 				</view>
 			</view>
-			<view class="vShowbox" v-if="cp==='buy'">
-				<buy :dataList="dataList"></buy>
+			<view class="vShowbox" v-show="cp==='buy'">
+				<buy :showItemList="showItemList"></buy>
 			</view>
 			<view class="vShowbox" v-show="cp==='give'">
-				<give></give>
+				<give :showItemList="showItemList"></give>
 			</view>
 
 		</view>
@@ -170,7 +170,8 @@
 	import give from './components/give.vue'
 	import {
 		list,
-		dataList
+		dataList,
+		showItemList
 	} from '@/src/utils/fakeData.js'
 	export default {
 		components: {
@@ -197,8 +198,8 @@
 				temp: [],
 				time: null,
 				cp: 'buy',
-				dataList: dataList,
-				ajaxList:dataList
+				showItemList: showItemList,
+				ajaxList: showItemList
 			};
 		},
 		methods: {
@@ -218,8 +219,7 @@
 		onReachBottom: function() {
 			// 模拟请求数据
 			let fakeAjaxList = JSON.parse(JSON.stringify(this.ajaxList))
-			this.dataList = this.dataList.concat(fakeAjaxList)
-			console.log(this.dataList)
+			this.showItemList = this.showItemList.concat(fakeAjaxList)
 		}
 	}
 </script>
@@ -409,7 +409,7 @@
 					.textBg {
 						width: 160rpx;
 						height: 32rpx;
-						background: url(../../../static/images/Product/linghaoquanTextBg.png);
+						background: url(@/static/images/Product/linghaoquanTextBg.png);
 						background-size: cover;
 						left: 144rpx;
 						font-size: 20rpx;

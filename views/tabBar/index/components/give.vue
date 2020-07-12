@@ -1,20 +1,36 @@
 <template>
 	<!-- 满就减组件 -->
-	<view>
-		满就减
-		<input type="text" v-model="value">
+	<view class="c_give">
+		<view class="flex-item" v-for="(item,index) in showItemList" :key="index">
+			<show :type="item"></show>
+		</view>
 	</view>
 </template>
 
 <script>
+	import show from './show.vue'
+	import uniLoadMore from "@/components/uni-load-more/uni-load-more.vue"
 	export default {
+		props:{
+			showItemList:Array
+		},
+		components:{
+			show,
+			uniLoadMore
+		},
 		data() {
-			return {
-				value:'11'
-			}
+			return {}
 		},
 	}
 </script>
 
-<style>
+<style lang="less">
+	.c_give {
+		column-count:2;
+		.flex-item {
+			width: 346rpx;
+			break-inside:avoid;
+			margin-bottom: 20rpx;
+		}
+	}
 </style>
