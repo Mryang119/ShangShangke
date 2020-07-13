@@ -217,6 +217,14 @@
 		},
 		onLoad() {
 			console.log('主页')
+			uni.getLocation({
+				success: function(res) {
+					console.log('获取成功，', res)
+				},
+				fail: function(res) {
+					console.log('获取失败，', res)
+				}
+			})
 		},
 		// 触碰底部懒加载
 		onReachBottom: function() {
