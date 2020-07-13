@@ -35,8 +35,12 @@
 	}
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
+	
+
 	.c_cityList {
+
+
 		width: 750rpx;
 
 		.list-cell {
@@ -49,6 +53,7 @@
 			font-size: 14px;
 			line-height: 24px;
 			background-color: #fff;
+			border-bottom: 1px solid #F3F3F3;
 		}
 	}
 </style>
