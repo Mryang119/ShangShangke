@@ -1,6 +1,6 @@
 <template>
 	<view>
-		
+		<!-- 超值团购 -->
 	</view>
 </template>
 

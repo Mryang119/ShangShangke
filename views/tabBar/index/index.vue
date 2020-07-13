@@ -20,7 +20,9 @@
 			</view>
 			<!-- 搜索定位分类部分 -->
 			<view class="topNav">
-				<position :city="city"></position>
+				<view class="position" @click="getRegeo">
+					<position :city="city"></position>
+				</view>
 				<view class="searchBar">
 					<image src="@/static/images/iconfont/search.png" mode=""></image>
 					<view class="fakerInput">搜索商家/商品</view>
@@ -168,6 +170,8 @@
 	import spitem from './components/spitem.vue'
 	import buy from './components/buy.vue'
 	import give from './components/give.vue'
+	// 高德sdk
+	import amap from '@/common/amap-wx.js';
 	import {
 		list,
 		dataList,
@@ -202,7 +206,14 @@
 				ajaxList: showItemList,
 				endPage: 5,
 				startPage: 1,
-				status: 'loading'
+				status: 'loading',
+				amapPlugin: null,
+				key: "436972c953803a9f4a21ded15d8cd943",
+				addressName: '',
+				weather: {
+					hasData: false,
+					data: []
+				}
 			};
 		},
 		methods: {
@@ -213,17 +224,27 @@
 			toggl(e) {
 				console.log(e)
 				this.cp = e
+			},
+			getRegeo() {
+				uni.showLoading({
+					title: '获取信息中'
+				});
+				this.amapPlugin.getRegeo({
+					success: (data) => {
+						console.log(data)
+						this.addressName = data[0].name;
+						uni.hideLoading();
+					},
+					fail: (data) => {
+						console.log(data)
+					}
+				});
 			}
 		},
 		onLoad() {
 			console.log('主页')
-			uni.getLocation({
-				success: function(res) {
-					console.log('获取成功，', res)
-				},
-				fail: function(res) {
-					console.log('获取失败，', res)
-				}
+			this.amapPlugin = new amap.AMapWX({
+				key: this.key
 			})
 		},
 		// 触碰底部懒加载

@@ -9,8 +9,8 @@
 		data() {
 			return {
 				
-			};
-		}
+			}
+		},
 	}
 </script>
 
