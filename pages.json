@@ -1,5 +1,6 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		
 		{
 			"path": "views/tabBar/index/index",
 			"style": {
@@ -16,11 +17,11 @@
 			"style": {
 				"navigationBarTitleText": "店铺"
 			}
-		}, {
+		},
+		{
 			"path": "views/tabBar/my/my",
 			"style": {
-				"navigationBarTitleText": "我的",
-				"navigationStyle": "custom"
+				"navigationBarTitleText": "我的"
 			}
 		}, {
 			"path": "views/singlePage/classify/classify",
@@ -67,13 +68,38 @@
 			"style": {
 				"navigationBarTitleText": "天天免费抢"
 			}
+		},
+		{
+			"path": "views/singlePage/order/order",
+			"style": {
+				"navigationBarTitleText": "我的订单"
+			}
+		},
+		{
+			"path": "views/singlePage/coupon/coupon",
+			"style": {
+				"navigationBarTitleText": "我的卡券"
+			}
+		},
+		{
+			"path": "views/singlePage/collect/collect",
+			"style": {
+				"navigationBarTitleText": "我的收藏"
+			}
+		},
+		{
+			"path": "views/singlePage/spellGroup/spellGroup",
+			"style": {
+				"navigationBarTitleText": "我的拼团"
+			}
 		}
+
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#F6F6F6"
 	},
 	"tabBar": {
 		"color": "#333333",
