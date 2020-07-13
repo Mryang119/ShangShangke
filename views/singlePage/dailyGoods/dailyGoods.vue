@@ -1,6 +1,6 @@
 <template>
 	<view>
-		
+		<!-- 每日一品 -->
 	</view>
 </template>
 

@@ -108,7 +108,7 @@ let dataList = [{
 		image: 'http://pic1.sc.chinaz.com/Files/pic/pic9/202002/zzpic23343_s.jpg',
 	}
 ]
-let showItemList = [1,1,1,0,0,0,1,1,1,0]
+let showItemList = [1,0,1,1,0,1,0,1,0,0]
 export {
 	list,
 	dataList,

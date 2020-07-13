@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<!-- 领好券 -->
+		<!-- 买就送 -->
 	</view>
 </template>
 
