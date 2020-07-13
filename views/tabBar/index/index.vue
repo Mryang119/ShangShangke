@@ -20,7 +20,7 @@
 			</view>
 			<!-- 搜索定位分类部分 -->
 			<view class="topNav">
-				<view class="position" @click="getRegeo">
+				<view class="position" @click="toPosition">
 					<position :city="city"></position>
 				</view>
 				<view class="searchBar">
@@ -225,6 +225,12 @@
 				console.log(e)
 				this.cp = e
 			},
+			toPosition(){
+				uni.navigateTo({
+					url:'../../singlePage/position/position'
+				})
+			},
+			// 获取位置
 			getRegeo() {
 				uni.showLoading({
 					title: '获取信息中'
