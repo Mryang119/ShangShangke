@@ -23,7 +23,7 @@
 				<view class="position" @click="toPosition">
 					<position :city="city"></position>
 				</view>
-				<view class="searchBar">
+				<view class="searchBar" @click="toSearch">
 					<image src="@/static/images/iconfont/search.png" mode=""></image>
 					<view class="fakerInput">搜索商家/商品</view>
 				</view>
@@ -66,8 +66,7 @@
 				<!-- 横向滚动部分 -->
 				<scroll-view scroll-x="true" class="scorll-H">
 					<view class="scorll-H-container">
-						<view class="scorll-item" v-for="(item,index) in list" :key="price" :class="{'scorll-item-active':temp.indexOf(index)!==-1}"
-						 @click="click(index)">
+						<view class="scorll-item" v-for="(item,index) in list" :key="price" :class="{'scorll-item-active':temp.indexOf(index)!==-1}">
 							<view class="scorll-item-son radiusBox">
 								<text>{{item.store}}</text>
 							</view>
@@ -79,12 +78,12 @@
 								<br />
 								<text :style="{fontSize:'20rpx',color:'#624118'}">{{item.store}}</text>
 							</view>
-							<view class="scorll-item-son lijilingqu" v-if="true">
+							<view class="scorll-item-son lijilingqu" v-if="temp.indexOf(index)==-1" @click="click(index)">
 								<text :style="{fontSize:'24rpx'}">立即</text>
 								<br />
 								<text :style="{fontSize:'24rpx'}">领取</text>
 							</view>
-							<view class="scorll-item-son yilingqu" v-else>
+							<view class="scorll-item-son yilingqu" v-else @click="toUse(index)">
 								<text :style="{fontSize:'24rpx'}">去使用</text>
 							</view>
 						</view>
@@ -166,8 +165,8 @@
 	import uniNavBar from '../../../components/uni-nav-bar/uni-nav-bar.vue'
 	import position from './components/position.vue'
 	import more from './components/more.vue'
-	import shopItem from './components/daydayShop.vue'
-	import spitem from './components/spitem.vue'
+	import shopItem from '@/src/publicComponents/daydayShop.vue'
+	import spitem from '@/src/publicComponents/spitem.vue'
 	import buy from './components/buy.vue'
 	import give from './components/give.vue'
 	// 高德sdk
@@ -217,17 +216,30 @@
 			};
 		},
 		methods: {
+			// 立即领取
 			click(i) {
 				if (this.temp.length >= 10) return
 				this.temp.push(i)
+				console.log('立即领取')
+			},
+			// 去使用
+			toUse(i) {
+				console.log('去使用', i)
 			},
 			toggl(e) {
 				console.log(e)
 				this.cp = e
 			},
-			toPosition(){
+			// 跳转搜索
+			toSearch(){
 				uni.navigateTo({
-					url:'../../singlePage/position/position'
+					url:'../../singlePage/search/search'
+				})
+			},
+			// 跳转定位
+			toPosition() {
+				uni.navigateTo({
+					url: '../../singlePage/position/position'
 				})
 			},
 			// 获取位置
@@ -486,10 +498,10 @@
 							padding: 14rpx;
 							box-sizing: border-box;
 							position: relative;
+							line-height: 24rpx;
 
 							.scorll-item-son {
 								position: absolute;
-								line-height: 24rpx;
 								top: 50%;
 								transform: translateY(-50%);
 							}
@@ -517,9 +529,10 @@
 
 							.lijilingqu {
 								color: #624118;
-								line-height: 20rpx;
+								line-height: 26rpx;
 								left: 276rpx;
 								font-weight: bold;
+
 							}
 						}
 
