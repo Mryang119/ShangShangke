@@ -1,19 +1,27 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		
+
 		{
 			"path": "views/tabBar/index/index",
 			"style": {
 				"navigationBarTitleText": "上上客",
 				"navigationStyle": "custom"
 			}
-		}, 
+
+		},
+		{
+			"path": "views/singlePage/classify/classify",
+			"style": {
+				"navigationBarTitleText": "全部分类"
+			}
+		},
 		{
 			"path": "views/tabBar/discover/discover",
 			"style": {
 				"navigationBarTitleText": "发现"
 			}
-		}, {
+		},
+		{
 			"path": "views/tabBar/store/store",
 			"style": {
 				"navigationBarTitleText": "店铺"
@@ -23,49 +31,52 @@
 			"path": "views/tabBar/my/my",
 			"style": {
 				"navigationBarTitleText": "我的",
-				"navigationStyle":"custom"
+				"navigationStyle": "custom"
 			}
-		}, {
-			"path": "views/singlePage/classify/classify",
-			"style": {
-				"navigationBarTitleText": "全部分类"
-			}
-		}, {
+		},
+		{
 			"path": "views/singlePage/search/search",
 			"style": {
 				"navigationBarTitleText": "搜索"
 			}
-		}, {
+		},
+		{
 			"path": "views/singlePage/position/position",
 			"style": {
 				"navigationBarTitleText": "定位"
 			}
-		}, {
+		},
+		{
 			"path": "views/singlePage/timeKill/timeKill",
 			"style": {
 				"navigationBarTitleText": "限时秒杀"
 			}
-		}, {
+		},
+		{
 			"path": "views/singlePage/getCoupon/getCoupon",
 			"style": {
 				"navigationBarTitleText": "每日领好券"
 			}
-		}, {
+		},
+		{
 			"path": "views/singlePage/buyGive/buyGive",
 			"style": {
 				"navigationBarTitleText": "买就送"
 			}
-		}, {
+		},
+		{
 			"path": "views/singlePage/dailyGoods/dailyGoods",
 			"style": {
 				"navigationBarTitleText": "每日一品"
 			}
-		}, {
+		},
+		{
 			"path": "views/singlePage/groupPurchase/groupPurchase",
 			"style": {
 				"navigationBarTitleText": "超值团购"
 			}
-		}, {
+		},
+		{
 			"path": "views/singlePage/everydayRob/everydayRob",
 			"style": {
 				"navigationBarTitleText": "天天免费抢"

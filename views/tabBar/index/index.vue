@@ -27,7 +27,7 @@
 					<image src="@/static/images/iconfont/search.png" mode=""></image>
 					<view class="fakerInput">搜索商家/商品</view>
 				</view>
-				<image class="classify" src="@/static/images/iconfont/fenlei.png" mode=""></image>
+				<image class="classify" @click="toClsssify" src="@/static/images/iconfont/fenlei.png" mode=""></image>
 			</view>
 		</view>
 		<!-- 下半部分主体 -->
@@ -155,7 +155,6 @@
 			<view class="vShowbox" v-show="cp==='give'">
 				<give :showItemList="showItemList"></give>
 			</view>
-
 		</view>
 	</view>
 	</view>
@@ -230,10 +229,19 @@
 				console.log(e)
 				this.cp = e
 			},
-			// 跳转搜索
-			toSearch(){
+			// 跳转分类
+			toClsssify(){
 				uni.navigateTo({
-					url:'../../singlePage/search/search'
+					url:'../../singlePage/classify/classify'
+				})
+			},
+			// 跳转搜索
+			toSearch() {
+				// uni.navigateTo({
+				// 	url: '../../singlePage/search/search?type=discover'
+				// })
+				uni.navigateTo({
+					url: '../../singlePage/search/search?type=index'
 				})
 			},
 			// 跳转定位

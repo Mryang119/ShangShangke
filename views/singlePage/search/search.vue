@@ -1,6 +1,6 @@
 <template>
 	<!-- 搜索页面 -->
-	<view class="s_search">
+	<view class="s_search" :class="{indexClass:pageType==='index',discoverClass:pageType==='discover'}">
 		<u-toast ref="uToast" />
 		<u-modal v-model="show" show-cancel-button="true" @confirm="confirm" @cancel="cancel" :content="content"></u-modal>
 
@@ -32,18 +32,30 @@
 						<searchButton :text="item.text" :isHot="item.isHot"></searchButton>
 					</view>
 					<!-- 展开 -->
-
+					<!-- 收起 -->
 				</view>
 			</view>
 		</view>
+		<!-- 附近商户列表 -->
+		<view class="nearby-container" v-if="pageType==='index'">
+			<view class="nearby-title">
+				附近
+			</view>
+			<view class="list-container" v-for="(item,index) in 4" :key="index">
+				<searchNearbyShowItem></searchNearbyShowItem>
+			</view>
+		</view>
+
 	</view>
 </template>
 
 <script>
 	import searchButton from './components/searchButton.vue'
+	import searchNearbyShowItem from '@/src/publicComponents/searchNearbyShowItem.vue'
 	export default {
 		components: {
-			searchButton
+			searchButton,
+			searchNearbyShowItem
 		},
 		data() {
 			return {
@@ -82,7 +94,8 @@
 				}, {
 					text: '旅游住宿',
 					isHot: false
-				}] // 历史记录
+				}],
+				pageType: 'index'
 			};
 		},
 		methods: {
@@ -120,12 +133,26 @@
 
 			}
 		},
-		onLoad() {
-			// 取缓存
-			// let res = uni.getStorageSync('historyList');
-			// if(res==undefined) {
-			// 	uni.setStorageSync('historyList', 'hello');
+		onLoad(option) {
+			this.pageType = option.type
+			// 取首页进来的缓存
+			// if(this.pageType==='index') {
+			// 	let res = uni.getStorageSync('historyList');
+			// 	if(res==undefined) {
+			// 		uni.setStorageSync('historyList', []);
+			// 	}else {
+			// 		this.historyList = res
+			// 	}
+			// } else if(this.pageType === 'discover') {
+			// 	let res = uni.getStorageSync('discoverHistoryList');
+			// 	if(res==undefined) {
+			// 		uni.setStorageSync('discoverHistoryList', []);
+			// 	}else {
+			// 		this.historyList = res
+			// 	}
 			// }
+
+
 		}
 	}
 </script>
@@ -133,6 +160,21 @@
 <style lang="less" scoped>
 	.s_search {
 		width: 750rpx;
+		height: 100%;
+		.nearby-container {
+			margin-left: 20rpx;
+
+			.nearby-title {
+				font-size: 32rpx;
+				color: #333333;
+				font-weight: bold;
+				margin-bottom: 30rpx;
+			}
+
+			.list-container {
+				margin-bottom: 20rpx;
+			}
+		}
 
 		.searchBar {
 			box-sizing: border-box;
@@ -186,5 +228,13 @@
 			}
 
 		}
+	}
+
+	.indexClass {
+		background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 82%, rgba(246, 246, 246, 1) 100%);
+	}
+
+	.discoverClass {
+		background-color: #FFF;
 	}
 </style>

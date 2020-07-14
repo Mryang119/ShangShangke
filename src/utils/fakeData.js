@@ -108,9 +108,92 @@ let dataList = [{
 		image: 'http://pic1.sc.chinaz.com/Files/pic/pic9/202002/zzpic23343_s.jpg',
 	}
 ]
-let showItemList = [1,0,1,1,0,1,0,1,0,0]
+let showItemList = [1, 0, 1, 1, 0, 1, 0, 1, 0, 0]
+// 分类假数据
+let classifyList = [{
+	title: '热门推荐',
+	children: [
+		'面包',
+		'火锅',
+		'自助餐',
+		'住宿'
+	]
+},{
+	title: '热门推荐',
+	children: [
+		'面包',
+		'火锅',
+		'自助餐',
+		'住宿'
+	]
+},{
+	title: '热门推荐',
+	children: [
+		'面包',
+		'火锅',
+		'自助餐',
+		'住宿'
+	]
+},{
+	title: '热门推荐',
+	children: [
+		'面包',
+		'火锅',
+		'自助餐',
+		'住宿'
+	]
+},{
+	title: '热门推荐',
+	children: [
+		'面包',
+		'火锅',
+		'自助餐',
+		'住宿'
+	]
+},{
+	title: '热门推荐',
+	children: [
+		'面包',
+		'火锅',
+		'自助餐',
+		'住宿'
+	]
+},{
+	title: '热门推荐',
+	children: [
+		'面包',
+		'火锅',
+		'自助餐',
+		'住宿'
+	]
+},{
+	title: '热门推荐',
+	children: [
+		'面包',
+		'火锅',
+		'自助餐',
+		'住宿'
+	]
+},{
+	title: '热门推荐',
+	children: [
+		'面包',
+		'火锅',
+		'自助餐',
+		'住宿'
+	]
+},{
+	title: '热门推荐',
+	children: [
+		'面包',
+		'火锅',
+		'自助餐',
+		'住宿'
+	]
+}]
 export {
 	list,
 	dataList,
-	showItemList
+	showItemList,
+	classifyList
 }
