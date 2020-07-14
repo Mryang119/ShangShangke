@@ -37,7 +37,7 @@
 			</view>
 		</view>
 		<!-- 附近商户列表 -->
-		<view class="nearby-container">
+		<view class="nearby-container" v-if="pageType==='index'">
 			<view class="nearby-title">
 				附近
 			</view>
@@ -94,7 +94,8 @@
 				}, {
 					text: '旅游住宿',
 					isHot: false
-				}] // 历史记录
+				}],
+				pageType: 'index'
 			};
 		},
 		methods: {
@@ -132,12 +133,26 @@
 
 			}
 		},
-		onLoad() {
-			// 取缓存
-			// let res = uni.getStorageSync('historyList');
-			// if(res==undefined) {
-			// 	uni.setStorageSync('historyList', 'hello');
+		onLoad(option) {
+			this.pageType = option.type
+			// 取首页进来的缓存
+			// if(this.pageType==='index') {
+			// 	let res = uni.getStorageSync('historyList');
+			// 	if(res==undefined) {
+			// 		uni.setStorageSync('historyList', []);
+			// 	}else {
+			// 		this.historyList = res
+			// 	}
+			// } else if(this.pageType === 'discover') {
+			// 	let res = uni.getStorageSync('discoverHistoryList');
+			// 	if(res==undefined) {
+			// 		uni.setStorageSync('discoverHistoryList', []);
+			// 	}else {
+			// 		this.historyList = res
+			// 	}
 			// }
+			
+
 		}
 	}
 </script>
