@@ -32,18 +32,30 @@
 						<searchButton :text="item.text" :isHot="item.isHot"></searchButton>
 					</view>
 					<!-- 展开 -->
-
+					<!-- 收起 -->
 				</view>
 			</view>
 		</view>
+		<!-- 附近商户列表 -->
+		<view class="nearby-container">
+			<view class="nearby-title">
+				附近
+			</view>
+			<view class="list-container" v-for="(item,index) in 4" :key="index">
+				<searchNearbyShowItem></searchNearbyShowItem>
+			</view>
+		</view>
+
 	</view>
 </template>
 
 <script>
 	import searchButton from './components/searchButton.vue'
+	import searchNearbyShowItem from '@/src/publicComponents/searchNearbyShowItem.vue'
 	export default {
 		components: {
-			searchButton
+			searchButton,
+			searchNearbyShowItem
 		},
 		data() {
 			return {
@@ -133,6 +145,23 @@
 <style lang="less" scoped>
 	.s_search {
 		width: 750rpx;
+		height: 100%;
+		background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 82%, rgba(246, 246, 246, 1) 100%);
+
+		.nearby-container {
+			margin-left: 20rpx;
+
+			.nearby-title {
+				font-size: 32rpx;
+				color: #333333;
+				font-weight: bold;
+				margin-bottom: 30rpx;
+			}
+
+			.list-container {
+				margin-bottom: 20rpx;
+			}
+		}
 
 		.searchBar {
 			box-sizing: border-box;
@@ -184,6 +213,8 @@
 					}
 				}
 			}
+
+
 
 		}
 	}
