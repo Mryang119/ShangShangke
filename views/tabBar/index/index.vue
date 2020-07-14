@@ -237,6 +237,9 @@
 			},
 			// 跳转搜索
 			toSearch() {
+				// uni.navigateTo({
+				// 	url: '../../singlePage/search/search?type=discover'
+				// })
 				uni.navigateTo({
 					url: '../../singlePage/search/search?type=index'
 				})

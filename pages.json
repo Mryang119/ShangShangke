@@ -1,13 +1,19 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		
+		{
+			"path": "views/singlePage/classify/classify",
+			"style": {
+				"navigationBarTitleText": "全部分类"
+			}
+		},
 		{
 			"path": "views/tabBar/index/index",
 			"style": {
 				"navigationBarTitleText": "上上客",
 				"navigationStyle": "custom"
 			}
-		}, {
+		},
+		{
 			"path": "views/tabBar/discover/discover",
 			"style": {
 				"navigationBarTitleText": "发现"
@@ -22,11 +28,6 @@
 			"path": "views/tabBar/my/my",
 			"style": {
 				"navigationBarTitleText": "我的"
-			}
-		}, {
-			"path": "views/singlePage/classify/classify",
-			"style": {
-				"navigationBarTitleText": "全部分类"
 			}
 		}, {
 			"path": "views/singlePage/search/search",

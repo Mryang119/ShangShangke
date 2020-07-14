@@ -1,6 +1,6 @@
 <template>
 	<!-- 搜索页面 -->
-	<view class="s_search">
+	<view class="s_search" :class="{indexClass:pageType==='index',discoverClass:pageType==='discover'}">
 		<u-toast ref="uToast" />
 		<u-modal v-model="show" show-cancel-button="true" @confirm="confirm" @cancel="cancel" :content="content"></u-modal>
 
@@ -151,7 +151,7 @@
 			// 		this.historyList = res
 			// 	}
 			// }
-			
+
 
 		}
 	}
@@ -161,8 +161,6 @@
 	.s_search {
 		width: 750rpx;
 		height: 100%;
-		background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 82%, rgba(246, 246, 246, 1) 100%);
-
 		.nearby-container {
 			margin-left: 20rpx;
 
@@ -229,8 +227,14 @@
 				}
 			}
 
-
-
 		}
+	}
+
+	.indexClass {
+		background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(246, 246, 246, 1) 82%, rgba(246, 246, 246, 1) 100%);
+	}
+
+	.discoverClass {
+		background-color: #FFF;
 	}
 </style>
