@@ -148,6 +148,7 @@
 				display: flex;
 				justify-content: space-around;
 				align-items: center;
+				height: 111px;
 
 				.myLoginOrderLi {
 					height: 59px;
