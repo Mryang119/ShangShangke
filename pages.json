@@ -7,7 +7,8 @@
 				"navigationBarTitleText": "上上客",
 				"navigationStyle": "custom"
 			}
-		}, {
+		}, 
+		{
 			"path": "views/tabBar/discover/discover",
 			"style": {
 				"navigationBarTitleText": "发现"
@@ -21,7 +22,8 @@
 		{
 			"path": "views/tabBar/my/my",
 			"style": {
-				"navigationBarTitleText": "我的"
+				"navigationBarTitleText": "我的",
+				"navigationStyle":"custom"
 			}
 		}, {
 			"path": "views/singlePage/classify/classify",
@@ -69,12 +71,14 @@
 				"navigationBarTitleText": "天天免费抢"
 			}
 		},
+		// 我的订单
 		{
-			"path": "views/singlePage/order/order",
+			"path": "views/singlePage/myOrder/myOrder",
 			"style": {
 				"navigationBarTitleText": "我的订单"
 			}
 		},
+		// 我的卡券
 		{
 			"path": "views/singlePage/coupon/coupon",
 			"style": {
@@ -91,6 +95,12 @@
 			"path": "views/singlePage/spellGroup/spellGroup",
 			"style": {
 				"navigationBarTitleText": "我的拼团"
+			}
+		},
+		{
+			"path": "views/singlePage/orderDetail/orderDetail",
+			"style": {
+				"navigationBarTitleText": "订单详情"
 			}
 		}
 

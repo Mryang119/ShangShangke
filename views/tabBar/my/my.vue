@@ -1,8 +1,8 @@
 <template>
 	<view class="root_my">
 		<!-- 自定义导航栏 -->
-		<!-- <uni-nav-bar :fixed="true" :status-bar="true" title="我的" class="top_nvaBar_text" :shadow="false" background-color="#FFFFFF">
-		</uni-nav-bar> -->
+		<uni-nav-bar :fixed="true" :status-bar="true" title="我的" class="top_nvaBar_text" :shadow="false" background-color="#FFFFFF">
+		</uni-nav-bar>
 		<!-- 点击登录 -->
 		<view class="myLogin">
 			<image class="myLoginHeader" src="@/static/images/tabBarImage/myLoginHeader.png"></image>
@@ -46,10 +46,12 @@
 				<span class="myLoginEstimateText">我的评价</span>
 				<image class="myLoginEstimateImg" src="@/static/images/iconfont/more.png"></image>
 			</view>
+			<u-line color="#F3F3F3" length="325rpx" margin="0 26rpx"/>
 			<view class="myLoginEstimateLi">
 				<span class="myLoginEstimateText">我的足迹</span>
 				<image class="myLoginEstimateImg" src="@/static/images/iconfont/more.png"></image>
 			</view>
+			<u-line color="#F3F3F3" length="325rpx" margin="0 26rpx"/>
 			<view class="myLoginEstimateLi">
 				<span class="myLoginEstimateText">我的动态</span>
 				<image class="myLoginEstimateImg" src="@/static/images/iconfont/more.png"></image>
@@ -61,6 +63,7 @@
 				<span class="myLoginServiceText">我的客服</span>
 				<image class="myLoginServiceImg" src="@/static/images/iconfont/more.png"></image>
 			</view>
+			<u-line color="#F3F3F3" length="325rpx" margin="0 26rpx"/>
 			<view class="myLoginServiceLi">
 				<span class="myLoginServiceText">商家加盟</span>
 				<image class="myLoginServiceImg" src="@/static/images/iconfont/more.png"></image>
@@ -73,7 +76,7 @@
 	export default {
 		data() {
 			return {
-				orderUrl: '../../singlePage/order/order',
+				orderUrl: '../../singlePage/myOrder/myOrder',
 				couponUrl: '../../singlePage/coupon/coupon',
 				collectUrl: '../../singlePage/collect/collect',
 				spellGroupUrl: '../../singlePage/spellGroup/spellGroup'
@@ -88,95 +91,90 @@
 <style lang="less">
 	// 最外层
 	.root_my {
-		height: 88px;
-
+		height: 88rpx;
+		background: #F6F6F6;
 		// 点击登录
 		.myLogin {
-			width: 375px;
-			height: 88px;
-			margin: 0 25px 0 25px;
+			width: 750rpx;
+			height: 176rpx;
+			margin: 0 50rpx 0 50rpx;
 			font-size: 0;
 			display: flex;
 			align-items: center;
 
 			// 头像
 			.myLoginHeader {
-				width: 58px;
-				height: 58px;
+				width: 116rpx;
+				height: 116rpx;
 				background: rgba(0, 0, 0, 0);
 				border-radius: 50%;
 			}
 
 			.myLoginRight {
-				width: 252px;
+				width: 504rpx;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				margin-left: 15px;
+				margin-left: 30rpx;
 
 				// 点击登录文字
 				.myLoginText {
-					width: 64px;
-					height: 19px;
-					font-size: 16px;
+					width: 128rpx;
+					height: 38rpx;
+					font-size: 32rpx;
 					font-family: PingFang SC;
 					font-weight: bold;
-					line-height: 19px;
+					line-height: 38rpx;
 					color: rgba(51, 51, 51, 1);
 				}
 
 				// 更多
 				.myLoginMore {
-					width: 7.46px;
-					height: 14.87px;
+					width: 14.92rpx;
+					height: 29.74rpx;
 				}
 			}
 		}
 
 		// <!-- 订单/卡券/收藏/拼团 -->
 		.myLoginOrder {
-			width: 345px;
-			height: 111px;
+			width: 690rpx;
+			height: 222rpx;
 			background: rgba(255, 255, 255, 1);
-			box-shadow: 0px 0px 10px rgba(0, 19, 34, 0.09);
+			box-shadow: 0rpx 0rpx 20rpx rgba(0, 19, 34, 0.09);
 			opacity: 1;
-			border-radius: 13px;
+			border-radius: 26rpx;
 			margin: 0 auto;
-			margin-bottom: 10px;
+			margin-bottom: 20rpx;
 
 			.myLoginOrderCon {
 				display: flex;
 				justify-content: space-around;
 				align-items: center;
-				height: 111px;
-
+				height: 222rpx;
 				.myLoginOrderLi {
-					height: 59px;
+					height: 118rpx;
 					display: flex;
 					flex-direction: column;
 					align-items: center;
 					justify-content: space-between;
 
 					.myLoginOrderTu {
-						width: 37px;
-						height: 37px;
-						border-style: dashed;
-						border-width: 1px;
-						border-color: #001322;
-
+						width: 74rpx;
+						height: 74rpx;
 						.myLoginOrderImg {
-							width: 37px;
-							height: 37px;
+							width: 74rpx;
+							height: 74rpx;
 						}
 					}
 
 					.myLoginOrderText {
-						width: 48px;
-						height: 14px;
-						font-size: 12px;
+						width: 96rpx;
+						height: 28rpx;
+						font-size: 24rpx;
 						font-family: PingFang SC;
 						font-weight: 400;
-						line-height: 14px;
+						line-height: 28rpx;
 						color: rgba(51, 51, 51, 1);
 						opacity: 1;
 					}
@@ -186,65 +184,63 @@
 
 		// // <!-- 评价 -->
 		.myLoginEstimate {
-			height: 162px;
+			height: 324rpx;
 			background-color: #FFFFFF;
-			margin-bottom: 15px;
 
 			.myLoginEstimateLi {
-				width: 325px;
-				height: 52px;
+				width: 650rpx;
+				height: 104rpx;
 				margin: 0 auto;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				border-bottom: 1px solid rgba(243, 243, 243, 1);
 
 				.myLoginEstimateText {
-					width: 56px;
-					height: 16px;
-					font-size: 14px;
+					width: 112rpx;
+					height: 32rpx;
+					font-size: 28rpx;
 					font-family: PingFang SC;
 					font-weight: 400;
-					line-height: 16px;
+					line-height: 32rpx;
 					color: rgba(39, 39, 39, 1);
 					opacity: 1;
 				}
 
 				.myLoginEstimateImg {
-					width: 4.25px;
-					height: 8.75px;
+					width: 8.5rpx;
+					height: 17.5rpx;
 				}
 			}
 		}
 
 		// <!-- 客服/商家 -->
 		.myLoginService {
-			height: 108px;
+			height: 216rpx;
+			margin-top: 20rpx;
 			background-color: #FFFFFF;
 
 			.myLoginServiceLi {
-				width: 325px;
-				height: 52px;
+				width: 650rpx;
+				height: 104rpx;
 				margin: 0 auto;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				border-bottom: 1px solid rgba(243, 243, 243, 1);
 
 				.myLoginServiceText {
-					width: 56px;
-					height: 16px;
-					font-size: 14px;
+					width: 112rpx;
+					height: 32rpx;
+					font-size: 28rpx;
 					font-family: PingFang SC;
 					font-weight: 400;
-					line-height: 16px;
+					line-height: 32rpx;
 					color: rgba(39, 39, 39, 1);
 					opacity: 1;
 				}
 
 				.myLoginServiceImg {
-					width: 4.25px;
-					height: 8.75px;
+					width: 8.5rpx;
+					height: 17.5rpx;
 				}
 			}
 		}
