@@ -8,7 +8,7 @@
 		<!-- 左侧tab栏 -->
 		<view class="Tab-container">
 			<scroll-view scroll-y="true" :height="classifyList.length*60*2+'rpx'" class="scroll-cotainer">
-				<view class="tab-item-container" @click="toggleSelect(index)"  :class="{'tab-item-active':index===selectIndex}"
+				<view class="tab-item-container" @click="toggleSelect(index)" :class="{'tab-item-active':index===selectIndex}"
 				 v-for="(item,index) in classifyList" :key="index">
 					<view class="line" v-show="selectIndex===index"></view>
 					<view class="tab-item">{{item.title}}</view>
@@ -17,10 +17,10 @@
 			<!-- 左侧分类栏 -->
 			<scroll-view scroll-y="true" class="scroll-cotainer-right" @scroll="calssScroll" :scroll-top="scrollTop"
 			 scroll-with-animation="true" :scroll-into-view="classfiyItemId">
-			 <!-- 广告 -->
-				<!-- <view class="bannerAd">
+				<!-- 广告 -->
+				<view class="bannerAd">
 					<image src="@/static/images/Product/fenleiBanner.png" mode=""></image>
-				</view> -->
+				</view>
 				<view class="classify-item-container" v-for="(item,index) in classifyList" :key="index" :id="'classItemId'+index">
 					<view class="classify-item">
 						<view class="item-className">
@@ -52,32 +52,29 @@
 				},
 				scrollTop: 0,
 				classScrollHeight: 0,
-				classfiyItemId:'',
-				isScroll:false,
-				time:null
+				classfiyItemId: '',
+				isScroll: false,
+				time: null
 			};
 		},
 		methods: {
 			toggleSelect(index) {
 				this.selectIndex = index
-				this.classfiyItemId = 'classItemId'+index
+				this.classfiyItemId = 'classItemId' + index
 				this.isScroll = true
 				clearTimeout(this.time)
-				this.time = setTimeout(()=>{
+				this.time = setTimeout(() => {
 					this.isScroll = false
-				},500)
+				}, 800)
 			},
 			calssScroll(e) {
-				if(this.isScroll) return
-				let scrollHeight  = e.detail.scrollHeight // 总高度
+				if (this.isScroll) return
+				let scrollHeight = e.detail.scrollHeight // 总高度
 				let scrollTop = e.detail.scrollTop // 滚动高度
-				let usableScrollTop = scrollHeight/1.60 // 可滚动高度
-				let nodeHeight = 133
-				
-				let computedIndex = Math.floor(scrollTop/usableScrollTop*10)
-				
+				let usableScrollTop = (scrollHeight - 100) / 1.60 // 可滚动高度
+				let nodeHeight = 133 // 节点高度
+				let computedIndex = Math.floor(scrollTop / usableScrollTop * 10)
 				this.selectIndex = computedIndex
-				console.log(computedIndex)
 			}
 		}
 	}
@@ -105,8 +102,7 @@
 			.scroll-cotainer {
 				width: 202rpx;
 				height: 100%;
-				background-color: red;
-
+				background-color: #F5F5F5;
 				.tab-item-container {
 					height: 120rpx;
 					width: 202rpx;
@@ -161,6 +157,7 @@
 				.classify-item-container {
 					.classify-item {
 						.item-className {
+							background-color: #fff;
 							margin-bottom: 30rpx;
 							font-size: 28rpx;
 							font-weight: bold;
