@@ -155,7 +155,10 @@
 						white-space: nowrap;
 						margin-right: 100rpx;
 					}
-					
+					.flot-right {
+						display: flex;
+						align-items: center;
+					}
 				}
 			}
 		}

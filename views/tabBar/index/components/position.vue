@@ -3,7 +3,7 @@
 	<view class="c_position">
 		<view class="postiton-event">
 			<text class="city">{{city}}</text>
-			<text class="iconfont myionfont icon-iconfonticonfonti2"></text>
+			<text v-if="city!=='未定位'" class="iconfont myionfont icon-iconfonticonfonti2"></text>
 		</view>
 	</view>
 </template>
@@ -13,7 +13,7 @@
 		props: {
 			city: {
 				type: String,
-				default: "深圳"
+				default: "未定位"
 			}
 		}
 	}

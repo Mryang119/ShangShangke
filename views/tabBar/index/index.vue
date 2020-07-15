@@ -345,7 +345,9 @@
 				display: flex;
 				align-items: center;
 				top: 24rpx;
-
+				justify-content: space-between;
+				box-sizing: border-box;
+				padding-right: 30rpx;
 				.searchBar {
 					display: flex;
 					width: 488rpx;
@@ -354,8 +356,6 @@
 					opacity: 0.5;
 					border-radius: 34rpx;
 					align-items: center;
-					margin-left: 24rpx;
-					margin-right: 30rpx;
 
 					image {
 						width: 28.74rpx;
