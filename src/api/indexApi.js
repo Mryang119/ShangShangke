@@ -4,10 +4,11 @@ import http from '../http/index.js'
 const test = function({data,url,method}){
 	return http({
 		data,
-		url,
-		method
+		url:'',
+		method:'post'
 	})
 }
 export {
 	test
 }
+
