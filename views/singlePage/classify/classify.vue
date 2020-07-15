@@ -27,7 +27,7 @@
 							{{item.title}}
 						</view>
 						<view class="item-button-container">
-							<view class="item-button" v-for="(item1,index1) in item.children" :key="index1">
+							<view class="item-button" v-for="(item1,index1) in item.children" :key="index1" @click="toClassifyDetail(item1)">
 								{{item1}}
 							</view>
 						</view>
@@ -75,6 +75,12 @@
 				let nodeHeight = 133 // 节点高度
 				let computedIndex = Math.floor(scrollTop / usableScrollTop * 10)
 				this.selectIndex = computedIndex
+			},
+			// 跳转分类详情页
+			toClassifyDetail(value) {
+				uni.navigateTo({
+					url:`../classifyDetail/classifyDetail?className=${value}`
+				})
 			}
 		}
 	}

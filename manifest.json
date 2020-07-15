@@ -66,7 +66,12 @@
             "postcss" : true,
             "minified" : true
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : ""
+            }
+        }
     },
     "mp-alipay" : {
         "usingComponents" : true

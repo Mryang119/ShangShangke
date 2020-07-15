@@ -66,7 +66,7 @@
 				<!-- 横向滚动部分 -->
 				<scroll-view scroll-x="true" class="scorll-H">
 					<view class="scorll-H-container">
-						<view class="scorll-item" v-for="(item,index) in list" :key="price" :class="{'scorll-item-active':temp.indexOf(index)!==-1}">
+						<view class="scorll-item" v-for="(item,index) in list" :key="index" :class="{'scorll-item-active':temp.indexOf(index)!==-1}">
 							<view class="scorll-item-son radiusBox">
 								<text>{{item.store}}</text>
 							</view>
@@ -168,13 +168,15 @@
 	import spitem from '@/src/publicComponents/spitem.vue'
 	import buy from './components/buy.vue'
 	import give from './components/give.vue'
-	// 高德sdk
-	import amap from '@/common/amap-wx.js';
 	import {
 		list,
 		dataList,
 		showItemList
 	} from '@/src/utils/fakeData.js'
+	// api
+	import {
+		test
+	} from '@/src/api/indexApi.js'
 	export default {
 		components: {
 			uniNavBar,
@@ -205,8 +207,6 @@
 				endPage: 5,
 				startPage: 1,
 				status: 'loading',
-				amapPlugin: null,
-				key: "436972c953803a9f4a21ded15d8cd943",
 				addressName: '',
 				weather: {
 					hasData: false,
@@ -230,9 +230,9 @@
 				this.cp = e
 			},
 			// 跳转分类
-			toClsssify(){
+			toClsssify() {
 				uni.navigateTo({
-					url:'../../singlePage/classify/classify'
+					url: '../../singlePage/classify/classify'
 				})
 			},
 			// 跳转搜索
@@ -250,28 +250,19 @@
 					url: '../../singlePage/position/position'
 				})
 			},
-			// 获取位置
-			getRegeo() {
-				uni.showLoading({
-					title: '获取信息中'
-				});
-				this.amapPlugin.getRegeo({
-					success: (data) => {
-						console.log(data)
-						this.addressName = data[0].name;
-						uni.hideLoading();
-					},
-					fail: (data) => {
-						console.log(data)
-					}
-				});
-			}
+			
 		},
-		onLoad() {
-			console.log('主页')
-			this.amapPlugin = new amap.AMapWX({
-				key: this.key
+		async onLoad() {
+			
+			let res = await test({
+				url: 'dby/sysuser/getVersion',
+				data: {
+					appName: "FZJK",
+					type: "1"
+				},
+				method: "POST"
 			})
+			console.log(res)
 		},
 		// 触碰底部懒加载
 		onReachBottom: function() {
