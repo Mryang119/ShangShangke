@@ -7,7 +7,6 @@
 				"navigationBarTitleText": "上上客",
 				"navigationStyle": "custom"
 			}
-
 		},
 		{
 			"path": "views/singlePage/classify/classify",
@@ -122,6 +121,11 @@
 			}
 		}
 	],
+	"permission": {
+		"scope.userLocation": {
+			"desc": "撒大苏打"
+		}
+	},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
