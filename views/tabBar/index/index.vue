@@ -66,7 +66,7 @@
 				<!-- 横向滚动部分 -->
 				<scroll-view scroll-x="true" class="scorll-H">
 					<view class="scorll-H-container">
-						<view class="scorll-item" v-for="(item,index) in list" :key="price" :class="{'scorll-item-active':temp.indexOf(index)!==-1}">
+						<view class="scorll-item" v-for="(item,index) in list" :key="index" :class="{'scorll-item-active':temp.indexOf(index)!==-1}">
 							<view class="scorll-item-son radiusBox">
 								<text>{{item.store}}</text>
 							</view>
@@ -168,13 +168,17 @@
 	import spitem from '@/src/publicComponents/spitem.vue'
 	import buy from './components/buy.vue'
 	import give from './components/give.vue'
-	// 高德sdk
-	import amap from '@/common/amap-wx.js';
+	// 引入百度地图
+	import bmap from '@/common/bmap-wx.min.js'
 	import {
 		list,
 		dataList,
 		showItemList
 	} from '@/src/utils/fakeData.js'
+	// api
+	import {
+		test
+	} from '@/src/api/indexApi.js'
 	export default {
 		components: {
 			uniNavBar,
@@ -191,7 +195,7 @@
 				autoplay: true,
 				duration: 500,
 				interval: 2000,
-				city: '深圳',
+				city: '未定位',
 				scrollTop: 0,
 				old: {
 					scrollTop: 0
@@ -202,17 +206,21 @@
 				cp: 'buy',
 				showItemList: showItemList,
 				ajaxList: showItemList,
-				endPage: 5,
-				startPage: 1,
+				endPage: 5, // 买就送死数据最大页数
+				startPage: 1, // 买就送死数据开始页数
 				status: 'loading',
-				amapPlugin: null,
-				key: "436972c953803a9f4a21ded15d8cd943",
 				addressName: '',
 				weather: {
 					hasData: false,
 					data: []
-				}
-			};
+				},
+				// 百度地图数据⬇
+				markers: [],
+				latitude: '',
+				longitude: '',
+				rgcData: {}
+				// 百度地图数据⬆
+			}
 		},
 		methods: {
 			// 立即领取
@@ -225,21 +233,19 @@
 			toUse(i) {
 				console.log('去使用', i)
 			},
+			// 立即领取的切换类名
 			toggl(e) {
 				console.log(e)
 				this.cp = e
 			},
 			// 跳转分类
-			toClsssify(){
+			toClsssify() {
 				uni.navigateTo({
-					url:'../../singlePage/classify/classify'
+					url: '../../singlePage/classify/classify'
 				})
 			},
 			// 跳转搜索
 			toSearch() {
-				// uni.navigateTo({
-				// 	url: '../../singlePage/search/search?type=discover'
-				// })
 				uni.navigateTo({
 					url: '../../singlePage/search/search?type=index'
 				})
@@ -250,28 +256,43 @@
 					url: '../../singlePage/position/position'
 				})
 			},
-			// 获取位置
-			getRegeo() {
-				uni.showLoading({
-					title: '获取信息中'
-				});
-				this.amapPlugin.getRegeo({
-					success: (data) => {
-						console.log(data)
-						this.addressName = data[0].name;
-						uni.hideLoading();
-					},
-					fail: (data) => {
-						console.log(data)
-					}
-				});
-			}
+
 		},
-		onLoad() {
-			console.log('主页')
-			this.amapPlugin = new amap.AMapWX({
-				key: this.key
+		async onLoad() {
+			var that = this;
+			// 新建百度地图对象 
+			var BMap = new bmap.BMapWX({
+				ak: 'AQNjDWwRffaoqtGkNxfAQmwic9mtkS8w'
+			});
+
+
+			setTimeout(() => {
+				console.log(this.latitude, this.longitude)
+			}, 3000)
+			uni.authorize({
+				scope: 'scope.userLocation',
+				success() {
+					var fail = function(data) {
+						console.log(data)
+					};
+					var success = function(data) {
+						let wxMarkerData = data.wxMarkerData;
+						console.log(wxMarkerData)
+						that.markers = wxMarkerData
+						that.latitude = wxMarkerData[0].latitude
+						that.longitude = wxMarkerData[0].longitude
+						var reg = /.+?(省|市|自治区|自治州|县|区)/g;
+						that.city = wxMarkerData[0].address.match(reg)[1].replace('市','')
+					}
+					BMap.regeocoding({
+						fail: fail,
+						success: success
+					});
+				}
 			})
+		},
+		onReady() {
+
 		},
 		// 触碰底部懒加载
 		onReachBottom: function() {

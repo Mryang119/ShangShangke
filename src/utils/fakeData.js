@@ -119,7 +119,7 @@ let classifyList = [{
 		'住宿'
 	]
 },{
-	title: '热门推荐',
+	title: '美食',
 	children: [
 		'面包',
 		'火锅',
@@ -127,7 +127,7 @@ let classifyList = [{
 		'住宿'
 	]
 },{
-	title: '热门推荐',
+	title: '服装',
 	children: [
 		'面包',
 		'火锅',
@@ -135,7 +135,7 @@ let classifyList = [{
 		'住宿'
 	]
 },{
-	title: '热门推荐',
+	title: '美容美发',
 	children: [
 		'面包',
 		'火锅',
@@ -143,7 +143,7 @@ let classifyList = [{
 		'住宿'
 	]
 },{
-	title: '热门推荐',
+	title: '住宿',
 	children: [
 		'面包',
 		'火锅',
@@ -151,7 +151,7 @@ let classifyList = [{
 		'住宿'
 	]
 },{
-	title: '热门推荐',
+	title: '旅游度假',
 	children: [
 		'面包',
 		'火锅',
@@ -159,7 +159,7 @@ let classifyList = [{
 		'住宿'
 	]
 },{
-	title: '热门推荐',
+	title: '交通出行',
 	children: [
 		'面包',
 		'火锅',
@@ -167,7 +167,7 @@ let classifyList = [{
 		'住宿'
 	]
 },{
-	title: '热门推荐',
+	title: '孕婴儿童',
 	children: [
 		'面包',
 		'火锅',
@@ -175,7 +175,7 @@ let classifyList = [{
 		'住宿'
 	]
 },{
-	title: '热门推荐',
+	title: '宠物',
 	children: [
 		'面包',
 		'火锅',
@@ -183,7 +183,7 @@ let classifyList = [{
 		'住宿'
 	]
 },{
-	title: '热门推荐',
+	title: '学习住宿',
 	children: [
 		'面包',
 		'火锅',

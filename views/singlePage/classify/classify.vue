@@ -5,21 +5,29 @@
 		<view class="searchBar">
 			<u-search placeholder="发现店铺/商品" :show-action="false"></u-search>
 		</view>
-		<!-- 右侧tab栏 -->
+		<!-- 左侧tab栏 -->
 		<view class="Tab-container">
 			<scroll-view scroll-y="true" :height="classifyList.length*60*2+'rpx'" class="scroll-cotainer">
-				<view class="tab-item-container" v-for="(item,index) in classifyList" :key="index">
+				<view class="tab-item-container" @click="toggleSelect(index)" :class="{'tab-item-active':index===selectIndex}"
+				 v-for="(item,index) in classifyList" :key="index">
+					<view class="line" v-show="selectIndex===index"></view>
 					<view class="tab-item">{{item.title}}</view>
 				</view>
 			</scroll-view>
-			<scroll-view scroll-y="true" class="scroll-cotainer-right">
-				<view class="classify-item-container" v-for="(item,index) in classifyList" :key="index">
+			<!-- 左侧分类栏 -->
+			<scroll-view scroll-y="true" class="scroll-cotainer-right" @scroll="calssScroll" :scroll-top="scrollTop"
+			 scroll-with-animation="true" :scroll-into-view="classfiyItemId">
+				<!-- 广告 -->
+				<view class="bannerAd">
+					<image src="@/static/images/Product/fenleiBanner.png" mode=""></image>
+				</view>
+				<view class="classify-item-container" v-for="(item,index) in classifyList" :key="index" :id="'classItemId'+index">
 					<view class="classify-item">
 						<view class="item-className">
 							{{item.title}}
 						</view>
 						<view class="item-button-container">
-							<view class="item-button" v-for="(item1,index1) in item.children" :key="index">
+							<view class="item-button" v-for="(item1,index1) in item.children" :key="index1" @click="toClassifyDetail(item1)">
 								{{item1}}
 							</view>
 						</view>
@@ -41,8 +49,39 @@
 				selectIndex: 0,
 				buttonStyle: {
 
-				}
+				},
+				scrollTop: 0,
+				classScrollHeight: 0,
+				classfiyItemId: '',
+				isScroll: false,
+				time: null
 			};
+		},
+		methods: {
+			toggleSelect(index) {
+				this.selectIndex = index
+				this.classfiyItemId = 'classItemId' + index
+				this.isScroll = true
+				clearTimeout(this.time)
+				this.time = setTimeout(() => {
+					this.isScroll = false
+				}, 800)
+			},
+			calssScroll(e) {
+				if (this.isScroll) return
+				let scrollHeight = e.detail.scrollHeight // 总高度
+				let scrollTop = e.detail.scrollTop // 滚动高度
+				let usableScrollTop = (scrollHeight - 100) / 1.60 // 可滚动高度
+				let nodeHeight = 133 // 节点高度
+				let computedIndex = Math.floor(scrollTop / usableScrollTop * 10)
+				this.selectIndex = computedIndex
+			},
+			// 跳转分类详情页
+			toClassifyDetail(value) {
+				uni.navigateTo({
+					url:`../classifyDetail/classifyDetail?className=${value}`
+				})
+			}
 		}
 	}
 </script>
@@ -69,19 +108,36 @@
 			.scroll-cotainer {
 				width: 202rpx;
 				height: 100%;
-				background-color: red;
-
+				background-color: #F5F5F5;
 				.tab-item-container {
 					height: 120rpx;
 					width: 202rpx;
 					box-sizing: border-box;
-					border-bottom: 1px solid #CCCCCC;
 					background-color: #F5F5F5;
+					position: relative;
+
 					.tab-item {
 						font-size: 28rpx;
-						line-height: 120rpx;
-						padding-left: 46rpx;
+						position: absolute;
+						top: 50%;
+						transform: translateY(-50%);
+						left: 46rpx;
 					}
+				}
+
+				// 选中样式
+				.tab-item-active {
+					background-color: #FFF;
+					position: relative;
+				}
+
+				.line {
+					width: 8rpx;
+					height: 50rpx;
+					background-color: #24A7FF;
+					position: absolute;
+					top: 50%;
+					transform: translateY(-50%);
 				}
 			}
 
@@ -93,9 +149,21 @@
 				box-sizing: border-box;
 				padding: 30rpx 36rpx 30rpx 34rpx;
 
+				// 广告区域
+				.bannerAd {
+					width: 478rpx;
+					height: 200rpx;
+
+					image {
+						width: 478rpx;
+						height: 200rpx;
+					}
+				}
+
 				.classify-item-container {
 					.classify-item {
 						.item-className {
+							background-color: #fff;
 							margin-bottom: 30rpx;
 							font-size: 28rpx;
 							font-weight: bold;

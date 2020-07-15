@@ -8,7 +8,6 @@
 				"navigationBarTitleText": "上上客",
 				"navigationStyle": "custom"
 			}
-
 		},
 		{
 			"path": "views/singlePage/classify/classify",
@@ -123,8 +122,22 @@
 			}
 		}
 
+<<<<<<< HEAD
 
+=======
+		, {
+			"path": "views/singlePage/classifyDetail/classifyDetail",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}
+>>>>>>> 5a5beed64d854dc16cb6752adb4585918b561431
 	],
+	"permission": {
+		"scope.userLocation": {
+			"desc": "撒大苏打"
+		}
+	},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
