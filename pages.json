@@ -1,6 +1,7 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 
+
 		{
 			"path": "views/tabBar/index/index",
 			"style": {
@@ -91,19 +92,19 @@
 		},
 		// 我的卡券
 		{
-			"path": "views/singlePage/coupon/coupon",
+			"path": "views/singlePage/myCoupon/myCoupon",
 			"style": {
 				"navigationBarTitleText": "我的卡券"
 			}
 		},
 		{
-			"path": "views/singlePage/collect/collect",
+			"path": "views/singlePage/myCollect/myCollect",
 			"style": {
 				"navigationBarTitleText": "我的收藏"
 			}
 		},
 		{
-			"path": "views/singlePage/spellGroup/spellGroup",
+			"path": "views/singlePage/mySpellGroup/mySpellGroup",
 			"style": {
 				"navigationBarTitleText": "我的拼团"
 			}
@@ -113,7 +114,15 @@
 			"style": {
 				"navigationBarTitleText": "订单详情"
 			}
+		},
+		// 限时秒杀---商品详情
+		{
+			"path": "views/singlePage/timeKillProductDetail/timeKillProductDetail",
+			"style": {
+				"navigationBarTitleText": "商品详情"
+			}
 		}
+
 
 	],
 	"globalStyle": {

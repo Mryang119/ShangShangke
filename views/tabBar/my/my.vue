@@ -77,9 +77,9 @@
 		data() {
 			return {
 				orderUrl: '../../singlePage/myOrder/myOrder',
-				couponUrl: '../../singlePage/coupon/coupon',
-				collectUrl: '../../singlePage/collect/collect',
-				spellGroupUrl: '../../singlePage/spellGroup/spellGroup'
+				couponUrl: '../../singlePage/myCoupon/myCoupon',
+				collectUrl: '../../singlePage/myCollect/myCollect',
+				spellGroupUrl: '../../singlePage/mySpellGroup/mySpellGroup'
 			}
 		},
 		methods: {
@@ -91,6 +91,7 @@
 <style lang="less">
 	// 最外层
 	.root_my {
+		width: 750rpx;
 		height: 88rpx;
 		background: #F6F6F6;
 		// 点击登录
