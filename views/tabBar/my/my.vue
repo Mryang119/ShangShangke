@@ -3,72 +3,75 @@
 		<!-- 自定义导航栏 -->
 		<uni-nav-bar :fixed="true" :status-bar="true" title="我的" class="top_nvaBar_text" :shadow="false" background-color="#FFFFFF">
 		</uni-nav-bar>
-		<!-- 点击登录 -->
-		<view class="myLogin">
-			<image class="myLoginHeader" src="@/static/images/tabBarImage/myLoginHeader.png"></image>
-			<view class="myLoginRight">
-				<span class="myLoginText">点击登录</span>
-				<image class="myLoginMore" src="@/static/images/iconfont/more.png"></image>
-			</view>
-		</view>
-		<!-- 订单/卡券/收藏/拼团 -->
-		<view class="myLoginOrder">
-			<view class="myLoginOrderCon">
-				<view class="myLoginOrderLi">
-					<navigator class="myLoginOrderTu" :url="orderUrl">
-						<image class="myLoginOrderImg" src="@/static/images/iconfont/dingdan.png"></image>
-					</navigator>
-					<span class="myLoginOrderText">我的订单</span>
-				</view>
-				<view class="myLoginOrderLi">
-					<navigator class="myLoginOrderTu" :url="couponUrl">
-						<image class="myLoginOrderImg" src="@/static/images/iconfont/kaquan.png"></image>
-					</navigator>
-					<span class="myLoginOrderText">我的卡券</span>
-				</view>
-				<view class="myLoginOrderLi">
-					<navigator class="myLoginOrderTu" :url="collectUrl">
-						<image class="myLoginOrderImg" src="@/static/images/iconfont/shoucang.png"></image>
-					</navigator>
-					<span class="myLoginOrderText">我的收藏</span>
-				</view>
-				<view class="myLoginOrderLi">
-					<navigator class="myLoginOrderTu" :url="spellGroupUrl">
-						<image class="myLoginOrderImg" src="@/static/images/iconfont/pintuan.png"></image>
-					</navigator>
-					<span class="myLoginOrderText">我的拼团</span>
+		<view class="content">
+			<!-- 点击登录 -->
+			<view class="myLogin">
+				<image class="myLoginHeader" src="@/static/images/tabBarImage/myLoginHeader.png"></image>
+				<view class="myLoginRight">
+					<span class="myLoginText">点击登录</span>
+					<image class="myLoginMore" src="@/static/images/iconfont/more.png"></image>
 				</view>
 			</view>
+			<!-- 订单/卡券/收藏/拼团 -->
+			<view class="myLoginOrder">
+				<view class="myLoginOrderCon">
+					<view class="myLoginOrderLi">
+						<navigator class="myLoginOrderTu" :url="orderUrl">
+							<image class="myLoginOrderImg" src="@/static/images/iconfont/dingdan.png"></image>
+						</navigator>
+						<span class="myLoginOrderText">我的订单</span>
+					</view>
+					<view class="myLoginOrderLi">
+						<navigator class="myLoginOrderTu" :url="couponUrl">
+							<image class="myLoginOrderImg" src="@/static/images/iconfont/kaquan.png"></image>
+						</navigator>
+						<span class="myLoginOrderText">我的卡券</span>
+					</view>
+					<view class="myLoginOrderLi">
+						<navigator class="myLoginOrderTu" :url="collectUrl">
+							<image class="myLoginOrderImg" src="@/static/images/iconfont/shoucang.png"></image>
+						</navigator>
+						<span class="myLoginOrderText">我的收藏</span>
+					</view>
+					<view class="myLoginOrderLi">
+						<navigator class="myLoginOrderTu" :url="spellGroupUrl">
+							<image class="myLoginOrderImg" src="@/static/images/iconfont/pintuan.png"></image>
+						</navigator>
+						<span class="myLoginOrderText">我的拼团</span>
+					</view>
+				</view>
+			</view>
+			<!-- 评价-->
+			<view class="myLoginEstimate">
+				<view class="myLoginEstimateLi">
+					<span class="myLoginEstimateText">我的评价</span>
+					<image class="myLoginEstimateImg" src="@/static/images/iconfont/more.png"></image>
+				</view>
+				<u-line color="#F3F3F3" length="325rpx" margin="0 26rpx" />
+				<view class="myLoginEstimateLi">
+					<span class="myLoginEstimateText">我的足迹</span>
+					<image class="myLoginEstimateImg" src="@/static/images/iconfont/more.png"></image>
+				</view>
+				<u-line color="#F3F3F3" length="325rpx" margin="0 26rpx" />
+				<view class="myLoginEstimateLi">
+					<span class="myLoginEstimateText">我的动态</span>
+					<image class="myLoginEstimateImg" src="@/static/images/iconfont/more.png"></image>
+				</view>
+			</view>
+			<!-- 客服/商家 -->
+			<view class="myLoginService">
+				<view class="myLoginServiceLi">
+					<span class="myLoginServiceText">我的客服</span>
+					<image class="myLoginServiceImg" src="@/static/images/iconfont/more.png"></image>
+				</view>
+				<u-line color="#F3F3F3" length="325rpx" margin="0 26rpx" />
+				<view class="myLoginServiceLi">
+					<span class="myLoginServiceText">商家加盟</span>
+					<image class="myLoginServiceImg" src="@/static/images/iconfont/more.png"></image>
+				</view>
+			</view>
 		</view>
-		<!-- 评价-->
-		<view class="myLoginEstimate">
-			<view class="myLoginEstimateLi">
-				<span class="myLoginEstimateText">我的评价</span>
-				<image class="myLoginEstimateImg" src="@/static/images/iconfont/more.png"></image>
-			</view>
-			<u-line color="#F3F3F3" length="325rpx" margin="0 26rpx"/>
-			<view class="myLoginEstimateLi">
-				<span class="myLoginEstimateText">我的足迹</span>
-				<image class="myLoginEstimateImg" src="@/static/images/iconfont/more.png"></image>
-			</view>
-			<u-line color="#F3F3F3" length="325rpx" margin="0 26rpx"/>
-			<view class="myLoginEstimateLi">
-				<span class="myLoginEstimateText">我的动态</span>
-				<image class="myLoginEstimateImg" src="@/static/images/iconfont/more.png"></image>
-			</view>
-		</view>
-		<!-- 客服/商家 -->
-		<view class="myLoginService">
-			<view class="myLoginServiceLi">
-				<span class="myLoginServiceText">我的客服</span>
-				<image class="myLoginServiceImg" src="@/static/images/iconfont/more.png"></image>
-			</view>
-			<u-line color="#F3F3F3" length="325rpx" margin="0 26rpx"/>
-			<view class="myLoginServiceLi">
-				<span class="myLoginServiceText">商家加盟</span>
-				<image class="myLoginServiceImg" src="@/static/images/iconfont/more.png"></image>
-			</view>
-		</view>
+
 	</view>
 </template>
 
@@ -90,10 +93,14 @@
 
 <style lang="less">
 	// 最外层
+	.content {
+		box-sizing: border-box;
+	}
 	.root_my {
 		width: 750rpx;
-		height: 88rpx;
 		background: #F6F6F6;
+		box-sizing: border-box;
+
 		// 点击登录
 		.myLogin {
 			width: 750rpx;
@@ -153,6 +160,7 @@
 				justify-content: space-around;
 				align-items: center;
 				height: 222rpx;
+
 				.myLoginOrderLi {
 					height: 118rpx;
 					display: flex;
@@ -163,6 +171,7 @@
 					.myLoginOrderTu {
 						width: 74rpx;
 						height: 74rpx;
+
 						.myLoginOrderImg {
 							width: 74rpx;
 							height: 74rpx;
