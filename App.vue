@@ -16,6 +16,12 @@
 	/* @import '@/uview-ui/index.scss'; */
 	@import "uview-ui/index.scss";
 
+	.uni-navbar {
+		.uni-navbar--border.uni-navbar--border.data-v-4afea59e {
+			border-color: #FFFFFF !important;
+		}
+	}
+
 	.c_cityList {
 		.u-index-bar {
 			.u-index-bar__sidebar {
