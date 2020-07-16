@@ -26,8 +26,17 @@ const getHomeModuleMessages = (data) => {
 		data
 	})
 }
+// 获取更多活动信息
+const getCircCampaignInfo = (data) => {
+	return http({
+		method:'post',
+		data,
+		url:'dby/homeInfo/getCircCampaignInfo'
+	})
+}
 export {
 	getCityList,
 	getHomeModuleMessages,
-	getCircList
+	getCircList,
+	getCircCampaignInfo
 }

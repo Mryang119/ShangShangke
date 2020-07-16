@@ -151,10 +151,10 @@
 				</view>
 			</view>
 			<view class="vShowbox" v-show="cp==='buy'">
-				<buy :status="status" :showItemList="showItemList"></buy>
+				<buy :status="status1" :showItemList="showItemList1"></buy>
 			</view>
 			<view class="vShowbox" v-show="cp==='give'">
-				<give :showItemList="showItemList"></give>
+				<give :status="status2" :showItemList="showItemList2"></give>
 			</view>
 		</view>
 	</view>
@@ -171,6 +171,7 @@
 	import give from './components/give.vue'
 	// 引入百度地图
 	import bmap from '@/common/bmap-wx.min.js'
+	// 模拟数据
 	import {
 		list,
 		dataList,
@@ -180,7 +181,8 @@
 	import {
 		getCityList,
 		getHomeModuleMessages,
-		getCircList
+		getCircList,
+		getCircCampaignInfo
 	} from '../../../src/api/homeApi/homeApi.js'
 	export default {
 		components: {
@@ -209,11 +211,15 @@
 				temp: [],
 				time: null,
 				cp: 'buy',
-				showItemList: showItemList,
-				ajaxList: showItemList,
-				endPage: 5, // 买就送死数据最大页数
-				startPage: 1, // 买就送死数据开始页数
-				status: 'loading',
+				showItemList1: showItemList, // 数据1
+				showItemList2: showItemList, // 数据2
+				ajaxList: showItemList, // 
+				endPage1: 5, // 买就送死数据最大页数
+				startPage1: 1, // 买就送死数据开始页数
+				endPage2: 5, // 买就送死数据最大页数
+				startPage2: 1, // 买就送死数据开始页数
+				status1: 'loading',
+				status2: 'loading',
 
 				// 百度地图数据⬇
 				BMap: null,
@@ -272,7 +278,6 @@
 			},
 			// 获取定位
 			getLocation() {
-				console.log(1)
 				var that = this;
 				//新建百度地图对象
 				this.BMap = new bmap.BMapWX({
@@ -341,6 +346,17 @@
 				this.fullGiftHome = res.data.data.fullGiftHome
 				this.CarouselImg = res.data.data.CarouselImg
 				return Promise.resolve(res)
+			},
+			// 获取更多活动信息
+			async getCircInfo() {
+				let res = await getCircCampaignInfo({
+					circs: this.circs,
+					campaignType: 4,
+					pageNum: 1,
+					pageSize: 10
+				})
+				console.log(res)
+				return Promise.resolve(res)
 			}
 		},
 		async onLoad() {
@@ -355,6 +371,8 @@
 			console.log('测试同步3，经纬度为：', this.latitude, this.longitude)
 			// 获取首页相关模块
 			await this.getHomeModule()
+			// 获取更多活动信息
+			await this.getCircInfo()
 		},
 		onReady() {
 
@@ -362,14 +380,25 @@
 		// 触碰底部懒加载
 		onReachBottom: function() {
 			// 模拟请求数据
-			this.startPage++
-			if (this.endPage > this.startPage) {
+			if (this.cp === 'buy' && this.endPage1 > this.startPage1) {
+				this.status1 = 'loading'
+				this.startPage1++
 				setTimeout(() => {
 					let fakeAjaxList = JSON.parse(JSON.stringify(this.ajaxList))
-					this.showItemList = this.showItemList.concat(fakeAjaxList)
+					this.showItemList1 = this.showItemList1.concat(fakeAjaxList)
 				}, 1000)
 			} else {
-				this.status = "noMore"
+				this.status1 = 'noMore'
+			}
+			if (this.cp === 'give' && this.endPage2 > this.startPage2) {
+				this.status2 = 'loading'
+				this.startPage2++
+				setTimeout(() => {
+					let fakeAjaxList = JSON.parse(JSON.stringify(this.ajaxList))
+					this.showItemList2 = this.showItemList2.concat(fakeAjaxList)
+				}, 1000)
+			} else {
+				this.status2 = 'noMore'
 			}
 		}
 	}
