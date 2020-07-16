@@ -11,8 +11,8 @@
 					<view class="page-section-spacing">
 						<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval"
 						 indicator-active-color="#FFFFFF" :duration="duration">
-							<swiper-item v-for="(item,index) in 3" :key="index">
-								<image class="swiperImage" src="@/static/images/tabBarImage/bannerlunbotu.png" mode=""></image>
+							<swiper-item v-for="(item,index) in CarouselImg" :key="item">
+								<image class="swiperImage" :src="item" mode=""></image>
 							</swiper-item>
 						</swiper>
 					</view>
@@ -95,6 +95,7 @@
 				<image src="@/static/images/Product/banner4@2x.png" mode=""></image>
 			</view>
 			<!-- 秒杀 -->
+
 			<view class="timeKill">
 				<view class="timeKill-titleBar">
 					<view class="title-item title-text">限时秒杀</view>
@@ -224,13 +225,14 @@
 
 				// 首页模块数据⬇
 				circs: null, // 商圈id
-				couponHome: [], //优惠券
+				couponHome: null, //优惠券
 				newExclusiveHome: [], //新人专享
 				seckillHome: [], //秒杀
 				groupHome: [], //团购
 				fullDiscountHome: [], //满减
 				buyGiftHome: [], //买赠
-				fullGiftHome: [] //满赠
+				fullGiftHome: [], //满赠
+				CarouselImg: null //轮播图
 				// 首页模块数据⬆
 			}
 		},
@@ -311,7 +313,7 @@
 					sysAccount: 'SYSTEM'
 				})
 				this.$store.state.cityList = res.data.data
-				console.log('城市请求成功',res)
+				console.log('城市请求成功', res)
 				return Promise.resolve(res)
 			},
 			// 获取商圈信息
@@ -330,6 +332,14 @@
 				let res = await getHomeModuleMessages({
 					circs: this.circs
 				})
+				this.couponHome = res.data.data.couponHome
+				this.newExclusiveHome = res.data.data.newExclusiveHome
+				this.seckillHome = res.data.data.seckillHome
+				this.groupHome = res.data.data.groupHome
+				this.fullDiscountHome = res.data.data.fullDiscountHome
+				this.buyGiftHome = res.data.data.buyGiftHome
+				this.fullGiftHome = res.data.data.fullGiftHome
+				this.CarouselImg = res.data.data.CarouselImg
 				return Promise.resolve(res)
 			}
 		},
@@ -342,7 +352,7 @@
 			console.log('测试同步2')
 			// 获取商圈
 			await this.getCirc()
-			console.log('测试同步3，经纬度为：',this.latitude,this.longitude)
+			console.log('测试同步3，经纬度为：', this.latitude, this.longitude)
 			// 获取首页相关模块
 			await this.getHomeModule()
 		},
@@ -700,7 +710,6 @@
 				width: 100%;
 
 				.scorll-H-S-container {
-					width: 2200rpx;
 					height: 285.6rpx;
 					display: flex;
 					justify-content: space-between;
@@ -708,6 +717,7 @@
 					.scorll-H-S-container-item {
 						width: 204rpx;
 						height: 285.6rpx;
+						margin-right: 16rpx;
 					}
 				}
 			}
