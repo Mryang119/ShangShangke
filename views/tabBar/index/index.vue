@@ -270,32 +270,40 @@
 			},
 			// 获取定位
 			getLocation() {
+				console.log(1)
 				var that = this;
-				// 新建百度地图对象 
+				//新建百度地图对象
 				this.BMap = new bmap.BMapWX({
 					ak: 'AQNjDWwRffaoqtGkNxfAQmwic9mtkS8w'
 				});
-				uni.authorize({
-					scope: 'scope.userLocation',
-					success() {
-						var fail = function(data) {
-							console.log(data)
-						};
-						var success = function(data) {
-							let wxMarkerData = data.wxMarkerData;
-							that.markers = wxMarkerData
-							that.latitude = wxMarkerData[0].latitude
-							that.longitude = wxMarkerData[0].longitude
-							var reg = /.+?(省|市|自治区|自治州|县|区)/g;
-							that.city = wxMarkerData[0].address.match(reg)[1].replace('市', '')
-							that.$store.state.city = wxMarkerData[0].address.match(reg)[1].replace('市', '')
+				return new Promise((resolve, reject) => {
+					uni.authorize({
+						scope: 'scope.userLocation',
+						success() {
+							var fail = function(data) {
+								reject(data)
+							};
+							var success = function(data) {
+								console.log('百度定位', data)
+								let wxMarkerData = data.wxMarkerData;
+								that.markers = wxMarkerData
+								that.latitude = wxMarkerData[0].latitude
+								that.longitude = wxMarkerData[0].longitude
+								var reg = /.+?(省|市|自治区|自治州|县|区)/g;
+								that.city = wxMarkerData[0].address.match(reg)[1].replace('市', '')
+								that.$store.state.city = wxMarkerData[0].address.match(reg)[1].replace('市', '')
+								console.log(that.city)
+								resolve(data)
+							}
+							that.BMap.regeocoding({
+								fail: fail,
+								success: success
+							});
 						}
-						that.BMap.regeocoding({
-							fail: fail,
-							success: success
-						});
-					}
+					})
 				})
+
+
 			},
 			// 获取城市列表存入仓库
 			async getCity() {
@@ -303,6 +311,8 @@
 					sysAccount: 'SYSTEM'
 				})
 				this.$store.state.cityList = res.data.data
+				console.log('城市请求成功',res)
+				return Promise.resolve(res)
 			},
 			// 获取商圈信息
 			async getCirc() {
@@ -313,24 +323,28 @@
 					lon: this.longitude
 				})
 				this.circs = res.data.data
+				return Promise.resolve(res)
 			},
 			// 获取首页模块相关数据
 			async getHomeModule() {
 				let res = await getHomeModuleMessages({
 					circs: this.circs
 				})
-				console.log(res)
+				return Promise.resolve(res)
 			}
 		},
 		async onLoad() {
 			// 获取位置
-			this.getLocation()
+			await this.getLocation()
+			console.log('测试同步')
 			// 获取城市列表
-			this.getCity()
+			await this.getCity()
+			console.log('测试同步2')
 			// 获取商圈
-			this.getCirc()
+			await this.getCirc()
+			console.log('测试同步3，经纬度为：',this.latitude,this.longitude)
 			// 获取首页相关模块
-			this.getHomeModule()
+			await this.getHomeModule()
 		},
 		onReady() {
 
