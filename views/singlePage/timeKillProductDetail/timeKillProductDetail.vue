@@ -138,16 +138,26 @@
 		</view>
 		<!-- 商品导航 -->
 		<view class="goodsNav">
-			<!-- <van-goods-action>
-			  <van-goods-action-icon icon="chat-o" text="客服" bind:click="onClickIcon" />
-			  <van-goods-action-icon icon="cart-o" text="购物车" bind:click="onClickIcon" />
-			  <van-goods-action-button
-			    text="加入购物车"
-			    type="warning"
-			    bind:click="onClickButton"
-			  />
-			  <van-goods-action-button text="立即购买" bind:click="onClickButton" />
-			</van-goods-action> -->
+			<!-- 客服/分享/收藏 -->
+			<view class="navCon">
+				<view class="NavIcon">
+					<u-icon name="kefu-ermai" class="icon"></u-icon>
+					<view class="text">客服</view>
+				</view>
+				<view class="NavIcon">
+					<u-icon name="zhuanfa" class="icon"></u-icon>
+					<view class="text">分享</view>
+				</view>
+				<view class="NavIcon">
+					<u-icon name="star" class="icon"></u-icon>
+					<view class="text">收藏</view>
+				</view>
+			</view>
+			<!-- 立即购买 -->
+			<view class="navBuy">
+				<view>￥11.00</view>
+				<view>立即购买</view>
+			</view>
 		</view>
 	</view>
 </template>
@@ -680,12 +690,43 @@
 
 		// 商品导航
 		.goodsNav {
-			width: 375px;
-			height: 83px;
+			width: 750rpx;
+			height: 98rpx;
 			background: rgba(255, 255, 255, 1);
 			position: absolute;
 			bottom: 0;
 			left: 0;
+			display: flex;
+			justify-content: space-between;
+			.navCon{
+				width: 374rpx;
+				height: 98rpx;
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+				.NavIcon{
+					height: 44rpx;
+					height: 78rpx;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					align-items: center;
+					.icon{
+						width: 44rpx;
+						height: 44rpx;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+					}
+					.text{
+						font-size:22rpx;
+						font-family:PingFang SC;
+						font-weight:400;
+						line-height:26rpx;
+						color:rgba(102,102,102,1);
+					}
+				}
+			}
 		}
 	}
 </style>
