@@ -92,167 +92,169 @@
 </script>
 
 <style lang="less">
-	// 最外层
-	.content {
-		box-sizing: border-box;
-	}
 	.root_my {
 		width: 750rpx;
 		background: #F6F6F6;
 		box-sizing: border-box;
-
-		// 点击登录
-		.myLogin {
-			width: 750rpx;
-			height: 176rpx;
-			margin: 0 50rpx 0 50rpx;
-			font-size: 0;
-			display: flex;
-			align-items: center;
-
-			// 头像
-			.myLoginHeader {
-				width: 116rpx;
-				height: 116rpx;
-				background: rgba(0, 0, 0, 0);
-				border-radius: 50%;
-			}
-
-			.myLoginRight {
-				width: 504rpx;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				margin-left: 30rpx;
-
-				// 点击登录文字
-				.myLoginText {
-					width: 128rpx;
-					height: 38rpx;
-					font-size: 32rpx;
-					font-family: PingFang SC;
-					font-weight: bold;
-					line-height: 38rpx;
-					color: rgba(51, 51, 51, 1);
-				}
-
-				// 更多
-				.myLoginMore {
-					width: 14.92rpx;
-					height: 29.74rpx;
-				}
-			}
-		}
-
-		// <!-- 订单/卡券/收藏/拼团 -->
-		.myLoginOrder {
-			width: 690rpx;
-			height: 222rpx;
-			background: rgba(255, 255, 255, 1);
-			box-shadow: 0rpx 0rpx 20rpx rgba(0, 19, 34, 0.09);
-			opacity: 1;
-			border-radius: 26rpx;
-			margin: 0 auto;
-			margin-bottom: 20rpx;
-
-			.myLoginOrderCon {
-				display: flex;
-				justify-content: space-around;
-				align-items: center;
-				height: 222rpx;
-
-				.myLoginOrderLi {
-					height: 118rpx;
+		overflow-x: hidden;
+		// 最外层
+		.content {
+			box-sizing: border-box;
+			// 点击登录
+				.myLogin {
+					width: 750rpx;
+					height: 176rpx;
+					margin: 0 50rpx 0 50rpx;
+					font-size: 0;
 					display: flex;
-					flex-direction: column;
 					align-items: center;
-					justify-content: space-between;
-
-					.myLoginOrderTu {
-						width: 74rpx;
-						height: 74rpx;
-
-						.myLoginOrderImg {
-							width: 74rpx;
-							height: 74rpx;
+			
+					// 头像
+					.myLoginHeader {
+						width: 116rpx;
+						height: 116rpx;
+						background: rgba(0, 0, 0, 0);
+						border-radius: 50%;
+					}
+			
+					.myLoginRight {
+						width: 504rpx;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						margin-left: 30rpx;
+			
+						// 点击登录文字
+						.myLoginText {
+							width: 128rpx;
+							height: 38rpx;
+							font-size: 32rpx;
+							font-family: PingFang SC;
+							font-weight: bold;
+							line-height: 38rpx;
+							color: rgba(51, 51, 51, 1);
+						}
+			
+						// 更多
+						.myLoginMore {
+							width: 14.92rpx;
+							height: 29.74rpx;
 						}
 					}
-
-					.myLoginOrderText {
-						width: 96rpx;
-						height: 28rpx;
-						font-size: 24rpx;
-						font-family: PingFang SC;
-						font-weight: 400;
-						line-height: 28rpx;
-						color: rgba(51, 51, 51, 1);
-						opacity: 1;
+				}
+			
+				// <!-- 订单/卡券/收藏/拼团 -->
+				.myLoginOrder {
+					width: 690rpx;
+					height: 222rpx;
+					background: rgba(255, 255, 255, 1);
+					box-shadow: 0rpx 0rpx 20rpx rgba(0, 19, 34, 0.09);
+					opacity: 1;
+					border-radius: 26rpx;
+					margin: 0 auto;
+					margin-bottom: 20rpx;
+			
+					.myLoginOrderCon {
+						display: flex;
+						justify-content: space-around;
+						align-items: center;
+						height: 222rpx;
+			
+						.myLoginOrderLi {
+							height: 118rpx;
+							display: flex;
+							flex-direction: column;
+							align-items: center;
+							justify-content: space-between;
+			
+							.myLoginOrderTu {
+								width: 74rpx;
+								height: 74rpx;
+			
+								.myLoginOrderImg {
+									width: 74rpx;
+									height: 74rpx;
+								}
+							}
+			
+							.myLoginOrderText {
+								width: 96rpx;
+								height: 28rpx;
+								font-size: 24rpx;
+								font-family: PingFang SC;
+								font-weight: 400;
+								line-height: 28rpx;
+								color: rgba(51, 51, 51, 1);
+								opacity: 1;
+							}
+						}
 					}
 				}
-			}
+			
+				// // <!-- 评价 -->
+				.myLoginEstimate {
+					height: 324rpx;
+					background-color: #FFFFFF;
+			
+					.myLoginEstimateLi {
+						width: 650rpx;
+						height: 104rpx;
+						margin: 0 auto;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+			
+						.myLoginEstimateText {
+							width: 112rpx;
+							height: 32rpx;
+							font-size: 28rpx;
+							font-family: PingFang SC;
+							font-weight: 400;
+							line-height: 32rpx;
+							color: rgba(39, 39, 39, 1);
+							opacity: 1;
+						}
+			
+						.myLoginEstimateImg {
+							width: 8.5rpx;
+							height: 17.5rpx;
+						}
+					}
+				}
+			
+				// <!-- 客服/商家 -->
+				.myLoginService {
+					height: 216rpx;
+					margin-top: 20rpx;
+					background-color: #FFFFFF;
+			
+					.myLoginServiceLi {
+						width: 650rpx;
+						height: 104rpx;
+						margin: 0 auto;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+			
+						.myLoginServiceText {
+							width: 112rpx;
+							height: 32rpx;
+							font-size: 28rpx;
+							font-family: PingFang SC;
+							font-weight: 400;
+							line-height: 32rpx;
+							color: rgba(39, 39, 39, 1);
+							opacity: 1;
+						}
+			
+						.myLoginServiceImg {
+							width: 8.5rpx;
+							height: 17.5rpx;
+						}
+					}
+				}
+			
 		}
-
-		// // <!-- 评价 -->
-		.myLoginEstimate {
-			height: 324rpx;
-			background-color: #FFFFFF;
-
-			.myLoginEstimateLi {
-				width: 650rpx;
-				height: 104rpx;
-				margin: 0 auto;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-
-				.myLoginEstimateText {
-					width: 112rpx;
-					height: 32rpx;
-					font-size: 28rpx;
-					font-family: PingFang SC;
-					font-weight: 400;
-					line-height: 32rpx;
-					color: rgba(39, 39, 39, 1);
-					opacity: 1;
-				}
-
-				.myLoginEstimateImg {
-					width: 8.5rpx;
-					height: 17.5rpx;
-				}
-			}
+		
 		}
-
-		// <!-- 客服/商家 -->
-		.myLoginService {
-			height: 216rpx;
-			margin-top: 20rpx;
-			background-color: #FFFFFF;
-
-			.myLoginServiceLi {
-				width: 650rpx;
-				height: 104rpx;
-				margin: 0 auto;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-
-				.myLoginServiceText {
-					width: 112rpx;
-					height: 32rpx;
-					font-size: 28rpx;
-					font-family: PingFang SC;
-					font-weight: 400;
-					line-height: 32rpx;
-					color: rgba(39, 39, 39, 1);
-					opacity: 1;
-				}
-
-				.myLoginServiceImg {
-					width: 8.5rpx;
-					height: 17.5rpx;
-				}
-			}
-		}
-	}
 </style>

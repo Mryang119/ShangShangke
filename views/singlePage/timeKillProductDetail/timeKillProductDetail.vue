@@ -93,12 +93,71 @@
 		<view class="goodDetail">
 			<view class="text">商品详情</view>
 			<view class="goods">
-				<view class="circle">·</view>
+				<view class="circle"></view>
 				<view class="goodsCon">
 					<view class="goodsName">限时新品双人冰爽餐</view>
 					<view class="goodsMoney">￥100.00</view>
 				</view>
 			</view>
+		</view>
+		<!-- 温馨提示 -->
+		<view class="warmTip">
+			<view class="text">温馨提示</view>
+			<!-- 有效期 -->
+			<view class="content">
+				<view class="use">有效期：</view>
+				<view class="tipCon">
+					<view class="circle"></view>
+					<view class="tipName">购买一个月内有效</view>
+				</view>
+			</view>
+			<!-- 使用规则 -->
+			<view class="content">
+				<view class="use">使用规则：</view>
+				<view class="tipCon">
+					<view class="circle"></view>
+					<view class="tipName">无需预约，高峰调度可能需要等位</view>
+				</view>
+			</view>
+			<!-- 购买须知 -->
+			<view class="content">
+				<view class="use">购买须知：</view>
+				<view class="buyTipCon">
+					<view class="circle"></view>
+					<view class="tipName">限时秒杀不可与其他优惠叠加使用</view>
+				</view>
+				<view class="buyTipCon">
+					<view class="circle"></view>
+					<view class="tipName">不兑现、不找零</view>
+				</view>
+				<view class="buyTipCon">
+					<view class="circle"></view>
+					<view class="tipName">仅限堂食，不提供餐前外带</view>
+				</view>
+			</view>
+		</view>
+		<!-- 商品导航 -->
+		<view class="goodsNav">
+			<!-- 客服/分享/收藏 -->
+			<view class="navCon">
+				<navigator class="NavIcon" :url="myService">
+					<u-icon name="kefu-ermai" class="icon" size="44"></u-icon>
+					<view class="text">客服</view>
+				</navigator>
+				<view class="NavIcon">
+					<u-icon name="zhuanfa" class="icon" size="44"></u-icon>
+					<view class="text">分享</view>
+				</view>
+				<view class="NavIcon">
+					<u-icon :name="starName?'star':'star-fill' " class="icon" size="44" :color="starColor?'':'#FF8800'" @click="toggle"></u-icon>
+					<view class="text">收藏</view>
+				</view>
+			</view>
+			<!-- 立即购买 -->
+			<navigator class="navBuy" :url="confirmOrder">
+				<view class="buyNum">￥11.00</view>
+				<view class="toBug">立即购买</view>
+			</navigator>
 		</view>
 	</view>
 </template>
@@ -119,7 +178,19 @@
 				],
 				showDays: false,
 				count: 5,
-				value: 4
+				value: 4,
+				myService:'../../singlePage/myService/myService',
+				confirmOrder:'../../singlePage/confirmOrder/confirmOrder',
+				starColor:true,
+				starName:true
+				
+				
+			}
+		},
+		methods: {
+			toggle(){
+				this.starColor = !this.starColor
+				this.starName = !this.starName
 			}
 		}
 	}
@@ -130,6 +201,7 @@
 		width: 750rpx;
 		height: 2584rpx;
 		background-color: #F6F6F6;
+		position: relative;
 
 		// 轮播图
 		.swiperWrap {
@@ -322,184 +394,358 @@
 				}
 			}
 		}
+
 		// 优惠券
-		.discount{
+		.discount {
 			width: 750rpx;
 			height: 300rpx;
 			background-color: #FFFFFF;
+			margin-bottom: 20rpx;
+
 			// 优惠
-			.discountMoney{
+			.discountMoney {
 				width: 750rpx;
 				height: 80rpx;
 				padding: 30rpx;
 				display: flex;
 				align-items: center;
+
 				// 优惠
-				.discountText{
-					font-size:28rpx;
-					font-family:PingFang SC;
-					font-weight:400;
-					line-height:32rpx;
-					color:rgba(133,133,133,1);
-					margin-right:40rpx ;
+				.discountText {
+					font-size: 28rpx;
+					font-family: PingFang SC;
+					font-weight: 400;
+					line-height: 32rpx;
+					color: rgba(133, 133, 133, 1);
+					margin-right: 40rpx;
 				}
+
 				// 满减
-				.discountCoupon{
+				.discountCoupon {
 					width: 576rpx;
 					display: flex;
 					align-items: center;
 					justify-content: space-between;
+
 					// 满减金额
-					.couponCon{
-						height:46rpx;
+					.couponCon {
+						height: 46rpx;
 						display: flex;
-						.coupon{
-							width:124rpx;
-							height:46rpx;
-							background:rgba(255,239,239,1);
-							border-radius:10rpx;
-							color: rgba(251,43,3,1);
+
+						.coupon {
+							width: 124rpx;
+							height: 46rpx;
+							background: rgba(255, 239, 239, 1);
+							border-radius: 10rpx;
+							color: rgba(251, 43, 3, 1);
 							font-size: 24rpx;
 							text-align: center;
 							line-height: 46rpx;
 							margin-right: 20rpx;
 						}
 					}
+
 					// 几个优惠
-					.couponNum{
-						font-size:12px;
-						font-family:PingFang SC;
-						font-weight:400;
-						line-height:14px;
-						color:rgba(133,133,133,1);
-						
+					.couponNum {
+						font-size: 12px;
+						font-family: PingFang SC;
+						font-weight: 400;
+						line-height: 14px;
+						color: rgba(133, 133, 133, 1);
+
 					}
 				}
+
 				// 更多
-				.discountMore{
+				.discountMore {
 					margin-left: 10rpx;
-					image{
+					padding-bottom: 5rpx;
+
+					image {
 						width: 8.5rpx;
 						height: 16.94rpx;
 					}
 				}
 			}
+
 			// 门店位置
-			.discountPlace{
+			.discountPlace {
 				width: 750rpx;
 				height: 124rpx;
 				padding: 30rpx;
 				display: flex;
+
 				// 门店
-				.discountText{
+				.discountText {
 					height: 124rpx;
-					font-size:28rpx;
-					font-family:PingFang SC;
-					font-weight:400;
-					line-height:32rpx;
-					color:rgba(133,133,133,1);
-					margin-right:40rpx ;
+					font-size: 28rpx;
+					font-family: PingFang SC;
+					font-weight: 400;
+					line-height: 32rpx;
+					color: rgba(133, 133, 133, 1);
+					margin-right: 40rpx;
 				}
+
 				// 店名和地理位置
-				.shop{
+				.shop {
 					width: 594rpx;
 					height: 124rpx;
-					
-					
+
+
 					// 店名
-					.shopName{
-						font-size:32rpx;
-						font-family:PingFang SC;
-						font-weight:bold;
-						line-height:38rpx;
-						color:rgba(51,51,51,1);
-						margin-bottom:12rpx ;
+					.shopName {
+						font-size: 32rpx;
+						font-family: PingFang SC;
+						font-weight: bold;
+						line-height: 38rpx;
+						color: rgba(51, 51, 51, 1);
+						margin-bottom: 12rpx;
 					}
+
 					// 地理位置
-					.shopCon{
+					.shopCon {
 						display: flex;
 						align-items: center;
+
 						// 地理图标
-						.shopImg{
+						.shopImg {
 							width: 24.14rpx;
 							height: 28rpx;
-							margin-right:14rpx ;
+							margin-right: 14rpx;
 						}
+
 						// 详细地理位置
-						.shopPlace{
-							font-size:28rpx;
-							font-family:PingFang SC;
-							font-weight:400;
-							line-height:32rpx;
-							color:rgba(112,112,112,1);
+						.shopPlace {
+							font-size: 28rpx;
+							font-family: PingFang SC;
+							font-weight: 400;
+							line-height: 32rpx;
+							color: rgba(112, 112, 112, 1);
 						}
 					}
 				}
 			}
+
 			// 使用
-			.discountUse{
+			.discountUse {
 				width: 750rpx;
 				height: 76rpx;
 				padding: 0 30rpx;
 				display: flex;
 				align-items: center;
+
 				// 使用
-				.discountText{
-					height:76rpx ;
-					font-size:28rpx;
-					font-family:PingFang SC;
-					font-weight:400;
-					line-height:76rpx;
-					color:rgba(133,133,133,1);
-					margin-right:40rpx ;
+				.discountText {
+					height: 76rpx;
+					font-size: 28rpx;
+					font-family: PingFang SC;
+					font-weight: 400;
+					line-height: 76rpx;
+					color: rgba(133, 133, 133, 1);
+					margin-right: 40rpx;
 				}
-				.tip{
-					font-size:28rpx;
-					font-family:PingFang SC;
-					font-weight:400;
-					color:rgba(51,51,51,1);
+
+				.tip {
+					font-size: 28rpx;
+					font-family: PingFang SC;
+					font-weight: 400;
+					color: rgba(51, 51, 51, 1);
 				}
 			}
 		}
+
 		// 商品详情
-		.goodDetail{
+		.goodDetail {
 			width: 750rpx;
 			height: 146rpx;
 			padding: 0 30rpx;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
+			background-color: #FFFFFF;
+			margin-bottom: 20rpx;
+
 			// 商品详情文本
-			.text{
-				font-size:32rpx;
-				font-family:PingFang SC;
-				font-weight:bold;
-				line-height:38rpx;
-				color:rgba(51,51,51,1);
+			.text {
+				font-size: 32rpx;
+				font-family: PingFang SC;
+				font-weight: bold;
+				line-height: 38rpx;
+				color: rgba(51, 51, 51, 1);
 			}
+
 			// 商品名称和价格
-			.goods{
+			.goods {
 				display: flex;
+				margin-top: 16rpx;
+				align-items: center;
+
 				// 点
-				.circle{}
-				.goodsCon{
+				.circle {
+					width: 4px;
+					height: 4px;
+					background: rgba(51, 51, 51, 1);
+					border-radius: 50%;
+					margin-right: 14rpx;
+				}
+
+				.goodsCon {
+					width: 666rpx;
 					display: flex;
+					justify-content: space-between;
+
 					// 商品名字
-					.goodsName{
-						font-size:28rpx;
+					.goodsName {
+						font-size: 28rpx;
+						font-family: PingFang SC;
+						font-weight: 400;
+						line-height: 32rpx;
+						color: rgba(51, 51, 51, 1);
+					}
+
+					// 商品价格
+					.goodsMoney {
+						font-size: 28rpx;
+						font-family: PingFang SC;
+						font-weight: bold;
+						line-height: 32rpx;
+						color: rgba(51, 51, 51, 1);
+					}
+				}
+			}
+		}
+
+		// 温馨提示
+		.warmTip {
+			width: 750rpx;
+			height: 524rpx;
+			padding: 0 30rpx;
+			background-color: #FFFFFF;
+
+			// 温馨提示文字
+			.text {
+				height: 84rpx;
+				font-size: 32rpx;
+				font-family: PingFang SC;
+				font-weight: bold;
+				line-height: 84rpx;
+				color: rgba(51, 51, 51, 1);
+				padding-top: 16rpx;
+			}
+
+			.content {
+				height: 110rpx;
+				padding-top: 8rpx;
+
+				// 有效期文字
+				.use {
+					font-size: 28rpx;
+					font-family: PingFang SC;
+					font-weight: 400;
+					line-height: 32rpx;
+					color: rgba(169, 169, 169, 1);
+					margin-top: 14rpx;
+					margin-bottom: 16rpx;
+				}
+
+				.tipCon {
+					width: 666rpx;
+					display: flex;
+					align-items: center;
+
+					.circle {
+						width: 8rpx;
+						height: 8rpx;
+						background: rgba(51, 51, 51, 1);
+						border-radius: 50%;
+						margin-right: 14rpx;
+					}
+
+					.tipName {
+						font-size: 28rpx;
+						font-family: PingFang SC;
+						font-weight: 400;
+						line-height: 32rpx;
+						color: rgba(51, 51, 51, 1);
+					}
+				}
+
+				.buyTipCon {
+					width: 666rpx;
+					display: flex;
+					align-items: center;
+					padding-bottom: 10rpx;
+
+					.circle {
+						width: 8rpx;
+						height: 8rpx;
+						background: rgba(51, 51, 51, 1);
+						border-radius: 50%;
+						margin-right: 14rpx;
+					}
+
+					.tipName {
+						font-size: 28rpx;
+						font-family: PingFang SC;
+						font-weight: 400;
+						line-height: 32rpx;
+						color: rgba(51, 51, 51, 1);
+					}
+				}
+			}
+		}
+
+		// 商品导航
+		.goodsNav {
+			width: 750rpx;
+			height: 98rpx;
+			background: rgba(255, 255, 255, 1);
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			display: flex;
+			justify-content: space-between;
+			.navCon{
+				width: 374rpx;
+				height: 98rpx;
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+				.NavIcon{
+					height: 44rpx;
+					height: 78rpx;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					align-items: center;
+					.icon{
+						width: 44rpx;
+						height: 44rpx;
+					}
+					.text{
+						font-size:22rpx;
 						font-family:PingFang SC;
 						font-weight:400;
-						line-height:32rpx;
-						color:rgba(51,51,51,1);
+						line-height:26rpx;
+						color:rgba(102,102,102,1);
 					}
-					// 商品价格
-					.goodsMoney{
-						font-size:28rpx;
-						font-family:PingFang SC;
-						font-weight:bold;
-						line-height:32rpx;
-						color:rgba(51,51,51,1);
-					}
+				}
+			}
+			.navBuy{
+				width:376rpx;
+				height:98rpx;
+				background:rgba(255,47,47,1);
+				font-size:36rpx;
+				font-family:PingFang SC;
+				font-weight:bold;
+				line-height:42rpx;
+				color:rgba(255,255,255,1);
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+				text-align: center;
+				.buyNum{
+					margin-top: 2rpx;
 				}
 			}
 		}
