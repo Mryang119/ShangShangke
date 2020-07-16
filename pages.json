@@ -124,6 +124,12 @@
 			"style": {
 				"navigationStyle": "custom"
 			}
+		},
+		{
+			"path": "views/singlePage/myService/myService",
+			"style": {
+				"navigationBarTitleText": "我的客服"
+			}
 		}
 	],
 	"globalStyle": {

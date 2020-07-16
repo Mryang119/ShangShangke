@@ -140,23 +140,23 @@
 		<view class="goodsNav">
 			<!-- 客服/分享/收藏 -->
 			<view class="navCon">
-				<view class="NavIcon">
-					<u-icon name="kefu-ermai" class="icon"></u-icon>
+				<navigator class="NavIcon" :url="myService">
+					<u-icon name="kefu-ermai" class="icon" size="44"></u-icon>
 					<view class="text">客服</view>
-				</view>
+				</navigator>
 				<view class="NavIcon">
-					<u-icon name="zhuanfa" class="icon"></u-icon>
+					<u-icon name="zhuanfa" class="icon" size="44"></u-icon>
 					<view class="text">分享</view>
 				</view>
 				<view class="NavIcon">
-					<u-icon name="star" class="icon"></u-icon>
+					<u-icon :name="starName?'star':'star-fill' " class="icon" size="44" :color="starColor?'':'#FF8800'" @click="toggle"></u-icon>
 					<view class="text">收藏</view>
 				</view>
 			</view>
 			<!-- 立即购买 -->
 			<view class="navBuy">
-				<view>￥11.00</view>
-				<view>立即购买</view>
+				<view class="buyNum">￥11.00</view>
+				<view class="toBug">立即购买</view>
 			</view>
 		</view>
 	</view>
@@ -179,12 +179,18 @@
 				showDays: false,
 				count: 5,
 				value: 4,
-				// 商品导航
+				myService:'../../singlePage/myService/myService',
+				starColor:true,
+				starName:true
+				
 				
 			}
 		},
 		methods: {
-
+			toggle(){
+				this.starColor = !this.starColor
+				this.starName = !this.starName
+			}
 		}
 	}
 </script>
@@ -714,9 +720,6 @@
 					.icon{
 						width: 44rpx;
 						height: 44rpx;
-						display: flex;
-						justify-content: center;
-						align-items: center;
 					}
 					.text{
 						font-size:22rpx;
@@ -725,6 +728,23 @@
 						line-height:26rpx;
 						color:rgba(102,102,102,1);
 					}
+				}
+			}
+			.navBuy{
+				width:376rpx;
+				height:98rpx;
+				background:rgba(255,47,47,1);
+				font-size:36rpx;
+				font-family:PingFang SC;
+				font-weight:bold;
+				line-height:42rpx;
+				color:rgba(255,255,255,1);
+				display: flex;
+				justify-content: space-around;
+				align-items: center;
+				text-align: center;
+				.buyNum{
+					margin-top: 2rpx;
 				}
 			}
 		}
