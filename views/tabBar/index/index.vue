@@ -177,8 +177,10 @@
 	} from '@/src/utils/fakeData.js'
 	// api
 	import {
-		test
-	} from '@/src/api/indexApi.js'
+		getCityList,
+		getHomeModuleMessages,
+		getCircList
+	} from '../../../src/api/homeApi/homeApi.js'
 	export default {
 		components: {
 			uniNavBar,
@@ -191,10 +193,12 @@
 		},
 		data() {
 			return {
+				// 轮播图配置↓
 				indicatorDots: true,
 				autoplay: true,
 				duration: 500,
 				interval: 2000,
+				// 轮播图配置↑
 				city: '未定位',
 				scrollTop: 0,
 				old: {
@@ -209,17 +213,25 @@
 				endPage: 5, // 买就送死数据最大页数
 				startPage: 1, // 买就送死数据开始页数
 				status: 'loading',
-				addressName: '',
-				weather: {
-					hasData: false,
-					data: []
-				},
+
 				// 百度地图数据⬇
+				BMap: null,
 				markers: [],
 				latitude: '',
 				longitude: '',
-				rgcData: {}
+				rgcData: {},
 				// 百度地图数据⬆
+
+				// 首页模块数据⬇
+				circs: null, // 商圈id
+				couponHome: [], //优惠券
+				newExclusiveHome: [], //新人专享
+				seckillHome: [], //秒杀
+				groupHome: [], //团购
+				fullDiscountHome: [], //满减
+				buyGiftHome: [], //买赠
+				fullGiftHome: [] //满赠
+				// 首页模块数据⬆
 			}
 		},
 		methods: {
@@ -256,40 +268,69 @@
 					url: '../../singlePage/position/position'
 				})
 			},
-
+			// 获取定位
+			getLocation() {
+				var that = this;
+				// 新建百度地图对象 
+				this.BMap = new bmap.BMapWX({
+					ak: 'AQNjDWwRffaoqtGkNxfAQmwic9mtkS8w'
+				});
+				uni.authorize({
+					scope: 'scope.userLocation',
+					success() {
+						var fail = function(data) {
+							console.log(data)
+						};
+						var success = function(data) {
+							let wxMarkerData = data.wxMarkerData;
+							that.markers = wxMarkerData
+							that.latitude = wxMarkerData[0].latitude
+							that.longitude = wxMarkerData[0].longitude
+							var reg = /.+?(省|市|自治区|自治州|县|区)/g;
+							that.city = wxMarkerData[0].address.match(reg)[1].replace('市', '')
+							that.$store.state.city = wxMarkerData[0].address.match(reg)[1].replace('市', '')
+						}
+						that.BMap.regeocoding({
+							fail: fail,
+							success: success
+						});
+					}
+				})
+			},
+			// 获取城市列表存入仓库
+			async getCity() {
+				let res = await getCityList({
+					sysAccount: 'SYSTEM'
+				})
+				this.$store.state.cityList = res.data.data
+			},
+			// 获取商圈信息
+			async getCirc() {
+				let res = await getCircList({
+					mobile: '15501876709',
+					city: this.city,
+					lat: this.latitude,
+					lon: this.longitude
+				})
+				this.circs = res.data.data
+			},
+			// 获取首页模块相关数据
+			async getHomeModule() {
+				let res = await getHomeModuleMessages({
+					circs: this.circs
+				})
+				console.log(res)
+			}
 		},
 		async onLoad() {
-			var that = this;
-			// 新建百度地图对象 
-			var BMap = new bmap.BMapWX({
-				ak: 'AQNjDWwRffaoqtGkNxfAQmwic9mtkS8w'
-			});
-
-
-			setTimeout(() => {
-				console.log(this.latitude, this.longitude)
-			}, 3000)
-			uni.authorize({
-				scope: 'scope.userLocation',
-				success() {
-					var fail = function(data) {
-						console.log(data)
-					};
-					var success = function(data) {
-						let wxMarkerData = data.wxMarkerData;
-						console.log(wxMarkerData)
-						that.markers = wxMarkerData
-						that.latitude = wxMarkerData[0].latitude
-						that.longitude = wxMarkerData[0].longitude
-						var reg = /.+?(省|市|自治区|自治州|县|区)/g;
-						that.city = wxMarkerData[0].address.match(reg)[1].replace('市','')
-					}
-					BMap.regeocoding({
-						fail: fail,
-						success: success
-					});
-				}
-			})
+			// 获取位置
+			this.getLocation()
+			// 获取城市列表
+			this.getCity()
+			// 获取商圈
+			this.getCirc()
+			// 获取首页相关模块
+			this.getHomeModule()
 		},
 		onReady() {
 
@@ -348,6 +389,7 @@
 				justify-content: space-between;
 				box-sizing: border-box;
 				padding-right: 30rpx;
+
 				.searchBar {
 					display: flex;
 					width: 488rpx;

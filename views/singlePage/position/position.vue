@@ -67,22 +67,12 @@
 				hotCity: [{
 					cityName: '北京'
 				}, {
-					cityName: '北京'
+					cityName: '上海'
 				}, {
-					cityName: '北京'
+					cityName: '广州'
 				}, {
-					cityName: '北京'
-				}, {
-					cityName: '北京'
-				}, {
-					cityName: '北京'
-				}, {
-					cityName: '北京'
-				}, {
-					cityName: '北京'
-				}, {
-					cityName: '北京'
-				}, ]
+					cityName: '深圳'
+				} ]
 			};
 		}
 	}
