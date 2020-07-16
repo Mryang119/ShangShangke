@@ -154,10 +154,10 @@
 				</view>
 			</view>
 			<!-- 立即购买 -->
-			<view class="navBuy">
+			<navigator class="navBuy" :url="confirmOrder">
 				<view class="buyNum">￥11.00</view>
 				<view class="toBug">立即购买</view>
-			</view>
+			</navigator>
 		</view>
 	</view>
 </template>
@@ -180,6 +180,7 @@
 				count: 5,
 				value: 4,
 				myService:'../../singlePage/myService/myService',
+				confirmOrder:'../../singlePage/confirmOrder/confirmOrder',
 				starColor:true,
 				starName:true
 				

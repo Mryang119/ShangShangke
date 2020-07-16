@@ -125,10 +125,18 @@
 				"navigationStyle": "custom"
 			}
 		},
+		// 我的客服
 		{
 			"path": "views/singlePage/myService/myService",
 			"style": {
 				"navigationBarTitleText": "我的客服"
+			}
+		},
+		// 确认订单
+		{
+			"path": "views/singlePage/confirmOrder/confirmOrder",
+			"style": {
+				"navigationBarTitleText": "确认订单"
 			}
 		}
 	],
