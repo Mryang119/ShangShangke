@@ -2,16 +2,16 @@
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		// 限时秒杀---商品详情
 		{
-			"path": "views/singlePage/timeKillProductDetail/timeKillProductDetail",
-			"style": {
-				"navigationBarTitleText": "商品详情"
-			}
-		},
-		{
 			"path": "views/tabBar/index/index",
 			"style": {
 				"navigationBarTitleText": "上上客",
 				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "views/singlePage/timeKillProductDetail/timeKillProductDetail",
+			"style": {
+				"navigationBarTitleText": "商品详情"
 			}
 		},
 		{
@@ -179,7 +179,7 @@
 	},
 	"easycom": {
 		"autoscan": true,
-		"custom": {// 匹配node_modules内的vue文件
+		"custom": { // 匹配node_modules内的vue文件
 			"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
 		}
 	}
