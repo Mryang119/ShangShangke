@@ -1,164 +1,128 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		// 限时秒杀---商品详情
+
 		{
 			"path": "views/tabBar/index/index",
 			"style": {
 				"navigationBarTitleText": "上上客",
-				"navigationStyle": "custom",
-				"disableScroll":true
-			}
-		},
-		{
-			"path": "views/singlePage/timeKillProductDetail/timeKillProductDetail",
-			"style": {
-				"navigationBarTitleText": "商品详情",
-				"disableScroll":true
+				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "views/singlePage/classify/classify",
 			"style": {
-				"navigationBarTitleText": "全部分类",
-				"disableScroll":true
+				"navigationBarTitleText": "全部分类"
 			}
 		},
 		{
 			"path": "views/tabBar/discover/discover",
 			"style": {
-				"navigationBarTitleText": "发现",
-				"disableScroll":true
-				
+				"navigationBarTitleText": "发现"
 			}
 		},
 		{
 			"path": "views/tabBar/store/store",
 			"style": {
-				"navigationBarTitleText": "店铺",
-				"disableScroll":true
+				"navigationBarTitleText": "店铺"
 			}
 		},
 		{
 			"path": "views/tabBar/my/my",
 			"style": {
 				"navigationBarTitleText": "我的",
-				"navigationStyle": "custom",
-				"disableScroll":true
+				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "views/singlePage/search/search",
 			"style": {
-				"navigationBarTitleText": "搜索",
-				"disableScroll":true
+				"navigationBarTitleText": "搜索"
 			}
 		},
 		{
 			"path": "views/singlePage/position/position",
 			"style": {
-				"navigationBarTitleText": "定位",
-				"disableScroll":true
+				"navigationBarTitleText": "定位"
 			}
 		},
 		{
 			"path": "views/singlePage/timeKill/timeKill",
 			"style": {
-				"navigationBarTitleText": "限时秒杀",
-				"disableScroll":true
+				"navigationBarTitleText": "限时秒杀"
 			}
 		},
 		{
 			"path": "views/singlePage/getCoupon/getCoupon",
 			"style": {
-				"navigationBarTitleText": "每日领好券",
-				"disableScroll":true
+				"navigationBarTitleText": "每日领好券"
 			}
 		},
 		{
 			"path": "views/singlePage/buyGive/buyGive",
 			"style": {
-				"navigationBarTitleText": "买就送",
-				"disableScroll":true
+				"navigationBarTitleText": "买就送"
 			}
 		},
 		{
 			"path": "views/singlePage/dailyGoods/dailyGoods",
 			"style": {
-				"navigationBarTitleText": "每日一品",
-				"disableScroll":true
+				"navigationBarTitleText": "每日一品"
 			}
 		},
 		{
 			"path": "views/singlePage/groupPurchase/groupPurchase",
 			"style": {
-				"navigationBarTitleText": "超值团购",
-				"disableScroll":true
+				"navigationBarTitleText": "超值团购"
 			}
 		},
 		{
 			"path": "views/singlePage/everydayRob/everydayRob",
 			"style": {
-				"navigationBarTitleText": "天天免费抢",
-				"disableScroll":true
+				"navigationBarTitleText": "天天免费抢"
 			}
 		},
 		// 我的订单
 		{
 			"path": "views/singlePage/myOrder/myOrder",
 			"style": {
-				"navigationBarTitleText": "我的订单",
-				"disableScroll":true
+				"navigationBarTitleText": "我的订单"
 			}
 		},
 		// 我的卡券
 		{
 			"path": "views/singlePage/myCoupon/myCoupon",
 			"style": {
-				"navigationBarTitleText": "我的卡券",
-				"disableScroll":true
+				"navigationBarTitleText": "我的卡券"
 			}
 		},
 		{
 			"path": "views/singlePage/myCollect/myCollect",
 			"style": {
-				"navigationBarTitleText": "我的收藏",
-				"disableScroll":true
+				"navigationBarTitleText": "我的收藏"
 			}
 		},
 		{
 			"path": "views/singlePage/mySpellGroup/mySpellGroup",
 			"style": {
-				"navigationBarTitleText": "我的拼团",
-				"disableScroll":true
+				"navigationBarTitleText": "我的拼团"
 			}
 		},
 		{
 			"path": "views/singlePage/orderDetail/orderDetail",
 			"style": {
-				"navigationBarTitleText": "订单详情",
-				"disableScroll":true
+				"navigationBarTitleText": "订单详情"
 			}
 		},
+		// 限时秒杀---商品详情
 		{
+			"path": "views/singlePage/timeKillProductDetail/timeKillProductDetail",
+			"style": {
+				"navigationBarTitleText": "商品详情"
+			}
+		}, {
 			"path": "views/singlePage/classifyDetail/classifyDetail",
 			"style": {
-				"navigationStyle": "custom",
-				"disableScroll":true
-			}
-		},
-		// 我的客服
-		{
-			"path": "views/singlePage/myService/myService",
-			"style": {
-				"navigationBarTitleText": "我的客服",
-				"disableScroll":true
-			}
-		},
-		// 确认订单
-		{
-			"path": "views/singlePage/confirmOrder/confirmOrder",
-			"style": {
-				"navigationBarTitleText": "确认订单"
+				"navigationStyle": "custom"
 			}
 		}
 	],
@@ -201,7 +165,7 @@
 	},
 	"easycom": {
 		"autoscan": true,
-		"custom": { // 匹配node_modules内的vue文件
+		"custom": {// 匹配node_modules内的vue文件
 			"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
 		}
 	}
