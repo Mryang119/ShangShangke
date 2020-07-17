@@ -16,30 +16,30 @@
 				<!-- 订单/卡券/收藏/拼团 -->
 				<view class="myLoginOrder">
 					<view class="myLoginOrderCon">
-						<view class="myLoginOrderLi">
-							<navigator class="myLoginOrderTu" :url="orderUrl">
+						<navigator class="myLoginOrderLi" :url="orderUrl">
+							<view class="myLoginOrderTu">
 								<image class="myLoginOrderImg" src="@/static/images/iconfont/dingdan.png"></image>
-							</navigator>
+							</view>
 							<span class="myLoginOrderText">我的订单</span>
-						</view>
-						<view class="myLoginOrderLi">
-							<navigator class="myLoginOrderTu" :url="couponUrl">
+						</navigator>
+						<navigator class="myLoginOrderLi" :url="couponUrl">
+							<view class="myLoginOrderTu">
 								<image class="myLoginOrderImg" src="@/static/images/iconfont/kaquan.png"></image>
-							</navigator>
+							</view>
 							<span class="myLoginOrderText">我的卡券</span>
-						</view>
-						<view class="myLoginOrderLi">
-							<navigator class="myLoginOrderTu" :url="collectUrl">
+						</navigator>
+						<navigator class="myLoginOrderLi" :url="collectUrl">
+							<view class="myLoginOrderTu">
 								<image class="myLoginOrderImg" src="@/static/images/iconfont/shoucang.png"></image>
-							</navigator>
+							</view>
 							<span class="myLoginOrderText">我的收藏</span>
-						</view>
-						<view class="myLoginOrderLi">
-							<navigator class="myLoginOrderTu" :url="spellGroupUrl">
+						</navigator>
+						<navigator class="myLoginOrderLi" :url="spellGroupUrl">
+							<view class="myLoginOrderTu">
 								<image class="myLoginOrderImg" src="@/static/images/iconfont/pintuan.png"></image>
-							</navigator>
+							</view>
 							<span class="myLoginOrderText">我的拼团</span>
-						</view>
+						</navigator>
 					</view>
 				</view>
 
