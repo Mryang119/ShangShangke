@@ -1,4 +1,4 @@
-<!-- 我的客服 -->
+<!-- 确认订单——选择优惠券 -->
 <template>
 	<view></view>
 </template>

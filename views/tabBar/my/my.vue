@@ -4,42 +4,45 @@
 		<uni-nav-bar :fixed="true" :status-bar="true" title="我的" class="top_nvaBar_text" :shadow="false" background-color="#FFFFFF">
 		</uni-nav-bar>
 		<view class="content">
-			<!-- 点击登录 -->
-			<view class="myLogin">
-				<image class="myLoginHeader" src="@/static/images/tabBarImage/myLoginHeader.png"></image>
-				<view class="myLoginRight">
-					<span class="myLoginText">点击登录</span>
-					<image class="myLoginMore" src="@/static/images/iconfont/more.png"></image>
-				</view>
-			</view>
-			<!-- 订单/卡券/收藏/拼团 -->
-			<view class="myLoginOrder">
-				<view class="myLoginOrderCon">
-					<view class="myLoginOrderLi">
-						<navigator class="myLoginOrderTu" :url="orderUrl">
-							<image class="myLoginOrderImg" src="@/static/images/iconfont/dingdan.png"></image>
-						</navigator>
-						<span class="myLoginOrderText">我的订单</span>
-					</view>
-					<view class="myLoginOrderLi">
-						<navigator class="myLoginOrderTu" :url="couponUrl">
-							<image class="myLoginOrderImg" src="@/static/images/iconfont/kaquan.png"></image>
-						</navigator>
-						<span class="myLoginOrderText">我的卡券</span>
-					</view>
-					<view class="myLoginOrderLi">
-						<navigator class="myLoginOrderTu" :url="collectUrl">
-							<image class="myLoginOrderImg" src="@/static/images/iconfont/shoucang.png"></image>
-						</navigator>
-						<span class="myLoginOrderText">我的收藏</span>
-					</view>
-					<view class="myLoginOrderLi">
-						<navigator class="myLoginOrderTu" :url="spellGroupUrl">
-							<image class="myLoginOrderImg" src="@/static/images/iconfont/pintuan.png"></image>
-						</navigator>
-						<span class="myLoginOrderText">我的拼团</span>
+			<view class="loginContent">
+				<!-- 点击登录 -->
+				<view class="myLogin">
+					<image class="myLoginHeader" src="@/static/images/tabBarImage/myLoginHeader.png"></image>
+					<view class="myLoginRight">
+						<span class="myLoginText">点击登录</span>
+						<image class="myLoginMore" src="@/static/images/iconfont/more.png"></image>
 					</view>
 				</view>
+				<!-- 订单/卡券/收藏/拼团 -->
+				<view class="myLoginOrder">
+					<view class="myLoginOrderCon">
+						<navigator class="myLoginOrderLi" :url="orderUrl">
+							<view class="myLoginOrderTu">
+								<image class="myLoginOrderImg" src="@/static/images/iconfont/dingdan.png"></image>
+							</view>
+							<span class="myLoginOrderText">我的订单</span>
+						</navigator>
+						<navigator class="myLoginOrderLi" :url="couponUrl">
+							<view class="myLoginOrderTu">
+								<image class="myLoginOrderImg" src="@/static/images/iconfont/kaquan.png"></image>
+							</view>
+							<span class="myLoginOrderText">我的卡券</span>
+						</navigator>
+						<navigator class="myLoginOrderLi" :url="collectUrl">
+							<view class="myLoginOrderTu">
+								<image class="myLoginOrderImg" src="@/static/images/iconfont/shoucang.png"></image>
+							</view>
+							<span class="myLoginOrderText">我的收藏</span>
+						</navigator>
+						<navigator class="myLoginOrderLi" :url="spellGroupUrl">
+							<view class="myLoginOrderTu">
+								<image class="myLoginOrderImg" src="@/static/images/iconfont/pintuan.png"></image>
+							</view>
+							<span class="myLoginOrderText">我的拼团</span>
+						</navigator>
+					</view>
+				</view>
+
 			</view>
 			<!-- 评价-->
 			<view class="myLoginEstimate">
@@ -97,18 +100,25 @@
 		background: #F6F6F6;
 		box-sizing: border-box;
 		overflow-x: hidden;
+
 		// 最外层
 		.content {
 			box-sizing: border-box;
-			// 点击登录
+			
+			.loginContent{
+				padding: 0 30rpx;
+				background: #FFFFFF;
+				padding-bottom: 10rpx;
+				// 点击登录
 				.myLogin {
 					width: 750rpx;
 					height: 176rpx;
-					margin: 0 50rpx 0 50rpx;
 					font-size: 0;
 					display: flex;
 					align-items: center;
-			
+					margin-bottom: 38rpx;
+					padding: 0 30rpx;
+				
 					// 头像
 					.myLoginHeader {
 						width: 116rpx;
@@ -116,14 +126,14 @@
 						background: rgba(0, 0, 0, 0);
 						border-radius: 50%;
 					}
-			
+				
 					.myLoginRight {
 						width: 504rpx;
 						display: flex;
 						justify-content: space-between;
 						align-items: center;
 						margin-left: 30rpx;
-			
+				
 						// 点击登录文字
 						.myLoginText {
 							width: 128rpx;
@@ -134,7 +144,7 @@
 							line-height: 38rpx;
 							color: rgba(51, 51, 51, 1);
 						}
-			
+				
 						// 更多
 						.myLoginMore {
 							width: 14.92rpx;
@@ -142,7 +152,7 @@
 						}
 					}
 				}
-			
+				
 				// <!-- 订单/卡券/收藏/拼团 -->
 				.myLoginOrder {
 					width: 690rpx;
@@ -152,31 +162,31 @@
 					opacity: 1;
 					border-radius: 26rpx;
 					margin: 0 auto;
-					margin-bottom: 20rpx;
-			
+					margin-bottom: 10rpx;
+				
 					.myLoginOrderCon {
 						display: flex;
 						justify-content: space-around;
 						align-items: center;
 						height: 222rpx;
-			
+				
 						.myLoginOrderLi {
 							height: 118rpx;
 							display: flex;
 							flex-direction: column;
 							align-items: center;
 							justify-content: space-between;
-			
+				
 							.myLoginOrderTu {
 								width: 74rpx;
 								height: 74rpx;
-			
+				
 								.myLoginOrderImg {
 									width: 74rpx;
 									height: 74rpx;
 								}
 							}
-			
+				
 							.myLoginOrderText {
 								width: 96rpx;
 								height: 28rpx;
@@ -190,71 +200,73 @@
 						}
 					}
 				}
+				
+			}
 			
-				// // <!-- 评价 -->
-				.myLoginEstimate {
-					height: 324rpx;
-					background-color: #FFFFFF;
-			
-					.myLoginEstimateLi {
-						width: 650rpx;
-						height: 104rpx;
-						margin: 0 auto;
-						display: flex;
-						justify-content: space-between;
-						align-items: center;
-			
-						.myLoginEstimateText {
-							width: 112rpx;
-							height: 32rpx;
-							font-size: 28rpx;
-							font-family: PingFang SC;
-							font-weight: 400;
-							line-height: 32rpx;
-							color: rgba(39, 39, 39, 1);
-							opacity: 1;
-						}
-			
-						.myLoginEstimateImg {
-							width: 8.5rpx;
-							height: 17.5rpx;
-						}
+			// // <!-- 评价 -->
+			.myLoginEstimate {
+				height: 324rpx;
+				background-color: #FFFFFF;
+
+				.myLoginEstimateLi {
+					width: 650rpx;
+					height: 104rpx;
+					margin: 0 auto;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+
+					.myLoginEstimateText {
+						width: 112rpx;
+						height: 32rpx;
+						font-size: 28rpx;
+						font-family: PingFang SC;
+						font-weight: 400;
+						line-height: 32rpx;
+						color: rgba(39, 39, 39, 1);
+						opacity: 1;
+					}
+
+					.myLoginEstimateImg {
+						width: 8.5rpx;
+						height: 17.5rpx;
 					}
 				}
-			
-				// <!-- 客服/商家 -->
-				.myLoginService {
-					height: 216rpx;
-					margin-top: 20rpx;
-					background-color: #FFFFFF;
-			
-					.myLoginServiceLi {
-						width: 650rpx;
-						height: 104rpx;
-						margin: 0 auto;
-						display: flex;
-						justify-content: space-between;
-						align-items: center;
-			
-						.myLoginServiceText {
-							width: 112rpx;
-							height: 32rpx;
-							font-size: 28rpx;
-							font-family: PingFang SC;
-							font-weight: 400;
-							line-height: 32rpx;
-							color: rgba(39, 39, 39, 1);
-							opacity: 1;
-						}
-			
-						.myLoginServiceImg {
-							width: 8.5rpx;
-							height: 17.5rpx;
-						}
+			}
+
+			// <!-- 客服/商家 -->
+			.myLoginService {
+				height: 216rpx;
+				margin-top: 20rpx;
+				background-color: #FFFFFF;
+
+				.myLoginServiceLi {
+					width: 650rpx;
+					height: 104rpx;
+					margin: 0 auto;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+
+					.myLoginServiceText {
+						width: 112rpx;
+						height: 32rpx;
+						font-size: 28rpx;
+						font-family: PingFang SC;
+						font-weight: 400;
+						line-height: 32rpx;
+						color: rgba(39, 39, 39, 1);
+						opacity: 1;
+					}
+
+					.myLoginServiceImg {
+						width: 8.5rpx;
+						height: 17.5rpx;
 					}
 				}
-			
+			}
+
 		}
-		
-		}
+
+	}
 </style>

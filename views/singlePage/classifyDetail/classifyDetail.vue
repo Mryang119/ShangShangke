@@ -1,10 +1,8 @@
 <template>
 	<view class="s_classifyDetail">
-		<u-navbar back-icon-size="35" :is-back="true">
-			<view class="search">
-				<u-search :show-action='false' :height="56"></u-search>
-			</view>
-		</u-navbar>
+		<view class="search">
+			<u-search :show-action='false' :height="56"></u-search>
+		</view>
 		<view class="filter-container">
 			<view class="filter-box">
 				<view class="filter-line">
@@ -23,7 +21,9 @@
 				</view>
 			</view>
 			<!-- 模态框 -->
-				<view class="box"></view>
+			<view class="box">
+
+			</view>
 
 		</view>
 	</view>
@@ -51,7 +51,7 @@
 			}
 		},
 		mounted() {
-			
+
 		}
 	}
 </script>
@@ -59,7 +59,7 @@
 <style lang="less">
 	.s_classifyDetail {
 		box-sizing: border-box;
-		
+
 		position: relative;
 
 		.search {
@@ -68,16 +68,18 @@
 			display: flex;
 			align-items: center;
 		}
+
 		.box {
 			height: 85vh;
 			background-color: red;
 		}
+
 		.filter-container {
 			width: 750rpx;
 			box-sizing: border-box;
 			position: fixed;
-			top: 96rpx;
-			
+			top: 0;
+
 
 			.filter-box {
 				width: 100%;
