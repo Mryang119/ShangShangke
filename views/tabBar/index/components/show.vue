@@ -2,14 +2,14 @@
 	<!-- 买就送满就减商品展示 -->
 	<view class="c_show">
 		<view class="show-item-container">
-			<image src="@/static/images/Product/shangpingtu.png" mode=""></image>
+			<image :src="url" mode=""></image>
 			<view class="show-item-textContent">
 				<view class="show-item-title">
 					{{title}}
 				</view>
 				<br />
 				<!-- 赠品不显示价格 -->
-				<view v-if="type===1" class="show-item-price">
+				<view v-if="type!==8" class="show-item-price">
 					￥{{price}}
 				</view>
 				<view class="show-item-message">
@@ -29,7 +29,7 @@
 		props: {
 			type: {
 				type: Number,
-				default: 0 // 0代表赠品;1代表满就减商品
+				default: 3 // 3 满减 4 买赠 8 满赠 满赠不显示价格不等于8
 			},
 			title: {
 				type: String,
@@ -46,6 +46,10 @@
 			price: {
 				type: Number,
 				default: 188
+			},
+			url:{
+				type:String,
+				default:'../../../../static/images/Product/shangpingtu.png'
 			}
 		}
 	}
@@ -57,7 +61,7 @@
 		background-color: #FFF;
 		border-radius: 16rpx;
 		overflow: hidden;
-		
+
 		.show-item-container {
 			image {
 				width: 346rpx;
@@ -67,13 +71,14 @@
 
 			.show-item-textContent {
 				padding: 14rpx 34rpx 20rpx 20rpx;
+
 				.show-item-title {
 					font-size: 28rpx;
 					color: #272727;
 					font-weight: bold;
 					width: 292rpx;
 					overflow: hidden;
-					text-overflow:ellipsis;
+					text-overflow: ellipsis;
 					white-space: nowrap;
 					margin-bottom: 10rpx;
 				}

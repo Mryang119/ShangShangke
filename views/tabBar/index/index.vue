@@ -11,8 +11,8 @@
 					<view class="page-section-spacing">
 						<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval"
 						 indicator-active-color="#FFFFFF" :duration="duration">
-							<swiper-item v-for="(item,index) in 3" :key="index">
-								<image class="swiperImage" src="@/static/images/tabBarImage/bannerlunbotu.png" mode=""></image>
+							<swiper-item v-for="(item,index) in CarouselImg" :key="item">
+								<image class="swiperImage" :src="item" mode=""></image>
 							</swiper-item>
 						</swiper>
 					</view>
@@ -95,6 +95,7 @@
 				<image src="@/static/images/Product/banner4@2x.png" mode=""></image>
 			</view>
 			<!-- 秒杀 -->
+
 			<view class="timeKill">
 				<view class="timeKill-titleBar">
 					<view class="title-item title-text">限时秒杀</view>
@@ -150,10 +151,10 @@
 				</view>
 			</view>
 			<view class="vShowbox" v-show="cp==='buy'">
-				<buy :status="status" :showItemList="showItemList"></buy>
+				<buy :status="status1" :showItemList="showItemList1"></buy>
 			</view>
 			<view class="vShowbox" v-show="cp==='give'">
-				<give :showItemList="showItemList"></give>
+				<give :status="status2" :showItemList="showItemList2"></give>
 			</view>
 		</view>
 	</view>
@@ -170,6 +171,7 @@
 	import give from './components/give.vue'
 	// 引入百度地图
 	import bmap from '@/common/bmap-wx.min.js'
+	// 模拟数据
 	import {
 		list,
 		dataList,
@@ -177,8 +179,11 @@
 	} from '@/src/utils/fakeData.js'
 	// api
 	import {
-		test
-	} from '@/src/api/indexApi.js'
+		getCityList,
+		getHomeModuleMessages,
+		getCircList,
+		getCircCampaignInfo
+	} from '../../../src/api/homeApi/homeApi.js'
 	export default {
 		components: {
 			uniNavBar,
@@ -191,10 +196,12 @@
 		},
 		data() {
 			return {
+				// 轮播图配置↓
 				indicatorDots: true,
 				autoplay: true,
 				duration: 500,
 				interval: 2000,
+				// 轮播图配置↑
 				city: '未定位',
 				scrollTop: 0,
 				old: {
@@ -204,22 +211,35 @@
 				temp: [],
 				time: null,
 				cp: 'buy',
-				showItemList: showItemList,
-				ajaxList: showItemList,
-				endPage: 5, // 买就送死数据最大页数
-				startPage: 1, // 买就送死数据开始页数
-				status: 'loading',
-				addressName: '',
-				weather: {
-					hasData: false,
-					data: []
-				},
+				showItemList1: showItemList, // 数据1
+				showItemList2: showItemList, // 数据2
+				ajaxList: showItemList, // 
+				endPage1: 5, // 买就送死数据最大页数
+				startPage1: 1, // 买就送死数据开始页数
+				endPage2: 5, // 买就送死数据最大页数
+				startPage2: 1, // 买就送死数据开始页数
+				status1: 'loading',
+				status2: 'loading',
+
 				// 百度地图数据⬇
+				BMap: null,
 				markers: [],
 				latitude: '',
 				longitude: '',
-				rgcData: {}
+				rgcData: {},
 				// 百度地图数据⬆
+
+				// 首页模块数据⬇
+				circs: null, // 商圈id
+				couponHome: null, //优惠券
+				newExclusiveHome: [], //新人专享
+				seckillHome: [], //秒杀
+				groupHome: [], //团购
+				fullDiscountHome: [], //满减
+				buyGiftHome: [], //买赠
+				fullGiftHome: [], //满赠
+				CarouselImg: null //轮播图
+				// 首页模块数据⬆
 			}
 		},
 		methods: {
@@ -256,40 +276,103 @@
 					url: '../../singlePage/position/position'
 				})
 			},
+			// 获取定位
+			getLocation() {
+				var that = this;
+				//新建百度地图对象
+				this.BMap = new bmap.BMapWX({
+					ak: 'AQNjDWwRffaoqtGkNxfAQmwic9mtkS8w'
+				});
+				return new Promise((resolve, reject) => {
+					uni.authorize({
+						scope: 'scope.userLocation',
+						success() {
+							var fail = function(data) {
+								reject(data)
+							};
+							var success = function(data) {
+								console.log('百度定位', data)
+								let wxMarkerData = data.wxMarkerData;
+								that.markers = wxMarkerData
+								that.latitude = wxMarkerData[0].latitude
+								that.longitude = wxMarkerData[0].longitude
+								var reg = /.+?(省|市|自治区|自治州|县|区)/g;
+								that.city = wxMarkerData[0].address.match(reg)[1].replace('市', '')
+								that.$store.state.city = wxMarkerData[0].address.match(reg)[1].replace('市', '')
+								console.log(that.city)
+								resolve(data)
+							}
+							that.BMap.regeocoding({
+								fail: fail,
+								success: success
+							});
+						}
+					})
+				})
 
+
+			},
+			// 获取城市列表存入仓库
+			async getCity() {
+				let res = await getCityList({
+					sysAccount: 'SYSTEM'
+				})
+				this.$store.state.cityList = res.data.data
+				console.log('城市请求成功', res)
+				return Promise.resolve(res)
+			},
+			// 获取商圈信息
+			async getCirc() {
+				let res = await getCircList({
+					mobile: '15501876709',
+					city: this.city,
+					lat: this.latitude,
+					lon: this.longitude
+				})
+				this.circs = res.data.data
+				return Promise.resolve(res)
+			},
+			// 获取首页模块相关数据
+			async getHomeModule() {
+				let res = await getHomeModuleMessages({
+					circs: this.circs
+				})
+				this.couponHome = res.data.data.couponHome
+				this.newExclusiveHome = res.data.data.newExclusiveHome
+				this.seckillHome = res.data.data.seckillHome
+				this.groupHome = res.data.data.groupHome
+				this.fullDiscountHome = res.data.data.fullDiscountHome
+				this.buyGiftHome = res.data.data.buyGiftHome
+				this.fullGiftHome = res.data.data.fullGiftHome
+				this.CarouselImg = res.data.data.CarouselImg
+				return Promise.resolve(res)
+			},
+			// 获取更多活动信息
+			async getCircInfo() {
+				let res = await getCircCampaignInfo({
+					circs: this.circs,
+					campaignType: 4,
+					pageNum: 1,
+					pageSize: 10
+				})
+				console.log(res)
+				return Promise.resolve(res)
+			}
 		},
 		async onLoad() {
-			var that = this;
-			// 新建百度地图对象 
-			var BMap = new bmap.BMapWX({
-				ak: 'AQNjDWwRffaoqtGkNxfAQmwic9mtkS8w'
-			});
-
-
-			setTimeout(() => {
-				console.log(this.latitude, this.longitude)
-			}, 3000)
-			uni.authorize({
-				scope: 'scope.userLocation',
-				success() {
-					var fail = function(data) {
-						console.log(data)
-					};
-					var success = function(data) {
-						let wxMarkerData = data.wxMarkerData;
-						console.log(wxMarkerData)
-						that.markers = wxMarkerData
-						that.latitude = wxMarkerData[0].latitude
-						that.longitude = wxMarkerData[0].longitude
-						var reg = /.+?(省|市|自治区|自治州|县|区)/g;
-						that.city = wxMarkerData[0].address.match(reg)[1].replace('市','')
-					}
-					BMap.regeocoding({
-						fail: fail,
-						success: success
-					});
-				}
-			})
+			// 获取位置
+			await this.getLocation()
+			console.log('测试同步')
+			// 获取城市列表
+			await this.getCity()
+			console.log('测试同步2')
+			// 获取商圈
+			await this.getCirc()
+			console.log('测试同步3，经纬度为：', this.latitude, this.longitude)
+			// 获取首页相关模块
+			await this.getHomeModule()
+			// 获取更多活动信息
+			await this.getCircInfo()
 		},
 		onReady() {
 
@@ -297,14 +380,25 @@
 		// 触碰底部懒加载
 		onReachBottom: function() {
 			// 模拟请求数据
-			this.startPage++
-			if (this.endPage > this.startPage) {
+			if (this.cp === 'buy' && this.endPage1 > this.startPage1) {
+				this.status1 = 'loading'
+				this.startPage1++
 				setTimeout(() => {
 					let fakeAjaxList = JSON.parse(JSON.stringify(this.ajaxList))
-					this.showItemList = this.showItemList.concat(fakeAjaxList)
+					this.showItemList1 = this.showItemList1.concat(fakeAjaxList)
 				}, 1000)
 			} else {
-				this.status = "noMore"
+				this.status1 = 'noMore'
+			}
+			if (this.cp === 'give' && this.endPage2 > this.startPage2) {
+				this.status2 = 'loading'
+				this.startPage2++
+				setTimeout(() => {
+					let fakeAjaxList = JSON.parse(JSON.stringify(this.ajaxList))
+					this.showItemList2 = this.showItemList2.concat(fakeAjaxList)
+				}, 1000)
+			} else {
+				this.status2 = 'noMore'
 			}
 		}
 	}
@@ -348,6 +442,7 @@
 				justify-content: space-between;
 				box-sizing: border-box;
 				padding-right: 30rpx;
+
 				.searchBar {
 					display: flex;
 					width: 488rpx;
@@ -644,7 +739,6 @@
 				width: 100%;
 
 				.scorll-H-S-container {
-					width: 2200rpx;
 					height: 285.6rpx;
 					display: flex;
 					justify-content: space-between;
@@ -652,6 +746,7 @@
 					.scorll-H-S-container-item {
 						width: 204rpx;
 						height: 285.6rpx;
+						margin-right: 16rpx;
 					}
 				}
 			}

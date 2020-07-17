@@ -6,13 +6,13 @@
 		</view> -->
 		<view class="flexBox">
 			<view class="block-content">
-				<view class="block" v-for="item1 in list1 " :key="item1">
-					<show :type="item1"></show>
+				<view class="block" v-for="item1 in list1 " :key="item1.image">
+					<show :type="item1.type" :url="item1.image"></show>
 				</view>
 			</view>
 			<view class="block-content">
-				<view class="block" v-for="item2 in list2" :key="item2">
-					<show :type="item2"></show>
+				<view class="block" v-for="item2 in list2" :key="item2.image">
+					<show :type="item2.type" :url="item2.image"></show>
 				</view>
 			</view>
 		</view>
@@ -22,12 +22,18 @@
 <script>
 	import uniLoadMore from "@/components/uni-load-more/uni-load-more.vue"
 	import show from './show.vue'
-	import fengflow from "@/components/feng-flow/feng-flow.vue"
 	export default {
 		components: {
 			uniLoadMore,
-			show,
-			fengflow
+			show
+		},
+		data() {
+			return {
+				more: 'loading',
+				list1: [],
+				list2: [],
+				cloneList: []
+			}
 		},
 		props: {
 			showItemList: Array,
@@ -36,18 +42,11 @@
 				default: 'loading'
 			}
 		},
-		data() {
-			return {
-				more: 'loading',
-				list1: [],
-				list2: []
-			}
-		},
+
 		created() {
 			this.computedList()
 		},
 		methods: {
-			// 计算数组位置
 			computedList() {
 				// 切割数组
 				//计算起始位置和结束位
@@ -59,11 +58,13 @@
 				// this.list1 = this.showItemList.slice(0, list1End)
 				// this.list2 = this.showItemList.slice(list1End, list2End)
 				// 计算奇数列偶数列解决位置变换问题
-				for (let i = 0; i < this.showItemList.length; i++) {
+				this.cloneList = JSON.parse(JSON.stringify(this.showItemList))
+				console.log(this.cloneList)
+				for (let i = 0; i < this.cloneList.length; i++) {
 					if (i % 2 !== 0) {
-						this.list1.push(this.showItemList[i])
+						this.list1.push(this.cloneList[i])
 					} else {
-						this.list2.push(this.showItemList[i])
+						this.list2.push(this.cloneList[i])
 					}
 				}
 			}

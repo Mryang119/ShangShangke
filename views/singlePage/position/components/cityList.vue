@@ -1,16 +1,10 @@
 <template>
 	<view class="c_cityList">
 		<u-index-list :scrollTop="scrollTop">
-			<view v-for="(item, index) in indexList" :key="index">
-				<u-index-anchor :index="item" />
-				<view class="list-cell">
-					列表1
-				</view>
-				<view class="list-cell">
-					列表2
-				</view>
-				<view class="list-cell">
-					列表3
+			<view v-for="(item, index) in indexList" :key="item">
+				<u-index-anchor :index="item.key" />
+				<view class="list-cell" v-for="(item1,index1) in item.children" :key="item">
+					{{item1.name}}
 				</view>
 			</view>
 		</u-index-list>
@@ -22,22 +16,30 @@
 		data() {
 			return {
 				scrollTop: 0,
-				indexList: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U",
-					"V", "W", "X", "Y", "Z"
-				]
+				indexList: []
 			}
 		},
 		methods: {
 			onPageScroll(e) {
 				this.scrollTop = e.scrollTop;
 			}
+		},
+		created() {
+			const cityList = this.$store.state.cityList
+			cityList.forEach((item, index) => {
+				Object.keys(item).forEach((k) => {
+					this.indexList.push({
+						key: k,
+						children: cityList[index][k]
+					})
+				})
+			})
+			console.log(this.indexList)
 		}
 	}
 </script>
 
 <style lang="less">
-	
-
 	.c_cityList {
 
 
