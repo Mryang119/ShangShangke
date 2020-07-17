@@ -50,13 +50,34 @@
 				<view class="price">￥1.00</view>
 			</view>
 		</view>
-		
+		<!-- 底部优惠券模态框 -->
+		<u-popup v-model="show" mode="bottom" border-radius="52" closeable="true" safe-area-inset-bottom="true">
+			<view class="modalBox">
+				<view class="text">优惠</view>
+				<view class="coupon">
+					<!-- ￥100 -->
+					<view class="numCon">
+						<view class="context">￥</view>
+						<view class="num">100</view>
+					</view>
+					<!-- 满减/有效期/选中 -->
+					<view class="chooseCoupon">
+						<!-- 满减/有效期 -->
+						<view class="fullDelete">
+							<view class="full">满1000元可用</view>
+							<view class="fullTime">有效期至：2020-06-31</view>
+						</view>
+						<view class="chooseCon">
+							<image></image>
+						</view>
+					</view>
+				</view>
+				<!-- <view class="coupon"></view> -->
+			</view>
+		</u-popup>
 		<!-- 提示信息 -->
 		<view class="orderTip">
 			<image src="@/static/images/iconfont/tishi.png"></image>
-			<u-popup v-model="show">
-				<view>出淤泥而不染，濯清涟而不妖</view>
-			</u-popup>
 			<view class="text">本单即将7天后过期，请尽快使用！</view>
 		</view>
 		<view class="toBuy">
@@ -260,7 +281,88 @@
 				}
 			}
 		}
-
+		
+		// 底部优惠券模态框
+		.modalBox{
+			.text{
+				width: 750rpx;
+				height: 102rpx;
+				text-align: center;
+				font-size:36rpx;
+				font-family:PingFang SC;
+				font-weight:bold;
+				line-height:102rpx;
+				color:rgba(51,51,51,1);
+			}
+			// 优惠券
+			.coupon{
+				width: 690rpx;
+				height: 146rpx;
+				background:rgba(253,244,230,1);
+				margin-left:30rpx;
+				display: flex;
+				// ￥100
+				.numCon{
+					width: 198rpx;
+					height:146rpx ;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					
+					.context{
+						font-size:30rpx;
+						font-family:PingFang SC;
+						font-weight:bold;
+						line-height:36rpx;
+						color:rgba(255,47,47,1);
+						padding-top: 14rpx;
+					}
+					.num{
+						font-size:52rpx;
+						font-family:PingFang SC;
+						font-weight:bold;
+						line-height:62rpx;
+						color:rgba(255,47,47,1);
+					}
+				}
+				// 满减/有效期/选中
+				.chooseCoupon{
+					width: 492rpx;
+					height: 146rpx;
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					// 满减
+					.fullDelete{
+						height: 146rpx;
+						width: 280rpx;
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						.full{
+							width: 280rpx;
+							height: 32rpx;
+							font-size:28rpx;
+							font-family:PingFang SC;
+							font-weight:bold;
+							line-height:32rpx;
+							color:rgba(51,51,51,1);
+							margin-bottom: 18rpx;
+						}
+						.fullTime{
+							width: 280rpx;
+							height: 28rpx;
+							font-size:24rpx;
+							font-family:PingFang SC;
+							font-weight:400;
+							line-height:28rpx;
+							color:rgba(51,51,51,1);
+						}
+					}
+					// 选中
+				}
+			}
+		}
 		// 提示
 		.orderTip {
 			width: 750rpx;

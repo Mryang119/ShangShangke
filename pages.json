@@ -1,12 +1,6 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		// 确认订单
-		{
-			"path": "views/singlePage/confirmOrder/confirmOrder",
-			"style": {
-				"navigationBarTitleText": "确认订单"
-			}
-		},
+		
 		{
 			"path": "views/tabBar/index/index",
 			"style": {
@@ -130,6 +124,13 @@
 			"path": "views/singlePage/timeKillProductDetail/timeKillProductDetail",
 			"style": {
 				"navigationBarTitleText": "商品详情"
+			}
+		},
+		// 确认订单
+		{
+			"path": "views/singlePage/confirmOrder/confirmOrder",
+			"style": {
+				"navigationBarTitleText": "确认订单"
 			}
 		},
 		// 确认订单——选择优惠券
