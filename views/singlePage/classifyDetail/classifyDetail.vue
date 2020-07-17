@@ -75,8 +75,9 @@
 		.filter-container {
 			width: 750rpx;
 			box-sizing: border-box;
-			position: relative;
-
+			position: fixed;
+			top: 96rpx;
+			
 
 			.filter-box {
 				width: 100%;

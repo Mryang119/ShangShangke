@@ -122,7 +122,8 @@
 		}, {
 			"path": "views/singlePage/classifyDetail/classifyDetail",
 			"style": {
-				"navigationStyle": "custom"
+				// "navigationStyle": "custom",
+				"navigationBarTitleText": "分类结果"
 			}
 		}
 	],
