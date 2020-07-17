@@ -337,14 +337,19 @@
 				let res = await getHomeModuleMessages({
 					circs: this.circs
 				})
-				this.couponHome = res.data.data.couponHome
-				this.newExclusiveHome = res.data.data.newExclusiveHome
-				this.seckillHome = res.data.data.seckillHome
-				this.groupHome = res.data.data.groupHome
-				this.fullDiscountHome = res.data.data.fullDiscountHome
-				this.buyGiftHome = res.data.data.buyGiftHome
-				this.fullGiftHome = res.data.data.fullGiftHome
-				this.CarouselImg = res.data.data.CarouselImg
+				let datas = ['couponHome',
+					'newExclusiveHome',
+					'seckillHome',
+					'groupHome',
+					'fullDiscountHome',
+					'buyGiftHome',
+					'fullGiftHome',
+					'CarouselImg'
+				]
+				datas.forEach(item=>{
+					this[item] = res.data.data[item]
+				})
+				
 				return Promise.resolve(res)
 			},
 			// 获取更多活动信息

@@ -5,131 +5,153 @@
 			"path": "views/tabBar/index/index",
 			"style": {
 				"navigationBarTitleText": "上上客",
-				"navigationStyle": "custom"
+				"navigationStyle": "custom",
+				"disableScroll":true
 			}
 		},
 		{
 			"path": "views/singlePage/timeKillProductDetail/timeKillProductDetail",
 			"style": {
-				"navigationBarTitleText": "商品详情"
+				"navigationBarTitleText": "商品详情",
+				"disableScroll":true
 			}
 		},
 		{
 			"path": "views/singlePage/classify/classify",
 			"style": {
-				"navigationBarTitleText": "全部分类"
+				"navigationBarTitleText": "全部分类",
+				"disableScroll":true
 			}
 		},
 		{
 			"path": "views/tabBar/discover/discover",
 			"style": {
-				"navigationBarTitleText": "发现"
+				"navigationBarTitleText": "发现",
+				"disableScroll":true
+				
 			}
 		},
 		{
 			"path": "views/tabBar/store/store",
 			"style": {
-				"navigationBarTitleText": "店铺"
+				"navigationBarTitleText": "店铺",
+				"disableScroll":true
 			}
 		},
 		{
 			"path": "views/tabBar/my/my",
 			"style": {
 				"navigationBarTitleText": "我的",
-				"navigationStyle": "custom"
+				"navigationStyle": "custom",
+				"disableScroll":true
 			}
 		},
 		{
 			"path": "views/singlePage/search/search",
 			"style": {
-				"navigationBarTitleText": "搜索"
+				"navigationBarTitleText": "搜索",
+				"disableScroll":true
 			}
 		},
 		{
 			"path": "views/singlePage/position/position",
 			"style": {
-				"navigationBarTitleText": "定位"
+				"navigationBarTitleText": "定位",
+				"disableScroll":true
 			}
 		},
 		{
 			"path": "views/singlePage/timeKill/timeKill",
 			"style": {
-				"navigationBarTitleText": "限时秒杀"
+				"navigationBarTitleText": "限时秒杀",
+				"disableScroll":true
 			}
 		},
 		{
 			"path": "views/singlePage/getCoupon/getCoupon",
 			"style": {
-				"navigationBarTitleText": "每日领好券"
+				"navigationBarTitleText": "每日领好券",
+				"disableScroll":true
 			}
 		},
 		{
 			"path": "views/singlePage/buyGive/buyGive",
 			"style": {
-				"navigationBarTitleText": "买就送"
+				"navigationBarTitleText": "买就送",
+				"disableScroll":true
 			}
 		},
 		{
 			"path": "views/singlePage/dailyGoods/dailyGoods",
 			"style": {
-				"navigationBarTitleText": "每日一品"
+				"navigationBarTitleText": "每日一品",
+				"disableScroll":true
 			}
 		},
 		{
 			"path": "views/singlePage/groupPurchase/groupPurchase",
 			"style": {
-				"navigationBarTitleText": "超值团购"
+				"navigationBarTitleText": "超值团购",
+				"disableScroll":true
 			}
 		},
 		{
 			"path": "views/singlePage/everydayRob/everydayRob",
 			"style": {
-				"navigationBarTitleText": "天天免费抢"
+				"navigationBarTitleText": "天天免费抢",
+				"disableScroll":true
 			}
 		},
 		// 我的订单
 		{
 			"path": "views/singlePage/myOrder/myOrder",
 			"style": {
-				"navigationBarTitleText": "我的订单"
+				"navigationBarTitleText": "我的订单",
+				"disableScroll":true
 			}
 		},
 		// 我的卡券
 		{
 			"path": "views/singlePage/myCoupon/myCoupon",
 			"style": {
-				"navigationBarTitleText": "我的卡券"
+				"navigationBarTitleText": "我的卡券",
+				"disableScroll":true
 			}
 		},
 		{
 			"path": "views/singlePage/myCollect/myCollect",
 			"style": {
-				"navigationBarTitleText": "我的收藏"
+				"navigationBarTitleText": "我的收藏",
+				"disableScroll":true
 			}
 		},
 		{
 			"path": "views/singlePage/mySpellGroup/mySpellGroup",
 			"style": {
-				"navigationBarTitleText": "我的拼团"
+				"navigationBarTitleText": "我的拼团",
+				"disableScroll":true
 			}
 		},
 		{
 			"path": "views/singlePage/orderDetail/orderDetail",
 			"style": {
-				"navigationBarTitleText": "订单详情"
+				"navigationBarTitleText": "订单详情",
+				"disableScroll":true
 			}
 		},
 		{
 			"path": "views/singlePage/classifyDetail/classifyDetail",
 			"style": {
-				"navigationStyle": "custom"
+				"navigationStyle": "custom",
+				"disableScroll":true
 			}
 		},
 		// 我的客服
 		{
 			"path": "views/singlePage/myService/myService",
 			"style": {
-				"navigationBarTitleText": "我的客服"
+				"navigationBarTitleText": "我的客服",
+				"disableScroll":true
 			}
 		},
 		// 确认订单
