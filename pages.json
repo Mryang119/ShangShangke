@@ -1,10 +1,6 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 
-<<<<<<< HEAD
-=======
-		// 限时秒杀---商品详情
->>>>>>> b362a216f1314d27b9de1fb21be2b546c00091e2
 		{
 			"path": "views/tabBar/index/index",
 			"style": {
@@ -119,7 +115,7 @@
 		},
 		// 限时秒杀---商品详情
 		{
-<<<<<<< HEAD
+
 			"path": "views/singlePage/timeKillProductDetail/timeKillProductDetail",
 			"style": {
 				"navigationBarTitleText": "商品详情"
@@ -127,15 +123,10 @@
 		}, {
 			"path": "views/singlePage/classifyDetail/classifyDetail",
 			"style": {
-				// "navigationStyle": "custom",
 				"navigationBarTitleText": "分类结果"
-=======
-			"path": "views/singlePage/classifyDetail/classifyDetail",
-			"style": {
-				"navigationStyle": "custom"
 			}
+
 		},
-		
 		// 确认订单
 		{
 			"path": "views/singlePage/confirmOrder/confirmOrder",
@@ -155,7 +146,6 @@
 			"path": "views/singlePage/myService/myService",
 			"style": {
 				"navigationBarTitleText": "我的客服"
->>>>>>> b362a216f1314d27b9de1fb21be2b546c00091e2
 			}
 		}
 
@@ -199,7 +189,7 @@
 	},
 	"easycom": {
 		"autoscan": true,
-		"custom": {// 匹配node_modules内的vue文件
+		"custom": { // 匹配node_modules内的vue文件
 			"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
 		}
 	}

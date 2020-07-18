@@ -18,7 +18,7 @@ const store = new Vuex.Store({
 		},
 		// 表单是否高亮
 		isActiveForm: {
-			className: true,
+			className: false,
 			nearbys: false,
 			smartSort: false,
 			filters: false
