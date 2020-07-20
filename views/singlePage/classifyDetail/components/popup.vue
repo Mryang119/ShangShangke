@@ -5,7 +5,7 @@
 			<view class="popup-mask"  :style="{top:elScrollTop+'px'}" @click="close">
 
 			</view>
-			<view class="popup-container"  :style="{height:height+'rpx',top:top+'rpx'}">
+			<view class="popup-container"  :style="{top:top+'rpx'}">
 				<slot>默认内容</slot>
 			</view>
 		</view>
