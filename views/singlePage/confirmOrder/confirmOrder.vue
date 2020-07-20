@@ -37,7 +37,7 @@
 
 			</navigator>
 			<!-- 店铺优惠 -->
-			<view class="goodsCoupon">
+			<view class="goodsCoupon" @click="isShow">
 				<view class="text">店铺优惠</view>
 				<view class="couponCon">
 					<view class="num">暂无可用</view>
@@ -68,11 +68,36 @@
 							<view class="fullTime">有效期至：2020-06-31</view>
 						</view>
 						<view class="chooseCon">
-							<image></image>
+							<u-icon :name="IconType ?'checkmark-circle-fill':'checkmark-circle'" color="#FF2F2F" size="38" @click="toggleIcon"></u-icon>
 						</view>
 					</view>
+					<!-- 左上角商品类型 -->
+					<view class="goodsType">
+						<view class="goodsText">全品类可用</view>
+					</view>
 				</view>
-				<!-- <view class="coupon"></view> -->
+				<view class="coupon">
+					<!-- ￥100 -->
+					<view class="numCon">
+						<view class="context">￥</view>
+						<view class="num">100</view>
+					</view>
+					<!-- 满减/有效期/选中 -->
+					<view class="chooseCoupon">
+						<!-- 满减/有效期 -->
+						<view class="fullDelete">
+							<view class="full">满1000元可用</view>
+							<view class="fullTime">有效期至：2020-06-31</view>
+						</view>
+						<view class="chooseCon">
+							<u-icon :name="IconType ?'checkmark-circle-fill':'checkmark-circle'" color="#FF2F2F" size="38" @click="toggleIcon"></u-icon>
+						</view>
+					</view>
+					<!-- 左上角商品类型 -->
+					<view class="goodsType">
+						<view class="goodsText">全品类可用</view>
+					</view>
+				</view>
 			</view>
 		</u-popup>
 		<!-- 提示信息 -->
@@ -91,10 +116,20 @@
 	export default {
 		data() {
 			return {
-				value: 1,
-				bgColor: '#FFFFFF',
-				chooseCoupon: '../../singlePage/chooseCoupon/chooseCoupon',
-				show:true
+				bgColor: '#FFFFFF', // 商品数量步进器背景颜色
+				chooseCoupon: '../../singlePage/chooseCoupon/chooseCoupon', // 平台优惠券跳转地址
+				show:false, // 控制模态框显示隐藏
+				IconType:false // 店铺优惠券的选中的状态
+			}
+		},
+		methods:{
+			// 控制店铺优惠券的选中状态
+			toggleIcon(){
+				this.IconType = !this.IconType
+			},
+			// 控制模态框的显示隐藏
+			isShow(){
+				this.show = !this.show
 			}
 		}
 	}
@@ -301,6 +336,8 @@
 				background:rgba(253,244,230,1);
 				margin-left:30rpx;
 				display: flex;
+				margin-bottom: 20rpx;
+				position: relative;
 				// ￥100
 				.numCon{
 					width: 198rpx;
@@ -332,6 +369,7 @@
 					display: flex;
 					align-items: center;
 					justify-content: space-between;
+					padding-right: 30rpx;
 					// 满减
 					.fullDelete{
 						height: 146rpx;
@@ -360,6 +398,27 @@
 						}
 					}
 					// 选中
+					
+				}
+				// 左上角定位商品类型
+				.goodsType{
+					width: 174rpx;
+					height: 30rpx;
+					background-image: url(../../../static/images/Product/youhuiquanTextBg.png);
+					background-size: 174rpx 30rpx;
+					background-repeat: no-repeat;
+					position: absolute;
+					left: 0;
+					top: 0;
+					.goodsText{
+						font-size:20rpx;
+						font-family:PingFang SC;
+						font-weight:400;
+						line-height:30rpx;
+						color:rgba(157,73,0,1);
+						text-align: center;
+						
+					}
 				}
 			}
 		}
