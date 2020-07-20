@@ -11,14 +11,14 @@ const store = new Vuex.Store({
 		filterForm,
 		// 选中的表单存贮数据
 		selectFilterForm: {
-			className: '分类', // 不是分类就高亮
-			nearbys: [], // 长度大于等于2就高亮
+			className: '无', // 不是无就高亮
+			nearbys: '附近', // 长度大于等于2就高亮
 			smartSort: '智能排序', // 不是智能排序就高亮	
 			filters: [] // 数组长度不等于0就高亮
 		},
 		// 表单是否高亮
 		isActiveForm: {
-			className: true,
+			className: false,
 			nearbys: false,
 			smartSort: false,
 			filters: false
@@ -37,32 +37,50 @@ const store = new Vuex.Store({
 			switch (type) {
 				// 处理分类
 				case 'className':
-					state.className = value
+					state.selectFilterForm.className = value
 					break;
-					// 处理距离
+					// 处理附近
 				case 'nearbys':
-					let length = state.selectFilterForm.nearbys.length
-					let nearbys = state.selectFilterForm.nearbys
-					// 数组长度小于等于2的时候代表存有操作空间，并且数组不存在当前value，
-					// 如果数组含有value那么就要进行自身剔除
-					if (length<=2 && nearbys.includes(value)!==false) {
-						nearbys.push(value)
-					} else if(length<=2 && nearbys.includes(value)===true){
-						targetIndex = nearbys.indexOf(value)
-						nearbys.splice(targetIndex,1)
-					}
+					// let length = state.selectFilterForm.nearbys.length
+					// let nearbys = state.selectFilterForm.nearbys
+					// // 数组长度小于等于2的时候代表存有操作空间，并且数组不存在当前value，
+					// // 如果数组含有value那么就要进行自身剔除
+					// if (length < 2 && nearbys.includes(value) !== false) {
+					// 	nearbys.push(value)
+					// } else if (length <= 2 && nearbys.includes(value) === true) {
+					// 	targetIndex = nearbys.indexOf(value)
+					// 	nearbys.splice(targetIndex, 1)
+					// }
+					state.selectFilterForm.nearbys = value
 					break;
 					// 处理排序
 				case 'smartSort':
+					state.selectFilterForm.smartSort = value
+					break;
+				case 'filters':
 
 			}
 		},
-		active(state,payload){
+		active(state, payload) {
 			const {
 				type
 			} = payload
-			console.log(type)
 			state.isActiveForm[type] = true
+		},
+		testActive(state) {
+			for (let key in state.isActiveForm) {
+				if (state.selectFilterForm[key] == '无') {
+					state.isActiveForm[key] = false
+				} else if (state.selectFilterForm[key] == '附近') {
+					state.isActiveForm[key] = false
+				} else if (state.selectFilterForm[key] == '智能排序') {
+					state.isActiveForm[key] = false
+				} else if (state.selectFilterForm[key].length === 0) {
+					state.isActiveForm[key] = false
+				}
+			}
+
+
 		}
 	},
 	actions: {}

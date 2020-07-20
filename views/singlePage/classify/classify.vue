@@ -178,8 +178,7 @@
 					.item-button-container {
 						display: flex;
 						flex-wrap: wrap;
-						justify-content: space-between;
-
+						margin-left: -14rpx;
 						.item-button {
 							margin-bottom: 14rpx;
 							background-color: #F5F5F5;
@@ -190,6 +189,7 @@
 							font-size: 24rpx;
 							text-align: center;
 							line-height: 60rpx;
+							margin-right: 14rpx;
 						}
 					}
 				}
