@@ -1,10 +1,10 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		// 确认订单——选择优惠券
+		// 确认订单
 		{
-			"path": "views/singlePage/chooseCoupon/chooseCoupon",
+			"path": "views/singlePage/confirmOrder/confirmOrder",
 			"style": {
-				"navigationBarTitleText": "选择优惠券"
+				"navigationBarTitleText": "确认订单"
 			}
 		},
 		{
@@ -126,14 +126,14 @@
 				"navigationBarTitleText": "商品详情"
 			}
 		}, 
-		// 确认订单
+		
+		// 确认订单——选择优惠券
 		{
-			"path": "views/singlePage/confirmOrder/confirmOrder",
+			"path": "views/singlePage/chooseCoupon/chooseCoupon",
 			"style": {
-				"navigationBarTitleText": "确认订单"
+				"navigationBarTitleText": "选择优惠券"
 			}
 		},
-		
 		{
 			"path": "views/singlePage/classifyDetail/classifyDetail",
 			"style": {
