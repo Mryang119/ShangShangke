@@ -24,7 +24,7 @@
 			<view class="goodsNum">
 				<view class="text">购买数量</view>
 				<view class="num">
-					<u-number-box :input-width="80" :input-height="56" :min="1" :disabled-input="true" :bg-color="bgColor"></u-number-box>
+					<u-number-box :input-width="80" :input-height="58" :min="1" :disabled-input="true" :bg-color="bgColor"></u-number-box>
 				</view>
 			</view>
 			<!-- 平台优惠券 -->
@@ -54,7 +54,7 @@
 		<u-popup v-model="show" mode="bottom" border-radius="52" closeable="true" safe-area-inset-bottom="true">
 			<view class="modalBox">
 				<view class="text">优惠</view>
-				<view class="coupon">
+				<view class="coupon" v-for="(item,index) in list" :key="index">
 					<!-- ￥100 -->
 					<view class="numCon">
 						<view class="context">￥</view>
@@ -68,7 +68,7 @@
 							<view class="fullTime">有效期至：2020-06-31</view>
 						</view>
 						<view class="chooseCon">
-							<u-icon :name="IconType ?'checkmark-circle-fill':'checkmark-circle'" color="#FF2F2F" size="38" @click="toggleIcon"></u-icon>
+							<u-icon :name="item.IconType ?'checkmark-circle-fill':'checkmark-circle'" color="#FF2F2F" size="38" @click="toggleIcon(item,index)"></u-icon>
 						</view>
 					</view>
 					<!-- 左上角商品类型 -->
@@ -76,28 +76,7 @@
 						<view class="goodsText">全品类可用</view>
 					</view>
 				</view>
-				<view class="coupon">
-					<!-- ￥100 -->
-					<view class="numCon">
-						<view class="context">￥</view>
-						<view class="num">100</view>
-					</view>
-					<!-- 满减/有效期/选中 -->
-					<view class="chooseCoupon">
-						<!-- 满减/有效期 -->
-						<view class="fullDelete">
-							<view class="full">满1000元可用</view>
-							<view class="fullTime">有效期至：2020-06-31</view>
-						</view>
-						<view class="chooseCon">
-							<u-icon :name="IconType ?'checkmark-circle-fill':'checkmark-circle'" color="#FF2F2F" size="38" @click="toggleIcon"></u-icon>
-						</view>
-					</view>
-					<!-- 左上角商品类型 -->
-					<view class="goodsType">
-						<view class="goodsText">全品类可用</view>
-					</view>
-				</view>
+				
 			</view>
 		</u-popup>
 		<!-- 提示信息 -->
@@ -119,13 +98,22 @@
 				bgColor: '#FFFFFF', // 商品数量步进器背景颜色
 				chooseCoupon: '../../singlePage/chooseCoupon/chooseCoupon', // 平台优惠券跳转地址
 				show:false, // 控制模态框显示隐藏
-				IconType:false // 店铺优惠券的选中的状态
+				IconType:false, // 店铺优惠券的选中的状态
+				list:[{},{}] // 店铺优惠券
 			}
 		},
 		methods:{
 			// 控制店铺优惠券的选中状态
-			toggleIcon(){
+			toggleIcon(item,index){
 				this.IconType = !this.IconType
+				console.log(item,index)
+				let list = this.list
+				list.map(item=>{
+					item.IconType = false
+				})
+				list[index].IconType = true
+				this.list = list
+				
 			},
 			// 控制模态框的显示隐藏
 			isShow(){
@@ -138,7 +126,6 @@
 <style lang="less">
 	.orderContainer {
 		width: 750rpx;
-		height: 1448rpx;
 		background: #F6F6F6;
 		padding-top: 20rpx;
 
@@ -250,6 +237,7 @@
 					line-height: 58rpx;
 					height: 58rpx;
 					background: #F6F6F6;
+					border:2rpx solid rgba(232,232,232,1);;
 				}
 			}
 
