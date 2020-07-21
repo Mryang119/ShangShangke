@@ -1,6 +1,16 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 
+<<<<<<< HEAD
+=======
+		// 限时秒杀---商品详情
+		{
+			"path": "views/singlePage/timeKillProductDetail/timeKillProductDetail",
+			"style": {
+				"navigationBarTitleText": "商品详情"
+			}
+		}, 
+>>>>>>> 17961b0d93ae246b2df56250961b34244e27121e
 		{
 			"path": "views/tabBar/index/index",
 			"style": {
@@ -120,13 +130,18 @@
 				"navigationBarTitleText": "订单详情"
 			}
 		},
-		// 限时秒杀---商品详情
+		// 确认订单
 		{
+<<<<<<< HEAD
 
 			"path": "views/singlePage/timeKillProductDetail/timeKillProductDetail",
+=======
+			"path": "views/singlePage/confirmOrder/confirmOrder",
+>>>>>>> 17961b0d93ae246b2df56250961b34244e27121e
 			"style": {
-				"navigationBarTitleText": "商品详情"
+				"navigationBarTitleText": "确认订单"
 			}
+<<<<<<< HEAD
 
 		},
 
@@ -134,17 +149,25 @@
 
 		{
 			"path": "views/singlePage/classifyDetail/classifyDetail",
-			"style": {
-				"navigationBarTitleText": "分类结果"
-			}
-
+=======
 		},
-		// 确认订单
-
+		
 		{
 			"path": "views/singlePage/chooseCoupon/chooseCoupon",
+>>>>>>> 17961b0d93ae246b2df56250961b34244e27121e
 			"style": {
 				"navigationBarTitleText": "选择优惠券"
+			}
+		},
+<<<<<<< HEAD
+		// 确认订单
+
+=======
+>>>>>>> 17961b0d93ae246b2df56250961b34244e27121e
+		{
+			"path": "views/singlePage/toPlay/toPlay",
+			"style": {
+				"navigationBarTitleText": "支付"
 			}
 		},
 

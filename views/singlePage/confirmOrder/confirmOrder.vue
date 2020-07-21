@@ -4,19 +4,19 @@
 		<!-- 店名/商品/数量/券/优惠/金额 -->
 		<view class="orderNews">
 			<!-- 店名 -->
-			<view class="shopName">韩国年糕料理（海岸城店）</view>
+			<view class="shopName">{{shopName}}</view>
 			<!-- 商品信息 -->
 			<view class="goods">
 				<!-- 商品头像图 -->
 				<view class="Img">
-					<image src="@/static/images/Product/shangpintu.png"></image>
+					<image :src="shopImg"></image>
 				</view>
 				<!--  商品名字和价格-->
 				<view class="shopCon">
 					<view class="conName">限时新品双人冰爽餐</view>
 					<view class="priceCon">
-						<view class="price">￥1.00</view>
-						<view class="priceDelete">￥399.00</view>
+						<view class="price">￥{{nowPrice}}</view>
+						<view class="priceDelete">￥{{beforePrice}}</view>
 					</view>
 				</view>
 			</view>
@@ -31,7 +31,7 @@
 			<navigator class="goodsCoupon" :url="chooseCoupon">
 				<view class="text">平台优惠券</view>
 				<view class="couponCon">
-					<view class="num">暂无可用</view>
+					<view class="num">{{platformCoupon}}</view>
 					<image src="@/static/images/iconfont/more.png"></image>
 				</view>
 
@@ -40,7 +40,7 @@
 			<view class="goodsCoupon" @click="isShow">
 				<view class="text">店铺优惠</view>
 				<view class="couponCon">
-					<view class="num">暂无可用</view>
+					<view class="num">{{shopCoupon}}</view>
 					<image src="@/static/images/iconfont/more.png"></image>
 				</view>
 			</view>
@@ -54,7 +54,7 @@
 		<u-popup v-model="show" mode="bottom" border-radius="52" closeable="true" safe-area-inset-bottom="true">
 			<view class="modalBox">
 				<view class="text">优惠</view>
-				<orderCoupon />
+				<orderCoupon />  
 			</view>
 		</u-popup>
 		<!-- 提示信息 -->
@@ -62,21 +62,41 @@
 			<image src="@/static/images/iconfont/tishi.png"></image>
 			<view class="text">本单即将7天后过期，请尽快使用！</view>
 		</view>
+<<<<<<< HEAD
 		<view class="toBuy" @click="toPay">
 			<view class="price">￥79.00</view>
+=======
+		<!-- <navigator class="toBuy" :url="toPlay"> -->
+		<view class="toBuy">
+			<view class="price">￥{{sumPrice}}</view>
+>>>>>>> 17961b0d93ae246b2df56250961b34244e27121e
 			<view class="text">去付款</view>
 		</view>
 	</view>
 </template>
 
 <script>
-	import orderCoupon from '../../../src/publicComponents/orderCoupon.vue'
+	import orderCoupon from '../../../src/publicComponents/orderCoupon.vue' 
 	export default {
 		data() {
 			return {
 				bgColor: '#FFFFFF', // 商品数量步进器背景颜色
 				chooseCoupon: '../../singlePage/chooseCoupon/chooseCoupon', // 平台优惠券跳转地址
+<<<<<<< HEAD
 				show: false, // 控制模态框显示隐藏
+=======
+				// toPlay:'../../singlePage/toPlay/toPlay',  // 支付页面
+				show:false, // 控制模态框显示隐藏
+				shopName:'韩国年糕料理（海岸城店）', // 店名
+				shopImg:'../../../static/images/Product/shangpintu.png', //商品图片
+				shopType:'限时新品双人冰爽餐', // 商品类型
+				nowPrice:'1.00',  // 现在的价格
+				beforePrice:'399.00',  // 以前的价格
+				platformCoupon:'暂无可用',  // 平台优惠券
+				shopCoupon:'暂无可用',  // 店铺优惠
+				sumPrice:'79.00'  //  总的金额
+				
+>>>>>>> 17961b0d93ae246b2df56250961b34244e27121e
 			}
 		},
 		components: {

@@ -5,28 +5,40 @@
 		<view class="swiperWrap">
 			<u-swiper :list="list" mode="number" indicator-pos="bottomRight" class="swiper" height="550"></u-swiper>
 		</view>
-		<!-- 价格和活动倒计时 -->
-		<view class="price">
-			<view class="priceNum">
-				<!-- 活动价格 -->
-				<span class="priceMoney">
-					<span class="priceMoneyIcon">￥</span>
-					<span class="priceMoneyNum">299.00</span>
-				</span>
-				<!-- 活动前价格 -->
-				<span class="priceDelete">￥11.00</span>
-			</view>
-			<view class="priceTime">
-				<span class="priceText">距结束还剩</span>
-				<!-- 倒数 -->
-				<view class="priceReciprocal">
-					<u-count-down :timestamp="86400" separator="colon" separator-size="28" separator-color="#606266" font-size="24"
-					 color="#FFFFFF" bg-color="#FE3B2B" :show-days="showDays"></u-count-down>
+		<!-- 限时秒杀的商品详情 -->
+		<view class="timeKillProductDetail">
+			<view class="price">
+				<view class="priceNum">
+					<span class="priceMoney">
+						<span class="priceMoneyIcon">￥</span>
+						<span class="priceMoneyNum">299.00</span>
+					</span>
+					<span class="priceDelete">￥11.00</span>
+				</view>
+				<view class="priceTime">
+					<span class="priceText">距结束还剩</span>
+					<view class="priceReciprocal">
+						<u-count-down :timestamp="86400" separator="colon" separator-size="28" separator-color="#606266" font-size="24"
+						 color="#FFFFFF" bg-color="#FE3B2B" :show-days="showDays"></u-count-down>
+					</view>
 				</view>
 			</view>
+			<view class="productName">抹茶柚子千层 抹茶柚子千层 新鲜出炉 抹茶柚子千层 抹茶柚子千层 新鲜出炉</view>	
 		</view>
-		<!-- 商品名称和简介 -->
-		<view class="productName">抹茶柚子千层 抹茶柚子千层 新鲜出炉 抹茶柚子千层 抹茶柚子千层 新鲜出炉</view>
+		
+		
+		<!-- 每日一品的商品详情 -->
+		<!-- <view class="dailyGoodsProductDetail">
+			<view class="dailyGoodsPrice">
+				<view class="priceCon">
+					<view class="nowPrice">￥299.00</view>
+					<view class="beforePrice">￥11.00</view>
+				</view>
+				<view class="sale">月售2333</view>
+			</view>
+			<view class="dailyGoodsText">抹茶柚子千层 抹茶柚子千层 新鲜出炉</view>
+		</view> -->
+		
 		<!-- 评分和进店逛逛 -->
 		<view class="inShop">
 			<view class="inShopContainer">
@@ -55,6 +67,7 @@
 				<button type="default" plain="true">进店逛逛</button>
 			</view>
 		</view>
+		
 		<!-- 优惠券 -->
 		<view class="discount">
 			<!-- 优惠 -->
@@ -89,6 +102,7 @@
 				<view class="tip">线上购买后前往门店，餐前出示订单券码</view>
 			</view>
 		</view>
+		
 		<!-- 商品详情 -->
 		<view class="goodDetail">
 			<view class="text">商品详情</view>
@@ -100,6 +114,7 @@
 				</view>
 			</view>
 		</view>
+		
 		<!-- 温馨提示 -->
 		<view class="warmTip">
 			<view class="text">温馨提示</view>
@@ -136,6 +151,7 @@
 				</view>
 			</view>
 		</view>
+		
 		<!-- 商品导航 -->
 		<view class="goodsNav">
 			<!-- 客服/分享/收藏 -->
@@ -202,7 +218,7 @@
 <style lang="less">
 	.productDetail {
 		width: 750rpx;
-		height: 2584rpx;
+		height: 2500rpx;
 		background-color: #F6F6F6;
 		position: relative;
 
@@ -222,95 +238,149 @@
 			}
 		}
 
-		// 价格和活动倒计时
-		.price {
-			width: 750rpx;
-			height: 128rpx;
-			padding: 0 30rpx;
-			background: url('@/static/images/Product/shangpinxiangqingbgd.png');
-			background-size: 750rpx 128rpx;
-			background-repeat: no-repeat;
-			display: flex;
-			justify-content: space-between;
-
-			// 价格
-			.priceNum {
+		// 限时秒杀-商品详情
+		.timeKillProductDetail{
+			// 价格和活动倒计时
+			.price {
+				width: 750rpx;
 				height: 128rpx;
+				padding: 0 30rpx;
+				background: url('@/static/images/Product/shangpinxiangqingbgd.png');
+				background-size: 750rpx 128rpx;
+				background-repeat: no-repeat;
 				display: flex;
-				flex-direction: column;
-				justify-content: center;
-
-				// 活动价格
-				.priceMoney {
-					margin-bottom: 8rpx;
-
-					// ￥
-					.priceMoneyIcon {
-						font-size: 30rpx;
-						font-family: PingFang SC;
-						font-weight: bold;
-						line-height: 36rpx;
-						color: rgba(255, 255, 255, 1);
+				justify-content: space-between;
+			
+				// 价格
+				.priceNum {
+					height: 128rpx;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+			
+					// 活动价格
+					.priceMoney {
+						margin-bottom: 8rpx;
+			
+						// ￥
+						.priceMoneyIcon {
+							font-size: 30rpx;
+							font-family: PingFang SC;
+							font-weight: bold;
+							line-height: 36rpx;
+							color: rgba(255, 255, 255, 1);
+						}
+			
+						.priceMoneyNum {
+							font-size: 44rpx;
+							font-family: PingFang SC;
+							font-weight: bold;
+							line-height: 52rpx;
+							color: rgba(255, 255, 255, 1);
+						}
+			
 					}
-
-					.priceMoneyNum {
-						font-size: 44rpx;
+			
+					// 活动前价格
+					.priceDelete {
+						font-size: 24rpx;
 						font-family: PingFang SC;
-						font-weight: bold;
-						line-height: 52rpx;
+						font-weight: 400;
+						line-height: 28rpx;
 						color: rgba(255, 255, 255, 1);
+						text-decoration: line-through;
 					}
-
 				}
-
-				// 活动前价格
-				.priceDelete {
-					font-size: 24rpx;
-					font-family: PingFang SC;
-					font-weight: 400;
-					line-height: 28rpx;
-					color: rgba(255, 255, 255, 1);
-					text-decoration: line-through;
+			
+				// 时间
+				.priceTime {
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					margin-right: 15rpx;
+			
+					// 距结束还剩
+					.priceText {
+						font-size: 12px;
+						font-family: PingFang SC;
+						font-weight: 400;
+						line-height: 14px;
+						color: rgba(255, 57, 44, 1);
+						margin-bottom: 10rpx;
+					}
+			
+					// 倒计时
+					.priceReciprocal {}
 				}
 			}
-
-			// 时间
-			.priceTime {
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-				margin-right: 15rpx;
-
-				// 距结束还剩
-				.priceText {
-					font-size: 12px;
-					font-family: PingFang SC;
-					font-weight: 400;
-					line-height: 14px;
-					color: rgba(255, 57, 44, 1);
-					margin-bottom: 10rpx;
-				}
-
-				// 倒计时
-				.priceReciprocal {}
+			
+			// 商品名称和简介
+			.productName {
+				width: 750rpx;
+				height: 132rpx;
+				font-size: 28rpx;
+				font-family: PingFang SC;
+				font-weight: bold;
+				line-height: 40rpx;
+				color: rgba(51, 51, 51, 1);
+				background-color: #FFF;
+				padding: 30rpx;
+				margin-bottom: 20rpx;
 			}
+			
 		}
-
-		// 商品名称和简介
-		.productName {
-			width: 750rpx;
-			height: 132rpx;
-			font-size: 28rpx;
-			font-family: PingFang SC;
-			font-weight: bold;
-			line-height: 40rpx;
-			color: rgba(51, 51, 51, 1);
-			background-color: #FFF;
-			padding: 30rpx;
-			margin-bottom: 20rpx;
-		}
-
+		
+		// 每日一品-商品详情
+		// .dailyGoodsProductDetail{
+		// 	width: 750rpx;
+		// 	height: 164rpx;
+		// 	background:rgba(255,255,255,1);
+		// 	padding: 0 30rpx;
+		// 	margin-bottom: 20rpx;
+		// 	padding-top: 30rpx;
+		// 	.dailyGoodsPrice{
+		// 		height: 52rpx;
+		// 		display: flex;
+		// 		align-items: center;
+		// 		margin-bottom: 20rpx;
+		// 		justify-content: space-between;
+		// 		.priceCon{
+		// 			display: flex;
+		// 			.nowPrice{
+		// 				font-size:44rpx;
+		// 				font-family:PingFang SC;
+		// 				font-weight:bold;
+		// 				color:rgba(241,0,0,1);
+		// 				margin-right: 20rpx;
+		// 			}
+		// 			.beforePrice{
+		// 				font-size:24rpx;
+		// 				font-family:PingFang SC;
+		// 				font-weight:400;
+		// 				color:rgba(169,169,169,1);
+		// 				text-decoration: line-through;
+		// 				margin-top: 18rpx;
+		// 			}
+		// 		}
+		// 		.sale{
+		// 			font-size:24rpx;
+		// 			font-family:PingFang SC;
+		// 			font-weight:400;
+		// 			line-height:28rpx;
+		// 			color:rgba(133,133,133,1);
+		// 		}
+		// 	}
+		// 	.dailyGoodsText{
+		// 		height: 32rpx;
+		// 		font-size:28rpx;
+		// 		font-family:PingFang SC;
+		// 		font-weight:bold;
+		// 		line-height:32rpx;
+		// 		color:rgba(51,51,51,1);
+		// 	}
+		// }
+		
 		// 商家评分和进店逛逛
 		.inShop {
 			width: 750rpx;
