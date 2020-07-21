@@ -62,7 +62,7 @@
 			<image src="@/static/images/iconfont/tishi.png"></image>
 			<view class="text">本单即将7天后过期，请尽快使用！</view>
 		</view>
-		<view class="toBuy">
+		<view class="toBuy" @click="toPay">
 			<view class="price">￥79.00</view>
 			<view class="text">去付款</view>
 		</view>
@@ -76,17 +76,34 @@
 			return {
 				bgColor: '#FFFFFF', // 商品数量步进器背景颜色
 				chooseCoupon: '../../singlePage/chooseCoupon/chooseCoupon', // 平台优惠券跳转地址
-				show:false, // 控制模态框显示隐藏
+				show: false, // 控制模态框显示隐藏
 			}
 		},
-		components:{
+		components: {
 			orderCoupon
 		},
-		methods:{
-			
+		methods: {
+
 			// 控制模态框的显示隐藏
-			isShow(){
+			isShow() {
 				this.show = !this.show
+			},
+			// 支付逻辑
+			toPay() {
+				uni.requestPayment({
+					provider: 'wxpay',
+					timeStamp: String(Date.now()),
+					nonceStr: 'A1B2C3D4E5',
+					package: 'prepay_id=wx20180101abcdefg',
+					signType: 'MD5',
+					paySign: '',
+					success: function(res) {
+						console.log('success:' + JSON.stringify(res));
+					},
+					fail: function(err) {
+						console.log('fail:' + JSON.stringify(err));
+					}
+				})
 			}
 		}
 	}
@@ -207,7 +224,8 @@
 					line-height: 58rpx;
 					height: 58rpx;
 					background: #F6F6F6;
-					border:2rpx solid rgba(232,232,232,1);;
+					border: 2rpx solid rgba(232, 232, 232, 1);
+					;
 				}
 			}
 
@@ -274,22 +292,25 @@
 				}
 			}
 		}
-		
+
 		// 底部优惠券模态框
-		.modalBox{
+		.modalBox {
 			padding: 0 30rpx;
-			.text{
+
+			.text {
 				width: 690rpx;
 				height: 102rpx;
 				text-align: center;
-				font-size:36rpx;
-				font-family:PingFang SC;
-				font-weight:bold;
-				line-height:102rpx;
-				color:rgba(51,51,51,1);
+				font-size: 36rpx;
+				font-family: PingFang SC;
+				font-weight: bold;
+				line-height: 102rpx;
+				color: rgba(51, 51, 51, 1);
 			}
+
 			// 优惠券
 		}
+
 		// 提示
 		.orderTip {
 			width: 750rpx;
