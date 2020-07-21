@@ -104,7 +104,7 @@
 						<text class="time-item m">22</text>
 						<text class="time-item s">22</text>
 					</view>
-					<more></more>
+					<more url="../../singlePage/timekillDetail/timekillDetail"></more>
 				</view>
 				<scroll-view scroll-x="true" class="scorll-H-S">
 					<!-- 宽度 商品数量*组件宽度+总边距 -->
@@ -330,6 +330,9 @@
 					lon: this.longitude
 				})
 				this.circs = res.data.data
+				this.$store.commit('saveGlobal',{
+					value:this.circs
+				})
 				return Promise.resolve(res)
 			},
 			// 获取首页模块相关数据

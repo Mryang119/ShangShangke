@@ -4,7 +4,7 @@
 			<u-search placeholder="发现店铺/商品"></u-search>
 		</view>
 		<view class="banner-cotent">
-			<image  class="img" src="@/static/images/Product/fenleiBanner.png" mode=""></image>
+			<image class="img" src="@/static/images/Product/fenleiBanner.png" mode=""></image>
 		</view>
 		<u-sticky offset-top="0">
 			<view class="filter-container">
@@ -43,7 +43,7 @@
 						<filters v-else-if="currentComponent==='filters'"></filters>
 					</popup>
 				</view>
-				
+
 			</view>
 		</u-sticky>
 		<view class="box" :style="{width:750+'rpx',height:9999+'rpx'}"></view>
@@ -80,7 +80,6 @@
 			// 处理筛选条高亮
 			dipatch(type, currentCp) {
 				this.currentComponent = currentCp
-				console.log(this.currentComponent)
 				this.show = true
 				this.$store.commit('testActive')
 				this.$store.commit('active', {
@@ -129,6 +128,7 @@
 		.banner-cotent {
 			width: 750rpx;
 			height: 400rpx;
+
 			.img {
 				width: 750rpx;
 				height: 400rpx;
