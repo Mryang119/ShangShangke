@@ -367,20 +367,18 @@
 		async onLoad() {
 			// 获取位置
 			await this.getLocation()
-			console.log('测试同步')
 			// 获取城市列表
 			await this.getCity()
-			console.log('测试同步2')
 			// 获取商圈
 			await this.getCirc()
-			console.log('测试同步3，经纬度为：', this.latitude, this.longitude)
 			// 获取首页相关模块
 			await this.getHomeModule()
 			// 获取更多活动信息
 			await this.getCircInfo()
+			console.log(this.$store.state.filter.filterForm)
 		},
 		onReady() {
-
+		
 		},
 		// 触碰底部懒加载
 		onReachBottom: function() {

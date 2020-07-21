@@ -1,48 +1,54 @@
 <template>
 	<view class="s_classifyDetail">
 		<view class="search">
-			<u-search :input-style="{width:530+'rpx'}"></u-search>
+			<u-search placeholder="发现店铺/商品"></u-search>
 		</view>
-		<view class="filter-container">
-			<view class="filter-box">
-				<view class="filter-line">
-					<view class="filter-item className" @click="dipatch('className','classification')" :class="{'active':isActiveForm.className}">
-						<view>分类
-							<u-icon name="arrow-down" v-if="!isActiveForm.className"></u-icon>
-							<u-icon name="arrow-up" v-else></u-icon>
+		<view class="banner-cotent">
+			<image  class="img" src="@/static/images/Product/fenleiBanner.png" mode=""></image>
+		</view>
+		<u-sticky offset-top="0">
+			<view class="filter-container">
+				<view class="filter-box">
+					<view class="filter-line">
+						<view class="filter-item className" @click="dipatch('className','classification')" :class="{'active':isActiveForm.className}">
+							<view>分类
+								<u-icon name="arrow-down" v-if="!isActiveForm.className"></u-icon>
+								<u-icon name="arrow-up" v-else></u-icon>
+							</view>
+						</view>
+						<view class="filter-item nearbys" @click="dipatch('nearbys','nearbys')" :class="{'active':isActiveForm.nearbys}">
+							<view>附近
+								<u-icon name="arrow-down" v-if="!isActiveForm.nearbys"></u-icon>
+								<u-icon name="arrow-up" v-else></u-icon>
+							</view>
+						</view>
+						<view class="filter-item smartSort" @click="dipatch('smartSort','smartSort')" :class="{'active':isActiveForm.smartSort}">
+							<view>智能排序
+								<u-icon name="arrow-down" v-if="!isActiveForm.smartSort"></u-icon>
+								<u-icon name="arrow-up" v-else></u-icon>
+							</view>
+						</view>
+						<view class="filter-item filters" @click="dipatch('filters','filters')" :class="{'active':isActiveForm.filters}">
+							<view>筛选
+								<u-icon name="arrow-down" v-if="!isActiveForm.filters"></u-icon>
+								<u-icon name="arrow-up" v-else></u-icon>
+							</view>
 						</view>
 					</view>
-					<view class="filter-item nearbys" @click="dipatch('nearbys','nearbys')" :class="{'active':isActiveForm.nearbys}">
-						<view>附近
-							<u-icon name="arrow-down" v-if="!isActiveForm.nearbys"></u-icon>
-							<u-icon name="arrow-up" v-else></u-icon>
-						</view>
-					</view>
-					<view class="filter-item smartSort" @click="dipatch('smartSort','smartSort')" :class="{'active':isActiveForm.smartSort}">
-						<view>智能排序
-							<u-icon name="arrow-down" v-if="!isActiveForm.smartSort"></u-icon>
-							<u-icon name="arrow-up" v-else></u-icon>
-						</view>
-					</view>
-					<view class="filter-item filters" @click="dipatch('filters','filters')" :class="{'active':isActiveForm.filters}">
-						<view>筛选
-							<u-icon name="arrow-down" v-if="!isActiveForm.filters"></u-icon>
-							<u-icon name="arrow-up" v-else></u-icon>
-						</view>
-					</view>
+					<!-- Popup -->
+					<popup :show="show" v-on:input="show = $event" :top="92" :elScrollTop="elScrollTop">
+						<classification v-if="currentComponent==='classification'"></classification>
+						<nearby v-else-if="currentComponent==='nearbys'"></nearby>
+						<smartSort v-else-if="currentComponent==='smartSort'"></smartSort>
+						<filters v-else-if="currentComponent==='filters'"></filters>
+					</popup>
 				</view>
-				<!-- Popup -->
-				<popup :show="show" v-on:input="show = $event" :top="92" :elScrollTop="elScrollTop">
-					<classification v-if="currentComponent==='classification'"></classification>
-					<nearby v-else-if="currentComponent==='nearbys'"></nearby>
-					<smartSort v-else-if="currentComponent==='smartSort'"></smartSort>
-					<filters v-else-if="currentComponent==='filters'"></filters>
-				</popup>
+				
 			</view>
-			<!-- 模态框 -->
-
-		</view>
+		</u-sticky>
+		<view class="box" :style="{width:750+'rpx',height:9999+'rpx'}"></view>
 	</view>
+
 </template>
 
 <script>
@@ -61,7 +67,7 @@
 		},
 		data() {
 			return {
-				isActiveForm: this.$store.state.isActiveForm,
+				isActiveForm: this.$store.state.filter.isActiveForm,
 				show: false,
 				elScrollTop: 0,
 				classifySelectIndex: '',
@@ -113,9 +119,6 @@
 		position: relative;
 
 		.search {
-			width: 750rpx;
-			display: flex;
-			align-items: center;
 			box-sizing: border-box;
 			padding-left: 30rpx;
 			padding-right: 30rpx;
@@ -123,7 +126,14 @@
 			margin-bottom: 20rpx;
 		}
 
-
+		.banner-cotent {
+			width: 750rpx;
+			height: 400rpx;
+			.img {
+				width: 750rpx;
+				height: 400rpx;
+			}
+		}
 
 		.filter-container {
 			width: 750rpx;

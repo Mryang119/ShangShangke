@@ -4,7 +4,7 @@
 			<view class="filters-item" v-for="(item,index) in fliters" :key="index">
 				<view class="item-title">{{item.title}}</view>
 				<view class="item-status-flexContainer">
-					<view class="flex-item" :class="{'active-flex-item':$store.state.selectFilterForm.filters.includes(item1)}" @click="saveFilters(item1)"
+					<view class="flex-item" :class="{'active-flex-item':$store.state.filter.selectFilterForm.filters.includes(item1)}" @click="saveFilters(item1)"
 					 v-for="(item1,index1) in item.children" :key="index1">
 						{{item1}}
 					</view>
@@ -18,7 +18,7 @@
 	export default {
 		data() {
 			return {
-				fliters: this.$store.state.filterForm.filters
+				fliters: this.$store.state.filter.filterForm.filters
 			}
 		},
 		methods: {

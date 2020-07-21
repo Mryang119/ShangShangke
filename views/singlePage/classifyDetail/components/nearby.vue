@@ -20,27 +20,27 @@
 	export default {
 		data() {
 			return {
-				nearbys: this.$store.state.filterForm['nearbys'],
+				nearbys: this.$store.state.filter.filterForm['nearbys'],
 				children: [],
 				currentIndex: 0,
 				currentArea: '',
-				currentAreaIndex: this.$store.state.selectFilterForm.nearbys
+				currentAreaIndex: this.$store.state.filter.selectFilterForm.nearbys
 			}
 		},
 		created() {
-			this.currentArea = this.$store.state.filterForm['nearbys'][this.currentIndex].title // 获取当前区域名称
-			this.children = this.$store.state.filterForm.nearbys[this.currentIndex].children
+			this.currentArea = this.$store.state.filter.filterForm['nearbys'][this.currentIndex].title // 获取当前区域名称
+			this.children = this.$store.state.filter.filterForm.nearbys[this.currentIndex].children
 		},
 		methods: {
 			toggleIndex(e, i) {
 				this.currentIndex = i
 				this.currentArea = e
-				this.children = this.$store.state.filterForm.nearbys[this.currentIndex].children
+				this.children = this.$store.state.filter.filterForm.nearbys[this.currentIndex].children
 			},
 			saveArea(a) {
 				console.log(a)
 				// let value = `${this.currentArea}${a}`
-				if (this.$store.state.selectFilterForm.nearbys.includes(a)) {
+				if (this.$store.state.filter.selectFilterForm.nearbys.includes(a)) {
 					this.$store.commit('saveSelectDatas', {
 						type: "nearbys",
 						value: '附近'
@@ -54,7 +54,7 @@
 					})
 					this.currentAreaIndex = a
 				}
-				console.log(this.$store.state.selectFilterForm.nearbys)
+				console.log(this.$store.state.filter.selectFilterForm.nearbys)
 			}
 		}
 	}

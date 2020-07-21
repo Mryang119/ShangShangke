@@ -13,8 +13,8 @@
 	export default {
 		data() {
 			return {
-				smartSort: this.$store.state.filterForm.smartSort,
-				currentSort: this.$store.state.selectFilterForm.smartSort
+				smartSort: this.$store.state.filter.filterForm.smartSort,
+				currentSort: this.$store.state.filter.selectFilterForm.smartSort
 			}
 		},
 		methods: {
