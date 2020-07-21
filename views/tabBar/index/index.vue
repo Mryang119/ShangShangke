@@ -43,7 +43,9 @@
 				</view>
 				<!-- 列表 -->
 				<view class="list">
-					<shopItem v-for="(item,index) in 4" :key="index"></shopItem>
+					<view class="bindContainer" v-for="(item,index) in 4" :key="index" @click="toDtail(index)" >
+						<shopItem></shopItem>
+					</view>
 				</view>
 			</view>
 			<!-- 每日一品 -->
@@ -274,6 +276,13 @@
 			toPosition() {
 				uni.navigateTo({
 					url: '../../singlePage/position/position'
+				})
+			},
+			// 跳转商品详情
+			toDtail(){
+				console.log('asdasdasd')
+				uni.navigateTo({
+					url:'../../singlePage/timeKillProductDetail/timeKillProductDetail'
 				})
 			},
 			// 获取定位
