@@ -29,14 +29,25 @@ const getHomeModuleMessages = (data) => {
 // 获取更多活动信息
 const getCircCampaignInfo = (data) => {
 	return http({
-		method:'post',
+		method: 'post',
 		data,
-		url:'dby/homeInfo/getCircCampaignInfo'
+		url: 'dby/homeInfo/getCircCampaignInfo'
 	})
 }
+
+// 获取秒杀信息
+const getSeckillMoreInfo = (data) => {
+	return http({
+		method: 'post',
+		data,
+		url: 'dby/homeInfo/getSeckillMoreInfo'
+	})
+}
+
 export {
 	getCityList,
 	getHomeModuleMessages,
 	getCircList,
-	getCircCampaignInfo
+	getCircCampaignInfo,
+	getSeckillMoreInfo
 }

@@ -43,7 +43,9 @@
 				</view>
 				<!-- 列表 -->
 				<view class="list">
-					<shopItem v-for="(item,index) in 4" :key="index"></shopItem>
+					<view class="bindContainer" v-for="(item,index) in 4" :key="index" @click="toDtail(index)" >
+						<shopItem></shopItem>
+					</view>
 				</view>
 			</view>
 			<!-- 每日一品 -->
@@ -104,7 +106,7 @@
 						<text class="time-item m">22</text>
 						<text class="time-item s">22</text>
 					</view>
-					<more></more>
+					<more url="../../singlePage/timekillDetail/timekillDetail"></more>
 				</view>
 				<scroll-view scroll-x="true" class="scorll-H-S">
 					<!-- 宽度 商品数量*组件宽度+总边距 -->
@@ -276,6 +278,13 @@
 					url: '../../singlePage/position/position'
 				})
 			},
+			// 跳转商品详情
+			toDtail(){
+				console.log('asdasdasd')
+				uni.navigateTo({
+					url:'../../singlePage/timeKillProductDetail/timeKillProductDetail'
+				})
+			},
 			// 获取定位
 			getLocation() {
 				var that = this;
@@ -330,6 +339,9 @@
 					lon: this.longitude
 				})
 				this.circs = res.data.data
+				this.$store.commit('saveGlobal',{
+					value:this.circs
+				})
 				return Promise.resolve(res)
 			},
 			// 获取首页模块相关数据
@@ -367,20 +379,18 @@
 		async onLoad() {
 			// 获取位置
 			await this.getLocation()
-			console.log('测试同步')
 			// 获取城市列表
 			await this.getCity()
-			console.log('测试同步2')
 			// 获取商圈
 			await this.getCirc()
-			console.log('测试同步3，经纬度为：', this.latitude, this.longitude)
 			// 获取首页相关模块
 			await this.getHomeModule()
 			// 获取更多活动信息
 			await this.getCircInfo()
+			console.log(this.$store.state.filter.filterForm)
 		},
 		onReady() {
-
+		
 		},
 		// 触碰底部懒加载
 		onReachBottom: function() {

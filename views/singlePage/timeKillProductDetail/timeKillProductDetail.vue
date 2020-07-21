@@ -198,8 +198,8 @@
 				myService:'../../singlePage/myService/myService',
 				confirmOrder:'../../singlePage/confirmOrder/confirmOrder',
 				starColor:true,
-				starName:true
-				
+				starName:true,
+				type:'timekill'
 				
 			}
 		},
@@ -208,6 +208,9 @@
 				this.starColor = !this.starColor
 				this.starName = !this.starName
 			}
+		},
+		onLoad(option) {
+			console.log(option.type) // killtime
 		}
 	}
 </script>

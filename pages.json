@@ -13,7 +13,8 @@
 			"style": {
 				"navigationBarTitleText": "商品详情"
 			}
-		}, 
+
+		},
 		{
 			"path": "views/singlePage/classify/classify",
 			"style": {
@@ -123,9 +124,10 @@
 				"navigationBarTitleText": "确认订单"
 			}
 		},
-		
+
 		{
 			"path": "views/singlePage/chooseCoupon/chooseCoupon",
+
 			"style": {
 				"navigationBarTitleText": "选择优惠券"
 			}
@@ -137,20 +139,19 @@
 			}
 		},
 		{
-			"path": "views/singlePage/classifyDetail/classifyDetail",
-			"style": {
-				// "navigationStyle": "custom",
-				"navigationBarTitleText": "分类结果"
-			}
-		},
-		
-		{
 			"path": "views/singlePage/myService/myService",
 			"style": {
 				"navigationBarTitleText": "我的客服"
 			}
-		}
+		},
 
+		{
+			"path": "views/singlePage/timekillDetail/timekillDetail",
+			"style": {
+				"navigationBarTitleText": "限时秒杀",
+				"navigationBarBackgroundColor": "#FE4C4F"
+			}
+		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
