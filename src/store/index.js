@@ -41,16 +41,6 @@ const store = new Vuex.Store({
 					break;
 					// 处理附近
 				case 'nearbys':
-					// let length = state.selectFilterForm.nearbys.length
-					// let nearbys = state.selectFilterForm.nearbys
-					// // 数组长度小于等于2的时候代表存有操作空间，并且数组不存在当前value，
-					// // 如果数组含有value那么就要进行自身剔除
-					// if (length < 2 && nearbys.includes(value) !== false) {
-					// 	nearbys.push(value)
-					// } else if (length <= 2 && nearbys.includes(value) === true) {
-					// 	targetIndex = nearbys.indexOf(value)
-					// 	nearbys.splice(targetIndex, 1)
-					// }
 					state.selectFilterForm.nearbys = value
 					break;
 					// 处理排序
@@ -58,7 +48,14 @@ const store = new Vuex.Store({
 					state.selectFilterForm.smartSort = value
 					break;
 				case 'filters':
-
+					if (state.selectFilterForm.filters.includes(value)) {
+						let index = state.selectFilterForm.filters.indexOf(value)
+						state.selectFilterForm.filters.splice(index, 1)
+					} else {
+						state.selectFilterForm.filters.push(value)
+					}
+				default:
+					return
 			}
 		},
 		active(state, payload) {

@@ -36,6 +36,7 @@
 					<classification v-if="currentComponent==='classification'"></classification>
 					<nearby v-else-if="currentComponent==='nearbys'"></nearby>
 					<smartSort v-else-if="currentComponent==='smartSort'"></smartSort>
+					<filters v-else-if="currentComponent==='filters'"></filters>
 				</popup>
 			</view>
 			<!-- 模态框 -->
@@ -49,12 +50,14 @@
 	import classification from './components/classification.vue'
 	import nearby from './components/nearby.vue'
 	import smartSort from './components/smartSort.vue'
+	import filters from './components/filters.vue'
 	export default {
 		components: {
 			popup,
 			classification,
 			nearby,
-			smartSort
+			smartSort,
+			filters
 		},
 		data() {
 			return {
@@ -129,7 +132,7 @@
 			height: 92rpx;
 			padding-top: 30rpx;
 			padding-bottom: 30rpx;
-			background-color: #CCC;
+			background-color: #FFFFFF;
 
 			.filter-box {
 				width: 100%;
