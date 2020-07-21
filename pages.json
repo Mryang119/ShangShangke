@@ -1,16 +1,5 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-
-<<<<<<< HEAD
-=======
-		// 限时秒杀---商品详情
-		{
-			"path": "views/singlePage/timeKillProductDetail/timeKillProductDetail",
-			"style": {
-				"navigationBarTitleText": "商品详情"
-			}
-		}, 
->>>>>>> 17961b0d93ae246b2df56250961b34244e27121e
 		{
 			"path": "views/tabBar/index/index",
 			"style": {
@@ -19,12 +8,11 @@
 			}
 		},
 		{
-			"path": "views/singlePage/confirmOrder/confirmOrder",
+			"path": "views/singlePage/timeKillProductDetail/timeKillProductDetail",
 			"style": {
-				"navigationBarTitleText": "确认订单"
+				"navigationBarTitleText": "商品详情"
 			}
 		},
-
 		{
 			"path": "views/singlePage/classify/classify",
 			"style": {
@@ -98,14 +86,12 @@
 				"navigationBarTitleText": "天天免费抢"
 			}
 		},
-		// 我的订单
 		{
 			"path": "views/singlePage/myOrder/myOrder",
 			"style": {
 				"navigationBarTitleText": "我的订单"
 			}
 		},
-		// 我的卡券
 		{
 			"path": "views/singlePage/myCoupon/myCoupon",
 			"style": {
@@ -130,58 +116,37 @@
 				"navigationBarTitleText": "订单详情"
 			}
 		},
-		// 确认订单
 		{
-<<<<<<< HEAD
-
-			"path": "views/singlePage/timeKillProductDetail/timeKillProductDetail",
-=======
 			"path": "views/singlePage/confirmOrder/confirmOrder",
->>>>>>> 17961b0d93ae246b2df56250961b34244e27121e
 			"style": {
 				"navigationBarTitleText": "确认订单"
 			}
-<<<<<<< HEAD
-
 		},
 
-		// 确认订单——选择优惠券
-
-		{
-			"path": "views/singlePage/classifyDetail/classifyDetail",
-=======
-		},
-		
 		{
 			"path": "views/singlePage/chooseCoupon/chooseCoupon",
->>>>>>> 17961b0d93ae246b2df56250961b34244e27121e
+
 			"style": {
 				"navigationBarTitleText": "选择优惠券"
 			}
 		},
-<<<<<<< HEAD
-		// 确认订单
-
-=======
->>>>>>> 17961b0d93ae246b2df56250961b34244e27121e
 		{
 			"path": "views/singlePage/toPlay/toPlay",
 			"style": {
 				"navigationBarTitleText": "支付"
 			}
 		},
-
-		// 我的客服
 		{
 			"path": "views/singlePage/myService/myService",
 			"style": {
 				"navigationBarTitleText": "我的客服"
 			}
-		}, {
+		}, 
+		{
 			"path": "views/singlePage/timekillDetail/timekillDetail",
 			"style": {
 				"navigationBarTitleText": "限时秒杀",
-				"navigationBarBackgroundColor":"#FE4C4F"
+				"navigationBarBackgroundColor": "#FE4C4F"
 			}
 		}
 	],
