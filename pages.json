@@ -1,13 +1,13 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 
-		// 确认订单
+		// 限时秒杀---商品详情
 		{
-			"path": "views/singlePage/confirmOrder/confirmOrder",
+			"path": "views/singlePage/timeKillProductDetail/timeKillProductDetail",
 			"style": {
-				"navigationBarTitleText": "确认订单"
+				"navigationBarTitleText": "商品详情"
 			}
-		},
+		}, 
 		{
 			"path": "views/tabBar/index/index",
 			"style": {
@@ -120,13 +120,14 @@
 				"navigationBarTitleText": "订单详情"
 			}
 		},
-		// 限时秒杀---商品详情
+		// 确认订单
 		{
-			"path": "views/singlePage/timeKillProductDetail/timeKillProductDetail",
+			"path": "views/singlePage/confirmOrder/confirmOrder",
 			"style": {
-				"navigationBarTitleText": "商品详情"
+				"navigationBarTitleText": "确认订单"
 			}
-		}, 
+		},
+		
 		{
 			"path": "views/singlePage/chooseCoupon/chooseCoupon",
 			"style": {

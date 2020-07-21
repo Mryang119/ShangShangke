@@ -7,13 +7,13 @@
 			<view class="noPayText">待付款订单</view>
 			<view class="coupon">
 				<!-- 商家店面图片 -->
-				<image class="couponImg" src="@/static/images/tabBarImage/myLoginHeader.png"></image>
+				<image class="couponImg" :src="shopImg"></image>
 				<view class="noPayRight">
 					<view class="noPayRightCon">
-						<view class="noPayCoupon">100元代金券</view>
-						<view class="noPayMoney">￥79.9</view>
+						<view class="noPayCoupon">{{cashCoupon}}元代金券</view>
+						<view class="noPayMoney">￥{{itemPrice}}</view>
 					</view>
-					<view class="noPayNumer">数量：1</view>
+					<view class="noPayNumer">数量：{{itemNumber}}</view>
 
 				</view>
 			</view>
@@ -23,7 +23,7 @@
 			<view class="applyStoreButton">
 				<view class="applyStoreContent">
 					<span class="applyStoreText">适用门店</span>
-					<span class="applyStoreNumber">(10)</span>
+					<span class="applyStoreNumber">({{shopNumber}})</span>
 				</view>
 				<!-- 更多图标 -->
 				<image class="applyStoreImg" src="@/static/images/iconfont/more.png"></image>
@@ -33,11 +33,11 @@
 			<!-- 位置 -->
 			<view class="applyStoreCon">
 				<view class="applyStorePlace">
-					<view class="applyStoreName">韩国年糕料理（海岸城店）</view>
+					<view class="applyStoreName">{{shopName}}</view>
 					<view class="applyStoreAddress">
-						<view class="applyStoreDistance">距您500m</view>
+						<view class="applyStoreDistance">距您{{distance}}m</view>
 						<span>|</span>
-						<view class="applyStoreDoorplate">文新思路34号海岸城西座F2座806</view>
+						<view class="applyStoreDoorplate">{{shopPlace}}</view>
 					</view>
 				</view>
 				<image class="applyStorePhone" src="@/static/images/iconfont/phone.png"></image>
@@ -48,22 +48,22 @@
 			<view class="orderNewsText">订单信息</view>
 			<view class="orderNewsName">
 				<span>订单数量</span>
-				<span>1</span>
+				<span>{{orderNumber}}</span>
 			</view>
 			<view class="orderNewsName">
 				<span>订单总价</span>
-				<span>￥79.00</span>
+				<span>￥{{orderNumPrice}}</span>
 			</view>
 			<view class="orderNewsName">
 				<span>订单编号</span>
 				<view class="orderNewsSerial">
-					<span>34828342376473</span>
+					<span>{{orderReference}}</span>
 					<view class="orderNewsCopy">复制</view>
 				</view>
 			</view>
 			<view class="orderNewsName">
 				<span>下单时间</span>
-				<span>2020-09-09 12:30</span>
+				<span>{{orderTime}}</span>
 			</view>
 			
 		</view>
@@ -74,7 +74,7 @@
 				取消订单
 			</button>
 			<button class="orderNewsPay">
-				<span class="orderNewsPayMoney">￥79.00</span>
+				<span class="orderNewsPayMoney">￥{{orderNumPrice}}</span>
 				<span class="orderNewsPayTo">待付款</span>
 			</button>
 		</view>
@@ -87,7 +87,19 @@
 		data() {
 			return {
 				show: false,
-				content: '是否取消订单',
+				content: '是否取消订单',  // 取消订单模态框文本
+				shopImg:'../../../static/images/tabBarImage/myLoginHeader.png', // 商家头像
+				cashCoupon:'100', // 代金券
+				itemPrice:'79.9', // 单品价格
+				itemNumber:'1',  //单品数量
+				shopNumber:'10', //适用门店数量
+				shopName:'韩国年糕料理（海岸城店）',  // 店铺名称
+				distance:'500',  // 距离店铺多少米
+				shopPlace:'文新思路34号海岸城西座F2座806',  // 店铺地址
+				orderNumber:'1',  // 订单数量
+				orderNumPrice:'79.00',  //订单总价
+				orderReference:'34828342376473',  // 订单编号
+				orderTime:'2020-09-09 12:30',  //下单时间
 			}
 		},
 		methods: {
