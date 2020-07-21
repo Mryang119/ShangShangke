@@ -63,8 +63,6 @@
 			<view class="text">本单即将7天后过期，请尽快使用！</view>
 		</view>
 		<view class="toBuy" @click="toPay">
-			<view class="price">￥79.00</view>
-			<!-- <navigator class="toBuy" :url="toPlay"> -->
 			<view class="toBuy">
 				<view class="price">￥{{sumPrice}}</view>
 				<view class="text">去付款</view>
