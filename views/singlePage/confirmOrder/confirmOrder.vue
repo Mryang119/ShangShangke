@@ -54,7 +54,7 @@
 		<u-popup v-model="show" mode="bottom" border-radius="52" closeable="true" safe-area-inset-bottom="true">
 			<view class="modalBox">
 				<view class="text">优惠</view>
-				<orderCoupon />
+				<orderCoupon />  
 			</view>
 		</u-popup>
 		<!-- 提示信息 -->
@@ -62,20 +62,22 @@
 			<image src="@/static/images/iconfont/tishi.png"></image>
 			<view class="text">本单即将7天后过期，请尽快使用！</view>
 		</view>
-		<view class="toBuy">
+		<!-- <navigator class="toBuy" :url="toPlay"> -->
+		<navigator class="toBuy">
 			<view class="price">￥79.00</view>
 			<view class="text">去付款</view>
-		</view>
+		</navigator>
 	</view>
 </template>
 
 <script>
-	import orderCoupon from '../../../src/publicComponents/orderCoupon.vue'
+	import orderCoupon from '../../../src/publicComponents/orderCoupon.vue' 
 	export default {
 		data() {
 			return {
 				bgColor: '#FFFFFF', // 商品数量步进器背景颜色
 				chooseCoupon: '../../singlePage/chooseCoupon/chooseCoupon', // 平台优惠券跳转地址
+				// toPlay:'../../singlePage/toPlay/toPlay',  // 支付页面
 				show:false, // 控制模态框显示隐藏
 			}
 		},
