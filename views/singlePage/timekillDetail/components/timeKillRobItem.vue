@@ -110,6 +110,7 @@
 		display: flex;
 		box-sizing: border-box;
 		padding: 20rpx;
+		background-color: #FFFFFF;
 		.left-container {
 			width: 232rpx;
 			height: 208rpx;

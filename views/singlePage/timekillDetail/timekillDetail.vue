@@ -5,7 +5,7 @@
 			<view class="img-container">
 				<image src="@/static/images/Product/xianshimiaosha.png" mode="" class="img"></image>
 			</view>
-			<scroll-view scroll-x="true" class="time-list" >
+			<scroll-view scroll-x="true" class="time-list">
 				<view class="scroll-H" :style="{width:length*73*2+160+'rpx',height:50*2+'rpx'}">
 					<view class="time-list-title">
 						限时
@@ -25,6 +25,7 @@
 			</view>
 		</view>
 		<view class="tabs-content">
+			<u-tabs name="name" :list="list" :is-scroll="false" :current="current" @change="change"></u-tabs>
 			<timeKillRobItem></timeKillRobItem>
 		</view>
 	</view>
@@ -37,14 +38,26 @@
 	import timeKillCommodity from './components/timeKillCommodity.vue'
 	import timeKillRobItem from './components/timeKillRobItem.vue'
 	export default {
-		components:{
+		components: {
 			timeKillCommodity,
 			timeKillRobItem
 		},
 		data() {
 			return {
 				timeList: [],
-				length:0
+				length: 0,
+				list:[{
+					name: '全部'
+				}, {
+					name: '美食'
+				}, {
+					name: '好物'
+				}, {
+					name: '娱乐'
+				}, {
+					name: '生活'
+				}, ],
+				current:0
 			};
 		},
 		methods: {
@@ -76,8 +89,10 @@
 					j++
 				}
 				this.length = this.timeList.length
+			},
+			change(index) {
+				this.current = index;
 			}
-
 		},
 		async onLoad() {
 			// await getSeckillMoreInfo({
@@ -96,12 +111,14 @@
 		position: relative;
 		width: 750rpx;
 		background-color: #F6F6F6;
+
 		.top-title-contianer {
 			width: 750rpx;
 			position: absolute;
 			height: 580rpx;
 			background: rgba(254, 76, 79, 1);
 			border-radius: 0 0 54rpx 54rpx;
+
 			.time-list-title {
 				width: 64rpx;
 				font-size: 32rpx;
@@ -110,15 +127,19 @@
 				margin-left: 30rpx;
 				margin-right: 40rpx;
 			}
+
 			.time-list {
 				display: flex;
+
 				.scroll-H {
 					display: flex;
 				}
+
 				.timestamp {
 					width: 90rpx;
 					margin-right: 56rpx;
 					text-align: center;
+
 					.time {
 						font-size: 32rpx;
 						color: #FFFFFF;
@@ -169,6 +190,7 @@
 				}
 			}
 		}
+
 		.commodity-content {
 			position: absolute;
 			top: 538rpx;
@@ -179,13 +201,18 @@
 			flex-wrap: wrap;
 			justify-content: space-between;
 			padding: 0 20rpx;
+
 			.commodity-item {
 				margin-bottom: 20rpx;
 			}
 		}
+
 		.tabs-content {
 			position: absolute;
 			top: 2000rpx;
+			width: 750rpx;
+			padding: 0 20rpx;
+			background-color: #F6F6F6;
 		}
 	}
 </style>
