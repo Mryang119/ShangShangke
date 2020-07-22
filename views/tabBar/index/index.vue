@@ -43,7 +43,7 @@
 				</view>
 				<!-- 列表 -->
 				<view class="list">
-					<view class="bindContainer" v-for="(item,index) in 4" :key="index" @click="toDtail(index)" >
+					<view class="bindContainer" v-for="(item,index) in 4" :key="index" @click="toDtail(index)">
 						<shopItem></shopItem>
 					</view>
 				</view>
@@ -102,9 +102,8 @@
 				<view class="timeKill-titleBar">
 					<view class="title-item title-text">限时秒杀</view>
 					<view class="title-item time">
-						<text class="time-item h">22</text>
-						<text class="time-item m">22</text>
-						<text class="time-item s">22</text>
+						<u-count-down ref="uCountDown" bg-color="#F10000" separator-color="#F10000" color="#FFFFFF" :timestamp="86400"
+						 :autoplay="true"></u-count-down>
 					</view>
 					<more url="../../singlePage/timekillDetail/timekillDetail"></more>
 				</view>
@@ -279,10 +278,10 @@
 				})
 			},
 			// 跳转商品详情
-			toDtail(){
+			toDtail() {
 				console.log('asdasdasd')
 				uni.navigateTo({
-					url:'../../singlePage/timeKillProductDetail/timeKillProductDetail'
+					url: '../../singlePage/timeKillProductDetail/timeKillProductDetail'
 				})
 			},
 			// 获取定位
@@ -339,8 +338,8 @@
 					lon: this.longitude
 				})
 				this.circs = res.data.data
-				this.$store.commit('saveGlobal',{
-					value:this.circs
+				this.$store.commit('saveGlobal', {
+					value: this.circs
 				})
 				return Promise.resolve(res)
 			},
@@ -358,10 +357,10 @@
 					'fullGiftHome',
 					'CarouselImg'
 				]
-				datas.forEach(item=>{
+				datas.forEach(item => {
 					this[item] = res.data.data[item]
 				})
-				
+
 				return Promise.resolve(res)
 			},
 			// 获取更多活动信息
@@ -387,10 +386,10 @@
 			await this.getHomeModule()
 			// 获取更多活动信息
 			await this.getCircInfo()
-			console.log(this.$store.state.filter.filterForm)
+			
 		},
 		onReady() {
-		
+
 		},
 		// 触碰底部懒加载
 		onReachBottom: function() {
@@ -733,18 +732,12 @@
 					.time {
 						width: 148rpx;
 						height: 36rpx;
-						background: url(../../../static/images/Product/timeBg.png);
 						background-size: cover;
 						left: 158rpx;
 						font-size: 24rpx;
 						color: #FFFFFF;
 						display: flex;
 						justify-content: space-between;
-
-						.time-item {
-							padding-left: 4rpx;
-							padding-right: 4rpx;
-						}
 					}
 				}
 			}
