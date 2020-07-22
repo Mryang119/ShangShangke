@@ -5,17 +5,27 @@
 			<view class="img-container">
 				<image src="@/static/images/Product/xianshimiaosha.png" mode="" class="img"></image>
 			</view>
-			<scroll-view scroll-x="true" class="time-list">
-				<view class="time-list-title">
-					限时
-					<br />
-					热抢
-				</view>
-				<view class="timestamp" v-for="(item,index) in timeList" :key="item">
-					<view class="time">{{item.time}}</view>
-					<view class="status">{{item.now?'抢购中':'即将开始'}}</view>
+			<scroll-view scroll-x="true" class="time-list" >
+				<view class="scroll-H" :style="{width:length*73*2+160+'rpx',height:50*2+'rpx'}">
+					<view class="time-list-title">
+						限时
+						<br />
+						热抢
+					</view>
+					<view class="timestamp" :class="{'upcoming-status':item.now===false}" v-for="(item,index) in timeList" :key="item">
+						<view class="time">{{item.time}}</view>
+						<view class="status">{{item.now?'抢购中':'即将开始'}}</view>
+					</view>
 				</view>
 			</scroll-view>
+		</view>
+		<view class="commodity-content">
+			<view class="commodity-item" v-for="(item,index) in 4" :key="index">
+				<timeKillCommodity></timeKillCommodity>
+			</view>
+		</view>
+		<view class="tabs-content">
+			<timeKillRobItem></timeKillRobItem>
 		</view>
 	</view>
 </template>
@@ -24,10 +34,17 @@
 	import {
 		getSeckillMoreInfo
 	} from '../../../src/api/homeApi/homeApi.js'
+	import timeKillCommodity from './components/timeKillCommodity.vue'
+	import timeKillRobItem from './components/timeKillRobItem.vue'
 	export default {
+		components:{
+			timeKillCommodity,
+			timeKillRobItem
+		},
 		data() {
 			return {
 				timeList: [],
+				length:0
 			};
 		},
 		methods: {
@@ -45,19 +62,20 @@
 				for (let i = h; i < 24; i++) {
 					if (i === h) {
 						this.timeList.push({
-							time: `${i}:00`,
-							now: true,
-							millisecond:nowDate+j*hoursMili
+							time: `${i}:00`, // 用于展示
+							now: true, // 用于状态
+							millisecond: nowDate + j * hoursMili // 转化毫秒数给傻逼后端
 						})
 					} else {
 						this.timeList.push({
 							time: `${i}:00`,
 							now: false,
-							millisecond:nowDate+j*hoursMili
+							millisecond: nowDate + j * hoursMili
 						})
 					}
 					j++
 				}
+				this.length = this.timeList.length
 			}
 
 		},
@@ -77,20 +95,69 @@
 	.s_timekillDetail {
 		position: relative;
 		width: 750rpx;
-
+		background-color: #F6F6F6;
 		.top-title-contianer {
 			width: 750rpx;
 			position: absolute;
 			height: 580rpx;
 			background: rgba(254, 76, 79, 1);
 			border-radius: 0 0 54rpx 54rpx;
+			.time-list-title {
+				width: 64rpx;
+				font-size: 32rpx;
+				font-weight: bold;
+				color: #FFFFFF;
+				margin-left: 30rpx;
+				margin-right: 40rpx;
+			}
 			.time-list {
 				display: flex;
+				.scroll-H {
+					display: flex;
+				}
 				.timestamp {
 					width: 90rpx;
-					
+					margin-right: 56rpx;
+					text-align: center;
+					.time {
+						font-size: 32rpx;
+						color: #FFFFFF;
+					}
+
+					.status {
+						width: 90rpx;
+						height: 36rpx;
+						background: rgba(255, 255, 255, 1);
+						opacity: 1;
+						border-radius: 22rpx;
+						color: #FF2F2F;
+						font-size: 22rpx;
+						line-height: 36rpx;
+						text-align: center;
+						font-weight: bold;
+					}
+				}
+
+				.upcoming-status {
+
+					.time {
+						font-size: 32rpx;
+						color: rgb(250, 162, 157);
+					}
+
+					.status {
+						width: 90rpx;
+						height: 36rpx;
+						background-color: #FF4F4F;
+						border-radius: 22rpx;
+						color: rgb(250, 162, 157);
+						font-size: 22rpx;
+						line-height: 36rpx;
+						text-align: center;
+					}
 				}
 			}
+
 			.img-container {
 				width: 710rpx;
 				height: 310rpx;
@@ -101,6 +168,24 @@
 					width: 100%;
 				}
 			}
+		}
+		.commodity-content {
+			position: absolute;
+			top: 538rpx;
+			z-index: 99;
+			width: 750rpx;
+			box-sizing: border-box;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			padding: 0 20rpx;
+			.commodity-item {
+				margin-bottom: 20rpx;
+			}
+		}
+		.tabs-content {
+			position: absolute;
+			top: 2000rpx;
 		}
 	}
 </style>

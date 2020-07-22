@@ -96,7 +96,7 @@
 		}
 	}
 </script>
-<style lang="less">
+<style lang="less" scoped>
 	.c_daydayShopItem {
 		width: 670rpx;
 		height: 234rpx;
