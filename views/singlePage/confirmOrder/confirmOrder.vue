@@ -86,8 +86,7 @@
 				beforePrice: '399.00', // 以前的价格
 				platformCoupon: '暂无可用', // 平台优惠券
 				shopCoupon: '暂无可用', // 店铺优惠
-				sumPrice: '79.00' //  总的金额
-
+				sumPrice: '79.00' // 总的金额
 			}
 		},
 		components: {

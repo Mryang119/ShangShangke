@@ -27,9 +27,10 @@
 							{{item.title}}
 						</view>
 						<view class="item-button-container">
-							<view class="item-button" v-for="(item1,index1) in item.children" :key="index1" @click="toClassifyDetail(item1)">
+							<navigator class="item-button" hover-class="hover-button" v-for="(item1,index1) in item.children" :key="index1"
+								:url="'../classifyDetail/classifyDetail?className='+item1">
 								{{item1}}
-							</view>
+							</navigator>
 						</view>
 					</view>
 				</view>
@@ -77,11 +78,11 @@
 				this.selectIndex = computedIndex
 			},
 			// 跳转分类详情页
-			toClassifyDetail(value) {
-				uni.navigateTo({
-					url:`../classifyDetail/classifyDetail?className=${value}`
-				})
-			}
+			// toClassifyDetail(value) {
+			// 	uni.navigateTo({
+			// 		url: `../classifyDetail/classifyDetail?className=${value}`
+			// 	})
+			// }
 		}
 	}
 </script>
@@ -109,6 +110,7 @@
 				width: 202rpx;
 				height: 100%;
 				background-color: #F5F5F5;
+
 				.tab-item-container {
 					height: 120rpx;
 					width: 202rpx;
@@ -179,6 +181,7 @@
 						display: flex;
 						flex-wrap: wrap;
 						margin-left: -14rpx;
+
 						.item-button {
 							margin-bottom: 14rpx;
 							background-color: #F5F5F5;
@@ -190,6 +193,11 @@
 							text-align: center;
 							line-height: 60rpx;
 							margin-right: 14rpx;
+						}
+
+						.hover-button {
+							background-color: #24A7FF;
+							color: #FFFFFF;
 						}
 					}
 				}

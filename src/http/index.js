@@ -19,7 +19,8 @@ export default function http({url,method,data,tips="数据加载中"}){
 			},
 			fail:(error)=>{
 				reject(error)
-			}
+			},
+			timeout:3000
 		})
 	})
 }

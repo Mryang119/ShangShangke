@@ -107,6 +107,9 @@
 					})
 				}
 			}
+		},
+		onLoad(e){
+			console.log(e)
 		}
 	}
 </script>

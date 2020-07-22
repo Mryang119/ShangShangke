@@ -137,6 +137,11 @@
 			"style": {
 				"navigationBarTitleText": "支付"
 			}
+		},{
+			"path": "views/singlePage/classifyDetail/classifyDetail",
+			"style": {
+				"navigationBarTitleText": "分类结果"
+			}
 		},
 		{
 			"path": "views/singlePage/myService/myService",
@@ -144,7 +149,6 @@
 				"navigationBarTitleText": "我的客服"
 			}
 		},
-
 		{
 			"path": "views/singlePage/timekillDetail/timekillDetail",
 			"style": {
@@ -176,12 +180,13 @@
 				"iconPath": "static/images/tabBarImage/faxianmoren.png",
 				"selectedIconPath": "static/images/tabBarImage/faxianxuanzhong.png"
 			},
-			{
-				"pagePath": "views/tabBar/store/store",
-				"text": "店面",
-				"iconPath": "static/images/tabBarImage/dianmianmoren.png",
-				"selectedIconPath": "static/images/tabBarImage/dianmianxuanzhong.png"
-			},
+			// 店面由于模块资源缺失暂不展示 
+			// {
+			// 	"pagePath": "views/tabBar/store/store",
+			// 	"text": "店面",
+			// 	"iconPath": "static/images/tabBarImage/dianmianmoren.png",
+			// 	"selectedIconPath": "static/images/tabBarImage/dianmianxuanzhong.png"
+			// },
 			{
 				"pagePath": "views/tabBar/my/my",
 				"text": "我的",
