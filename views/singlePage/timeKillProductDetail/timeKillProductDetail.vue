@@ -6,6 +6,7 @@
 			<u-swiper :list="list" mode="number" indicator-pos="bottomRight" class="swiper" height="550"></u-swiper>
 		</view>
 		<!-- 限时秒杀的商品详情 -->
+		<!-- v-if="option.type==='timeKill'" -->
 		<view class="timeKillProductDetail">
 			<view class="price">
 				<view class="priceNum">
@@ -28,6 +29,8 @@
 		
 		
 		<!-- 每日一品的商品详情 -->
+		<!-- v-else-if="option.type==='oneDayEat || group'" -->
+		<!-- progressCon进度条  v-if="option.type==='free'" -->
 		<!-- <view class="dailyGoodsProductDetail">
 			<view class="dailyGoodsPrice">
 				<view class="priceCon">
@@ -37,6 +40,12 @@
 				<view class="sale">月售2333</view>
 			</view>
 			<view class="dailyGoodsText">抹茶柚子千层 抹茶柚子千层 新鲜出炉</view>
+			<view class="progressCon">
+				<u-line-progress class="progress" :percent="hasRobbed" :show-percent="false"
+					:round="true" active-color="#fb2b03" height="14">
+				</u-line-progress>
+				<view class="hasRobbed">已抢{{hasRobbed}}%</view>
+			</view>
 		</view> -->
 		
 		<!-- 评分和进店逛逛 -->
@@ -69,7 +78,7 @@
 		</view>
 		
 		<!-- 优惠券 -->
-		<view class="discount">
+		<view class="discount"  @click="isShow">
 			<!-- 优惠 -->
 			<view class="discountMoney">
 				<view class="discountText">优惠</view>
@@ -103,6 +112,44 @@
 			</view>
 		</view>
 		
+		<!-- 底部优惠券模态框 -->
+		<u-popup v-model="show" mode="bottom" border-radius="52" closeable="true" safe-area-inset-bottom="true">
+			<view class="modalBox">
+				<view class="text">优惠</view>
+				<orderCoupon />
+			</view>
+		</u-popup>
+		
+		<!-- 拼团 -->
+		<!-- v-if="option.type==='group'" -->
+		<!-- <view class="group">
+			<view class="groupMore">
+				<view class="people">10人正在拼团，可直接参与</view>
+				<view class="more">
+					<view class="text">查看更多</view>
+					<image src="@/static/images/iconfont/more.png"></image>
+				</view>
+			</view>
+			<view class="grouping">
+				<view class="oneGroup"  v-for="(item,index) in 2" :key="index">
+					<view class="userImg">
+						<image src="@/static/images/tabBarImage/myLoginHeader.png"></image>
+						<view class="userName">吴亦凡</view>
+					</view>
+					<view class="toGroupCon">
+						<view class="shortCon">
+							<view class="shortPeople">还差<view class="people">1人</view>拼成</view>
+							<view class="shortTime"> 
+								剩余<u-count-down :timestamp="timestamp" color="#5F5C5F" font-size="24" :show-days="false"></u-count-down>
+							</view>
+						</view>
+						<view class="toGroupBtn">去拼团</view>
+					</view>
+								
+				</view>
+			</view>
+		</view>
+		 -->
 		<!-- 商品详情 -->
 		<view class="goodDetail">
 			<view class="text">商品详情</view>
@@ -192,14 +239,17 @@
 						image: '../../../static/images/iconfont/shopitem.png'
 					}
 				],
-				showDays: false,
-				count: 5,
-				value: 4,
-				myService:'../../singlePage/myService/myService',
-				confirmOrder:'../../singlePage/confirmOrder/confirmOrder',
-				starColor:true,
-				starName:true,
-				type:'timekill'
+				showDays: false, //倒计时隐藏天
+				count: 5, // 评分星星的个数
+				value: 4, //评分星星的值
+				myService:'../../singlePage/myService/myService',  // 跳转到我的客服页面
+				confirmOrder:'../../singlePage/confirmOrder/confirmOrder', // 跳转到确认订单页面
+				starColor:true,  //收藏按钮星星颜色
+				starName:true,  // 收藏按钮星星名字
+				timestamp:86300,  //拼团倒计时时间
+				type:'timekill', //限时秒杀--详情页面--默认字段
+				hasRobbed:50,  // 天天免费抢已抢进度
+				show: false, // 控制模态框显示隐藏
 				
 			}
 		},
@@ -207,10 +257,15 @@
 			toggle(){
 				this.starColor = !this.starColor
 				this.starName = !this.starName
-			}
+			},
+			// 控制模态框的显示隐藏
+			isShow() {
+				this.show = !this.show
+			},
 		},
 		onLoad(option) {
 			console.log(option.type) // killtime
+			
 		}
 	}
 </script>
@@ -332,54 +387,70 @@
 		}
 		
 		// 每日一品-商品详情
-		// .dailyGoodsProductDetail{
-		// 	width: 750rpx;
-		// 	height: 164rpx;
-		// 	background:rgba(255,255,255,1);
-		// 	padding: 0 30rpx;
-		// 	margin-bottom: 20rpx;
-		// 	padding-top: 30rpx;
-		// 	.dailyGoodsPrice{
-		// 		height: 52rpx;
-		// 		display: flex;
-		// 		align-items: center;
-		// 		margin-bottom: 20rpx;
-		// 		justify-content: space-between;
-		// 		.priceCon{
-		// 			display: flex;
-		// 			.nowPrice{
-		// 				font-size:44rpx;
-		// 				font-family:PingFang SC;
-		// 				font-weight:bold;
-		// 				color:rgba(241,0,0,1);
-		// 				margin-right: 20rpx;
-		// 			}
-		// 			.beforePrice{
-		// 				font-size:24rpx;
-		// 				font-family:PingFang SC;
-		// 				font-weight:400;
-		// 				color:rgba(169,169,169,1);
-		// 				text-decoration: line-through;
-		// 				margin-top: 18rpx;
-		// 			}
-		// 		}
-		// 		.sale{
-		// 			font-size:24rpx;
-		// 			font-family:PingFang SC;
-		// 			font-weight:400;
-		// 			line-height:28rpx;
-		// 			color:rgba(133,133,133,1);
-		// 		}
-		// 	}
-		// 	.dailyGoodsText{
-		// 		height: 32rpx;
-		// 		font-size:28rpx;
-		// 		font-family:PingFang SC;
-		// 		font-weight:bold;
-		// 		line-height:32rpx;
-		// 		color:rgba(51,51,51,1);
-		// 	}
-		// }
+		.dailyGoodsProductDetail{
+			width: 750rpx;
+			height: 164rpx;
+			background:rgba(255,255,255,1);
+			padding: 0 30rpx;
+			margin-bottom: 20rpx;
+			padding-top: 30rpx;
+			.dailyGoodsPrice{
+				height: 52rpx;
+				display: flex;
+				align-items: center;
+				margin-bottom: 20rpx;
+				justify-content: space-between;
+				.priceCon{
+					display: flex;
+					.nowPrice{
+						font-size:44rpx;
+						font-family:PingFang SC;
+						font-weight:bold;
+						color:rgba(241,0,0,1);
+						margin-right: 20rpx;
+					}
+					.beforePrice{
+						font-size:24rpx;
+						font-family:PingFang SC;
+						font-weight:400;
+						color:rgba(169,169,169,1);
+						text-decoration: line-through;
+						margin-top: 18rpx;
+					}
+				}
+				.sale{
+					font-size:24rpx;
+					font-family:PingFang SC;
+					font-weight:400;
+					line-height:28rpx;
+					color:rgba(133,133,133,1);
+				}
+			}
+			.dailyGoodsText{
+				height: 32rpx;
+				font-size:28rpx;
+				font-family:PingFang SC;
+				font-weight:bold;
+				line-height:32rpx;
+				color:rgba(51,51,51,1);
+			}
+			.progressCon{
+				width: 690rpx;
+				height: 88rpx;
+				display: flex;
+				justify-content: space-between;
+				.progress{
+					width: 560rpx;
+				}
+				.hasRobbed{
+					font-size:24rpx;
+					font-family:PingFang SC;
+					font-weight:400;
+					line-height:28rpx;
+					color:rgba(251,43,3,1);
+				}
+			}
+		}
 		
 		// 商家评分和进店逛逛
 		.inShop {
@@ -627,6 +698,24 @@
 			}
 		}
 
+		// 底部优惠券模态框
+		.modalBox {
+			padding: 0 30rpx;
+		
+			.text {
+				width: 690rpx;
+				height: 102rpx;
+				text-align: center;
+				font-size: 36rpx;
+				font-family: PingFang SC;
+				font-weight: bold;
+				line-height: 102rpx;
+				color: rgba(51, 51, 51, 1);
+			}
+		
+			// 优惠券
+		}
+		
 		// 商品详情
 		.goodDetail {
 			width: 750rpx;
@@ -687,7 +776,115 @@
 				}
 			}
 		}
-
+		
+		// 拼团
+		.group{
+			width: 750rpx;
+			height: 384rpx;
+			background: #FFFFFF;
+			margin-bottom: 20rpx;
+			padding: 0 30rpx;
+			// 拼团人数
+			.groupMore{
+				height: 92rpx;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				.people{
+					font-size:28rpx;
+					font-family:PingFang SC;
+					font-weight:400;
+					line-height:32rpx;
+					color:rgba(51,51,51,1);
+				}
+				.more{
+					display: flex;
+					align-items: center;
+					.text{
+						font-size:24rpx;
+						font-family:PingFang SC;
+						font-weight:400;	
+						line-height:28rpx;
+						color:rgba(133,133,133,1);
+					}
+					image{
+						width: 8.5rpx;
+						height: 16.94rpx;
+						margin-left: 10rpx;
+					}
+				}
+			}
+			// 拼团内容
+			.grouping{
+				width: 690rpx;
+				height: 292rpx;
+				.oneGroup{
+					height: 146rpx;
+					border-top: 2rpx solid rgba(243,243,243,1);
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					.userImg{
+						height: 146rpx;
+						display: flex;
+						align-items: center;
+						image{
+							width: 86rpx;
+							height: 86rpx;
+							border-radius: 50%;
+							margin-right: 20rpx;
+						}
+						.userName{
+							font-size:28rpx;
+							font-family:PingFang SC;
+							font-weight:400;
+							line-height:32rpx;
+							color:rgba(51,51,51,1);
+							
+						}
+					}
+					.toGroupCon{
+						width: 308rpx;
+						display: flex;
+						.shortCon{
+							text-align: right;
+							.shortPeople{
+								font-size:24rpx;
+								font-family:PingFang SC;
+								font-weight:400;
+								line-height:28rpx;
+								color:rgba(51,51,51,1);
+								.people{
+									color:rgba(246,54,57,1);
+									display: inline;
+								}
+							}
+							.shortTime{
+								font-size:24rpx;
+								font-family:PingFang SC;
+								font-weight:400;
+								line-height:28rpx;
+								color:rgba(102,102,102,1);
+							}
+						}
+						.toGroupBtn{
+							width:110rpx;
+							height:50rpx;
+							background:rgba(255,47,47,1);
+							border-radius:8rpx;
+							font-size:24rpx;
+							font-family:PingFang SC;
+							font-weight:400;
+							line-height:50rpx;
+							color:rgba(255,255,255,1);
+							text-align: center;
+							margin-left: 22rpx;
+						}
+					}			
+				}
+			}
+		}
+		
 		// 温馨提示
 		.warmTip {
 			width: 750rpx;
