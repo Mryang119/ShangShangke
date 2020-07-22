@@ -176,12 +176,13 @@
 				"iconPath": "static/images/tabBarImage/faxianmoren.png",
 				"selectedIconPath": "static/images/tabBarImage/faxianxuanzhong.png"
 			},
-			{
-				"pagePath": "views/tabBar/store/store",
-				"text": "店面",
-				"iconPath": "static/images/tabBarImage/dianmianmoren.png",
-				"selectedIconPath": "static/images/tabBarImage/dianmianxuanzhong.png"
-			},
+			// 店面由于模块资源缺失暂不展示 
+			// {
+			// 	"pagePath": "views/tabBar/store/store",
+			// 	"text": "店面",
+			// 	"iconPath": "static/images/tabBarImage/dianmianmoren.png",
+			// 	"selectedIconPath": "static/images/tabBarImage/dianmianxuanzhong.png"
+			// },
 			{
 				"pagePath": "views/tabBar/my/my",
 				"text": "我的",
