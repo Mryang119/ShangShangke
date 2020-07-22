@@ -85,7 +85,7 @@
 			},
 			now: {
 				type: Number,
-				default: 50
+				default: 40
 			}
 		},
 		computed:{

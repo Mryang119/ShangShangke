@@ -137,6 +137,11 @@
 			"style": {
 				"navigationBarTitleText": "支付"
 			}
+		},{
+			"path": "views/singlePage/classifyDetail/classifyDetail",
+			"style": {
+				"navigationBarTitleText": "分类结果"
+			}
 		},
 		{
 			"path": "views/singlePage/myService/myService",
@@ -144,7 +149,6 @@
 				"navigationBarTitleText": "我的客服"
 			}
 		},
-
 		{
 			"path": "views/singlePage/timekillDetail/timekillDetail",
 			"style": {
