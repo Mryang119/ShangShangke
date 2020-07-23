@@ -26,7 +26,9 @@
 		</view>
 		<view class="tabs-content">
 			<u-tabs name="name" :list="list" :is-scroll="false" :current="current" @change="change"></u-tabs>
-			<timeKillRobItem></timeKillRobItem>
+			<view class="commodity-contianer" v-for="(item,index) in 4" :key="index">
+				<timeKillRobItem></timeKillRobItem>
+			</view>
 		</view>
 	</view>
 </template>
@@ -209,10 +211,13 @@
 
 		.tabs-content {
 			position: absolute;
-			top: 2000rpx;
+			top: 1438rpx;
 			width: 750rpx;
 			padding: 0 20rpx;
 			background-color: #F6F6F6;
+			.commodity-contianer {
+				margin-bottom: 20rpx;
+			}
 		}
 	}
 </style>

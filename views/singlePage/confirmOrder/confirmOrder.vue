@@ -106,7 +106,7 @@
 					nonceStr: 'A1B2C3D4E5',
 					package: 'prepay_id=wx20180101abcdefg',
 					signType: 'MD5',
-					paySign: '',
+					paySign: 'MD5(appId=wxd678efh567hg6787&nonceStr=5K8264ILTKCH16CQ2502SI8ZNMTM67VS&package=prepay_id=wx2017033010242291fcfe0db70013231072&signType=MD5&timeStamp=1490840662&key=qazwsxedcrfvtgbyhnujmikolp111111) = 22D9B4E54AB1950F51E0649E8810ACD6',
 					success: function(res) {
 						console.log('success:' + JSON.stringify(res));
 					},

@@ -2,7 +2,7 @@
 	<!-- 买就送满就减商品展示 -->
 	<view class="c_show">
 		<view class="show-item-container">
-			<image :src="url" mode=""></image>
+			<image class="image" :src="url" mode=""></image>
 			<view class="show-item-textContent">
 				<view class="show-item-title">
 					{{title}}
@@ -47,9 +47,9 @@
 				type: Number,
 				default: 188
 			},
-			url:{
-				type:String,
-				default:'../../../../static/images/Product/shangpingtu.png'
+			url: {
+				type: String,
+				default: '../../../../static/images/Product/shangpingtu.png'
 			}
 		}
 	}
@@ -63,10 +63,12 @@
 		overflow: hidden;
 
 		.show-item-container {
-			image {
+			border-radius:16rpx 16rpx 0px 0px;
+			overflow: hidden;
+			.image {
 				width: 346rpx;
 				height: 326rpx;
-
+				border-radius:16rpx 16rpx 0px 0px;
 			}
 
 			.show-item-textContent {
