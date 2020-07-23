@@ -137,7 +137,7 @@
 			"style": {
 				"navigationBarTitleText": "支付"
 			}
-		},{
+		}, {
 			"path": "views/singlePage/classifyDetail/classifyDetail",
 			"style": {
 				"navigationBarTitleText": "分类结果"
@@ -154,6 +154,11 @@
 			"style": {
 				"navigationBarTitleText": "限时秒杀",
 				"navigationBarBackgroundColor": "#FE4C4F"
+			}
+		}, {
+			"path": "views/singlePage/login/login",
+			"style": {
+				"navigationBarTitleText": "登录"
 			}
 		}
 	],
