@@ -119,7 +119,7 @@
 			<view class="modalBox">
 				<view class="text">优惠</view>
 				<!-- 优惠券点击领取 -->
-				<getCoupon />
+				<shopDetailGetCoupon />
 			</view>
 		</u-popup>
 
@@ -229,7 +229,7 @@
 </template>
 
 <script>
-	import getCoupon from '../../../src/publicComponents/getCoupon.vue'
+	import shopDetailGetCoupon from '../../../src/publicComponents/shopDetailGetCoupon.vue'
 	export default {
 		data() {
 			return {
@@ -258,7 +258,7 @@
 			}
 		},
 		components:{
-			getCoupon
+			shopDetailGetCoupon
 		},
 		methods: {
 			// 切换收藏样式
@@ -270,12 +270,6 @@
 			isShow() {
 				this.show = !this.show
 			}
-			// // 切换领取后的样式
-			// toggleBg(item,index) {
-			// 	// item.state = 2
-			// 	this.distanceList[index].state = 2
-			// 	console.log(item,index)
-			// }
 		},
 		onLoad(option) {
 			console.log(option.type) // killtime
