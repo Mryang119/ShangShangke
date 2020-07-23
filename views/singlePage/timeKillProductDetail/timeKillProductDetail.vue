@@ -4,7 +4,7 @@
 		<!-- 轮播图 -->
 		<view class="swiperWrap">
 			<u-swiper :list="imgList" mode="number" indicator-pos="bottomRight" class="swiper" height="550">
-				
+
 			</u-swiper>
 		</view>
 		<!-- 限时秒杀的商品详情 -->
@@ -119,40 +119,14 @@
 			<view class="modalBox">
 				<view class="text">优惠</view>
 				<!-- 优惠券点击领取 -->
-				<shopDetailGetCoupon />
+				<shopDetailGetCoupon :distanceList='afterList' />
 			</view>
 		</u-popup>
 
 		<!-- 拼团 -->
-		<!-- v-if="option.type==='group'" -->
-		<!-- <view class="group">
-			<view class="groupMore">
-				<view class="people">10人正在拼团，可直接参与</view>
-				<view class="more">
-					<view class="text">查看更多</view>
-					<image src="@/static/images/iconfont/more.png"></image>
-				</view>
-			</view>
-			<view class="grouping">
-				<view class="oneGroup"  v-for="(item,index) in 2" :key="index">
-					<view class="userImg">
-						<image src="@/static/images/tabBarImage/myLoginHeader.png"></image>
-						<view class="userName">吴亦凡</view>
-					</view>
-					<view class="toGroupCon">
-						<view class="shortCon">
-							<view class="shortPeople">还差<view class="people">1人</view>拼成</view>
-							<view class="shortTime"> 
-								剩余<u-count-down :timestamp="timestamp" color="#5F5C5F" font-size="24" :show-days="false"></u-count-down>
-							</view>
-						</view>
-						<view class="toGroupBtn">去拼团</view>
-					</view>
-								
-				</view>
-			</view>
-		</view>
-		 -->
+		<groupBooking />
+
+
 		<!-- 商品详情 -->
 		<view class="goodDetail">
 			<view class="text">商品详情</view>
@@ -230,6 +204,7 @@
 
 <script>
 	import shopDetailGetCoupon from '../../../src/publicComponents/shopDetailGetCoupon.vue'
+	import groupBooking from '../groupBooking/groupBooking.vue'
 	export default {
 		data() {
 			return {
@@ -250,15 +225,29 @@
 				confirmOrder: '../../singlePage/confirmOrder/confirmOrder', // 跳转到确认订单页面
 				starColor: true, //收藏按钮星星颜色
 				starName: true, // 收藏按钮星星名字
-				timestamp: 86300, //拼团倒计时时间
+				// timestamp: 86300, //拼团倒计时时间
 				type: 'timekill', //限时秒杀--详情页面--默认字段
 				hasRobbed: 50, // 天天免费抢已抢进度
 				// 模态框数据
-				show: false // 控制模态框显示隐藏
+				show: false, // 控制模态框显示隐藏
+				afterList: [{
+						state: 1,
+						price: '100',
+						fullPrice: '1000',
+						useTime: '2020-06-28'
+					},
+					{
+						state: 1,
+						price: '200',
+						fullPrice: '2000',
+						useTime: '2020-06-28'
+					}
+				]
 			}
 		},
-		components:{
-			shopDetailGetCoupon
+		components: {
+			shopDetailGetCoupon,
+			groupBooking
 		},
 		methods: {
 			// 切换收藏样式
@@ -794,129 +783,6 @@
 			}
 		}
 
-		// 拼团
-		.group {
-			width: 750rpx;
-			height: 384rpx;
-			background: #FFFFFF;
-			margin-bottom: 20rpx;
-			padding: 0 30rpx;
-
-			// 拼团人数
-			.groupMore {
-				height: 92rpx;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-
-				.people {
-					font-size: 28rpx;
-					font-family: PingFang SC;
-					font-weight: 400;
-					line-height: 32rpx;
-					color: rgba(51, 51, 51, 1);
-				}
-
-				.more {
-					display: flex;
-					align-items: center;
-
-					.text {
-						font-size: 24rpx;
-						font-family: PingFang SC;
-						font-weight: 400;
-						line-height: 28rpx;
-						color: rgba(133, 133, 133, 1);
-					}
-
-					image {
-						width: 8.5rpx;
-						height: 16.94rpx;
-						margin-left: 10rpx;
-					}
-				}
-			}
-
-			// 拼团内容
-			.grouping {
-				width: 690rpx;
-				height: 292rpx;
-
-				.oneGroup {
-					height: 146rpx;
-					border-top: 2rpx solid rgba(243, 243, 243, 1);
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-
-					.userImg {
-						height: 146rpx;
-						display: flex;
-						align-items: center;
-
-						image {
-							width: 86rpx;
-							height: 86rpx;
-							border-radius: 50%;
-							margin-right: 20rpx;
-						}
-
-						.userName {
-							font-size: 28rpx;
-							font-family: PingFang SC;
-							font-weight: 400;
-							line-height: 32rpx;
-							color: rgba(51, 51, 51, 1);
-
-						}
-					}
-
-					.toGroupCon {
-						width: 308rpx;
-						display: flex;
-
-						.shortCon {
-							text-align: right;
-
-							.shortPeople {
-								font-size: 24rpx;
-								font-family: PingFang SC;
-								font-weight: 400;
-								line-height: 28rpx;
-								color: rgba(51, 51, 51, 1);
-
-								.people {
-									color: rgba(246, 54, 57, 1);
-									display: inline;
-								}
-							}
-
-							.shortTime {
-								font-size: 24rpx;
-								font-family: PingFang SC;
-								font-weight: 400;
-								line-height: 28rpx;
-								color: rgba(102, 102, 102, 1);
-							}
-						}
-
-						.toGroupBtn {
-							width: 110rpx;
-							height: 50rpx;
-							background: rgba(255, 47, 47, 1);
-							border-radius: 8rpx;
-							font-size: 24rpx;
-							font-family: PingFang SC;
-							font-weight: 400;
-							line-height: 50rpx;
-							color: rgba(255, 255, 255, 1);
-							text-align: center;
-							margin-left: 22rpx;
-						}
-					}
-				}
-			}
-		}
 
 		// 温馨提示
 		.warmTip {

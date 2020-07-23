@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view :class="item.state===1 ? 'coupon':'hasCoupon'" v-for="(item,index) in distanceList" :key="index">
+		<view :class="item.state===1 ? 'coupon':'hasCoupon'" v-for="(item,index) in afterList" :key="index">
 			<!-- ￥100 -->
 			<view class="numCon">
 				<view class="context">￥</view>
@@ -26,42 +26,27 @@
 
 <script>
 	export default {
-		name: 'getCoupon',
+		name: 'shopDetailGetCoupon',
 		props: {
 			useType: { // 适用类型
 				type: String,
 				default: '全商品可用'
 			},
-			distanceList: {
-				type: Array,
-				default: () => {
-					return [{
-							state: 1,
-							price: '100',
-							fullPrice: '1000',
-							useTime: '2020-06-28'
-						},
-						{
-							state: 1,
-							price: '200',
-							fullPrice: '2000',
-							useTime: '2020-06-28'
-						}
-					]
-				}
+			distanceList:{
+				type:Array,
+				default:()=>{return []}
 			}
-
 		},
 		data() {
 			return {
-				
+				afterList:this.distanceList
 			}
 		},
 		methods: {
 			// 切换领取后的样式
 			toggleBg(item, index) {
 				// this.distanceList[index].state = 2
-				this.$set(this.distanceList[index], 'state', 2)
+				this.$set(this.afterList[index], 'state', 2)
 				// this.$forceUpdate();
 				// console.log(item,index)
 				console.log(this.distanceList)
