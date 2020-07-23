@@ -45,11 +45,7 @@
 		methods: {
 			// 切换领取后的样式
 			toggleBg(item, index) {
-				// this.distanceList[index].state = 2
 				this.$set(this.afterList[index], 'state', 2)
-				// this.$forceUpdate();
-				// console.log(item,index)
-				console.log(this.distanceList)
 			}
 		}
 	}
