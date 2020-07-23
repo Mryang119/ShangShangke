@@ -51,7 +51,7 @@
 		},
 		data() {
 			return {
-				IconType: true
+				IconType: false
 			}
 		},
 		methods: {
