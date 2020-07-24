@@ -169,7 +169,12 @@
 		},{
             "path" : "views/singlePage/phoneLogin/phoneLogin",
             "style" : {}
-        }
+        }, {
+			"path": "views/singlePage/pendingOrder/pendingOrder",
+			"style": {
+				"navigationBarTitleText": "订单详情"
+			}
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
