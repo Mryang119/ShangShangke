@@ -174,7 +174,11 @@
 			"path": "views/singlePage/phoneLogin/phoneLogin",
 			"style": {}
 		}
-	],
+	    ,{
+            "path" : "views/singlePage/register/register",
+            "style" : {}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

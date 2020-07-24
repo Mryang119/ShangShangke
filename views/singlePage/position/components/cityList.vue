@@ -25,7 +25,7 @@
 			}
 		},
 		created() {
-			const cityList = this.$store.state.cityList
+			const cityList = this.$store.state.global.globalData.cityList
 			cityList.forEach((item, index) => {
 				Object.keys(item).forEach((k) => {
 					this.indexList.push({

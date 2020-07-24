@@ -1,5 +1,5 @@
 <template>
-	<view class="s_phoneLogin">
+	<view class="s_register">
 		<view class="login-centent">
 			<view class="border login-input">
 				<u-input placeholder="请输入手机号" v-model="mobile" :custom-style="inputStyle"></u-input>
@@ -7,17 +7,15 @@
 			<view class="border login-input">
 				<u-input placeholder="请输入密码" type="password" v-model="password" :custom-style="inputStyle"></u-input>
 			</view>
-			
-			<!-- <view class="border login-code">
+			<view class="border login-code">
 				<u-input placeholder="请输入验证码" v-model="vcode" :custom-style="inputStyle"></u-input>
 				<view class="vcode" v-if="vcodeStatus" @click="getVcode">获取验证码</view>
 				<view class="vcode" v-else>{{count+'s'}}</view>
-			</view> -->
-			
+			</view>
 		</view>
 		<view class="login-button-content">
-			<button class="usable-button button" v-if="verify" @click="login">登录</button>
-			<view class="forbidden-button button" v-else>登录</view>
+			<button class="usable-button button" v-if="verify" @click="register">注册</button>
+			<view class="forbidden-button button" v-else>注册</view>
 		</view>
 	</view>
 </template>
@@ -39,9 +37,8 @@
 				time: null,
 				mobile: '15501876709',
 				vcode: '',
-				buttonStatus: false,
 				password:'',
-				loginType:2 // 1验证码 2密码
+				buttonStatus: false
 			};
 		},
 		methods: {
@@ -67,16 +64,8 @@
 				let res = await registerCust({
 					mobile:this.mobile,
 					sysAccount:"SYSTEM",
+					pwd:this.password,
 					code:this.vcode
-				})
-				console.log(res)
-			},
-			// 登录
-			async login() {
-				let res = await loginByMobile({
-					mobile:this.mobile,
-					type:this.loginType,
-					code:this.password
 				})
 				console.log(res)
 			}
@@ -87,17 +76,16 @@
 			verify: function() {
 				let reg = /^1(3|4|5|6|7|8|9)\d{9}$/
 				let mobileTrue = reg.test(this.mobile)
-				// let vcodeTrue = this.vcode.length == 6 ? true : false
+				let vcodeTrue = this.vcode.length == 6 ? true : false
 				let passwordTrue = this.password.length == 6 ? true : false
-
-				return mobileTrue && passwordTrue
+				return mobileTrue && vcodeTrue && passwordTrue
 			}
 		}
 	}
 </script>
 
 <style lang="less">
-	.s_phoneLogin {
+	.s_register {
 		width: 750rpx;
 
 		.login-centent {
@@ -109,13 +97,13 @@
 			font-size: 38rpx !important;
 
 			.login-code {
-				margin-top: 48rpx;
 				position: relative;
 			}
 
 			.border {
 				border-bottom: 2rpx solid #E6E6E6;
 				padding-bottom: 6rpx;
+				margin-bottom: 48rpx;
 			}
 
 			.vcode {
@@ -157,3 +145,4 @@
 		}
 	}
 </style>
+
