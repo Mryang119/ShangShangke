@@ -18,7 +18,20 @@ function registerCust(data) {
 	})
 }
 
+// 用户登录
+function loginByMobile(data) {
+	return http({
+		method:'post',
+		data:{
+			sysAccount:"SYSTEM",
+			...data
+		},
+		url:'dby/sysuser/loginByMobile'
+	})
+}
+
 export {
 	registerCustomer,
-	registerCust
+	registerCust,
+	loginByMobile
 }

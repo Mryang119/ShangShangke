@@ -110,13 +110,6 @@ let showItemList = [{
 		shop: '李白杜甫白居易旗舰店',
 		image: 'http://pic1.sc.chinaz.com/Files/pic/pic9/202002/zzpic23343_s.jpg',
 		type: 3
-	},
-	{
-		price: 8243,
-		title: '俱往矣，数风流人物，还看今朝',
-		shop: '李白杜甫白居易旗舰店',
-		image: 'http://pic1.sc.chinaz.com/Files/pic/pic9/202002/zzpic23343_s.jpg',
-		type: 8
 	}
 ]
 // let showItemList = [1, 0, 1, 1, 0, 1, 0, 1, 0, 0]

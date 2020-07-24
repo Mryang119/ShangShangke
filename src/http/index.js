@@ -14,8 +14,18 @@ export default function http({url,method,data,tips="数据加载中"}){
 			data,
 			dataType:'json',
 			success:(res)=>{
-				uni.hideLoading()
-				resolve(res)
+				if(res.data.returnCode == '1') {
+					uni.hideLoading()
+					resolve(res)
+				}else {
+					uni.hideLoading()
+					uni.showModal({
+						title:'请求出错',
+						content:`错误信息为${res.data.returnMsg}`
+					})
+					reject(res)
+				}
+				
 			},
 			fail:(error)=>{
 				reject(error)

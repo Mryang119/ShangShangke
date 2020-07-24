@@ -7,12 +7,12 @@
 		<view class="flexBox">
 			<view class="block-content">
 				<view class="block" v-for="item1 in list1 " :key="item1.image">
-					<show :type="item1.type" :url="item1.image"></show>
+					<show :type="item1.type" :imgUrl="item1.image"></show>
 				</view>
 			</view>
 			<view class="block-content">
 				<view class="block" v-for="item2 in list2" :key="item2.image">
-					<show :type="item2.type" :url="item2.image"></show>
+					<show :type="item2.type" :imgUrl="item2.image"></show>
 				</view>
 			</view>
 		</view>

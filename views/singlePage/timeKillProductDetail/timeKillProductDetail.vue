@@ -243,7 +243,7 @@
 			}
 		},
 		onLoad(option) {
-			console.log(option.type) // killtime
+			console.log(option) // killtime
 
 		}
 	}

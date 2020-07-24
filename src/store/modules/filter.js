@@ -17,11 +17,7 @@ const state = () => ({
 		nearbys: false,
 		smartSort: false,
 		filters: false
-	},
-	// 城市列表信息
-	cityList: [],
-	// 定位城市名
-	cityName: '未定位'
+	}
 })
 const mutations = {
 	saveSelectDatas(state, payload) {

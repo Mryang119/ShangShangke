@@ -1,8 +1,8 @@
 <template>
 	<!-- 买就送满就减商品展示 -->
 	<view class="c_show">
-		<view class="show-item-container">
-			<image class="image" :src="url" mode=""></image>
+		<view class="show-item-container" @click="toDetail">
+			<image class="image" :src="imgUrl" mode=""></image>
 			<view class="show-item-textContent">
 				<view class="show-item-title">
 					{{title}}
@@ -47,9 +47,20 @@
 				type: Number,
 				default: 188
 			},
-			url: {
+			imgUrl: {
 				type: String,
 				default: '../../../../static/images/Product/shangpingtu.png'
+			}
+			// pdcId:{ // 商品id
+			// 	type:String,
+			// 	require:true
+			// }
+		},
+		methods:{
+			toDetail(){
+				uni.navigateTo({
+					url:`../../../singlePage/timeKillProductDetail/timeKillProductDetail?pdcId=${this.pdcId}&pdcType=${this.type}`
+				})
 			}
 		}
 	}
@@ -70,10 +81,8 @@
 				height: 326rpx;
 				border-radius:16rpx 16rpx 0px 0px;
 			}
-
 			.show-item-textContent {
 				padding: 14rpx 34rpx 20rpx 20rpx;
-
 				.show-item-title {
 					font-size: 28rpx;
 					color: #272727;
@@ -89,7 +98,6 @@
 					width: 284rpx;
 					color: #FD8F3A;
 					font-size: 24rpx;
-
 				}
 
 				.show-item-store {

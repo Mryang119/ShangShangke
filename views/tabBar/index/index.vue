@@ -20,14 +20,16 @@
 			</view>
 			<!-- 搜索定位分类部分 -->
 			<view class="topNav">
-				<view class="position" @click="toPosition">
+				<navigator url="../../singlePage/position/position" class="position">
 					<position :city="city"></position>
-				</view>
+				</navigator>
 				<view class="searchBar" @click="toSearch">
 					<image src="@/static/images/iconfont/search.png" mode=""></image>
 					<view class="fakerInput">搜索商家/商品</view>
 				</view>
-				<image class="classify" @click="toClsssify" src="@/static/images/iconfont/fenlei.png" mode=""></image>
+				<navigator url="../../singlePage/classify/classify">
+					<image class="classify" src="@/static/images/iconfont/fenlei.png" mode=""></image>
+				</navigator>
 			</view>
 		</view>
 		<!-- 下半部分主体 -->
@@ -110,7 +112,7 @@
 				<scroll-view scroll-x="true" class="scorll-H-S">
 					<!-- 宽度 商品数量*组件宽度+总边距 -->
 					<view class="scorll-H-S-container">
-						<view class="scorll-H-S-container-item" v-for="(item,index) in 10" :key="index">
+						<view class="scorll-H-S-container-item" @click="toDtail(index)" v-for="(item,index) in 10" :key="index">
 							<spitem></spitem>
 						</view>
 					</view>
@@ -204,10 +206,6 @@
 				interval: 2000,
 				// 轮播图配置↑
 				city: '未定位',
-				scrollTop: 0,
-				old: {
-					scrollTop: 0
-				},
 				list: list,
 				temp: [],
 				time: null,
@@ -225,8 +223,8 @@
 				// 百度地图数据⬇
 				BMap: null,
 				markers: [],
-				latitude: '',
-				longitude: '',
+				latitude: '', // 经度
+				longitude: '', // 纬度
 				rgcData: {},
 				// 百度地图数据⬆
 
@@ -259,29 +257,18 @@
 				console.log(e)
 				this.cp = e
 			},
-			// 跳转分类
-			toClsssify() {
-				uni.navigateTo({
-					url: '../../singlePage/classify/classify'
-				})
-			},
+			
 			// 跳转搜索
 			toSearch() {
 				uni.navigateTo({
 					url: '../../singlePage/search/search?type=index'
 				})
 			},
-			// 跳转定位
-			toPosition() {
-				uni.navigateTo({
-					url: '../../singlePage/position/position'
-				})
-			},
+			
 			// 跳转商品详情
-			toDtail() {
-				console.log('asdasdasd')
+			toDtail(id) {
 				uni.navigateTo({
-					url: '../../singlePage/timeKillProductDetail/timeKillProductDetail'
+					url: `../../singlePage/timeKillProductDetail/timeKillProductDetail?pdcId=${id}`
 				})
 			},
 			// 获取定位
@@ -306,8 +293,9 @@
 								that.longitude = wxMarkerData[0].longitude
 								var reg = /.+?(省|市|自治区|自治州|县|区)/g;
 								that.city = wxMarkerData[0].address.match(reg)[1].replace('市', '')
-								that.$store.state.city = wxMarkerData[0].address.match(reg)[1].replace('市', '')
-								console.log(that.city)
+								// 存储一份到仓库
+								that.$store.state.global.globalData.cityName = wxMarkerData[0].address.match(reg)[1].replace('市', '')
+								
 								resolve(data)
 							}
 							that.BMap.regeocoding({
@@ -325,8 +313,7 @@
 				let res = await getCityList({
 					sysAccount: 'SYSTEM'
 				})
-				this.$store.state.cityList = res.data.data
-				console.log('城市请求成功', res)
+				this.$store.state.global.globalData.cityList = res.data.data
 				return Promise.resolve(res)
 			},
 			// 获取商圈信息
@@ -338,9 +325,7 @@
 					lon: this.longitude
 				})
 				this.circs = res.data.data
-				this.$store.commit('saveGlobal', {
-					value: this.circs
-				})
+				this.$store.state.global.globalData.circs = res.data.data
 				return Promise.resolve(res)
 			},
 			// 获取首页模块相关数据
@@ -386,7 +371,7 @@
 			await this.getHomeModule()
 			// 获取更多活动信息
 			await this.getCircInfo()
-			
+			console.log(this.$store.state.global)
 		},
 		onReady() {
 

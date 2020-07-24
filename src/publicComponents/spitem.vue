@@ -1,18 +1,20 @@
 <template>
 	<!-- 横向滚动列表商品展示组件 -->
 	<view class="c_spitem">
-		<!-- 图片区域 -->
-		<view class="sp-item-img">
-			<image src="@/static/images/Product/shangpingtu.png" mode=""></image>
-		</view>
-		<!-- 商品标题 -->
-		<view class="sp-item-title">
-			<text>{{title}}</text>
-		</view>
-		<!-- 价格区域 -->
-		<view class="sp-item-price">
-			<text class="sp-item-price-red">￥{{price+' '}}</text>
-			<text class="sp-item-oldprice-delet">￥{{oldPrice}}</text>
+		<view class="eventContainer">
+			<!-- 图片区域 -->
+			<view class="sp-item-img">
+				<image :src="imgUrl" mode=""></image>
+			</view>
+			<!-- 商品标题 -->
+			<view class="sp-item-title">
+				<text>{{title}}</text>
+			</view>
+			<!-- 价格区域 -->
+			<view class="sp-item-price">
+				<text class="sp-item-price-red">￥{{price+' '}}</text>
+				<text class="sp-item-oldprice-delet">￥{{oldPrice}}</text>
+			</view>
 		</view>
 	</view>
 </template>
@@ -31,7 +33,17 @@
 			oldPrice: {
 				type: Number,
 				default: 160
+			},
+			pdcId:{
+				type:String,
+				default:'test'
+			},
+			imgUrl:{
+				type:String,
+				default:'../../static/images/Product/shangpingtu.png'
 			}
+		},
+		methods:{
 		}
 	}
 </script>

@@ -49,6 +49,7 @@
 
 					if (this.count == 0) {
 						this.vcodeStatus = true
+						this.count = 59
 						clearInterval(this.time)
 					}
 					this.count--
