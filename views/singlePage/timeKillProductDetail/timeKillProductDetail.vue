@@ -22,7 +22,7 @@
 					<span class="priceText">距结束还剩</span>
 					<view class="priceReciprocal">
 						<u-count-down :timestamp="86400" separator="colon" separator-size="28" separator-color="#606266" font-size="24"
-						 color="#FFFFFF" bg-color="#FE3B2B" :show-days="showDays"></u-count-down>
+						 color="#FFFFFF" bg-color="#FE3B2B" :show-days="false"></u-count-down>
 					</view>
 				</view>
 			</view>
@@ -31,24 +31,7 @@
 
 
 		<!-- 每日一品的商品详情 -->
-		<!-- v-else-if="option.type==='oneDayEat || group'" -->
-		<!-- progressCon进度条  v-if="option.type==='free'" -->
-		<!-- <view class="dailyGoodsProductDetail">
-			<view class="dailyGoodsPrice">
-				<view class="priceCon">
-					<view class="nowPrice">￥299.00</view>
-					<view class="beforePrice">￥11.00</view>
-				</view>
-				<view class="sale">月售2333</view>
-			</view>
-			<view class="dailyGoodsText">抹茶柚子千层 抹茶柚子千层 新鲜出炉</view>
-			<view class="progressCon">
-				<u-line-progress class="progress" :percent="hasRobbed" :show-percent="false"
-					:round="true" active-color="#fb2b03" height="14">
-				</u-line-progress>
-				<view class="hasRobbed">已抢{{hasRobbed}}%</view>
-			</view>
-		</view> -->
+		<!-- <oneDayEatShopDetail /> -->
 
 		<!-- 评分和进店逛逛 -->
 		<view class="inShop">
@@ -124,7 +107,7 @@
 		</u-popup>
 
 		<!-- 拼团 -->
-		<groupBooking />
+		<!-- <groupBooking /> -->
 
 
 		<!-- 商品详情 -->
@@ -203,8 +186,9 @@
 </template>
 
 <script>
-	import shopDetailGetCoupon from '../../../src/publicComponents/shopDetailGetCoupon.vue'
-	import groupBooking from '../groupBooking/groupBooking.vue'
+	import shopDetailGetCoupon from '../../../src/publicComponents/shopDetailGetCoupon.vue' 
+	import groupBooking from '../groupBooking/groupBooking.vue'   // 拼团
+	import oneDayEatShopDetail from '../oneDayEatShopDetail/oneDayEatShopDetail.vue'  //每日一品
 	export default {
 		data() {
 			return {
@@ -218,16 +202,13 @@
 						image: '../../../static/images/iconfont/shopitem.png'
 					}
 				],
-				showDays: false, //倒计时隐藏天
 				count: 5, // 评分星星的个数
 				value: 4, //评分星星的值
 				myService: '../../singlePage/myService/myService', // 跳转到我的客服页面
 				confirmOrder: '../../singlePage/confirmOrder/confirmOrder', // 跳转到确认订单页面
 				starColor: true, //收藏按钮星星颜色
 				starName: true, // 收藏按钮星星名字
-				// timestamp: 86300, //拼团倒计时时间
 				type: 'timekill', //限时秒杀--详情页面--默认字段
-				hasRobbed: 50, // 天天免费抢已抢进度
 				// 模态框数据
 				show: false, // 控制模态框显示隐藏
 				afterList: [{
@@ -246,8 +227,9 @@
 			}
 		},
 		components: {
-			shopDetailGetCoupon,
-			groupBooking
+			shopDetailGetCoupon,   
+			groupBooking,         //拼团商品详情模块
+			oneDayEatShopDetail   //每日一品商品详情模块
 		},
 		methods: {
 			// 切换收藏样式
@@ -384,81 +366,7 @@
 
 		}
 
-		// 每日一品-商品详情
-		.dailyGoodsProductDetail {
-			width: 750rpx;
-			height: 164rpx;
-			background: rgba(255, 255, 255, 1);
-			padding: 0 30rpx;
-			margin-bottom: 20rpx;
-			padding-top: 30rpx;
-
-			.dailyGoodsPrice {
-				height: 52rpx;
-				display: flex;
-				align-items: center;
-				margin-bottom: 20rpx;
-				justify-content: space-between;
-
-				.priceCon {
-					display: flex;
-
-					.nowPrice {
-						font-size: 44rpx;
-						font-family: PingFang SC;
-						font-weight: bold;
-						color: rgba(241, 0, 0, 1);
-						margin-right: 20rpx;
-					}
-
-					.beforePrice {
-						font-size: 24rpx;
-						font-family: PingFang SC;
-						font-weight: 400;
-						color: rgba(169, 169, 169, 1);
-						text-decoration: line-through;
-						margin-top: 18rpx;
-					}
-				}
-
-				.sale {
-					font-size: 24rpx;
-					font-family: PingFang SC;
-					font-weight: 400;
-					line-height: 28rpx;
-					color: rgba(133, 133, 133, 1);
-				}
-			}
-
-			.dailyGoodsText {
-				height: 32rpx;
-				font-size: 28rpx;
-				font-family: PingFang SC;
-				font-weight: bold;
-				line-height: 32rpx;
-				color: rgba(51, 51, 51, 1);
-			}
-
-			.progressCon {
-				width: 690rpx;
-				height: 88rpx;
-				display: flex;
-				justify-content: space-between;
-
-				.progress {
-					width: 560rpx;
-				}
-
-				.hasRobbed {
-					font-size: 24rpx;
-					font-family: PingFang SC;
-					font-weight: 400;
-					line-height: 28rpx;
-					color: rgba(251, 43, 3, 1);
-				}
-			}
-		}
-
+		
 		// 商家评分和进店逛逛
 		.inShop {
 			width: 750rpx;

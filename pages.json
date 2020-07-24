@@ -155,6 +155,12 @@
 				"navigationBarTitleText": "限时秒杀",
 				"navigationBarBackgroundColor": "#FE4C4F"
 			}
+		},
+		{
+			"path": "views/singlePage/groupBookingDetail/groupBookingDetail",
+			"style": {
+				"navigationBarTitleText": "拼团详情"
+			}
 		}
 	],
 	"globalStyle": {

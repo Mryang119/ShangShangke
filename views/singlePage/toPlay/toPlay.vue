@@ -29,10 +29,10 @@
 	export default{
 		data(){
 			return{
-				goodsImg:'../../../static/images/Product/shangpintu.png', //商品图片
-				goodsName:'韩国年糕料理（海岸城店）',  //商品名
-				goodsType:'两人芝士双拼套餐',  // 商品类型
-				nowPrice:'1.00',  // 现在的价格
+				goodsImg:'../../../static/images/Product/shangpintu.png',  //商品图片
+				goodsName:'韩国年糕料理（海岸城店）'  ,   // 商品门店名字
+				goodsType:'两人芝士双拼套餐',   // 商品类型
+				nowPrice:'1.00',   // 现在的价格
 				beforePrice:'11.00',  // 以前的价格
 				myOrder:'../../singlePage/myOrder/myOrder' // 查看我的订单
 			}
