@@ -5,71 +5,17 @@
 		<!-- 待付款订单 -->
 		<view class="noPay">
 			<view class="noPayText">待付款订单</view>
-			<view class="coupon">
-				<!-- 商家店面图片 -->
-				<image class="couponImg" :src="shopImg"></image>
-				<view class="noPayRight">
-					<view class="noPayRightCon">
-						<view class="noPayCoupon">{{cashCoupon}}元代金券</view>
-						<view class="noPayMoney">￥{{itemPrice}}</view>
-					</view>
-					<view class="noPayNumer">数量：{{itemNumber}}</view>
-
-				</view>
-			</view>
+			<couponMessage />
 		</view>
 		<!-- 适用门店 -->
-		<view class="applyStore">
-			<view class="applyStoreButton">
-				<view class="applyStoreContent">
-					<span class="applyStoreText">适用门店</span>
-					<span class="applyStoreNumber">({{shopNumber}})</span>
-				</view>
-				<!-- 更多图标 -->
-				<image class="applyStoreImg" src="@/static/images/iconfont/more.png"></image>
-			</view>
-			<!-- 地图 -->
-			<image class="applyStoreMap" src="@/static/images/tabBarImage/orderDetailMap.png"></image>
-			<!-- 位置 -->
-			<view class="applyStoreCon">
-				<view class="applyStorePlace">
-					<view class="applyStoreName">{{shopName}}</view>
-					<view class="applyStoreAddress">
-						<view class="applyStoreDistance">距您{{distance}}m</view>
-						<span>|</span>
-						<view class="applyStoreDoorplate">{{shopPlace}}</view>
-					</view>
-				</view>
-				<image class="applyStorePhone" src="@/static/images/iconfont/phone.png"></image>
-			</view>
-		</view>
+		<applyShop />
+		
 		<!-- 订单信息-->
-		<view class="orderNewContent">
-			<view class="orderNewsText">订单信息</view>
-			<view class="orderNewsName">
-				<span>订单数量</span>
-				<span>{{orderNumber}}</span>
-			</view>
-			<view class="orderNewsName">
-				<span>订单总价</span>
-				<span>￥{{orderNumPrice}}</span>
-			</view>
-			<view class="orderNewsName">
-				<span>订单编号</span>
-				<view class="orderNewsSerial">
-					<span>{{orderReference}}</span>
-					<view class="orderNewsCopy">复制</view>
-				</view>
-			</view>
-			<view class="orderNewsName">
-				<span>下单时间</span>
-				<span>{{orderTime}}</span>
-			</view>
-			
-		</view>
+		<orderInformation />
+
 		<!-- 取消订单按钮/去付款按钮 -->
-		<view class="orderNewsButton">
-			
+		<view class="orderNewsButton" v-if="state===true">
+
 			<button @click="open" @confirm="confirm" class="orderNewsCancel">
 				取消订单
 			</button>
@@ -78,32 +24,39 @@
 				<span class="orderNewsPayTo">待付款</span>
 			</button>
 		</view>
-		<u-modal v-model="show" show-cancel-button="true" :content="content" :show-title="false" confirm-color="#007AFF" cancel-color="#007AFF"></u-modal>
+		<u-modal v-model="show" show-cancel-button="true" :content="content" :show-title="false" confirm-color="#007AFF"
+		 cancel-color="#007AFF" :content-style="{color:'#000000',fontSize:'32rpx',fontWeight:'bold'}" @confirm="confirm">
+		</u-modal>
+		<!-- 取消订单提示 -->
+		<u-toast ref="uTips" />
+
 	</view>
 </template>
 
 <script>
+	import couponMessage from '../../../src/publicComponents/couponMessage.vue'         // 代金券信息
+	import orderInformation from '../../../src/publicComponents/orderInformation.vue'   //订单信息
+	import applyShop from '../../../src/publicComponents/applyShop.vue'     //适用门店
 	export default {
 		data() {
 			return {
 				show: false,
-				content: '是否取消订单',  // 取消订单模态框文本
-				shopImg:'../../../static/images/tabBarImage/myLoginHeader.png', // 商家头像
-				cashCoupon:'100', // 代金券
-				itemPrice:'79.9', // 单品价格
-				itemNumber:'1',  //单品数量
-				shopNumber:'10', //适用门店数量
-				shopName:'韩国年糕料理（海岸城店）',  // 店铺名称
-				distance:'500',  // 距离店铺多少米
-				shopPlace:'文新思路34号海岸城西座F2座806',  // 店铺地址
-				orderNumber:'1',  // 订单数量
-				orderNumPrice:'79.00',  //订单总价
-				orderReference:'34828342376473',  // 订单编号
-				orderTime:'2020-09-09 12:30',  //下单时间
+				content: '是否取消订单', // 取消订单模态框文本
+				orderNumPrice: '79.00', //订单总价
+				state:true
 			}
 		},
+		components: {
+			couponMessage,
+			orderInformation,
+			applyShop
+		},
 		methods: {
-			confirm(){
+			confirm() {
+				this.$refs.uTips.show({
+					title: '订单已成功取消'
+				});
+				this.state=false
 				
 			},
 			open() {
@@ -111,12 +64,14 @@
 			}
 		}
 	}
+	
 </script>
 
 <style lang="less">
 	// 最外层
 	.orderContainer {
 		padding-top: 20rpx;
+		height: 1680rpx;
 		background: #F6F6F6;
 
 		// 待付款订单
@@ -139,259 +94,53 @@
 				color: rgba(51, 51, 51, 1);
 				border-bottom: 2rpx solid rgba(243, 243, 243, 1);
 			}
-
-			.coupon {
-				width: 690rpx;
-				height: 200rpx;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-
-				.couponImg {
-					width: 148rpx;
-					height: 146rpx;
-					background: rgba(0, 0, 0, 0);
-					border-radius: 12rpx;
-				}
-
-				.noPayRight {
-					width: 524rpx;
-					margin-bottom: 60rpx;
-
-					.noPayRightCon {
-						display: flex;
-						justify-content: space-between;
-
-						// 代金券
-						.noPayCoupon {
-							font-size: 28rpx;
-							font-family: PingFang SC;
-							font-weight: bold;
-							line-height: 32rpx;
-							color: rgba(51, 51, 51, 1);
-						}
-
-						// 价格
-						.noPayMoney {
-							font-size: 28rpx;
-							font-family: PingFang SC;
-							font-weight: bold;
-							line-height: 32rpx;
-							color: rgba(255, 47, 47, 1);
-						}
-					}
-
-					.noPayNumer {
-						font-size: 24rpx;
-						font-family: PingFang SC;
-						font-weight: 400;
-						line-height: 28rpx;
-						color: rgba(133, 133, 133, 1);
-						margin-top: 16rpx;
-					}
-				}
-			}
 		}
 
-		// 适用门店
-		.applyStore {
-			width: 750rpx;
-			height: 494rpx;
-			background: #FFFFFF;
-			padding-left: 30rpx;
-			margin-top: 20rpx;
-			margin-bottom: 20rpx;
-
-			.applyStoreButton {
-				width: 690rpx;
-				height: 98rpx;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-
-				// 门店信息
-				.applyStoreConent {
-					width: 184rpx;
-					height: 38rpx;
-
-					.applyStoreText {
-						width: 128rpx;
-						height: 38rpx;
-						font-size: 32rpx;
-						font-family: PingFang SC;
-						font-weight: bold;
-						line-height: 38rpx;
-						color: rgba(51, 51, 51, 1);
-					}
-
-					.applyStoreNumber {
-						width: 46rpx;
-						height: 32rpx;
-						font-size: 28rpx;
-						font-family: PingFang SC;
-						font-weight: 400;
-						line-height: 32rpx;
-						color: rgba(133, 133, 133, 1);
-					}
-
-				}
-
-				// 更多图标
-				.applyStoreImg {
-					width: 9.68rpx;
-					height: 17rpx;
-				}
-			}
-
-			// 门店地图
-			.applyStoreMap {
-				width: 690rpx;
-				height: 260rpx;
-				background: rgba(0, 0, 0, 0);
-				opacity: 1;
-				border-radius: 12rpx;
-			}
-
-			// 门店地址
-			.applyStoreCon {
-				width: 690rpx;
-				height: 136rpx;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-
-				.applyStorePlace {
-					width: 600rpx;
-					height: 96rpx;
-					display: flex;
-					flex-direction: column;
-					justify-content: space-around;
-
-					// 店名
-					.applyStoreName {
-						width: 336rpx;
-						height: 32rpx;
-						font-size: 28rpx;
-						font-family: PingFang SC;
-						font-weight: bold;
-						line-height: 32rpx;
-						color: rgba(51, 51, 51, 1);
-
-					}
-
-					// 地址
-					.applyStoreAddress {
-						width: 520rpx;
-						font-size: 24rpx;
-						font-family: PingFang SC;
-						font-weight: 400;
-						line-height: 28rpx;
-						color: rgba(133, 133, 133, 1);
-						display: flex;
-						justify-content: space-between;
-						align-items: center;
-					}
-				}
-
-				// 电话
-				.applyStorePhone {
-					width: 40rpx;
-					height: 44.46rpx;
-				}
-			}
-
-		}
-
-
-		// 订单信息
-		.orderNewContent {
-			width: 744rpx;
-			height: 370rpx;
-			background: #FFFFFF;
-			padding: 0 30rpx;
-
-			.orderNewsText {
-				width: 690rpx;
-				height: 98rpx;
-				font-size: 32rpx;
-				font-family: PingFang SC;
-				font-weight: bold;
-				line-height: 38rpx;
-				color: rgba(51, 51, 51, 1);
-				display: flex;
-				align-items: center;
-			}
-
-			.orderNewsName {
-				width: 690rpx;
-				height: 68rpx;
-				font-size: 28rpx;
-				font-family: PingFang SC;
-				font-weight: 400;
-				line-height: 32rpx;
-				color: rgba(133, 133, 133, 1);
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-
-				.orderNewsSerial {
-					width: 298rpx;
-					height: 40rpx;
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-
-					.orderNewsCopy {
-						font-size: 28rpx;
-						font-family: PingFang SC;
-						font-weight: bold;
-						line-height: 32rpx;
-						color: rgba(51, 51, 51, 1);
-					}
-				}
-			}
-		}
 		// 取消订单/去付款
-		.orderNewsButton{
+		.orderNewsButton {
 			width: 750rpx;
 			height: 160rpx;
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
+
 			// 取消订单
-			.orderNewsCancel{
+			.orderNewsCancel {
 				width: 332rpx;
 				height: 80rpx;
 				border: 2rpx solid #24A7FF;
-				border-radius:12rpx;
+				border-radius: 12rpx;
 				color: #24A7FF;
 				font-size: 28rpx;
 				line-height: 80rpx;
 			}
+
 			// 待付款
-			.orderNewsPay{
+			.orderNewsPay {
 				width: 332rpx;
 				height: 80rpx;
-				background:rgba(255,47,47,1);
-				border-radius:12rpx;
+				background: rgba(255, 47, 47, 1);
+				border-radius: 12rpx;
 				color: #FFFFFF;
 				line-height: 80rpx;
 				display: flex;
 				justify-content: space-around;
-				.orderNewsPayMoney{
-					width:116rpx;
-					height:38rpx;
-					font-size:32rpx;
-					font-family:PingFang SC;
-					font-weight:bold;
+
+				.orderNewsPayMoney {
+					width: 116rpx;
+					height: 38rpx;
+					font-size: 32rpx;
+					font-family: PingFang SC;
+					font-weight: bold;
 				}
-				.orderNewsPayTo{
-					width:84rpx;
-					height:32rpx;
-					font-size:28rpx;
-					font-family:PingFang SC;
-					font-weight:400;
-					line-height:32rpx;
+
+				.orderNewsPayTo {
+					width: 84rpx;
+					height: 32rpx;
+					font-size: 28rpx;
+					font-family: PingFang SC;
+					font-weight: 400;
+					line-height: 32rpx;
 					font-size: 28rpx;
 					line-height: 80rpx;
 				}

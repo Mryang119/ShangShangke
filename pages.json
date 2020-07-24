@@ -162,23 +162,34 @@
 			"style": {
 				"navigationBarTitleText": "拼团详情"
 			}
+
+		},
+		{
+			"path": "views/singlePage/register/register",
+			"style": {
+				"navigationBarTitleText": "注册"
+			}
 		},
 		{
 			"path": "views/singlePage/login/login",
 			"style": {
 				"navigationBarTitleText": "登录"
-
 			}
 		},
 		{
 			"path": "views/singlePage/phoneLogin/phoneLogin",
-			"style": {}
+
+			"style": {
+				"navigationBarTitleText":"手机登录"
+			}
+		},
+		{
+			"path": "views/singlePage/pendingOrder/pendingOrder",
+			"style": {
+				"navigationBarTitleText": "订单详情"
+			}
 		}
-	    ,{
-            "path" : "views/singlePage/register/register",
-            "style" : {}
-        }
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

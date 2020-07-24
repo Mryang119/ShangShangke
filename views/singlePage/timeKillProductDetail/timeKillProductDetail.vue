@@ -50,8 +50,8 @@
 					<!-- 店家评分 -->
 					<view class="inShopGrade">
 						<view class="inShopGradeText">评分:</view>
-						<u-rate :count="count" v-model="value" size="20" active-color="#FFAE44" disabled="true"></u-rate>
-						<view class="inShopRate">4.0</view>
+						<u-rate :count="5" v-model="3.5" size="20" active-color="#FFAE44" disabled="true"></u-rate>
+						<view class="inShopRate">{{value}}</view>
 					</view>
 				</view>
 
@@ -123,41 +123,7 @@
 		</view>
 
 		<!-- 温馨提示 -->
-		<view class="warmTip">
-			<view class="text">温馨提示</view>
-			<!-- 有效期 -->
-			<view class="content">
-				<view class="use">有效期：</view>
-				<view class="tipCon">
-					<view class="circle"></view>
-					<view class="tipName">购买一个月内有效</view>
-				</view>
-			</view>
-			<!-- 使用规则 -->
-			<view class="content">
-				<view class="use">使用规则：</view>
-				<view class="tipCon">
-					<view class="circle"></view>
-					<view class="tipName">无需预约，高峰调度可能需要等位</view>
-				</view>
-			</view>
-			<!-- 购买须知 -->
-			<view class="content">
-				<view class="use">购买须知：</view>
-				<view class="buyTipCon">
-					<view class="circle"></view>
-					<view class="tipName">限时秒杀不可与其他优惠叠加使用</view>
-				</view>
-				<view class="buyTipCon">
-					<view class="circle"></view>
-					<view class="tipName">不兑现、不找零</view>
-				</view>
-				<view class="buyTipCon">
-					<view class="circle"></view>
-					<view class="tipName">仅限堂食，不提供餐前外带</view>
-				</view>
-			</view>
-		</view>
+		<warmTip />
 
 		<!-- 商品导航 -->
 		<view class="goodsNav">
@@ -186,9 +152,10 @@
 </template>
 
 <script>
-	import shopDetailGetCoupon from '../../../src/publicComponents/shopDetailGetCoupon.vue' 
+	import shopDetailGetCoupon from '../../../src/publicComponents/shopDetailGetCoupon.vue'   // 商品详情点击领取优惠券
 	import groupBooking from '../groupBooking/groupBooking.vue'   // 拼团
 	import oneDayEatShopDetail from '../oneDayEatShopDetail/oneDayEatShopDetail.vue'  //每日一品
+	import warmTip from '../../../src/publicComponents/warmTip.vue'  //温馨提示
 	export default {
 		data() {
 			return {
@@ -202,8 +169,7 @@
 						image: '../../../static/images/iconfont/shopitem.png'
 					}
 				],
-				count: 5, // 评分星星的个数
-				value: 4, //评分星星的值
+				value: 4.5, //评分星星的值
 				myService: '../../singlePage/myService/myService', // 跳转到我的客服页面
 				confirmOrder: '../../singlePage/confirmOrder/confirmOrder', // 跳转到确认订单页面
 				starColor: true, //收藏按钮星星颜色
@@ -227,9 +193,10 @@
 			}
 		},
 		components: {
-			shopDetailGetCoupon,   
+			shopDetailGetCoupon,   // 商品详情点击领取优惠券
 			groupBooking,         //拼团商品详情模块
-			oneDayEatShopDetail   //每日一品商品详情模块
+			oneDayEatShopDetail,   //每日一品商品详情模块
+			warmTip               //温馨提示
 		},
 		methods: {
 			// 切换收藏样式
@@ -684,87 +651,6 @@
 						font-size: 28rpx;
 						font-family: PingFang SC;
 						font-weight: bold;
-						line-height: 32rpx;
-						color: rgba(51, 51, 51, 1);
-					}
-				}
-			}
-		}
-
-
-		// 温馨提示
-		.warmTip {
-			width: 750rpx;
-			height: 524rpx;
-			padding: 0 30rpx;
-			background-color: #FFFFFF;
-
-			// 温馨提示文字
-			.text {
-				height: 84rpx;
-				font-size: 32rpx;
-				font-family: PingFang SC;
-				font-weight: bold;
-				line-height: 84rpx;
-				color: rgba(51, 51, 51, 1);
-				padding-top: 16rpx;
-			}
-
-			.content {
-				height: 110rpx;
-				padding-top: 8rpx;
-
-				// 有效期文字
-				.use {
-					font-size: 28rpx;
-					font-family: PingFang SC;
-					font-weight: 400;
-					line-height: 32rpx;
-					color: rgba(169, 169, 169, 1);
-					margin-top: 14rpx;
-					margin-bottom: 16rpx;
-				}
-
-				.tipCon {
-					width: 666rpx;
-					display: flex;
-					align-items: center;
-
-					.circle {
-						width: 8rpx;
-						height: 8rpx;
-						background: rgba(51, 51, 51, 1);
-						border-radius: 50%;
-						margin-right: 14rpx;
-					}
-
-					.tipName {
-						font-size: 28rpx;
-						font-family: PingFang SC;
-						font-weight: 400;
-						line-height: 32rpx;
-						color: rgba(51, 51, 51, 1);
-					}
-				}
-
-				.buyTipCon {
-					width: 666rpx;
-					display: flex;
-					align-items: center;
-					padding-bottom: 10rpx;
-
-					.circle {
-						width: 8rpx;
-						height: 8rpx;
-						background: rgba(51, 51, 51, 1);
-						border-radius: 50%;
-						margin-right: 14rpx;
-					}
-
-					.tipName {
-						font-size: 28rpx;
-						font-family: PingFang SC;
-						font-weight: 400;
 						line-height: 32rpx;
 						color: rgba(51, 51, 51, 1);
 					}
