@@ -137,7 +137,7 @@
 			"style": {
 				"navigationBarTitleText": "支付"
 			}
-		},{
+		}, {
 			"path": "views/singlePage/classifyDetail/classifyDetail",
 			"style": {
 				"navigationBarTitleText": "分类结果"
@@ -155,14 +155,25 @@
 				"navigationBarTitleText": "限时秒杀",
 				"navigationBarBackgroundColor": "#FE4C4F"
 			}
+<<<<<<< HEAD
 		},
 		{
 			"path": "views/singlePage/groupBookingDetail/groupBookingDetail",
 			"style": {
 				"navigationBarTitleText": "拼团详情"
+=======
+		}, {
+			"path": "views/singlePage/login/login",
+			"style": {
+				"navigationBarTitleText": "登录"
+>>>>>>> 43d11020b8a1884f0820894aa03130edd652e5b1
 			}
 		}
-	],
+	    ,{
+            "path" : "views/singlePage/phoneLogin/phoneLogin",
+            "style" : {}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
