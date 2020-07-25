@@ -44,10 +44,22 @@ const getSeckillMoreInfo = (data) => {
 	})
 }
 
+const getCouponList = (data) => {
+	return http({
+		data: {
+			...data,
+			sysAccount: 'TESTSYSACCOUNT'
+		},
+		method: 'post',
+		url: 'backstages/mktCamp/getCouponList'
+	})
+}
+
 export {
 	getCityList,
 	getHomeModuleMessages,
 	getCircList,
 	getCircCampaignInfo,
-	getSeckillMoreInfo
+	getSeckillMoreInfo,
+	getCouponList
 }
