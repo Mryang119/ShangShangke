@@ -49,20 +49,20 @@
 		</view>
 		<!-- tabs -->
 		<view class="tabs-content">
+			<view class="line-container">
+				<view class="line"></view>
+				<view class="line"></view>
+				<view class="line"></view>
+				<view class="line"></view>
+			</view>
 			<u-tabs bg-color="#F6F6F6" :active-item-style="{fontSize:34+'rpx'}" :list="list" :is-scroll="false" :current="current"
 			 @change="change"></u-tabs>
 		</view>
 		<!-- 组件展示 -->
 		<view class="product-content">
 			<view class="product-item" v-for="(item,index) in groups" :key="index">
-				<groupPurchase 
-				:type="item.type"
-				:productTitle="item.productTitle"
-				:price="item.price"
-				:oldPrice="item.oldPrice"
-				:distance="item.distance"
-				:tag="item.tag"
-				></groupPurchase>
+				<groupPurchase :type="item.type" :productTitle="item.productTitle" :price="item.price" :oldPrice="item.oldPrice"
+				 :distance="item.distance" :tag="item.tag"></groupPurchase>
 			</view>
 		</view>
 
@@ -186,10 +186,32 @@
 			width: 750rpx;
 			padding: 20px 0;
 			background-color: #F6F6F6;
+			position: relative;
+
+			.line-container {
+				position: absolute;
+				width: 458rpx;
+				height: 80rpx;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				box-sizing: border-box;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				.line {
+					width: 2rpx;
+					height: 28rpx;
+					background-color: #E4E4E4;
+				}
+			}
 		}
+
 		.product-content {
-			background-color:#F6F6F6;
-			padding: 20rpx;
+			background-color: #F6F6F6;
+			padding: 10rpx;
+
 			.product-item {
 				margin-bottom: 20rpx;
 			}
