@@ -40,7 +40,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	.payContainer{
 		height: 1448rpx;
 		background:rgba(246,246,246,1);

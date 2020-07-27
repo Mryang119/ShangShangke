@@ -217,7 +217,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	.productDetail {
 		width: 750rpx;
 		height: 2500rpx;

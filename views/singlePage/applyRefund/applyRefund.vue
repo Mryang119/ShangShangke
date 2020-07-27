@@ -4,21 +4,13 @@ D
 	<view class="Refundontainer">
 		<view class="container">
 			<view class="refundText">请选择退款原因</view>
-			<view class="refundList">
-				<!-- <u-checkbox-group @change="checkboxGroupChange" wrap="fasle" shape="square" active-color="#24A7FF">
-					<u-checkbox @change="checkboxChange" v-model="item.checked" v-for="(item, index) in list" :key="index" 
-					:name="item.name">{{item.name}}</u-checkbox>
-				</u-checkbox-group> -->
-				<checkbox-group @change="checkboxChange">
-					<label class="uni-list-cell uni-list-cell-pd" v-for="item in items" :key="item.value">
-						<view>{{item.name}}</view>
-						<view>
-							<checkbox :value="item.value" :checked="item.checked" />
-						</view>
-					</label>
-				</checkbox-group>
-			</view>
-			<navigator class="applyRefundBtn" :url="applyRefundWarmTip">申请退款</navigator>
+			<label class="uni-list-cell uni-list-cell-pd " v-for="(item, index) in items" :key="index">
+				<view class="resultText">{{item.name}}</view>
+				<view>
+					<radio class="arc" :value="item.value" color='#24A7FF' :checked="item.checked" @click="isAcativy(index)" />
+				</view>
+			</label>
+			<navigator class="applyRefundBtn" @click="btn" :url="applyRefundWarmTip">申请退款</navigator>
 		</view>
 	</view>
 </template>
@@ -28,64 +20,69 @@ D
 		data() {
 			return {
 				items: [{
-						value: '商家营业但不接待',
-						name: '商家营业但不接待'
+						value: '1',
+						name: '商家营业但不接待',
+						checked: false,
 					},
 					{
-						value: '去过了，不太满意',
+						value: '2',
+						name: '去过了不太满意',
+						checked: false
+					},
+					{
+						value: '3',
+						name: '后悔了不想要了',
+						checked: false,
+					},
+					{
+						value: '4',
+						name: '商家装修/装让',
+						checked: false,
+					},
+					{
+						value: '5',
+						name: '商家营业但不接待',
+						checked: false,
+					},
+					{
+						value: '6',
 						name: '去过了，不太满意',
-						checked: 'true'
+						checked: true
 					},
 					{
-						value: '后悔了，不想要了',
-						name: '后悔了，不想要了'
+						value: '7',
+						name: '后悔了，不想要了',
+						checked: false,
 					},
 					{
-						value: '商家装修/转让',
-						name: '商家装修/转让'
-					},
-					{
-						value: '商家营业但不接待',
-						name: '商家营业但不接待'
-					},
-					{
-						value: '去过了，不太满意',
-						name: '去过了，不太满意',
-						checked: 'true'
-					},
-					{
-						value: '后悔了，不想要了',
-						name: '后悔了，不想要了'
-					},
-					{
-						value: '商家装修/转让',
-						name: '商家装修/转让'
+						value: '8',
+						name: '商家装修/转让',
+						checked: false,
 					}
 				],
-				current: 1,
-				applyRefundWarmTip:'../../singlePage/applyRefundWarmTip/applyRefundWarmTip'
+				// current: 1,
+				applyRefundWarmTip: '../../singlePage/applyRefundWarmTip/applyRefundWarmTip'
 
 			}
 		},
 		methods: {
-			checkboxChange: function(e) {
-				var items = this.items,
-					values = e.detail.value;
-				for (var i = 0, lenI = items.length; i < lenI; ++i) {
-					const item = items[i]
-					if (values.includes(item.value)) {
-						this.$set(item, 'checked', true)
-					} else {
-						this.$set(item, 'checked', false)
-					}
-				}
+			isAcativy(index) {
+				console.log(index)
+				this.items[index].checked = !this.items[index].checked
+			},
+			btn() {
+				let list = [...this.items]
+				let list1 = list.filter((item, index) => {
+					return item.checked
+				})
+				console.log(list1)
 			}
 		}
 
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	.Refundontainer {
 		width: 750rpx;
 		height: 1380rpx;
@@ -108,26 +105,28 @@ D
 				font-weight: 400;
 				color: rgba(112, 112, 112, 1);
 				border-bottom: 1px solid rgba(243, 243, 243, 1);
-			}
-
-			.refundList {
+			}			
+			.uni-list-cell {
 				width: 690rpx;
-				height: 712rpx;
-
-				.uni-list-cell {
-					width: 690rpx;
-					height: 96rpx;
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-					font-size: 28rpx;
-					font-family: PingFang SC;
-					font-weight: 400;
-					color: rgba(51, 51, 51, 1);
+				height: 96rpx;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				font-size: 28rpx;
+				font-family: PingFang SC;
+				font-weight: 400;
+				color: rgba(51, 51, 51, 1);
+				.resultText{
+					font-size:28rpx;
+					font-family:PingFang SC;
+					font-weight:400;
+					line-height:96rpx;
+					color:rgba(51,51,51,1);
+				}
+				.arc{
+					transform: scale(0.8);
 				}
 			}
-
-
 			.applyRefundBtn {
 				margin-top: 80rpx;
 				width: 690rpx;
@@ -136,10 +135,10 @@ D
 				border-radius: 12rpx;
 				line-height: 80rpx;
 				text-align: center;
-				font-size:28rpx;
-				font-family:PingFang SC;
-				font-weight:400;
-				color:rgba(255,255,255,1);
+				font-size: 28rpx;
+				font-family: PingFang SC;
+				font-weight: 400;
+				color: rgba(255, 255, 255, 1);
 			}
 
 		}

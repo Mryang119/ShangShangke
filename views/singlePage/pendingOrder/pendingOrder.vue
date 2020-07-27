@@ -62,7 +62,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	.pendingOrderContainer {
 		height: 1640rpx;
 		background: rgba(246, 246, 246, 1);

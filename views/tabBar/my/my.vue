@@ -94,7 +94,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	.root_my {
 		width: 750rpx;
 		background: #F6F6F6;

@@ -56,7 +56,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	// 每日一品-商品详情
 	.dailyGoodsProductDetail {
 		width: 750rpx;

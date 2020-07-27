@@ -119,7 +119,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	.orderContainer {
 		width: 750rpx;
 		height: 1448rpx;

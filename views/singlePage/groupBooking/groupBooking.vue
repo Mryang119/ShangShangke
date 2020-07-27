@@ -60,7 +60,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	// 拼团
 	.group {
 		width: 750rpx;

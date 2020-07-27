@@ -21,7 +21,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	.container{
 		width:750rpx;
 		height:1380rpx;

@@ -67,7 +67,7 @@
 	
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	// 最外层
 	.orderContainer {
 		padding-top: 20rpx;
