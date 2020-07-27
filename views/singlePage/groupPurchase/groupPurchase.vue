@@ -184,7 +184,7 @@
 
 		.tabs-content {
 			width: 750rpx;
-			padding: 20px 0;
+			padding: 20rpx 0;
 			background-color: #F6F6F6;
 			position: relative;
 
