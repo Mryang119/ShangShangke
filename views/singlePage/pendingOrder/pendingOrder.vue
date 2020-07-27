@@ -14,23 +14,25 @@
 		<orderInformation />
 		<!-- 申请退款 -->
 		<view class="applyRefund">
-			<view class="refundBtn">申请退款</view>
-		</view>
+			<navigator class="refundBtn" :url="applyRefund">申请退款</navigator>
+		</view>	
 		<!-- 出示二维码 -->
-		<u-popup v-model="show" mode="center" width="576rpx" height="798rpx">
-			<view class="codeText">
-				<view class="textCon">
-					<view class="couponText">{{cashCoupon}}元代金券</view>
-					<view class="timeText">有效期至：2020-06-09</view>
+		<u-popup v-model="show" mode="center" width="576rpx" height="638rpx">
+			<view class="orderModal">
+				<view class="codeText">
+					<view class="textCon">
+						<view class="couponText">{{cashCoupon}}元代金券</view>
+						<view class="timeText">有效期至：2020-06-09</view>
+					</view>
+					<view class="useText">待使用</view>
 				</view>
-				<view class="useText">待使用</view>
+				<view class="code">
+					<image src="../../../static/images/iconfont/erweima.png"></image>
+					<view class="textUse">（请到店出示二维码使用）</view>
+				</view>
+				<view class="codeNumber">74838273</view>
+				<view class="cancleCon"><view class="cancleIcon"><image src="../../../static/images/iconfont/guanbiBtn.png"></image></view></view>
 			</view>
-			<view class="code">
-				<image src="../../../static/images/iconfont/erweima.png"></image>
-				<view class="textUse">（请到店出示二维码使用）</view>
-			</view>
-			<view class="codeNumber">74838273</view>
-			<!-- <view class="cancleCon"><view class="cancleIcon"><image src="../../../static/images/iconfont/guanbiBtn.png"></image></view></view> -->
 		</u-popup>
 	</view>
 </template>
@@ -43,7 +45,8 @@
 		data() {
 			return {
 				show:false,
-				cashCoupon:'100'
+				cashCoupon:'100',
+				applyRefund:'../../singlePage/applyRefund/applyRefund'
 			}
 		},
 		components: {
@@ -125,24 +128,53 @@
 			}
 		}
 		// 模态框
-		.codeText{
-			width: 576rpx;
-			height: 146rpx;
-			padding: 34rpx 30rpx;
-			display: flex;
-			justify-content: space-between;
-			.textCon{
+		.orderModal{
+			overflow: hidden;
+			.codeText{
+				width: 576rpx;
+				height: 146rpx;
+				padding: 34rpx 30rpx;
+				display: flex;
+				justify-content: space-between;
+				.textCon{
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					.couponText{
+						font-size:32rpx;
+						font-family:PingFang SC;
+						font-weight:bold;
+						line-height:38rpx;
+						color:rgba(51,51,51,1);
+					}
+					.timeText{
+						font-size:24rpx;
+						font-family:PingFang SC;
+						font-weight:400;
+						line-height:28rpx;
+						color:rgba(51,51,51,1);
+					}
+				}
+				.useText{
+					font-size:28rpx;
+					font-family:PingFang SC;
+					font-weight:400;
+					line-height:32rpx;
+					color:rgba(51,51,51,1);
+				}
+			}
+			.code{
+				width: 576rpx;
+				height: 386rpx;
 				display: flex;
 				flex-direction: column;
 				justify-content: space-between;
-				.couponText{
-					font-size:32rpx;
-					font-family:PingFang SC;
-					font-weight:bold;
-					line-height:38rpx;
-					color:rgba(51,51,51,1);
+				align-items: center;
+				image{
+					width: 304rpx;
+					height: 318rpx;
 				}
-				.timeText{
+				.useText{
 					font-size:24rpx;
 					font-family:PingFang SC;
 					font-weight:400;
@@ -150,60 +182,35 @@
 					color:rgba(51,51,51,1);
 				}
 			}
-			.useText{
-				font-size:28rpx;
+			.codeNumber{
+				width: 576rpx;
+				height: 58rpx;
+				font-size:48rpx;
 				font-family:PingFang SC;
-				font-weight:400;
-				line-height:32rpx;
+				font-weight:bold;
+				line-height:116rpx;
 				color:rgba(51,51,51,1);
+				letter-spacing:20rpx;
+				text-align: center;
 			}
-		}
-		.code{
-			width: 576rpx;
-			height: 386rpx;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-			align-items: center;
-			image{
-				width: 304rpx;
-				height: 318rpx;
+			.cancleCon{
+				width: 576rpx;
+				height: 160rpx;
+				text-align: center;
+				line-height: 160rpx;
+				background: rgba(0,0,0,0.1);
+				margin-top: 50rpx;
+				.cancleIcon{
+					// width: 58rpx;
+					// height: 58rpx;
+					border-radius: 50%;
+					image{
+						width: 58rpx;
+						height: 58rpx;
+						z-index: 99999999999;
+					}
+				}
 			}
-			.useText{
-				font-size:24rpx;
-				font-family:PingFang SC;
-				font-weight:400;
-				line-height:28rpx;
-				color:rgba(51,51,51,1);
-			}
-		}
-		.codeNumber{
-			width: 576rpx;
-			height: 58rpx;
-			font-size:48rpx;
-			font-family:PingFang SC;
-			font-weight:bold;
-			line-height:116rpx;
-			color:rgba(51,51,51,1);
-			letter-spacing:20rpx;
-			text-align: center;
-		}
-		.cancleCon{
-			width: 576rpx;
-			height: 160rpx;
-			text-align: center;
-			line-height: 160rpx;
-			background: rgba(0,0,0,0.1);
-			margin-top: 50rpx;
-			// .cancleIcon{
-			// 	width: 58rpx;
-			// 	height: 58rpx;
-			// 	border-radius: 50%;
-			// 	image{
-			// 		width: 58rpx;
-			// 		height: 58rpx;
-			// 	}
-			// }
 		}
 	}
 </style>

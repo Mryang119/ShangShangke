@@ -44,8 +44,8 @@
 				default:'抹茶柚子千层 抹茶柚子千层 新鲜出炉'
 			},
 			hasRobbed:{    // 天天免费抢已抢进度
-				type:String,
-				default:'50'
+				type:Number,
+				default:80
 			} 
 		},
 		data(){

@@ -177,6 +177,7 @@
 				type: 'timekill', //限时秒杀--详情页面--默认字段
 				// 模态框数据
 				show: false, // 控制模态框显示隐藏
+				// hasRobbed:80,   // 已抢完
 				afterList: [{
 						state: 1,
 						price: '100',
@@ -717,6 +718,25 @@
 					margin-top: 2rpx;
 				}
 			}
+			// 天天免费抢，去购买样式变化
+			// .navBuyFinish{
+			// 	width: 376rpx;
+			// 	height: 98rpx;
+			// 	background:rgba(255,156,156,1);
+			// 	font-size: 36rpx;
+			// 	font-family: PingFang SC;
+			// 	font-weight: bold;
+			// 	line-height: 42rpx;
+			// 	color: rgba(255, 255, 255, 1);
+			// 	display: flex;
+			// 	justify-content: space-around;
+			// 	align-items: center;
+			// 	text-align: center;
+				
+			// 	.buyNum {
+			// 		margin-top: 2rpx;
+			// 	}
+			// }
 		}
 	}
 </style>

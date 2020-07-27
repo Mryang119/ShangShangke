@@ -188,7 +188,20 @@
 			"style": {
 				"navigationBarTitleText": "订单详情"
 			}
+		},
+		{
+			"path": "views/singlePage/applyRefund/applyRefund",
+			"style": {
+				"navigationBarTitleText": "申请退款"
+			}
+		},
+		{
+			"path": "views/singlePage/applyRefundWarmTip/applyRefundWarmTip",
+			"style": {
+				"navigationBarTitleText": "申请退款"
+			}
 		}
+		
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
