@@ -50,7 +50,8 @@
 	.s_getCoupon {
 		width: 750rpx;
 		background-color: rgb(247, 244, 248);
-
+		box-sizing: border-box;
+		overflow: hidden;
 		.topBakcGround-content {
 			width: 750rpx;
 

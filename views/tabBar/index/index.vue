@@ -122,7 +122,7 @@
 			<view class="groupPurchase">
 				<view class="groupPurchase-titleBar">
 					<view class="groupPurchase-titleBar-text">超值拼团</view>
-					<more></more>
+					<more url="../../singlePage/groupPurchase/groupPurchase"></more>
 				</view>
 				<scroll-view scroll-x="true" class="scorll-H-S">
 					<!-- 宽度 商品数量*组件宽度+总边距 -->
