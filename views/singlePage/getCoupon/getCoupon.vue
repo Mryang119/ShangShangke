@@ -6,11 +6,11 @@
 		</view>
 		<view class="tabs-content">
 			<view class="line-content">
-				<view class="line" v-for="(item,index) in 4"></view>
+				<view class="line" v-for="(item,index) in 4" :key="index"></view>
 			</view>
 			<u-tabs :list="list" :current="current" :active-item-style="{'font-size':33+'rpx'}" :is-scroll="false" @change="change"></u-tabs>
 		</view>
-		<view class="coupon-content">
+		<view class="coupon-content" :key="index" v-for="(item,index) in 4">
 			<discountCoupon></discountCoupon>
 		</view>
 	</view>
@@ -19,7 +19,7 @@
 <script>
 	import discountCoupon from '@/src/publicComponents/discountCoupon.vue'
 	export default {
-		components:{
+		components: {
 			discountCoupon
 		},
 		data() {
@@ -49,8 +49,9 @@
 <style lang="less" scoped>
 	.s_getCoupon {
 		width: 750rpx;
-		max-width: 750rpx;
-
+		background-color: rgb(247, 244, 248);
+		box-sizing: border-box;
+		overflow: hidden;
 		.topBakcGround-content {
 			width: 750rpx;
 
@@ -82,6 +83,15 @@
 					background-color: #E4E4E4;
 				}
 			}
+		}
+
+		.coupon-content {
+			width: 750rpx;
+			height: 262rpx;
+			box-sizing: border-box;
+			padding: 20rpx 30rpx;
+			background-color: #FFFFFF;
+			margin-bottom: 20rpx;
 		}
 	}
 </style>

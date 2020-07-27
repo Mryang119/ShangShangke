@@ -196,8 +196,45 @@ let classifyList = [{
 		'住宿'
 	]
 }]
+// 拼团假数据
+const groups = [{
+		type: 1,
+		productTitle: '韩国年糕料理(海岸城店)',
+		productMessage: '两人芝士双拼套餐',
+		price: '￥1.00',
+		oldPrice: '￥11.00',
+		distance: 400,
+		tag: '直降5元'
+	}, {
+		type: 2,
+		productTitle: '然也 保温杯',
+		productMessage: '360°倒置不漏水',
+		price: '￥1.00',
+		oldPrice: '￥11.00',
+		distance: '',
+		tag: '直降5元'
+	}, {
+		type: 2,
+		productTitle: '然也 保温杯',
+		productMessage: '360°倒置不漏水',
+		price: '￥1.00',
+		oldPrice: '￥11.00',
+		distance: '',
+		tag: ''
+	},
+	{
+		type: 1,
+		productTitle: '韩国年糕料理(海岸城店)',
+		productMessage: '两人芝士双拼套餐',
+		price: '￥1.00',
+		oldPrice: '￥11.00',
+		distance: 400,
+		tag: '直降5元'
+	}
+]
 export {
 	list,
 	showItemList,
-	classifyList
+	classifyList,
+	groups
 }

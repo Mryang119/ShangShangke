@@ -65,7 +65,7 @@
 					<view class="textBg getCoupon-titleBar-item">
 						抢大额优惠券
 					</view>
-					<more class="more"></more>
+					<more url='../../singlePage/getCoupon/getCoupon'></more>
 				</view>
 				<!-- 横向滚动部分 -->
 				<scroll-view scroll-x="true" class="scorll-H">
@@ -122,7 +122,7 @@
 			<view class="groupPurchase">
 				<view class="groupPurchase-titleBar">
 					<view class="groupPurchase-titleBar-text">超值拼团</view>
-					<more></more>
+					<more url="../../singlePage/groupPurchase/groupPurchase"></more>
 				</view>
 				<scroll-view scroll-x="true" class="scorll-H-S">
 					<!-- 宽度 商品数量*组件宽度+总边距 -->
@@ -185,7 +185,8 @@
 		getCityList,
 		getHomeModuleMessages,
 		getCircList,
-		getCircCampaignInfo
+		getCircCampaignInfo,
+		getSeckillMoreInfo
 	} from '../../../src/api/homeApi/homeApi.js'
 	export default {
 		components: {
@@ -257,14 +258,14 @@
 				console.log(e)
 				this.cp = e
 			},
-			
+
 			// 跳转搜索
 			toSearch() {
 				uni.navigateTo({
 					url: '../../singlePage/search/search?type=index'
 				})
 			},
-			
+
 			// 跳转商品详情
 			toDtail(id) {
 				uni.navigateTo({
@@ -295,7 +296,7 @@
 								that.city = wxMarkerData[0].address.match(reg)[1].replace('市', '')
 								// 存储一份到仓库
 								that.$store.state.global.globalData.cityName = wxMarkerData[0].address.match(reg)[1].replace('市', '')
-								
+
 								resolve(data)
 							}
 							that.BMap.regeocoding({
@@ -360,6 +361,7 @@
 				return Promise.resolve(res)
 			}
 		},
+
 		async onLoad() {
 			// 获取位置
 			await this.getLocation()
@@ -371,7 +373,16 @@
 			await this.getHomeModule()
 			// 获取更多活动信息
 			await this.getCircInfo()
-			console.log(this.$store.state.global)
+			let circs = this.$store.state.global.globalData.circs
+			console.log()
+			// 获取秒杀信息
+			let res = await getSeckillMoreInfo({
+				circs,
+				killType: 1,
+				pageNum: 1,
+				pageSize: 2
+			})
+			console.log(res)
 		},
 		onReady() {
 

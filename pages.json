@@ -79,7 +79,9 @@
 		{
 			"path": "views/singlePage/groupPurchase/groupPurchase",
 			"style": {
-				"navigationBarTitleText": "超值团购"
+				"navigationBarTitleText": "超值拼团",
+				"navigationBarBackgroundColor":"#E33030",
+				"navigationBarTextStyle":"white"
 			}
 		},
 		{
@@ -153,7 +155,8 @@
 			"path": "views/singlePage/timekillDetail/timekillDetail",
 			"style": {
 				"navigationBarTitleText": "限时秒杀",
-				"navigationBarBackgroundColor": "#FE4C4F"
+				"navigationBarBackgroundColor": "#FE4C4F",
+				"navigationBarTextStyle":"white"
 			}
 
 		},
