@@ -79,7 +79,9 @@
 		{
 			"path": "views/singlePage/groupPurchase/groupPurchase",
 			"style": {
-				"navigationBarTitleText": "超值团购"
+				"navigationBarTitleText": "超值拼团",
+				"navigationBarBackgroundColor":"#E33030",
+				"navigationBarTextStyle":"white"
 			}
 		},
 		{

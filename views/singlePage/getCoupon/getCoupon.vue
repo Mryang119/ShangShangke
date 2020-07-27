@@ -49,7 +49,6 @@
 <style lang="less" scoped>
 	.s_getCoupon {
 		width: 750rpx;
-		max-width: 750rpx;
 		background-color: rgb(247, 244, 248);
 
 		.topBakcGround-content {
