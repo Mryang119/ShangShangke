@@ -6,11 +6,34 @@
 		<view class="content">
 			<view class="loginContent">
 				<!-- 点击登录 -->
-				<view class="myLogin">
+				<!-- 未登录 -->
+				<view class="myLogin" @click="toLogin" v-if="userName===''">
 					<image class="myLoginHeader" src="@/static/images/tabBarImage/myLoginHeader.png"></image>
 					<view class="myLoginRight">
 						<span class="myLoginText">点击登录</span>
 						<image class="myLoginMore" src="@/static/images/iconfont/more.png"></image>
+					</view>
+				</view>
+				<!-- 已登录 -->
+				<view class="top-login-message" @click="toLogin" v-else>
+					<!-- 头像 -->
+					<view class="user-img">
+						<image class="img" src="@/static/images/iconfont/weizhitouxiang.png"></image>
+					</view>
+					<!-- 用户名与粉丝关注 -->
+					<view class="user-name-and-follow">
+						<view class="user-name">
+							{{userName}}
+						</view>
+						<view class="user-follow">
+							<view>{{'粉丝:'+userFans}}</view>
+							<view class="line"></view>
+							<view>{{'关注:'+userFocus}}</view>
+						</view>
+					</view>
+					<!--右箭头 -->
+					<view class="right-more">
+						<image class="more" src="@/static/images/iconfont/more.png" mode=""></image>
 					</view>
 				</view>
 				<!-- 订单/卡券/收藏/拼团 -->
@@ -79,22 +102,49 @@
 </template>
 
 <script>
+	import {
+		getUserInfo
+	} from '../../../src/api/userApi/userApi.js'
 	export default {
 		data() {
 			return {
 				orderUrl: '../../singlePage/myOrder/myOrder',
 				couponUrl: '../../singlePage/myCoupon/myCoupon',
 				collectUrl: '../../singlePage/myCollect/myCollect',
-				spellGroupUrl: '../../singlePage/mySpellGroup/mySpellGroup'
+				spellGroupUrl: '../../singlePage/mySpellGroup/mySpellGroup',
+				userName: "",
+				userFans: 0, // 粉丝
+				userFocus: 0, // 关注
+				userImgUrl: ''
 			}
 		},
 		methods: {
-
+			toLogin() {
+				uni.navigateTo({
+					url: '../../singlePage/login/login'
+				})
+			}
+		},
+		async onShow() {
+			let loginStatus = uni.getStorageSync('loginDatas')
+			console.log(loginStatus)
+			if (loginStatus !== '' || loginStatus !== undefined) { // 登录了
+				try {
+					let res = await getUserInfo({
+						mobile: loginStatus.mobile
+					})
+					console.log(res)
+				} catch (e) {
+					console.log('获取个人信息失败')
+				}
+			} else {
+				console.log('未登录')
+			}
 		}
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	.root_my {
 		width: 750rpx;
 		background: #F6F6F6;
@@ -104,21 +154,81 @@
 		// 最外层
 		.content {
 			box-sizing: border-box;
-			
-			.loginContent{
-				padding: 0 30rpx;
+
+			.loginContent {
 				background: #FFFFFF;
 				padding-bottom: 10rpx;
+
+
+				.top-login-message {
+					width: 750rpx;
+					height: 176rpx;
+					display: flex;
+					align-items: center;
+					padding: 0 50rpx;
+					// 杨大锐
+					.user-img {
+						width: 116rpx;
+						height: 116rpx;
+						overflow: hidden;
+						border-radius: 50%;
+
+						.img {
+							width: 100%;
+							height: 100%;
+							border-radius: 50%;
+						}
+					}
+
+					.user-name-and-follow {
+						height: 88rpx;
+						display: flex;
+						flex-direction: column;
+						justify-content: space-between;
+						margin-left: 30rpx;
+						
+						.user-name {
+							font-size: 32rpx;
+							font-weight: bold;
+						}
+
+						.user-follow {
+							display: flex;
+							color: #666666;
+							font-size: 28rpx;
+							align-items: center;
+							.line {
+								width: 2rpx;
+								height: 26rpx;
+								background-color: #DFDFDF;
+								margin: 0 22rpx;
+							}
+						}
+					}
+
+					.right-more {
+						flex: 1;
+
+						.more {
+							width: 14.92rpx;
+							height: 29.74rpx;
+							float: right;
+						}
+					}
+				}
+
 				// 点击登录
 				.myLogin {
 					width: 750rpx;
 					height: 176rpx;
+					box-sizing: border-box;
 					font-size: 0;
 					display: flex;
 					align-items: center;
 					margin-bottom: 38rpx;
-					padding: 0 30rpx;
-				
+					padding-left: 50rpx;
+
+
 					// 头像
 					.myLoginHeader {
 						width: 116rpx;
@@ -126,14 +236,14 @@
 						background: rgba(0, 0, 0, 0);
 						border-radius: 50%;
 					}
-				
+
 					.myLoginRight {
 						width: 504rpx;
 						display: flex;
 						justify-content: space-between;
 						align-items: center;
 						margin-left: 30rpx;
-				
+
 						// 点击登录文字
 						.myLoginText {
 							width: 128rpx;
@@ -144,7 +254,7 @@
 							line-height: 38rpx;
 							color: rgba(51, 51, 51, 1);
 						}
-				
+
 						// 更多
 						.myLoginMore {
 							width: 14.92rpx;
@@ -152,7 +262,7 @@
 						}
 					}
 				}
-				
+
 				// <!-- 订单/卡券/收藏/拼团 -->
 				.myLoginOrder {
 					width: 690rpx;
@@ -163,30 +273,30 @@
 					border-radius: 26rpx;
 					margin: 0 auto;
 					margin-bottom: 10rpx;
-				
+
 					.myLoginOrderCon {
 						display: flex;
 						justify-content: space-around;
 						align-items: center;
 						height: 222rpx;
-				
+
 						.myLoginOrderLi {
 							height: 118rpx;
 							display: flex;
 							flex-direction: column;
 							align-items: center;
 							justify-content: space-between;
-				
+
 							.myLoginOrderTu {
 								width: 74rpx;
 								height: 74rpx;
-				
+
 								.myLoginOrderImg {
 									width: 74rpx;
 									height: 74rpx;
 								}
 							}
-				
+
 							.myLoginOrderText {
 								width: 96rpx;
 								height: 28rpx;
@@ -200,9 +310,9 @@
 						}
 					}
 				}
-				
+
 			}
-			
+
 			// // <!-- 评价 -->
 			.myLoginEstimate {
 				height: 324rpx;

@@ -58,6 +58,9 @@
 					let res = await this.getOpenid(code)
 					this.$store.state.global.globalData.openid = res.data.openid
 					this.$store.state.global.globalData.session_key = res.data.session_key
+					uni.navigateTo({
+						url:'../register/register'
+					})
 				} else {
 					return
 				}

@@ -44,9 +44,30 @@ function loginByMobileNoCode(data) {
 	})
 }
 
+// 微信登录环境   /backstages/sysuser/customerLogin
+function customerLogin(data) {
+	return http({
+		url:'/backstages/sysuser/customerLogin',
+		data,
+		method:'post'
+	})
+}
+
+// 获取个人信息  /dby/homeInfo/getUserInfo
+function getUserInfo(data) {
+	return http({
+		url:'/dby/homeInfo/getUserInfo',
+		data,
+		method:'post'
+	})
+}
+
+
 export {
 	registerCustomer,
 	registerCust,
 	loginByMobile,
-	loginByMobileNoCode
+	loginByMobileNoCode,
+	customerLogin,
+	getUserInfo
 }
