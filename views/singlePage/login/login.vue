@@ -69,8 +69,8 @@
 						url: 'https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=JSCODE&grant_type=authorization_code',
 						method: 'get',
 						data: {
-							appid: 'wxf24670de15a1dd00',
-							secret: 'cb444a6a93045124bc573c2a553c28e3',
+							appid: 'wxe89e1d2db3a1255a',
+							secret: '670565d582ca7844a261220320835d74',
 							js_code: code,
 							grant_type: 'authorization_code'
 						},

@@ -2,7 +2,7 @@
 	<!-- 分存在icon和不存在icon类型 -->
 	<view class="c_cityButton">
 		<view class="content">
-			<u-icon v-if="iconName!==''" color="#24A7FF" :name="iconName"></u-icon>
+			<u-icon v-if="cityName===text" color="#24A7FF" :name="iconName"></u-icon>
 
 			<text>{{text}}</text>
 		</view>
@@ -14,7 +14,13 @@
 		props: {
 			iconName: String,
 			text: String
+		},
+		computed: {
+			cityName: function() {
+				return this.$store.state.global.globalData.cityName
+			}
 		}
+
 	}
 </script>
 
@@ -22,9 +28,10 @@
 	.c_cityButton {
 		width: 196rpx;
 		height: 68rpx;
-		background-color: #FFFFFF;	
-		border-radius:8rpx;
+		background-color: #FFFFFF;
+		border-radius: 8rpx;
 		overflow: hidden;
+
 		.content {
 			font-size: 28rpx;
 			color: #333333;

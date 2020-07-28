@@ -21,7 +21,7 @@
 			<!-- 搜索定位分类部分 -->
 			<view class="topNav">
 				<navigator url="../../singlePage/position/position" class="position">
-					<position :city="city"></position>
+					<position :cityName="$store.state.global.globalData.cityName"></position>
 				</navigator>
 				<view class="searchBar" @click="toSearch">
 					<image src="@/static/images/iconfont/search.png" mode=""></image>
@@ -206,7 +206,7 @@
 				duration: 500,
 				interval: 2000,
 				// 轮播图配置↑
-				city: '未定位',
+				cityName: this.$store.state.global.globalData.cityName,
 				list: list,
 				temp: [],
 				time: null,
@@ -277,7 +277,7 @@
 				var that = this;
 				//新建百度地图对象
 				this.BMap = new bmap.BMapWX({
-					ak: 'AQNjDWwRffaoqtGkNxfAQmwic9mtkS8w'
+					ak: 'qC1AHsQNj44vE3ctEIi4IXLZBgHYf33F'
 				});
 				return new Promise((resolve, reject) => {
 					uni.authorize({
@@ -293,10 +293,19 @@
 								that.latitude = wxMarkerData[0].latitude
 								that.longitude = wxMarkerData[0].longitude
 								var reg = /.+?(省|市|自治区|自治州|县|区)/g;
-								that.city = wxMarkerData[0].address.match(reg)[1].replace('市', '')
 								// 存储一份到仓库
-								that.$store.state.global.globalData.cityName = wxMarkerData[0].address.match(reg)[1].replace('市', '')
-
+								that.$store.commit('saveGlobal', {
+									key: 'cityName',
+									value: wxMarkerData[0].address.match(reg)[1].replace('市', '')
+								})
+								const globalKey = ['latitude', 'longitude']
+								globalKey.forEach(k => {
+									that.$store.commit('saveGlobal', {
+										key: k,
+										value: wxMarkerData[0][k]
+									})
+								})
+								console.log(that.$store.state.global.globalData)
 								resolve(data)
 							}
 							that.BMap.regeocoding({
