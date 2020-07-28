@@ -203,6 +203,13 @@
 			"style": {
 				"navigationBarTitleText": "申请退款"
 			}
+		},
+		{
+			"path": "views/singlePage/spellGroupFailDetail/spellGroupFailDetail",
+			"style": {
+				"navigationBarTitleText": "拼团详情"
+			}
+
 		}
 		
 	],
