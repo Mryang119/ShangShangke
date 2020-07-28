@@ -7,7 +7,7 @@
 			<view class="loginContent">
 				<!-- 点击登录 -->
 				<!-- 未登录 -->
-				<view class="myLogin" @click="toLogin" v-if="userName===''">
+				<view class="myLogin" @click="toLogin" v-if="!loginStatus">
 					<image class="myLoginHeader" src="@/static/images/tabBarImage/myLoginHeader.png"></image>
 					<view class="myLoginRight">
 						<span class="myLoginText">点击登录</span>
@@ -15,7 +15,7 @@
 					</view>
 				</view>
 				<!-- 已登录 -->
-				<view class="top-login-message" @click="toLogin" v-else>
+				<view class="top-login-message" @click="toUserEdit" v-else>
 					<!-- 头像 -->
 					<view class="user-img">
 						<image class="img" :src="userImgUrl"></image>
@@ -115,7 +115,8 @@
 				userName: "",
 				userFans: 0, // 粉丝
 				userFocus: 0, // 关注
-				userImgUrl: ''
+				userImgUrl: '',
+				loginStatus: false
 			}
 		},
 		methods: {
@@ -126,24 +127,38 @@
 			},
 			// 去编辑页
 			toUserEdit() {
-				
+				uni.navigateTo({
+					url: '../../singlePage/userEdit/userEdit'
+				})
 			}
 		},
 		async onShow() {
-			let loginStatus = uni.getStorageSync('loginDatas')
-			
-			if (loginStatus) { // 登录了
-			console.log('一登陆')
-				try {
-					let res = await getUserInfo({
-						mobile: loginStatus.mobile
-					})
-					this.userName = res.data.data.pntCust.custName
-					this.userImgUrl = res.data.data.pntCust.imgAddr
-					
-				} catch (e) {
-					console.log('获取个人信息失败')
+			let loginDatas = uni.getStorageSync('loginDatas')
+
+			if (loginDatas) { // 登录了
+				this.loginStatus = true
+				console.log('一登陆')
+				// 判断缓存有否
+				let userDatas = uni.getStorageSync('userDatas')
+				if (userDatas) { // 缓存取
+					this.userName = userDatas.userName
+					this.userImgUrl = userDatas.userImgUrl
+				} else { // 请求取
+					try {
+						let res = await getUserInfo({
+							mobile: loginDatas.mobile
+						})
+						this.userName = res.data.data.pntCust.custName
+						this.userImgUrl = res.data.data.pntCust.imgAddr
+						uni.setStorageSync('userDatas', {
+							userName: res.data.data.pntCust.custName || "",
+							userImgUrl: res.data.data.pntCust.imgAddr || ""
+						})
+					} catch (e) {
+						console.log('获取个人信息失败')
+					}
 				}
+
 			} else {
 				console.log('未登录')
 			}
@@ -173,6 +188,7 @@
 					display: flex;
 					align-items: center;
 					padding: 0 50rpx;
+
 					// 杨大锐
 					.user-img {
 						width: 116rpx;
@@ -193,7 +209,7 @@
 						flex-direction: column;
 						justify-content: space-between;
 						margin-left: 30rpx;
-						
+
 						.user-name {
 							font-size: 32rpx;
 							font-weight: bold;
@@ -204,6 +220,7 @@
 							color: #666666;
 							font-size: 28rpx;
 							align-items: center;
+
 							.line {
 								width: 2rpx;
 								height: 26rpx;
