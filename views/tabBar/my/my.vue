@@ -18,7 +18,7 @@
 				<view class="top-login-message" @click="toLogin" v-else>
 					<!-- 头像 -->
 					<view class="user-img">
-						<image class="img" src="@/static/images/iconfont/weizhitouxiang.png"></image>
+						<image class="img" :src="userImgUrl"></image>
 					</view>
 					<!-- 用户名与粉丝关注 -->
 					<view class="user-name-and-follow">
@@ -123,17 +123,24 @@
 				uni.navigateTo({
 					url: '../../singlePage/login/login'
 				})
+			},
+			// 去编辑页
+			toUserEdit() {
+				
 			}
 		},
 		async onShow() {
 			let loginStatus = uni.getStorageSync('loginDatas')
-			console.log(loginStatus)
-			if (loginStatus !== '' || loginStatus !== undefined) { // 登录了
+			
+			if (loginStatus) { // 登录了
+			console.log('一登陆')
 				try {
 					let res = await getUserInfo({
 						mobile: loginStatus.mobile
 					})
-					console.log(res)
+					this.userName = res.data.data.pntCust.custName
+					this.userImgUrl = res.data.data.pntCust.imgAddr
+					
 				} catch (e) {
 					console.log('获取个人信息失败')
 				}
