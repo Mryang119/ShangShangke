@@ -52,8 +52,8 @@
 		background:rgba(255,255,255,1);
 		border-radius:12rpx;
 		display: flex;
-		border-bottom:1px solid rgba(243,243,243,1);
 		align-items: center;
+		border-bottom: 1px solid rgba(243,243,243,1);
 		.goodsImg{
 			width: 182rpx;
 			height: 180rpx;

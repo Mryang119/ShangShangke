@@ -92,7 +92,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	// 最外层
 	.container {
 		height: 1448rpx;

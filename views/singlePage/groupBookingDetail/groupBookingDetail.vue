@@ -56,7 +56,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	.container{
 		background:rgba(246,246,246,1);
 		padding-top: 20rpx;
