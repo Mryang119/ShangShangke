@@ -1,8 +1,8 @@
 <!-- 我的收藏 -->
 <template>
 	<view class="container">
-		<u-tabs class="tabs" :list="list" :is-scroll="false" :current="current" @change="change" inactive-color="#000"
-		 active-color="#000"></u-tabs>
+		<u-tabs class="tabs" :list="list" :bar-style="{backgroundImage: 'linear-gradient(to right,#92D0F9,#26A7FC)',height:6+'rpx'}"
+		 :is-scroll="false" :bold='true' :current="current" @change="change" inactive-color="#000" active-color="#000"></u-tabs>
 		
 		<view class="shopDetailCon">
 			<!-- 店铺 -->

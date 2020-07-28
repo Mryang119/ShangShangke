@@ -7,11 +7,9 @@
 				<image src="@/static/images/iconfont/search.png"></image>
 				<view class="fakerInput">搜索我的订单</view>
 			</navigator>
-			<u-tabs class="tabs" :list="list" :is-scroll="false" :current="current" @change="change" inactive-color="#000"
-			 active-color="#000"></u-tabs>
+			<u-tabs active-color='#000000' inactive-color="#000000" :list="list" :bold='true' :is-scroll="false" :current="current" @change="change" :bar-style="{backgroundImage: 'linear-gradient(to right,#92D0F9,#26A7FC)',height:6+'rpx'}"></u-tabs>
 		</view>
 		<view class="orderItem" v-for="(item,index) in 3" :key="index">
-
 			<view class="shopCon">
 				<view class="shopNameCon">
 					<view class="shopName">韩国年糕料理（海岸城店）</view>
@@ -112,14 +110,6 @@
 				}
 			}
 
-			// 导航
-			.tabs {
-				font-size: 28rpx;
-				font-family: PingFang SC;
-				font-weight: 400;
-				line-height: 32rpx;
-				color: rgba(51, 51, 51, 1);
-			}
 		}
 
 		.orderItem {
