@@ -1,4 +1,6 @@
 <template>
+	<!-- name:杨大锐 -->
+	<!--  -->
 	<view class="c_daydayShopItem">
 		<view class="img-content">
 			<image src="@/static/images/iconfont/shopitem.png" mode=""></image>

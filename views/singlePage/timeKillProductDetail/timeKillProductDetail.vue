@@ -156,8 +156,7 @@
 	import groupBooking from '../groupBooking/groupBooking.vue'   // 拼团
 	import oneDayEatShopDetail from '../oneDayEatShopDetail/oneDayEatShopDetail.vue'  //每日一品
 	import warmTip from '../../../src/publicComponents/warmTip.vue'  //温馨提示
-	// api
-	import { getProductSkuList } from '../../../src/api/productApi/productApi.js'
+	
 	export default {
 		data() {
 			return {
