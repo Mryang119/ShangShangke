@@ -11,6 +11,10 @@
 			<u-tabs class="tabs" :list="list" :bar-style="{backgroundImage: 'linear-gradient(to right,#92D0F9,#26A7FC)',height:6+'rpx'}"
 			 :is-scroll="false" :bold='true' :current="current" @change="change" inactive-color="#000" active-color="#000"></u-tabs>
 		</view>
+		<view class="myFocusBg" v-if="userList.length=== 0">
+			<image src="@/static/images/iconfont/myFocusBg.png"></image>
+			<view class="noFocus">还没有相关数据~</view>
+		</view>
 		<view class="userDetail" v-for="(item,index) in userList" :key="index">
 			<view class="user">
 				<view class="userImg">
@@ -45,7 +49,8 @@
 				content: '是否取消关注', // 取消关注模态框文本
 				show: false, //控制模态框弹出，默认为false
 				toSearch: '../../singlePage/search/search', // 跳转到搜索页面
-				userList: [{
+				userList: [
+					{
 						userImg: '../../../static/images/tabBarImage/myLoginHeader.png', // 用户头像
 						userName: '吴亦凡', //用户名字
 						userDescribe: '吃吃喝喝玩玩乐乐大碗宽面', // 用户介绍
@@ -134,7 +139,24 @@
 				}
 			}
 		}
-
+		.myFocusBg{
+			width: 370.5rpx;
+			height: 420.02rpx;
+			margin: 138rpx 190rpx 0 190rpx;
+			image{
+				width: 370.5rpx;
+				height: 420.02rpx;
+				margin-bottom: 42rpx;
+			}
+			.noFocus{
+				font-size:28rpx;
+				font-family:PingFang SC;
+				font-weight:400;
+				line-height:32rpx;
+				color:rgba(169,169,169,1);
+				text-align: center;
+			}
+		}
 		.userDetail {
 			width: 750rpx;
 			height: 150rpx;
