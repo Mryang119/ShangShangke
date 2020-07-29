@@ -4,34 +4,37 @@
 		<u-tabs class="tabs" :list="list" :bar-style="{backgroundImage: 'linear-gradient(to right,#92D0F9,#26A7FC)',height:6+'rpx'}"
 		 :is-scroll="false" :bold='true' :current="current" @change="change" inactive-color="#000" active-color="#000"></u-tabs>
 		
+		<view class="myCollectBg" v-if="shopList.length===0 || productList.length===0">
+			<image src="@/static/images/iconfont/myCollectBg.png"></image>
+			<view class="noCollect">还没有相关收藏~</view>
+		</view>
 		<view class="shopDetailCon">
 			<!-- 店铺 -->
-			<!-- <view class="shopDetail" v-for="(item,index) in 3" :key="index">
-				<view class="shopImg"><image src="@/static/images/Product/shangpintu.png"></image></view>
+			<view class="shopDetail" v-for="(item,index) in shopList" :key="index" v-if="current===0">
+				<view class="shopImg"><image :src="item.shopImg"></image></view>
 				<view class="detailCon">
-					<view class="shopName">海底捞（海岸城店）</view>
+					<view class="shopName">{{item.shopName}}</view>
 					<view class="shopScore">
 						<view class="score">评分:</view>
 						<u-rate :count="5" v-model="value" disabled="true" size="24" active-color="#FFAE44"></u-rate>
-						<view class="shopValue">{{value}}.0</view>
+						<view class="shopValue">{{item.value}}</view>
 					</view>
 					<view class="shopAddress">
-						<view class="meter">500m</view>
+						<view class="meter">{{item.shopMeter}}</view>
 						<view class="line">|</view>
-						<view class="address">文新思路34号海岸城西座F2座806</view>
+						<view class="address">{{item.shopAddress}}</view>
 					</view>
 				</view>
-			</view> -->
+			</view>
 			<!-- 商品 -->
-			<view class="shopDetail" v-for="(item,index) in 3" :key="index">
-				<view class="shopImg"><image src="@/static/images/Product/commodityItem.png"></image></view>
+			<view class="shopDetail" v-for="(item,index) in productList" :key="index"  v-if="current===1">
+				<view class="shopImg"><image :src="item.productImg"></image></view>
 				<view class="detailCon">
-					<view class="goodsName">九龙金玉雪顶奶茶</view>
-					<view class="goodsPrice">￥1.00</view>
+					<view class="goodsName">{{item.productName}}</view>
+					<view class="goodsPrice">￥{{item.productPrice}}</view>
 				</view>
 			</view>
 		</view>
-		
 		
 	</view>
 </template>
@@ -41,14 +44,51 @@
 		data() {
 			return {
 				list: [{
-					name: '推荐'
+					name: '店铺'
 				}, {
-					name: '关注'
+					name: '商品'
 				}, {
-					name: '粉丝'
+					name: '作品'
 				}],
-				current: 0,
-				value:5.0
+				current: 0,  //tabs 当前索引值
+				value:5   ,// 评分默认值
+				isShow:false,
+				shopList:[
+					{
+					shopImg:'../../../static/images/Product/shangpintu.png',  //商家头像
+					shopName:'海底捞（海岸城店）',  //商家名字
+					value:'5.0',        //商家评分
+					shopMeter:'500m',        //商家距离
+					shopAddress:'文新思路34号海岸城西座F2座806'  //商家地址
+				},{
+					shopImg:'../../../static/images/Product/shangpintu.png',  //商家头像
+					shopName:'海底捞（海岸城店）',  //商家名字
+					value:'5.0',        //商家评分
+					shopMeter:'500m',        //商家距离
+					shopAddress:'文新思路34号海岸城西座F2座806'  //商家地址
+				},{
+					shopImg:'../../../static/images/Product/shangpintu.png',  //商家头像
+					shopName:'海底捞（海岸城店）',  //商家名字
+					value:'5.0',        //商家评分
+					shopMeter:'500m',        //商家距离
+					shopAddress:'文新思路34号海岸城西座F2座806'  //商家地址
+				}
+				],
+				productList:[
+					{
+					productImg:'../../../static/images/Product/commodityItem.png',  //商品头像
+					productName:'九龙金玉雪顶奶茶',  // 商品名字
+					productPrice:'1.00'  // 商品价格
+				},{
+					productImg:'../../../static/images/Product/commodityItem.png',  //商品头像
+					productName:'九龙金玉雪顶奶茶',  // 商品名字
+					productPrice:'1.00'  // 商品价格
+				},{
+					productImg:'../../../static/images/Product/commodityItem.png',  //商品头像
+					productName:'九龙金玉雪顶奶茶',  // 商品名字
+					productPrice:'1.00'  // 商品价格
+				}
+				]
 			}
 		},
 		methods: {
@@ -65,6 +105,24 @@
 		width: 750rpx;
 		height: 1284rpx;
 		background: rgba(246, 246, 246, 1);
+		.myCollectBg{
+			width: 370.5rpx;
+			height: 420.02rpx;
+			margin: 138rpx 190rpx 0 190rpx;
+			image{
+				width: 370.5rpx;
+				height: 420.02rpx;
+				margin-bottom: 42rpx;
+			}
+			.noCollect{
+				font-size:28rpx;
+				font-family:PingFang SC;
+				font-weight:400;
+				line-height:32rpx;
+				color:rgba(169,169,169,1);
+				text-align: center;
+			}
+		}
 		.shopDetailCon{
 			width: 750rpx;
 			padding: 0 20rpx;

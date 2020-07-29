@@ -9,7 +9,7 @@
 		</view>
 		<!-- 限时秒杀的商品详情 -->
 		<!-- v-if="option.type==='timeKill'" -->
-		<!-- <view class="timeKillProductDetail">
+		<view class="timeKillProductDetail">
 			<view class="price">
 				<view class="priceNum">
 					<span class="priceMoney">
@@ -27,11 +27,11 @@
 				</view>
 			</view>
 			<view class="productName">抹茶柚子千层 抹茶柚子千层 新鲜出炉 抹茶柚子千层 抹茶柚子千层 新鲜出炉</view>
-		</view> -->
+		</view>
 
 
 		<!-- 每日一品的商品详情 -->
-		<oneDayEatShopDetail />
+		<!-- <oneDayEatShopDetail /> -->
 
 		<!-- 评分和进店逛逛 -->
 		<view class="inShop">
