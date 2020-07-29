@@ -11,18 +11,21 @@
 			<u-tabs class="tabs" :list="list" :bar-style="{backgroundImage: 'linear-gradient(to right,#92D0F9,#26A7FC)',height:6+'rpx'}"
 			 :is-scroll="false" :bold='true' :current="current" @change="change" inactive-color="#000" active-color="#000"></u-tabs>
 		</view>
-		<view class="userDetail">
+		<view class="userDetail" v-for="(item,index) in userList" :key="index">
 			<view class="user">
 				<view class="userImg">
-					<image src="@/static/images/tabBarImage/myLoginHeader.png"></image>
+					<image :src="item.userImg"></image>
 				</view>
 				<view class="userCon">
-					<view class="userName">吴亦凡</view>
-					<view class="userDescribe">吃吃喝喝玩玩乐乐大碗宽面</view>
+					<view class="userName">{{item.userName}}</view>
+					<view class="userDescribe">{{item.userDescribe}}</view>
 				</view>
 			</view>
-			<view class="focusBtn">关注</view>
+			<view :class="item.state ?'focusBtn':'cancelFocusBtn'" @click="focusUser(index)" v-text="item.state ? '关注' :'已关注 '"></view>
 		</view>
+		<u-modal v-model="show" show-cancel-button="true" :content="content" :show-title="false" confirm-color="#007AFF"
+		 cancel-color="#007AFF" :content-style="{color:'#000000',fontSize:'32rpx',fontWeight:'bold'}" @confirm="confirm">
+		</u-modal>
 	</view>
 </template>
 
@@ -37,14 +40,56 @@
 				}, {
 					name: '粉丝'
 				}],
-				current: 0,
-				toSearch: '../../singlePage/search/search' // 跳转到搜索页面
+				current: 0, //tabs导航索引
+				state: true, //样式文字状态默认为true
+				content: '是否取消关注', // 取消关注模态框文本
+				show: false, //控制模态框弹出，默认为false
+				toSearch: '../../singlePage/search/search', // 跳转到搜索页面
+				userList: [{
+						userImg: '../../../static/images/tabBarImage/myLoginHeader.png', // 用户头像
+						userName: '吴亦凡', //用户名字
+						userDescribe: '吃吃喝喝玩玩乐乐大碗宽面', // 用户介绍
+						state: true // 默认得状态（样式/按钮）
+					},
+					{
+						userImg: '../../../static/images/tabBarImage/myLoginHeader.png', // 用户头像
+						userName: '吴亦凡', //用户名字
+						userDescribe: '吃吃喝喝玩玩乐乐大碗宽面', // 用户介绍
+						state: true // 默认得状态（样式/按钮）
+					},
+					{
+						userImg: '../../../static/images/tabBarImage/myLoginHeader.png', // 用户头像
+						userName: '吴亦凡', //用户名字
+						userDescribe: '吃吃喝喝玩玩乐乐大碗宽面', // 用户介绍
+						state: true // 默认得状态（样式/按钮）
+					}
+				]
 			}
 		},
 		methods: {
 			change(index) {
 				this.current = index;
 				console.log(this.current)
+			},
+			focusUser(index) {
+				let that = this
+				if (that.userList[index].state) {
+					that.userList[index].state = false
+				}else {
+					uni.showModal({
+						content: '是否取消关注',
+						success: function(res) {
+							if (res.confirm) {
+								that.userList[index].state = true
+							}
+						}
+					});
+				}
+				console.log(index)
+			},
+			// 确认取消调用的函数
+			confirm() {
+				this.state = !this.state
 			}
 		}
 	}
@@ -137,6 +182,32 @@
 						color: rgba(112, 112, 112, 1);
 					}
 				}
+			}
+
+			.focusBtn {
+				width: 106rpx;
+				height: 48rpx;
+				border: 2rpx solid rgba(36, 167, 255, 1);
+				border-radius: 6rpx;
+				font-size: 24rpx;
+				font-family: PingFang SC;
+				font-weight: 400;
+				line-height: 40rpx;
+				color: rgba(36, 167, 255);
+				text-align: center;
+			}
+
+			.cancelFocusBtn {
+				width: 106rpx;
+				height: 48rpx;
+				border: 2rpx solid rgba(211, 211, 211, 1);
+				border-radius: 6rpx;
+				font-size: 24rpx;
+				font-family: PingFang SC;
+				font-weight: 400;
+				line-height: 40rpx;
+				color: rgba(186, 186, 186, 1);
+				text-align: center;
 			}
 		}
 	}

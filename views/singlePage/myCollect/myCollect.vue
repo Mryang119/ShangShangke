@@ -6,7 +6,7 @@
 		
 		<view class="shopDetailCon">
 			<!-- 店铺 -->
-			<!-- <view class="shopDetail" v-for="(item,index) in 3" :key="index">
+			<view class="shopDetail" v-for="(item,index) in 3" :key="index" v-if="current===0">
 				<view class="shopImg"><image src="@/static/images/Product/shangpintu.png"></image></view>
 				<view class="detailCon">
 					<view class="shopName">海底捞（海岸城店）</view>
@@ -21,9 +21,9 @@
 						<view class="address">文新思路34号海岸城西座F2座806</view>
 					</view>
 				</view>
-			</view> -->
+			</view>
 			<!-- 商品 -->
-			<view class="shopDetail" v-for="(item,index) in 3" :key="index">
+			<view class="shopDetail" v-for="(item,index) in 3" :key="index"  v-if="current===1">
 				<view class="shopImg"><image src="@/static/images/Product/commodityItem.png"></image></view>
 				<view class="detailCon">
 					<view class="goodsName">九龙金玉雪顶奶茶</view>

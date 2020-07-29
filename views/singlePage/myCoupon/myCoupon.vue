@@ -2,37 +2,38 @@
 <template>
 	<view class="container">
 		<view class="tab">
-			<u-tabs class="tabs" :list="couponList" :is-scroll="false" :current="current" @change="change" inactive-color="#333333"></u-tabs>
+			<u-tabs active-color='#000000' inactive-color="#000000" :list="tabList" :bold='true' :is-scroll="false" :current="current" @change="change" :bar-style="{backgroundImage: 'linear-gradient(to right,#92D0F9,#26A7FC)',height:6+'rpx'}"></u-tabs>
 		</view>
-		<view class="useCoupon" v-for="(item,index) in 4" :key="index">
+		<!-- <view class="couponrBg" v-if="currentArr.length=== 0">
+			<image src="@/static/images/iconfont/couponBg.png"></image>
+			<view class="noCoupon">还没有卡券~</view>
+		</view> -->
+		<view class="useCoupon" v-for="(item,index) in couponList" :key="index">
 			<view class="couponHeader">
 				<view class="headerImg">
 					<image src="@/static/images/Product/shangpintu.png"></image>
 				</view>
-				<view class="headerText">海底捞沃尔玛蓝山店</view>
+				<view class="headerText">{{item.shopName}}</view>
 			</view>
 			<view class="coupon">
 				<!-- ￥100 -->
 				<view class="numCon">
 					<view class="context">￥</view>
-					<view class="num">100</view>
+					<view class="num">{{item.couponNumber}}</view>
 				</view>
 				<!-- 满减/有效期/选中 -->
 				<view class="chooseCoupon">
 					<!-- 满减/有效期 -->
 					<view class="fullDelete">
-						<view class="full">满1000元可用</view>
-						<view class="fullTime">有效期至：2020-06-31</view>
+						<view class="full">{{item.fullNumber}}</view>
+						<view class="fullTime">有效期至：{{item.fullTime}}</view>
 					</view>
-					<!-- <view class="chooseCon">
-						<u-icon :name="item.IconType ?'checkmark-circle-fill':'checkmark-circle'" color="#FF2F2F" size="38" @click="toggleIcon(item,index)"></u-icon>
-					</view> -->
 					<!-- 去使用 -->
 					<navigator class="toUse" :url="timeKillProductDetail">去使用</navigator>
 				</view>
 				<!-- 左上角商品类型 -->
 				<view class="goodsType">
-					<view class="goodsText">全品类可用</view>
+					<view class="goodsText">{{item.couponType}}</view>
 				</view>
 			</view>
 		</view>
@@ -43,7 +44,7 @@
 	export default{
 		data(){
 			return{
-				couponList: [{
+				tabList: [{
 					name: '全部'
 				}, {
 					name: '未使用'
@@ -52,28 +53,39 @@
 				}, {
 					name: '已过期'
 				}],
-				current: 0,
-				IconType: false, // 店铺优惠券的选中的状态
-				list: [{}, {}], // 店铺优惠券
-				timeKillProductDetail:'../../singlePage/timeKillProductDetail/timeKillProductDetail'
+				current: 0,   // tabs的索引
+				timeKillProductDetail:'../../singlePage/timeKillProductDetail/timeKillProductDetail',  // 点击去使用跳到商品详情
+				couponList:[{
+					shopName:'海底捞沃尔玛蓝山店',
+					couponNumber:'100',
+					fullNumber:'满1000元可用',
+					fullTime:'2020-06-31',
+					couponType:'全品类可用'
+				},{
+					shopName:'海底捞沃尔玛蓝山店',
+					couponNumber:'100',
+					fullNumber:'满1000元可用',
+					fullTime:'2020-06-31',
+					couponType:'全品类可用'
+				},{
+					shopName:'海底捞沃尔玛蓝山店',
+					couponNumber:'100',
+					fullNumber:'满1000元可用',
+					fullTime:'2020-06-31',
+					couponType:'全品类可用'
+				},{
+					shopName:'海底捞沃尔玛蓝山店',
+					couponNumber:'100',
+					fullNumber:'满1000元可用',
+					fullTime:'2020-06-31',
+					couponType:'全品类可用'
+				}]
 			}
 		},
 		methods: {
 			change(index) {
 				this.current = index;
 				console.log(this.current)
-			},
-			// 控制店铺优惠券的选中状态
-			toggleIcon(item, index) {
-				this.IconType = !this.IconType
-				console.log(item, index)
-				let list = this.list
-				list.forEach(item => {
-					item.IconType = false
-				})
-				list[index].IconType = true
-				this.list = list
-			
 			}
 		}
 	}
@@ -87,6 +99,24 @@
 		.tab{
 			font-family:PingFang SC;
 			color:rgba(51,51,51,1);
+		}
+		.couponBg{
+			width: 370.5rpx;
+			height: 420.02rpx;
+			margin: 138rpx 190rpx 0 190rpx;
+			image{
+				width: 370.5rpx;
+				height: 420.02rpx;
+				margin-bottom: 42rpx;
+			}
+			.noCoupon{
+				font-size:28rpx;
+				font-family:PingFang SC;
+				font-weight:400;
+				line-height:32rpx;
+				color:rgba(169,169,169,1);
+				text-align: center;
+			}
 		}
 		.useCoupon {
 			width: 750rpx;
