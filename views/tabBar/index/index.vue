@@ -211,13 +211,15 @@
 				temp: [],
 				time: null,
 				cp: 'buy',
-				showItemList1: showItemList, // 数据1
-				showItemList2: showItemList, // 数据2
 				ajaxList: showItemList, // 
-				endPage1: 5, // 买就送死数据最大页数
-				startPage1: 1, // 买就送死数据开始页数
-				endPage2: 5, // 买就送死数据最大页数
-				startPage2: 1, // 买就送死数据开始页数
+				showItemList1: [], // 买赠列表
+				startPage1: 1, // 买赠起始页
+				buylength: 0, // 买赠数据长度
+
+				showItemList2: [], // 数满列表
+				startPage2: 1, // 满减起始页
+				givelength: 0, // 满减数据长度
+
 				status1: 'loading',
 				status2: 'loading',
 
@@ -305,7 +307,6 @@
 										value: wxMarkerData[0][k]
 									})
 								})
-								console.log(that.$store.state.global.globalData)
 								resolve(data)
 							}
 							that.BMap.regeocoding({
@@ -335,7 +336,10 @@
 					lon: this.longitude
 				})
 				this.circs = res.data.data
-				this.$store.state.global.globalData.circs = res.data.data
+				this.$store.commit('saveGlobal', {
+					key: 'circs',
+					value: res.data.data
+				})
 				return Promise.resolve(res)
 			},
 			// 获取首页模块相关数据
@@ -358,16 +362,24 @@
 
 				return Promise.resolve(res)
 			},
-			// 获取更多活动信息
+			// 获取更多活动
 			async getCircInfo() {
-				let res = await getCircCampaignInfo({
+				let res1 = await getCircCampaignInfo({
 					circs: this.circs,
 					campaignType: 4,
-					pageNum: 1,
+					pageNum: this.startPage1,
 					pageSize: 10
 				})
-				console.log(res)
-				return Promise.resolve(res)
+				this.showItemList1 = res1.data.data
+				let res2 = await getCircCampaignInfo({
+					circs: this.circs,
+					campaignType: 3,
+					pageNum: this.startPage2,
+					pageSize: 10
+				})
+				this.showItemList2 = res2.data.data
+				console.log(res2)
+				return Promise.resolve(res1, res2)
 			}
 		},
 
@@ -382,40 +394,48 @@
 			await this.getHomeModule()
 			// 获取更多活动信息
 			await this.getCircInfo()
-			let circs = this.$store.state.global.globalData.circs
-			console.log()
-			// 获取秒杀信息
-			let res = await getSeckillMoreInfo({
-				circs,
-				killType: 1,
-				pageNum: 1,
-				pageSize: 2
-			})
-			console.log(res)
+
 		},
 		onReady() {
 
 		},
 		// 触碰底部懒加载
-		onReachBottom: function() {
+		onReachBottom: async function() {
 			// 模拟请求数据
-			if (this.cp === 'buy' && this.endPage1 > this.startPage1) {
-				this.status1 = 'loading'
+			// 请求回来的数据长度小于十代表已经无了
+			if (this.cp === 'buy' && this.buylength >= 10) {
 				this.startPage1++
-				setTimeout(() => {
-					let fakeAjaxList = JSON.parse(JSON.stringify(this.ajaxList))
-					this.showItemList1 = this.showItemList1.concat(fakeAjaxList)
-				}, 1000)
+				let res = await getCircCampaignInfo({
+					circs: this.circs,
+					campaignType: 4,
+					pageNum: this.startPage1,
+					pageSize: 10
+				})
+				this.buylength = res.data.data.length
+				this.showItemList1 = this.showItemList1.concat(res.data.data)
 			} else {
 				this.status1 = 'noMore'
 			}
-			if (this.cp === 'give' && this.endPage2 > this.startPage2) {
-				this.status2 = 'loading'
+			// if (this.cp === 'buy' && this.endPage1 > this.startPage1) {
+			// 	this.status1 = 'loading'
+			// 	this.startPage1++
+			// 	setTimeout(() => {
+			// 		let fakeAjaxList = JSON.parse(JSON.stringify(this.ajaxList))
+			// 		this.showItemList1 = this.showItemList1.concat(fakeAjaxList)
+			// 	}, 1000)
+			// } else {
+			// 	this.status1 = 'noMore'
+			// }
+			if (this.cp === 'give' && this.givelength >=10) {
 				this.startPage2++
-				setTimeout(() => {
-					let fakeAjaxList = JSON.parse(JSON.stringify(this.ajaxList))
-					this.showItemList2 = this.showItemList2.concat(fakeAjaxList)
-				}, 1000)
+				let res = await getCircCampaignInfo({
+					circs: this.circs,
+					campaignType: 3,
+					pageNum: this.startPage2,
+					pageSize: 10
+				})
+				this.givelength = res.data.data.length
+				this.showItemList2= this.showItemList1.concat(res.data.data)
 			} else {
 				this.status2 = 'noMore'
 			}

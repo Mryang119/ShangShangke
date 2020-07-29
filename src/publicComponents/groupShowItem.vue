@@ -50,7 +50,7 @@
 				default: '两人芝士双拼套餐'
 			},
 			price: {
-				type: String||Number,
+				type: [String, Number],
 				default: '￥1.00'
 			},
 			oldPrice: {
@@ -58,7 +58,7 @@
 				default: '￥11.00'
 			},
 			distance: {
-				type: Number || String,
+				type: [Number, String],
 				default: 400
 			},
 			tag: {
@@ -90,6 +90,7 @@
 		box-sizing: border-box;
 		display: flex;
 		border-radius: 12rpx;
+
 		.left-content {
 			width: 232rpx;
 			height: 208rpx;
@@ -177,7 +178,7 @@
 				.button {
 					width: 146rpx;
 					height: 78rpx;
-					background-image: linear-gradient(to right, #FE633C , #FA2800);
+					background-image: linear-gradient(to right, #FE633C, #FA2800);
 					color: #FFFFFF;
 					display: flex;
 					flex-direction: column;
@@ -185,7 +186,7 @@
 					justify-content: center;
 					font-size: 24rpx;
 					border-radius: 12rpx;
-					
+
 				}
 			}
 		}

@@ -8,7 +8,8 @@
 			<view class="line-content">
 				<view class="line" v-for="(item,index) in 4" :key="index"></view>
 			</view>
-			<u-tabs :list="list" :current="current" :active-item-style="{'font-size':33+'rpx'}" :is-scroll="false" @change="change"></u-tabs>
+			<u-tabs :list="list" :current="current" bg-color="#F6F6F6" :active-item-style="{'font-size':33+'rpx'}" :is-scroll="false"
+			 @change="change"></u-tabs>
 		</view>
 		<view class="coupon-content" :key="index" v-for="(item,index) in 4">
 			<discountCoupon></discountCoupon>
@@ -52,8 +53,10 @@
 		background-color: rgb(247, 244, 248);
 		box-sizing: border-box;
 		overflow: hidden;
+
 		.topBakcGround-content {
 			width: 750rpx;
+			height: 310rpx;
 
 			.image {
 				width: 750rpx;
@@ -64,7 +67,7 @@
 		.tabs-content {
 			height: 80rpx;
 			position: relative;
-
+			margin-bottom: 20rpx;
 			.line-content {
 				position: absolute;
 				width: 458rpx;

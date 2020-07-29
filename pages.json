@@ -223,7 +223,11 @@
 			}
 		}
 
-	],
+	    ,{
+            "path" : "views/singlePage/productDetail/productDetail",
+            "style" : {}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

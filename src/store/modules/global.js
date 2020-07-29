@@ -21,7 +21,6 @@ const mutations = {
 		} else {
 			state.globalData[key] = value
 		}
-		console.log(state)
 	}
 }
 

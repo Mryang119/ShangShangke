@@ -88,7 +88,7 @@
 						this.timeList.push({
 							time: `${i}:00`, // 用于展示
 							now: true, // 用于状态
-							millisecond: nowDate + j * hoursMili // 转化毫秒数给傻逼后端
+							millisecond: nowDate + j * hoursMili // 转化毫秒数给后端
 						})
 					} else {
 						this.timeList.push({
