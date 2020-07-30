@@ -1,4 +1,5 @@
 <!-- 我的收藏 -->
+<!-- 陈铄源 -->
 <template>
 	<view class="container">
 		<u-tabs class="tabs" :list="list" :bar-style="{backgroundImage: 'linear-gradient(to right,#92D0F9,#26A7FC)',height:6+'rpx'}"
@@ -34,6 +35,10 @@
 					<view class="goodsPrice">￥{{item.productPrice}}</view>
 				</view>
 			</view>
+			<!-- 作品 -->
+			<view class="shopWorks" v-if="current===2">
+				
+			</view>
 		</view>
 		
 		
@@ -55,25 +60,25 @@
 				value:5   ,// 评分默认值
 				isShow:false,
 				shopList:[
-				// 	{
-				// 	shopImg:'../../../static/images/Product/shangpintu.png',  //商家头像
-				// 	shopName:'海底捞（海岸城店）',  //商家名字
-				// 	value:'5.0',        //商家评分
-				// 	shopMeter:'500m',        //商家距离
-				// 	shopAddress:'文新思路34号海岸城西座F2座806'  //商家地址
-				// },{
-				// 	shopImg:'../../../static/images/Product/shangpintu.png',  //商家头像
-				// 	shopName:'海底捞（海岸城店）',  //商家名字
-				// 	value:'5.0',        //商家评分
-				// 	shopMeter:'500m',        //商家距离
-				// 	shopAddress:'文新思路34号海岸城西座F2座806'  //商家地址
-				// },{
-				// 	shopImg:'../../../static/images/Product/shangpintu.png',  //商家头像
-				// 	shopName:'海底捞（海岸城店）',  //商家名字
-				// 	value:'5.0',        //商家评分
-				// 	shopMeter:'500m',        //商家距离
-				// 	shopAddress:'文新思路34号海岸城西座F2座806'  //商家地址
-				// }
+					{
+					shopImg:'../../../static/images/Product/shangpintu.png',  //商家头像
+					shopName:'海底捞（海岸城店）',  //商家名字
+					value:'5.0',        //商家评分
+					shopMeter:'500m',        //商家距离
+					shopAddress:'文新思路34号海岸城西座F2座806'  //商家地址
+				},{
+					shopImg:'../../../static/images/Product/shangpintu.png',  //商家头像
+					shopName:'海底捞（海岸城店）',  //商家名字
+					value:'5.0',        //商家评分
+					shopMeter:'500m',        //商家距离
+					shopAddress:'文新思路34号海岸城西座F2座806'  //商家地址
+				},{
+					shopImg:'../../../static/images/Product/shangpintu.png',  //商家头像
+					shopName:'海底捞（海岸城店）',  //商家名字
+					value:'5.0',        //商家评分
+					shopMeter:'500m',        //商家距离
+					shopAddress:'文新思路34号海岸城西座F2座806'  //商家地址
+				}
 				],
 				productList:[
 					{

@@ -9,7 +9,7 @@
 				<view class="applyStoreDoorplate">{{shopPlace}}</view>
 			</view>
 		</view>
-		<image class="applyStorePhone" src="@/static/images/iconfont/phone.png"></image>
+		<image class="applyStorePhone" src="@/static/images/iconfont/phone.png" @click="takePhone"></image>
 	</view>
 </template>
 
@@ -32,6 +32,19 @@
 		data(){
 			return{
 				
+			}
+		},
+		methods:{
+			takePhone(){
+				// uni.request({
+				// 	method:'GET',
+				// 	url:'XXX',
+				// 	success(res) {
+				// 		uni.makePhoneCall({
+				// 			
+				// 		})
+				// 	}
+				// })
 			}
 		}
 	}
