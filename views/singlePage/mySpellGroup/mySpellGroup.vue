@@ -5,7 +5,7 @@
 			<image src="@/static/images/iconfont/mySpellGroupBg.png"></image>
 			<view class="noSpellGroup">还没有拼团~</view>
 		</view>
-		<view class="spellInformation" v-for="(item,index) in userList" :key="index">
+		<view class="spellInformation" v-for="(item,index) in userList" :key="index" @click="toSpellGroupDetail">
 			<view class="spellGroupTime">
 				<view class="Time">{{item.spellGroupTime}}</view>
 				<view class="text">{{item.spellGroupType}}</view>
@@ -86,6 +86,22 @@
 			// 进店使用
 			toUse(){
 				console.log('进店使用')
+			},
+			// 跳转拼团详情
+			toSpellGroupDetail(){
+				// if(item.spellGroupType==='已支付，待成团'){
+				// 	uni.navigateTo({
+				// 		url:`/views/singlePage/spellGroupDetail/spellGroupDetail?type=${item.spellGroupType}`
+				// 	})
+				// }else if(item.spellGroupType==='组团失败，已回归'){
+				// 	uni.navigateTo({
+				// 		url:`/views/singlePage/spellGroupDetail/spellGroupDetail?type=${item.spellGroupType}`
+				// 	})
+				// }else{
+				// 	uni.navigateTo({
+				// 		url:`/views/singlePage/spellGroupDetail/spellGroupDetail?type=${item.spellGroupType}`
+				// 	})
+				// }
 			}
 				
 			

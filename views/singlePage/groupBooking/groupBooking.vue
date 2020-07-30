@@ -22,7 +22,7 @@
 							剩余<u-count-down :timestamp="timestamp" color="#5F5C5F" font-size="24" :show-days="false"></u-count-down>
 						</view>
 					</view>
-					<navigator class="toGroupBtn" :url="groupBookingDetail">去拼团</navigator>
+					<navigator class="toGroupBtn" :url="spellGroupDetail">去拼团</navigator>
 				</view>
 							
 			</view>
@@ -54,7 +54,7 @@
 		},
 		data(){
 			return{
-				groupBookingDetail:'../../singlePage/groupBookingDetail/groupBookingDetail'
+				spellGroupDetail:'../../singlePage/spellGroupDetail/spellGroupDetail'
 			}
 		}
 	}

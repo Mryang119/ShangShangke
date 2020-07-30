@@ -161,7 +161,7 @@
 
 		},
 		{
-			"path": "views/singlePage/groupBookingDetail/groupBookingDetail",
+			"path": "views/singlePage/spellGroupDetail/spellGroupDetail",
 			"style": {
 				"navigationBarTitleText": "拼团详情"
 			}

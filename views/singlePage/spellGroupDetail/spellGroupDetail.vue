@@ -6,7 +6,7 @@
 			<oneShopDetail />
 		</view>
 		<!-- 还差几人成团 -->
-		<view class="groupPeople">
+		<view class="groupPeople" v-if="userList.length!==3">
 			<!-- 正在拼团中 -->
 			<!-- v-if="" -->
 			<view class="groupping">
@@ -16,9 +16,9 @@
 				</view>
 				<view class="shortPeople">3人成团,还差<view class="num">{{num}}</view>人</view>
 			</view>
-			<!-- 拼团失败 -->
-			<!-- <view class="groupFail">拼团成功！</view> -->
 		</view>
+		<!-- 拼团失败 -->
+		<view class="groupFail" v-else>拼团成功！</view>
 		<!-- 用户个人信息 -->	
 		<view class="groupUser">
 			<view class="oneGroupUser" v-for="(item,index) in userList" :key="index">
@@ -29,8 +29,12 @@
 			</view>
 		</view>
 		<!-- 邀请好友拼团 -->
-		<view class="inviteFriends">
+		<view class="inviteFriends" v-if="userList.length!==3">
 			<view class="inviteBtn">邀请好友拼团</view>
+		</view>
+		<!-- 查看我的拼团 -->
+		<view class="inviteFriends" v-else @click="checkMySpellGroup">
+			<view class="inviteBtn">查看我的拼团</view>
 		</view>
 	</view>
 </template>
@@ -45,6 +49,13 @@
 				withInviteImg:'../../../static/images/iconfont/weizhitouxiang.png',  //带邀请用户头像
 				userName:'待邀请...',  // 用户名
 				
+			}
+		},
+		methods:{
+			checkMySpellGroup(){
+				uni.navigateTo({
+					url:'/views/singlePage/mySpellGroup/mySpellGroup'
+				})
 			}
 		},
 		components:{
@@ -91,13 +102,17 @@
 					}
 				}
 			}
-			.groupFail{
-				font-size:40rpx;
-				font-family:PingFang SC;
-				font-weight:bold;
-				line-height:48rpx;
-				color:rgba(51,51,51,1);
-			}
+		}
+		.groupFail{
+			width: 750rpx;
+			height: 224rpx;
+			font-size:40rpx;
+			background:#FFFFFF;
+			font-family:PingFang SC;
+			font-weight:bold;
+			line-height:224rpx;
+			color:rgba(51,51,51,1);
+			text-align: center;
 		}
 		.groupUser{
 			width: 750rpx;
