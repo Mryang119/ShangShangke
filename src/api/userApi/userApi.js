@@ -62,6 +62,14 @@ function getUserInfo(data) {
 	})
 }
 
+// 获取订单列表  dby/homeInfo/getCustOrderInfo
+function getCustOrderInfo(data) {
+	return http({
+		url:'dby/homeInfo/getCustOrderInfo',
+		data,
+		method:'post'
+	})
+}
 
 export {
 	registerCustomer,
@@ -69,5 +77,6 @@ export {
 	loginByMobile,
 	loginByMobileNoCode,
 	customerLogin,
-	getUserInfo
+	getUserInfo,
+	getCustOrderInfo
 }
