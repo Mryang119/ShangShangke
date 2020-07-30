@@ -36,6 +36,16 @@
 		<view class="rule-content">
 			<promotionRule></promotionRule>
 		</view>
+		<!-- 详情图 -->
+		<view class="image-content">
+			<view class="title">商品详情</view>
+			<view class="image-container">
+				<view class="image-item" v-for="(item,index) in list2" :key="index">
+					<u-image height="550rpx" :lazy-load="false" :src="item.image"></u-image>
+				</view>
+			</view>
+		</view>
+		<view>{{cityName}}</view>
 	</view>
 </template>
 
@@ -60,7 +70,8 @@
 		data() {
 			return {
 				productDetais: null,
-				list: []
+				list: [],
+				list2: []
 			}
 		},
 		async created() {
@@ -72,6 +83,9 @@
 			// 模拟一份轮播图
 			for (var i = 0; i <= 3; i++) {
 				this.list.push({
+					image: res.data.data.basDuctList.imageUrl
+				})
+				this.list2.push({
 					image: res.data.data.basDuctList.imageUrl
 				})
 			}
@@ -151,6 +165,28 @@
 		.store-content {
 			width: 100%;
 			margin-bottom: 20rpx;
+		}
+
+		.rule-content {
+			margin-bottom: 20rpx;
+		}
+
+		.image-content {
+			.title {
+				padding: 30rpx;
+				background-color: #FFF;
+				font-size: 32rpx;
+				font-weight: bold;
+				color: #333333;
+			}
+
+			.image-container {
+				.image-item {
+					width: 750rpx;
+					height: 550rpx;
+					margin-bottom: 20rpx;
+				}
+			}
 		}
 	}
 </style>

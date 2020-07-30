@@ -1,4 +1,5 @@
 <template>
+	<!-- name:杨大锐 -->
 	<!-- 横向滚动列表商品展示组件 -->
 	<view class="c_spitem">
 		<view class="eventContainer">
