@@ -95,7 +95,7 @@
 					<!-- 宽度 商品数量*组件宽度+总边距 -->
 					<view class="scorll-H-S-container" :style="{width:killWidth+'rpx'}">
 						<view class="scorll-H-S-container-item" @click="toDtail(index)" v-for="(item,index) in seckillHome" :key="index">
-							<spitem :pdcId="item.pdcId" :imgUrl="imageAddr" :price="item.promotionPrice"></spitem>
+							<spitem :pdcId="item.pdcId" :imgUrl="item.imageAddr" :price="item.promotionPrice"></spitem>
 						</view>
 					</view>
 				</scroll-view>
