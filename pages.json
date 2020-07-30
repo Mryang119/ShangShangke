@@ -222,12 +222,17 @@
 			"style": {
 				"navigationBarTitleText": "我的关注"
 			}
-		}
-
-	    ,{
+		},
+		{
             "path" : "views/singlePage/productDetail/productDetail",
             "style" : {}
-        }
+        },
+		{
+			"path": "views/singlePage/applyStore/applyStore",
+			"style": {
+				"navigationBarTitleText": "适用门店"
+			}
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

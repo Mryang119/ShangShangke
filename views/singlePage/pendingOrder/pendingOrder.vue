@@ -18,7 +18,7 @@
 			<navigator class="refundBtn" :url="applyRefund">申请退款</navigator>
 		</view>	
 		<!-- 出示二维码 -->
-		<view class="codeModalContainer" v-if="isShow"  @touchmove.stop.prevent="moveHandle" @click='closeGoodsDetail'>
+		<view class="codeModalContainer" v-if="isShow"  @click.stop.prevent="moveHandle">
 			<view class="codeModal" >
 				<view class="codeText">
 					<view class="textCon">
@@ -32,7 +32,7 @@
 					<view class="textUse">（请到店出示二维码使用）</view>
 				</view>
 				<view class="codeNumber">{{codeNumber}}</view>
-				<view class="cancleCon"><view class="cancleIcon"><image src="../../../static/images/iconfont/guanbiBtn.png"></image></view></view>
+				<view class="cancelCon"><view class="cancelIcon" @click="closeCodeModal"><image src="../../../static/images/iconfont/guanbiBtn.png"></image></view></view>
 			</view>
 		</view>
 		
@@ -63,11 +63,11 @@
 			refundBtn(){
 				this.isShow = true
 			},
-			closeGoodsDetail(){
-				this.isShow = false
-			},
 			moveHandle(){
 				console.log('阻止底部页面滑动')
+			},
+			closeCodeModal(){
+				this.isShow = false
 			}
 		}
 	}
@@ -147,7 +147,7 @@
 			left: 0;
 			top: 0;
 			background: rgba(0,0,0,.5);
-			z-index: 999999;
+			z-index: 99999;
 			.codeModal{
 				width: 576rpx;
 				height: 638rpx;
@@ -159,7 +159,6 @@
 				top: 0;
 				bottom: 0;
 				margin: auto;
-				z-index: 9999;
 				.codeText{
 					width: 576rpx;
 					height: 146rpx;
@@ -223,18 +222,21 @@
 					letter-spacing:20rpx;
 					text-align: center;
 				}
-				.cancleCon{
+				.cancelCon{
 					width: 576rpx;
 					height: 160rpx;
 					text-align: center;
 					line-height: 160rpx;
 					background: rgba(0,0,0,0);
 					margin-top: 50rpx;
-					image{
+					.cancelIcon{
+						text-align: center;
 						border-radius: 50%;
-						width: 58rpx;
-						height: 58rpx;
-						z-index: 999999;
+						image{
+							width: 58rpx;
+							height: 58rpx;
+							z-index: 99999;
+						}
 					}
 				}
 			}
