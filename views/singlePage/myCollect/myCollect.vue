@@ -4,7 +4,7 @@
 		<u-tabs class="tabs" :list="list" :bar-style="{backgroundImage: 'linear-gradient(to right,#92D0F9,#26A7FC)',height:6+'rpx'}"
 		 :is-scroll="false" :bold='true' :current="current" @change="change" inactive-color="#000" active-color="#000"></u-tabs>
 		
-		<view class="myCollectBg" v-if="shopList.length===0 || productList.length===0">
+		<view class="myCollectBg" v-if="isShowImg">
 			<image src="@/static/images/iconfont/myCollectBg.png"></image>
 			<view class="noCollect">还没有相关收藏~</view>
 		</view>
@@ -36,6 +36,7 @@
 			</view>
 		</view>
 		
+		
 	</view>
 </template>
 
@@ -54,25 +55,25 @@
 				value:5   ,// 评分默认值
 				isShow:false,
 				shopList:[
-					{
-					shopImg:'../../../static/images/Product/shangpintu.png',  //商家头像
-					shopName:'海底捞（海岸城店）',  //商家名字
-					value:'5.0',        //商家评分
-					shopMeter:'500m',        //商家距离
-					shopAddress:'文新思路34号海岸城西座F2座806'  //商家地址
-				},{
-					shopImg:'../../../static/images/Product/shangpintu.png',  //商家头像
-					shopName:'海底捞（海岸城店）',  //商家名字
-					value:'5.0',        //商家评分
-					shopMeter:'500m',        //商家距离
-					shopAddress:'文新思路34号海岸城西座F2座806'  //商家地址
-				},{
-					shopImg:'../../../static/images/Product/shangpintu.png',  //商家头像
-					shopName:'海底捞（海岸城店）',  //商家名字
-					value:'5.0',        //商家评分
-					shopMeter:'500m',        //商家距离
-					shopAddress:'文新思路34号海岸城西座F2座806'  //商家地址
-				}
+				// 	{
+				// 	shopImg:'../../../static/images/Product/shangpintu.png',  //商家头像
+				// 	shopName:'海底捞（海岸城店）',  //商家名字
+				// 	value:'5.0',        //商家评分
+				// 	shopMeter:'500m',        //商家距离
+				// 	shopAddress:'文新思路34号海岸城西座F2座806'  //商家地址
+				// },{
+				// 	shopImg:'../../../static/images/Product/shangpintu.png',  //商家头像
+				// 	shopName:'海底捞（海岸城店）',  //商家名字
+				// 	value:'5.0',        //商家评分
+				// 	shopMeter:'500m',        //商家距离
+				// 	shopAddress:'文新思路34号海岸城西座F2座806'  //商家地址
+				// },{
+				// 	shopImg:'../../../static/images/Product/shangpintu.png',  //商家头像
+				// 	shopName:'海底捞（海岸城店）',  //商家名字
+				// 	value:'5.0',        //商家评分
+				// 	shopMeter:'500m',        //商家距离
+				// 	shopAddress:'文新思路34号海岸城西座F2座806'  //商家地址
+				// }
 				],
 				productList:[
 					{
@@ -95,8 +96,68 @@
 			change(index) {
 				this.current = index;
 				console.log(this.current)
+				// if(this.current===0){
+				// 	uni.request({
+				// 		method:'GET',
+				// 		url:'xxx',
+				// 		success(res) {
+				// 			this.shopList = res.data
+							
+				// 		}
+				// 	})
+				// }else if(this.current===1){
+				// 	uni.request({
+				// 		method:'GET',
+				// 		url:'xxx',
+				// 		success(res) {
+				// 			this.productList = res.data
+							
+				// 		}
+				// 	})
+				// }else{
+				// 	uni.request({
+				// 		method:'GET',
+				// 		url:'xxx',
+				// 		success(res) {
+				// 			this.XXXList = res.data
+							
+				// 		}
+				// 	})
+				// }
+				
 			}
-		}
+		},
+		computed:{
+			isShowImg(){
+				// this.current
+				if(this.current===0){
+					if(this.shopList.length===0){
+						return true
+					}else{
+						return false
+					}
+				}else if(this.current===1){
+					if(this.productList.length===0){
+						return true
+					}else{
+						return false
+					}
+				}else{
+					return true
+				}
+			}
+		},
+		// onLoad(res) {
+		// 	uni.request({
+		// 		method:'GET',
+		// 		url:'xxx',
+		// 		success(res) {
+		// 			this.shopList = res.data
+					
+		// 		}
+		// 	})
+		// }
+		
 	}
 </script>
 

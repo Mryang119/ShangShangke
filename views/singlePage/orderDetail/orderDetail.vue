@@ -1,4 +1,4 @@
-<!-- 订单详情-->
+<!-- 订单详情——待付款订单 -->
 <template>
 	<!-- 最外层 -->
 	<view class="orderContainer">
@@ -62,6 +62,10 @@
 			open() {
 				this.show = true;
 			}
+		},
+		onLoad(options) {
+			console.log(options)
+			console.log(options.id)
 		}
 	}
 	

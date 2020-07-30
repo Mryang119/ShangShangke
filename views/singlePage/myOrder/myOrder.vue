@@ -13,7 +13,7 @@
 			<image src="@/static/images/iconfont/dingdanBg.png"></image>
 			<view class="noOrder">还没有相关订单</view>
 		</view>
-		<view class="orderItem" v-for="item in currentArr" :key="item.id" v-else>
+		<view class="orderItem" v-for="item in currentArr" :key="item.id" @click="goDetail(item)" v-else>
 			<view class="shopCon">
 				<view class="shopNameCon">
 					<view class="shopName">{{item.shopName}}</view>
@@ -95,7 +95,7 @@
 					orderTime:'2020-09-09 12:30',
 					orderNumber:'1',
 					orderType:'已退款'
-				}
+				}   
 				],
 				current: 0,
 				orderDetail:'../../singlePage/orderDetail/orderDetail',  //跳转到待付款订单详情 
@@ -108,6 +108,13 @@
 			change(index) {
 				this.current = index;
 				console.log(this.current)
+			},
+			// 跳转传参(传唯一标识)
+			goDetail(item){
+				uni.navigateTo({
+					url:'/views/singlePage/orderDetail/orderDetail?id=1'
+					// url:`/views/singlePage/orderDetail/orderDetail?id=${item.id}`
+				})
 			}
 		},
 		computed:{
