@@ -1,6 +1,6 @@
 <template>
 	<!-- 适用门店 -->
-	<view class="applyStore">
+	<view class="applyStore" >
 		<view class="applyStoreButton">
 			<view class="applyStoreContent">
 				<span class="applyStoreText">适用门店</span>
