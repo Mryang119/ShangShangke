@@ -161,7 +161,7 @@
 
 		},
 		{
-			"path": "views/singlePage/groupBookingDetail/groupBookingDetail",
+			"path": "views/singlePage/spellGroupDetail/spellGroupDetail",
 			"style": {
 				"navigationBarTitleText": "拼团详情"
 			}
@@ -192,7 +192,8 @@
 				"navigationBarTitleText": "订单详情"
 			}
 
-		}, {
+		},
+		{
 			"path": "views/singlePage/userEdit/userEdit",
 			"style": {
 				"navigationBarTitleText": "编辑资料"
@@ -221,12 +222,17 @@
 			"style": {
 				"navigationBarTitleText": "我的关注"
 			}
-		}
-
-	    ,{
+		},
+		{
             "path" : "views/singlePage/productDetail/productDetail",
             "style" : {}
-        }
+        },
+		{
+			"path": "views/singlePage/applyStore/applyStore",
+			"style": {
+				"navigationBarTitleText": "适用门店"
+			}
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

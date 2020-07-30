@@ -1,10 +1,11 @@
 <!-- 我的收藏 -->
+<!-- 陈铄源 -->
 <template>
 	<view class="container">
 		<u-tabs class="tabs" :list="list" :bar-style="{backgroundImage: 'linear-gradient(to right,#92D0F9,#26A7FC)',height:6+'rpx'}"
 		 :is-scroll="false" :bold='true' :current="current" @change="change" inactive-color="#000" active-color="#000"></u-tabs>
 		
-		<view class="myCollectBg" v-if="shopList.length===0 || productList.length===0">
+		<view class="myCollectBg" v-if="isShowImg">
 			<image src="@/static/images/iconfont/myCollectBg.png"></image>
 			<view class="noCollect">还没有相关收藏~</view>
 		</view>
@@ -34,7 +35,12 @@
 					<view class="goodsPrice">￥{{item.productPrice}}</view>
 				</view>
 			</view>
+			<!-- 作品 -->
+			<view class="shopWorks" v-if="current===2">
+				
+			</view>
 		</view>
+		
 		
 	</view>
 </template>
@@ -95,8 +101,68 @@
 			change(index) {
 				this.current = index;
 				console.log(this.current)
+				// if(this.current===0){
+				// 	uni.request({
+				// 		method:'GET',
+				// 		url:'xxx',
+				// 		success(res) {
+				// 			this.shopList = res.data
+							
+				// 		}
+				// 	})
+				// }else if(this.current===1){
+				// 	uni.request({
+				// 		method:'GET',
+				// 		url:'xxx',
+				// 		success(res) {
+				// 			this.productList = res.data
+							
+				// 		}
+				// 	})
+				// }else{
+				// 	uni.request({
+				// 		method:'GET',
+				// 		url:'xxx',
+				// 		success(res) {
+				// 			this.XXXList = res.data
+							
+				// 		}
+				// 	})
+				// }
+				
 			}
-		}
+		},
+		computed:{
+			isShowImg(){
+				// this.current
+				if(this.current===0){
+					if(this.shopList.length===0){
+						return true
+					}else{
+						return false
+					}
+				}else if(this.current===1){
+					if(this.productList.length===0){
+						return true
+					}else{
+						return false
+					}
+				}else{
+					return true
+				}
+			}
+		},
+		// onLoad(res) {
+		// 	uni.request({
+		// 		method:'GET',
+		// 		url:'xxx',
+		// 		success(res) {
+		// 			this.shopList = res.data
+					
+		// 		}
+		// 	})
+		// }
+		
 	}
 </script>
 
