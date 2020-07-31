@@ -10,7 +10,9 @@
 				</view>
 			</uniNavBar>
 		</view>
-		<shop></shop>
+		<view class="shop-content" v-if="current===0">
+			<shop></shop>
+		</view>
 	</view>
 </template>
 
@@ -24,19 +26,32 @@
 		},
 		data() {
 			return {
-				current: 0
+				current: 0,
+				current2:0,
+				list:[
+					{
+						name:'关注'
+					},{
+						name:'附近'
+					}
+				]
 			}
 		},
+		methods:{
+			change(i){
+				this.current2 = i
+			}
+		}
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	.s_discover {
+		width: 750rpx;
 		.nav-bar {
 			height: auto;
 			border-bottom: 4rpx solid #C0C4CC;
 		}
-
 		.tabs-content {
 			width: 92%;
 			display: flex;
@@ -54,7 +69,6 @@
 				color: #24A7FF;
 			}
 		}
-
 		.shop-content {
 			width: 750rpx;
 		}

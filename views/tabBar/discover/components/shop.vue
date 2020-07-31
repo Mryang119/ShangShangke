@@ -4,16 +4,17 @@
 	<view class="c_shop">
 		<!-- tabs部分 -->
 		<view class="tabs-content">
-			<u-tabs :list="list"  :bar-style="{ 'background-image': 'linear-gradient(to right, #92D0F9, #26A7FC)'}"
-			 :active-item-style="{'font-size':32+'rpx',color:'#333333'}" font-size="28" inactive-color="#666666" :is-scroll="true"
+			<u-tabs :list="list" :bar-style="{ 'background-image': 'linear-gradient(to right, #92D0F9, #26A7FC)'}"
+			 :active-item-style="{'font-size':32+'rpx',color:'#333333'}" font-size="28" inactive-color="#666666" :is-scroll="false"
 			 :current="current" @change="change"></u-tabs>
 		</view>
-		<!-- <view class="shopSonNearby-content" v-if="current===0">
+
+		<view class="shopSonNearby-content" v-if="current===0">
 			<shopSonNearby></shopSonNearby>
 		</view>
 		<view class="shopSonFocus-content" v-else>
 			<shopSonFocus></shopSonFocus>
-		</view> -->
+		</view>
 	</view>
 </template>
 
@@ -46,16 +47,12 @@
 </script>
 
 <style lang="less" scoped>
-	.u-tabs {
-		width: 100% !important;
-	}
 	.c_shop {
 		width: 100%;
 
 		.tabs-content {
 			width: 100%;
-			
+			padding: 0 155rpx;
 		}
-
 	}
 </style>

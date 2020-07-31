@@ -39,30 +39,30 @@
 				<!-- 订单/卡券/收藏/拼团 -->
 				<view class="myLoginOrder">
 					<view class="myLoginOrderCon">
-						<navigator class="myLoginOrderLi" :url="orderUrl">
+						<view class="myLoginOrderLi" @click="navigateTo('../../singlePage/myOrder/myOrder')">
 							<view class="myLoginOrderTu">
 								<image class="myLoginOrderImg" src="@/static/images/iconfont/dingdan.png"></image>
 							</view>
 							<span class="myLoginOrderText">我的订单</span>
-						</navigator>
-						<navigator class="myLoginOrderLi" :url="couponUrl">
+						</view>
+						<view class="myLoginOrderLi" @click="navigateTo('../../singlePage/myCoupon/myCoupon')">
 							<view class="myLoginOrderTu">
 								<image class="myLoginOrderImg" src="@/static/images/iconfont/kaquan.png"></image>
 							</view>
 							<span class="myLoginOrderText">我的卡券</span>
-						</navigator>
-						<navigator class="myLoginOrderLi" :url="collectUrl">
+						</view>
+						<view class="myLoginOrderLi" @click="navigateTo('../../singlePage/myCollect/myCollect')">
 							<view class="myLoginOrderTu">
 								<image class="myLoginOrderImg" src="@/static/images/iconfont/shoucang.png"></image>
 							</view>
 							<span class="myLoginOrderText">我的收藏</span>
-						</navigator>
-						<navigator class="myLoginOrderLi" :url="spellGroupUrl">
+						</view>
+						<view class="myLoginOrderLi" @click="navigateTo('../../singlePage/mySpellGroup/mySpellGroup')">
 							<view class="myLoginOrderTu">
 								<image class="myLoginOrderImg" src="@/static/images/iconfont/pintuan.png"></image>
 							</view>
 							<span class="myLoginOrderText">我的拼团</span>
-						</navigator>
+						</view>
 					</view>
 				</view>
 
@@ -97,11 +97,14 @@
 				</view>
 			</view>
 		</view>
-
+		<u-modal v-model="show" :show-cancel-button="true" :content="content" @confirm="confirm" @cancel="cancel"></u-modal>
 	</view>
 </template>
 
 <script>
+	import {
+		isLogin
+	} from '../../../src/utils/index.js'
 	import {
 		getUserInfo
 	} from '../../../src/api/userApi/userApi.js'
@@ -116,7 +119,9 @@
 				userFans: 0, // 粉丝
 				userFocus: 0, // 关注
 				userImgUrl: '',
-				loginStatus: false
+				loginStatus: false,
+				show: false,
+				content: "您还未登录是否去登录"
 			}
 		},
 		methods: {
@@ -130,6 +135,25 @@
 				uni.navigateTo({
 					url: '../../singlePage/userEdit/userEdit'
 				})
+			},
+			// 跳转
+			navigateTo(url) {
+				if (isLogin()) {
+					uni.navigateTo({
+						url: url
+					})
+				} else {
+					this.show = true
+				}
+			},
+			confirm() {
+				this.show = false
+				uni.navigateTo({
+					url: '../../singlePage/login/login'
+				})
+			},
+			cancel() {
+				this.show = false
 			}
 		},
 		async onShow() {

@@ -17,6 +17,7 @@
 			<button class="usable-button button" v-if="verify" @click="register">注册</button>
 			<view class="forbidden-button button" v-else>注册</view>
 		</view>
+		<u-toast ref="uToast" />
 	</view>
 </template>
 
@@ -63,6 +64,7 @@
 			// 登录
 			async register() {
 				try {
+
 					let res = await customerLogin({
 						mobile: this.mobile,
 						sysAccount: "SYSTEM",
@@ -70,6 +72,16 @@
 						smsNumber: this.vcode
 					})
 					uni.setStorageSync('loginDatas', res.data.data)
+
+					this.$refs.uToast.show({
+						title: '登录成功',
+						type: 'success',
+						callback: function() {
+							uni.navigateTo({
+								url: '../../tabBar/my/my'
+							})
+						}
+					})
 				} catch (e) {
 					console.log('失败', e)
 				}
