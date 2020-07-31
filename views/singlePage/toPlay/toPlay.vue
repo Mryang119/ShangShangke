@@ -1,4 +1,5 @@
 <!-- 支付页面 -->
+<!-- name:陈铄源 -->
 <template>
 	<view class="payContainer">
 		<!-- 商品信息和价格 -->

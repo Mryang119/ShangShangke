@@ -1,3 +1,5 @@
+<!-- 底部导航我的页面 -->
+<!-- name:陈铄源 -->
 <template>
 	<view class="root_my">
 		<!-- 自定义导航栏 -->

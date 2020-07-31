@@ -1,5 +1,5 @@
 <!-- 我的收藏 -->
-<!-- 陈铄源 -->
+<!-- name:陈铄源 -->
 <template>
 	<view class="container">
 		<u-tabs class="tabs" :list="list" :bar-style="{backgroundImage: 'linear-gradient(to right,#92D0F9,#26A7FC)',height:6+'rpx'}"

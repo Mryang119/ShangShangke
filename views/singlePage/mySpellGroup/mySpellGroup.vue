@@ -1,11 +1,12 @@
 <!-- 我的拼团 -->
+<!-- name:陈铄源 -->
 <template>
 	<view class="mySpellGroup">
 		<view class="mySpellGroup" v-if="userList.length=== 0">
 			<image src="@/static/images/iconfont/mySpellGroupBg.png"></image>
 			<view class="noSpellGroup">还没有拼团~</view>
 		</view>
-		<view class="spellInformation" v-for="(item,index) in userList" :key="index" @click="toSpellGroupDetail">
+		<view class="spellInformation" v-for="(item,index) in userList" :key="index" @click="toSpellGroupDetail(item,index)">
 			<view class="spellGroupTime">
 				<view class="Time">{{item.spellGroupTime}}</view>
 				<view class="text">{{item.spellGroupType}}</view>
@@ -41,70 +42,63 @@
 		data() {
 			return {
 				userList: [
-				{
-					goodsImg: '../../../static/images/Product/shangpintu.png',
-					goodsName: '韩国年糕料理（海岸城店）',
-					goodsType: '两人芝士双拼套餐',
-					nowPrice: '1.00',
-					beforePrice: '11.00',
-					spellGroupTime:'2020-06-31 18:03:21',
-					spellGroupType:'已支付，待成团',
-					spellGroupCountDown:'983272'
-				}, 
-				{
-					goodsImg: '../../../static/images/Product/shangpintu.png',
-					goodsName: '韩国年糕料理（海岸城店）',
-					goodsType: '两人芝士双拼套餐',
-					nowPrice: '1.00',
-					beforePrice: '11.00',
-					spellGroupTime:'2020-06-31 18:03:21',
-					spellGroupType:'组团失败，已回归',
-					spellGroupCountDown:'983272'
-				},
-				{
-					goodsImg: '../../../static/images/Product/shangpintu.png',
-					goodsName: '韩国年糕料理（海岸城店）',
-					goodsType: '两人芝士双拼套餐',
-					nowPrice: '1.00',
-					beforePrice: '11.00',
-					spellGroupTime:'2020-06-31 18:03:21',
-					spellGroupType:'组团成功',
-					spellGroupCountDown:'983272'
-				}
+					{
+						goodsImg: '../../../static/images/Product/shangpintu.png',
+						goodsName: '韩国年糕料理（海岸城店）',
+						goodsType: '两人芝士双拼套餐',
+						nowPrice: '1.00',
+						beforePrice: '11.00',
+						spellGroupTime: '2020-06-31 18:03:21',
+						spellGroupType: '已支付，待成团',
+						spellGroupCountDown: '983272'
+					},
+					{
+						goodsImg: '../../../static/images/Product/shangpintu.png',
+						goodsName: '韩国年糕料理（海岸城店）',
+						goodsType: '两人芝士双拼套餐',
+						nowPrice: '1.00',
+						beforePrice: '11.00',
+						spellGroupTime: '2020-06-31 18:03:21',
+						spellGroupType: '组团失败，已回归',
+						spellGroupCountDown: '983272'
+					},
+					{
+						goodsImg: '../../../static/images/Product/shangpintu.png',
+						goodsName: '韩国年糕料理（海岸城店）',
+						goodsType: '两人芝士双拼套餐',
+						nowPrice: '1.00',
+						beforePrice: '11.00',
+						spellGroupTime: '2020-06-31 18:03:21',
+						spellGroupType: '组团成功',
+						spellGroupCountDown: '983272'
+					}
 				]
 			}
 		},
-		methods:{
+		methods: {
 			// 邀请好友参团
-			inviteFriends(){
+			inviteFriends() {
 				console.log('邀请好友参团')
 			},
 			// 再次发起拼团
-			againInvite(){
+			againInvite() {
 				console.log('再次发起拼团')
 			},
 			// 进店使用
-			toUse(){
+			toUse() {
 				console.log('进店使用')
 			},
 			// 跳转拼团详情
-			toSpellGroupDetail(){
-				// if(item.spellGroupType==='已支付，待成团'){
-				// 	uni.navigateTo({
-				// 		url:`/views/singlePage/spellGroupDetail/spellGroupDetail?type=${item.spellGroupType}`
-				// 	})
-				// }else if(item.spellGroupType==='组团失败，已回归'){
-				// 	uni.navigateTo({
-				// 		url:`/views/singlePage/spellGroupDetail/spellGroupDetail?type=${item.spellGroupType}`
-				// 	})
-				// }else{
-				// 	uni.navigateTo({
-				// 		url:`/views/singlePage/spellGroupDetail/spellGroupDetail?type=${item.spellGroupType}`
-				// 	})
-				// }
+			toSpellGroupDetail(item, index) {
+				let spellGroupType = this.userList[index].spellGroupType
+				if (spellGroupType) {
+					uni.navigateTo({
+						url: `/views/singlePage/spellGroupDetail/spellGroupDetail?type=${spellGroupType}`
+					})
+				}
+				console.log(spellGroupType)
 			}
-				
-			
+
 		}
 	}
 </script>
@@ -258,7 +252,8 @@
 					line-height: 56rpx;
 					text-align: center;
 				}
-				.inviteBtnTo{
+
+				.inviteBtnTo {
 					width: 160rpx;
 					height: 56rpx;
 					border: 2rpx solid rgba(36, 167, 255, 1);
