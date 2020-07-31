@@ -29,14 +29,13 @@
 				</view>
 			</view>
 			<!-- 平台优惠券 -->
-			<navigator class="goodsCoupon" :url="chooseCoupon">
+			<view class="goodsCoupon" @click="toChooseCoupon">
 				<view class="text">平台优惠券</view>
 				<view class="couponCon">
 					<view class="num">{{platformCoupon}}</view>
 					<image src="@/static/images/iconfont/more.png"></image>
 				</view>
-
-			</navigator>
+			</view>
 			<!-- 店铺优惠 -->
 			<view class="goodsCoupon" @click="isShow">
 				<view class="text">店铺优惠</view>
@@ -117,8 +116,15 @@
 					}
 				})
 			},
+			// 订单数量当前值
 			valChange(e) {
 				console.log('当前值为: ' + e.value)
+			},
+			// 跳转到选择优惠券页面
+			toChooseCoupon(){
+				uni.navigateTo({
+					url:`/views/singlePage/chooseCoupon/chooseCoupon?sumPrice=${this.sumPrice}`
+				})
 			}
 		}
 	}

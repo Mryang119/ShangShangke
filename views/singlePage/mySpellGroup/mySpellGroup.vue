@@ -41,7 +41,8 @@
 	export default {
 		data() {
 			return {
-				userList: [{
+				userList: [
+					{
 						goodsImg: '../../../static/images/Product/shangpintu.png',
 						goodsName: '韩国年糕料理（海岸城店）',
 						goodsType: '两人芝士双拼套餐',
