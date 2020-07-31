@@ -24,7 +24,8 @@
 		{
 			"path": "views/tabBar/discover/discover",
 			"style": {
-				"navigationBarTitleText": "发现"
+				"navigationBarTitleText": "发现",
+				"navigationStyle": "custom"
 			}
 		},
 		{
