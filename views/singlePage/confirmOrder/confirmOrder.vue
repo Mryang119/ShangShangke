@@ -25,14 +25,15 @@
 			<view class="goodsNum">
 				<view class="text">购买数量</view>
 				<view class="num">
-					<u-number-box v-model="nowNumber" :input-width="80" :input-height="58" :min="1" :disabled-input="true" :bg-color="bgColor" @change="valChange"></u-number-box>
+					<u-number-box v-model="nowNumber" :input-width="80" :input-height="58" :min="1" :disabled-input="true" :bg-color="bgColor"></u-number-box>
 				</view>
 			</view>
 			<!-- 平台优惠券 -->
 			<view class="goodsCoupon" @click="toChooseCoupon">
 				<view class="text">平台优惠券</view>
 				<view class="couponCon">
-					<view class="num">{{platformCoupon}}</view>
+					<view class="noUse">暂无可用</view>
+					<!-- <view class=""></view> -->
 					<image src="@/static/images/iconfont/more.png"></image>
 				</view>
 			</view>
@@ -40,14 +41,14 @@
 			<view class="goodsCoupon" @click="isShow">
 				<view class="text">店铺优惠</view>
 				<view class="couponCon">
-					<view class="num">{{shopCoupon}}</view>
+					<view class="noUse">暂无可用</view>
 					<image src="@/static/images/iconfont/more.png"></image>
 				</view>
 			</view>
 			<!-- 总金额 -->
 			<view class="totalPrice">
 				<view class="text">小计</view>
-				<view class="price">￥1.00</view>
+				<view class="price">￥{{sumPrice}}</view>
 			</view>
 		</view>
 		<!-- 底部优惠券模态框 -->
@@ -82,11 +83,8 @@
 				shopName: '韩国年糕料理（海岸城店）', // 店名
 				shopImg: '../../../static/images/Product/shangpintu.png', //商品图片
 				shopType: '限时新品双人冰爽餐', // 商品类型
-				nowPrice: '1.00', // 现在的价格
+				nowPrice: '79.00', // 现在的价格
 				beforePrice: '399.00', // 以前的价格
-				platformCoupon: '暂无可用', // 平台优惠券
-				shopCoupon: '暂无可用', // 店铺优惠
-				sumPrice: '79.00' ,// 总的金额
 				nowNumber:1     // 订单当前的选购数量起始为1 
 			}
 		},
@@ -94,7 +92,6 @@
 			orderCoupon
 		},
 		methods: {
-
 			// 控制模态框的显示隐藏
 			isShow() {
 				this.show = !this.show
@@ -116,15 +113,18 @@
 					}
 				})
 			},
-			// 订单数量当前值
-			valChange(e) {
-				console.log('当前值为: ' + e.value)
-			},
 			// 跳转到选择优惠券页面
 			toChooseCoupon(){
 				uni.navigateTo({
 					url:`/views/singlePage/chooseCoupon/chooseCoupon?sumPrice=${this.sumPrice}`
 				})
+			}
+		},
+		computed:{
+			sumPrice(){
+				let countumPrice = this.nowNumber * this.nowPrice
+				let sumPrice = parseFloat(countumPrice).toFixed(2)
+				return sumPrice
 			}
 		}
 	}
@@ -272,7 +272,7 @@
 					display: flex;
 					align-items: center;
 
-					.num {
+					.noUse {
 						font-size: 14px;
 						font-family: PingFang SC;
 						font-weight: 400;
