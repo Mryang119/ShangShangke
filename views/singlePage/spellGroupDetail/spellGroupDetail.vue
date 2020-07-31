@@ -93,7 +93,6 @@
 		},
 		onLoad(options) {
 			this.type = options.type
-			console.log(options)
 		}
 	}
 </script>
