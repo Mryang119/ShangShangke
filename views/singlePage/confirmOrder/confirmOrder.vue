@@ -1,4 +1,5 @@
 <!-- 限时秒杀——商品详情——确认订单 -->
+<!-- name:陈铄源 -->
 <template>
 	<view class="orderContainer">
 		<!-- 店名/商品/数量/券/优惠/金额 -->
@@ -24,7 +25,7 @@
 			<view class="goodsNum">
 				<view class="text">购买数量</view>
 				<view class="num">
-					<u-number-box :input-width="80" :input-height="58" :min="1" :disabled-input="true" :bg-color="bgColor"></u-number-box>
+					<u-number-box v-model="nowNumber" :input-width="80" :input-height="58" :min="1" :disabled-input="true" :bg-color="bgColor" @change="valChange"></u-number-box>
 				</view>
 			</view>
 			<!-- 平台优惠券 -->
@@ -86,7 +87,8 @@
 				beforePrice: '399.00', // 以前的价格
 				platformCoupon: '暂无可用', // 平台优惠券
 				shopCoupon: '暂无可用', // 店铺优惠
-				sumPrice: '79.00' // 总的金额
+				sumPrice: '79.00' ,// 总的金额
+				nowNumber:1     // 订单当前的选购数量起始为1 
 			}
 		},
 		components: {
@@ -114,6 +116,9 @@
 						console.log('fail:' + JSON.stringify(err));
 					}
 				})
+			},
+			valChange(e) {
+				console.log('当前值为: ' + e.value)
 			}
 		}
 	}

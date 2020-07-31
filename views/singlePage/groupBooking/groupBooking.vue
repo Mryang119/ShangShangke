@@ -1,4 +1,5 @@
 <!-- 拼团 -->
+<!-- name:陈铄源 -->
 <template>
 	<!-- v-if="option.type==='group'" -->
 	<view class="group">

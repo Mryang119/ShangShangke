@@ -212,12 +212,6 @@
 			}
 		},
 		{
-			"path": "views/singlePage/spellGroupFailDetail/spellGroupFailDetail",
-			"style": {
-				"navigationBarTitleText": "拼团详情"
-			}
-		},
-		{
 			"path": "views/singlePage/myFocus/myFocus",
 			"style": {
 				"navigationBarTitleText": "我的关注"

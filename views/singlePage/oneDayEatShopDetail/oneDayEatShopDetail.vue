@@ -1,4 +1,5 @@
 <!-- 每日一品商品详情 -->
+<!-- name:陈铄源 -->
 <template>
 	
 	<!-- v-if="option.type==='oneDayEat || group'" -->

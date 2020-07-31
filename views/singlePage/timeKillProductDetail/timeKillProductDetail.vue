@@ -1,4 +1,5 @@
 <!-- 限时秒杀—————商品详情 -->
+<!-- name:陈铄源 -->
 <template>
 	<view class="productDetail">
 		<!-- 轮播图 -->

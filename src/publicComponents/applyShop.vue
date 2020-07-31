@@ -1,3 +1,5 @@
+<!-- 适用门店 -->
+<!-- name:陈铄源 -->
 <template>
 	<!-- 适用门店 -->
 	<view class="applyStore" @click="toApplyStore">
@@ -43,7 +45,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	// 适用门店
 	.applyStore {
 		width: 750rpx;

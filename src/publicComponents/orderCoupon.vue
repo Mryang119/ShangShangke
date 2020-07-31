@@ -1,4 +1,5 @@
 <!-- 确认订单——商品优惠券 -->
+<!-- name:陈铄源 -->
 <template>
 	<view>
 		<view class="coupon" v-for="(item,index) in 2" :key="index">
@@ -51,7 +52,7 @@
 		},
 		data() {
 			return {
-				IconType: false
+				IconType: false,   //优惠券是否选中，默认为不选中
 			}
 		},
 		methods: {
@@ -63,7 +64,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	// 优惠券
 	.coupon {
 		width: 690rpx;

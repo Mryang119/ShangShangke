@@ -1,4 +1,5 @@
 <!-- 优惠券信息 -->
+<!-- name:陈铄源 -->
 <template>
 	<view class="coupon">
 		<!-- 商家店面图片 -->
@@ -37,7 +38,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	.coupon {
 		width: 690rpx;
 		height: 200rpx;

@@ -1,4 +1,5 @@
 <!-- 单个商品详情信息 -->
+<!-- name:陈铄源 -->
 <template>
 	<view class="goods">
 		<view class="goodsImg">
@@ -44,7 +45,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	// 商品信息
 	.goods{
 		width: 690rpx;

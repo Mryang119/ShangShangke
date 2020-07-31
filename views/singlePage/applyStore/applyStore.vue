@@ -1,5 +1,5 @@
 <!-- 适用门店 -->
-<!-- 陈铄源  -->
+<!-- name:陈铄源 -->
 <template>
 	<view class="container">
 		<view class="applyStoreAddress">
