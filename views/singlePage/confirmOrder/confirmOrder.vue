@@ -43,7 +43,9 @@
 			<view class="goodsCoupon" @click="isShow">
 				<view class="text">店铺优惠</view>
 				<view class="couponCon">
+					<!-- v-if="usableList.length===0" -->
 					<view class="noUse">暂无可用</view>
+					<!-- v-else -->
 					<!-- <view class="usable">2个可用</view> -->
 					<image src="@/static/images/iconfont/more.png"></image>
 				</view>
