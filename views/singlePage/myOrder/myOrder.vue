@@ -68,7 +68,42 @@
 				}, {
 					name: '已完成'
 				}],
-<<<<<<< HEAD
+orderList: [{
+					shopName: '韩国年糕料理（海岸城店）',
+					priceText: '100元代金券',
+					priceNumber: '79.90',
+					orderTime: '2020-09-09 12:30',
+					orderNumber: '1',
+					orderType: '待付款'
+				}, {
+					shopName: '韩国年糕料理（海岸城店）',
+					priceText: '100元代金券',
+					priceNumber: '79.90',
+					orderTime: '2020-09-09 12:30',
+					orderNumber: '1',
+					orderType: '待使用'
+				}, {
+					shopName: '韩国年糕料理（海岸城店）',
+					priceText: '100元代金券',
+					priceNumber: '79.90',
+					orderTime: '2020-09-09 12:30',
+					orderNumber: '1',
+					orderType: '已完成'
+				}, {
+					shopName: '韩国年糕料理（海岸城店）',
+					priceText: '100元代金券',
+					priceNumber: '79.90',
+					orderTime: '2020-09-09 12:30',
+					orderNumber: '1',
+					orderType: '待付款'
+				}, {
+					shopName: '韩国年糕料理（海岸城店）',
+					priceText: '100元代金券',
+					priceNumber: '79.90',
+					orderTime: '2020-09-09 12:30',
+					orderNumber: '1',
+					orderType: '已退款'
+				}],
 				orderList: [{
 					shopName: '韩国年糕料理（海岸城店）',
 					priceText: '100元代金券',
@@ -105,46 +140,6 @@
 					orderNumber: '1',
 					orderType: '已退款'
 				}],
-=======
-				orderList:[
-					{
-					shopName:'韩国年糕料理（海岸城店）',
-					priceText:'100元代金券',
-					priceNumber:'79.90',
-					orderTime:'2020-09-09 12:30',
-					orderNumber:'1',
-					orderType:'待付款'
-				},{
-					shopName:'韩国年糕料理（海岸城店）',
-					priceText:'100元代金券',
-					priceNumber:'79.90',
-					orderTime:'2020-09-09 12:30',
-					orderNumber:'1',
-					orderType:'待使用'
-				},{
-					shopName:'韩国年糕料理（海岸城店）',
-					priceText:'100元代金券',
-					priceNumber:'79.90',
-					orderTime:'2020-09-09 12:30',
-					orderNumber:'1',
-					orderType:'已完成'
-				},{
-					shopName:'韩国年糕料理（海岸城店）',
-					priceText:'100元代金券',
-					priceNumber:'79.90',
-					orderTime:'2020-09-09 12:30',
-					orderNumber:'1',
-					orderType:'待付款'
-				},{
-					shopName:'韩国年糕料理（海岸城店）',
-					priceText:'100元代金券',
-					priceNumber:'79.90',
-					orderTime:'2020-09-09 12:30',
-					orderNumber:'1',
-					orderType:'已退款'
-				}   
-				],
->>>>>>> 407c59a9091ba872d56de3c054eee5dd983d85e1
 				current: 0,
 				orderDetail: '../../singlePage/orderDetail/orderDetail', //跳转到待付款订单详情 
 				timeKillProductDetail: '../../singlePage/timeKillProductDetail/timeKillProductDetail', //跳转到商品详情页面
@@ -158,9 +153,9 @@
 				console.log(this.current)
 			},
 			// 跳转传参(传唯一标识)
-			goDetail(item){
+			goDetail(item) {
 				uni.navigateTo({
-					url:'/views/singlePage/orderDetail/orderDetail?id=1'
+					url: '/views/singlePage/orderDetail/orderDetail?id=1'
 					// url:`/views/singlePage/orderDetail/orderDetail?id=${item.id}`
 				})
 			}
