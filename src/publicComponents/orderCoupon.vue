@@ -2,21 +2,21 @@
 <!-- name:陈铄源 -->
 <template>
 	<view>
-		<view class="coupon" v-for="(item,index) in 2" :key="index">
+		<view class="coupon" v-for="(item,index) in usableList" :key="index">
 			<!-- ￥100 -->
 			<view class="numCon">
 				<view class="context">￥</view>
-				<view class="num">{{price}}</view>
+				<view class="num">{{couponPrice}}</view>
 			</view>
 			<!-- 满减/有效期/选中 -->
 			<view class="chooseCoupon">
 				<!-- 满减/有效期 -->
 				<view class="fullDelete">
 					<view class="full">满{{fullPrice}}元可用</view>
-					<view class="fullTime">有效期至：{{useTime}}</view>
+					<view class="fullTime">有效期至：{{usefulTime}}</view>
 				</view>
-				<view class="chooseCon" @click="toggleIcon(index)">
-					<u-icon v-if="IconType" name="checkmark-circle-fill" color="#FF2F2F" size="38"></u-icon>
+				<view class="chooseCon" @click="toggleIcon(item,index)">
+					<u-icon v-if="item.IconType" name="checkmark-circle-fill" color="#FF2F2F" size="38"></u-icon>
 					<u-icon v-else name="checkmark-circle" color="#FF2F2F" size="38"></u-icon>
 				</view>
 			</view>
@@ -33,7 +33,7 @@
 	export default {
 		name: 'orderCoupon',
 		props: {
-			price: { // 金额
+			couponPrice: { // 金额
 				type: Number,
 				default: 100
 			},
@@ -41,7 +41,7 @@
 				type: Number,
 				default: 1000
 			},
-			useTime: { // 有效期时间
+			usefulTime: { // 有效期时间
 				type: String,
 				default: '2020-06-31'
 			},
@@ -53,12 +53,24 @@
 		data() {
 			return {
 				IconType: false,   //优惠券是否选中，默认为不选中
+				usableList:[{},{}]
 			}
 		},
 		methods: {
 			// 控制店铺优惠券的选中状态
-			toggleIcon() {
+			toggleIcon(item, index) {
 				this.IconType = !this.IconType
+				let usableList = this.usableList
+				if(usableList[index].IconType){
+					usableList[index].IconType = false
+				}else{
+					usableList.forEach(item => {
+						item.IconType = false
+					})
+					usableList[index].IconType = true
+				}
+				this.usableList = usableList
+			
 			}
 		}
 	}

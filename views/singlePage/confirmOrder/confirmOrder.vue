@@ -14,7 +14,7 @@
 				</view>
 				<!--  商品名字和价格-->
 				<view class="shopCon">
-					<view class="conName">限时新品双人冰爽餐</view>
+					<view class="conName">{{shopType}}</view>
 					<view class="priceCon">
 						<view class="price">￥{{nowPrice}}</view>
 						<view class="priceDelete">￥{{beforePrice}}</view>
@@ -32,8 +32,10 @@
 			<view class="goodsCoupon" @click="toChooseCoupon">
 				<view class="text">平台优惠券</view>
 				<view class="couponCon">
-					<view class="noUse">暂无可用</view>
-					<!-- <view class=""></view> -->
+					<!-- v-if="usableList.length===0" -->
+					<!-- <view class="noUse">暂无可用</view> -->
+					<!-- v-else -->
+					<view class="usable">2个可用</view>
 					<image src="@/static/images/iconfont/more.png"></image>
 				</view>
 			</view>
@@ -42,6 +44,7 @@
 				<view class="text">店铺优惠</view>
 				<view class="couponCon">
 					<view class="noUse">暂无可用</view>
+					<!-- <view class="usable">2个可用</view> -->
 					<image src="@/static/images/iconfont/more.png"></image>
 				</view>
 			</view>
@@ -273,11 +276,20 @@
 					align-items: center;
 
 					.noUse {
-						font-size: 14px;
+						font-size: 28rpx;
 						font-family: PingFang SC;
 						font-weight: 400;
-						line-height: 16px;
+						line-height: 32rpx;
 						color: rgba(112, 112, 112, 1);
+						letter-spacing: 3rpx;
+					}
+					.usable{
+						font-size:28rpx;
+						font-family:PingFang SC;
+						font-weight:540;
+						line-height:32rpx;
+						color:rgba(255,47,47,1);
+						letter-spacing: 3rpx;
 					}
 
 					image {
