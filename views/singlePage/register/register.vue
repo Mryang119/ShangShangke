@@ -14,8 +14,8 @@
 			</view>
 		</view>
 		<view class="login-button-content">
-			<button class="usable-button button" v-if="verify" @click="register">注册</button>
-			<view class="forbidden-button button" v-else>注册</view>
+			<button class="usable-button button" v-if="verify" @click="register">绑定手机号</button>
+			<view class="forbidden-button button" v-else>绑定手机号</view>
 		</view>
 		<u-toast ref="uToast" />
 	</view>
@@ -44,6 +44,10 @@
 			};
 		},
 		methods: {
+			test() {
+
+
+			},
 			// 获取验证码
 			async getVcode() {
 				let res = await registerCustomer({
@@ -72,18 +76,20 @@
 						smsNumber: this.vcode
 					})
 					uni.setStorageSync('loginDatas', res.data.data)
-
 					this.$refs.uToast.show({
 						title: '登录成功',
 						type: 'success',
 						callback: function() {
-							uni.navigateTo({
+							uni.switchTab({
 								url: '../../tabBar/my/my'
 							})
 						}
 					})
 				} catch (e) {
-					console.log('失败', e)
+					this.$refs.uToast.show({
+						title: '登录失败',
+						type: 'error'
+					})
 				}
 			}
 		},
