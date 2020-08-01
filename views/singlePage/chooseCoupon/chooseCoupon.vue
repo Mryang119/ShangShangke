@@ -1,27 +1,28 @@
 <!-- 确认订单——选择优惠券 -->
+<!-- name:陈铄源 -->
 <template>
 	<!-- 最外层 -->
 	<view class="container">
-		<view class="useText">此单可用优惠券（2张）</view>
-		<view class="useCoupon" v-for="(item,index) in list" :key="index">
+		<view class="useText">此单可用优惠券（{{usableList.length}}张）</view>
+		<view class="useCoupon" v-for="(item,index) in usableList" :key="index">
 			<view class="couponHeader">
 				<view class="headerImg">
 					<image src="@/static/images/Product/shangpintu.png"></image>
 				</view>
-				<view class="headerText">海底捞沃尔玛蓝山店</view>
+				<view class="headerText">{{item.shopName}}</view>
 			</view>
 			<view class="coupon">
 				<!-- ￥100 -->
 				<view class="numCon">
 					<view class="context">￥</view>
-					<view class="num">100</view>
+					<view class="num">{{item.couponPrice}}</view>
 				</view>
 				<!-- 满减/有效期/选中 -->
 				<view class="chooseCoupon">
 					<!-- 满减/有效期 -->
 					<view class="fullDelete">
-						<view class="full">满1000元可用</view>
-						<view class="fullTime">有效期至：2020-06-31</view>
+						<view class="full">满{{item.fullPrice}}元可用</view>
+						<view class="fullTime">有效期至:{{item.usefulLife}}</view>
 					</view>
 					<view class="chooseCon">
 						<u-icon :name="item.IconType ?'checkmark-circle-fill':'checkmark-circle'" color="#FF2F2F" size="38" @click="toggleIcon(item,index)"></u-icon>
@@ -29,38 +30,35 @@
 				</view>
 				<!-- 左上角商品类型 -->
 				<view class="goodsType">
-					<view class="goodsText">全品类可用</view>
+					<view class="goodsText">{{item.useType}}</view>
 				</view>
 			</view>
 		</view>
-		<view class="noUseText">此单不可用优惠券（1张）</view>
-		<view class="useCoupon" v-for="(item,index) in list" :key="index">
+		<view class="noUseText">此单不可用优惠券（{{unusableList.length}}张）</view>
+		<view class="useCoupon" v-for="(item,index) in unusableList" :key="index">
 			<view class="couponHeader">
 				<view class="headerImg">
 					<image src="@/static/images/Product/shangpintu.png"></image>
 				</view>
-				<view class="headerText">海底捞沃尔玛蓝山店</view>
+				<view class="headerText">{{item.shopName}}</view>
 			</view>
 			<view class="coupon">
 				<!-- ￥100 -->
 				<view class="numCon">
 					<view class="context">￥</view>
-					<view class="num">100</view>
+					<view class="num">{{item.couponPrice}}</view>
 				</view>
 				<!-- 满减/有效期/选中 -->
 				<view class="chooseCoupon">
 					<!-- 满减/有效期 -->
 					<view class="fullDelete">
-						<view class="full">满1000元可用</view>
-						<view class="fullTime">有效期至：2020-06-31</view>
-					</view>
-					<view class="chooseCon">
-						<u-icon :name="item.IconType ?'checkmark-circle-fill':'checkmark-circle'" color="#FF2F2F" size="38" @click="toggleIcon(item,index)"></u-icon>
+						<view class="full">满{{item.fullPrice}}元可用</view>
+						<view class="fullTime">有效期至:{{item.usefulLife}}</view>
 					</view>
 				</view>
 				<!-- 左上角商品类型 -->
 				<view class="goodsType">
-					<view class="goodsText">全品类可用</view>
+					<view class="goodsText">{{item.useType}}</view>
 				</view>
 			</view>
 		</view>
@@ -72,27 +70,58 @@
 		data() {
 			return {
 				IconType: false, // 店铺优惠券的选中的状态
-				list: [{}, {}] // 店铺优惠券
+				usableList: [{       // 店铺可用优惠券数组
+					shopName:'海底捞沃尔玛蓝山店',   // 店铺名字
+					couponPrice:'100',    //代金券价格
+					fullPrice:'1000',     //满1000才能用
+					usefulLife:'2020-06-31',   // 优惠券有效期
+					useType:'全品类可用'    //可用类型
+				}, {
+					shopName:'海底捞沃尔玛蓝山店',   // 店铺名字
+					couponPrice:'100',    //代金券价格
+					fullPrice:'1000',     //满1000才能用
+					usefulLife:'2020-06-31',   // 优惠券有效期
+					useType:'全品类可用'    //可用类型
+				}],
+				unusableList: [{          // 店铺不可用优惠券	数组
+					shopName:'海底捞沃尔玛蓝山店',   // 店铺名字
+					couponPrice:'100',    //代金券价格
+					fullPrice:'1000',     //满1000才能用
+					usefulLife:'2020-06-31',   // 优惠券有效期
+					useType:'折扣商品不可用'    //不可用类型
+				}, {
+					shopName:'海底捞沃尔玛蓝山店',   // 店铺名字
+					couponPrice:'100',    //代金券价格
+					fullPrice:'1000',     //满1000才能用
+					usefulLife:'2020-06-31',   // 优惠券有效期
+					useType:'折扣商品不可用'    //不可用类型
+				}]
 			}
 		},
 		methods: {
 			// 控制店铺优惠券的选中状态
 			toggleIcon(item, index) {
 				this.IconType = !this.IconType
-				console.log(item, index)
-				let list = this.list
-				list.forEach(item => {
-					item.IconType = false
-				})
-				list[index].IconType = true
-				this.list = list
+				let usableList = this.usableList
+				if(usableList[index].IconType){
+					usableList[index].IconType = false
+				}else{
+					usableList.forEach(item => {
+						item.IconType = false
+					})
+					usableList[index].IconType = true
+				}
+				this.usableList = usableList
 
 			}
+		},
+		onLoad(options) {
+			console.log(options)
 		}
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	// 最外层
 	.container {
 		height: 1448rpx;

@@ -6,7 +6,7 @@
 		</view>
 		<!-- 当前 -->
 		<view class="now-city">
-			当前:{{city}}
+			当前:{{cityName}}
 		</view>
 		<!-- 历史定位and热门城市 -->
 		<view class="hotCity-oldCity">
@@ -46,7 +46,6 @@
 		data() {
 			return {
 				keyword: '',
-				city: "深圳",
 				oldCity: [{
 						cityName: '深圳',
 						iconName: 'map-fill'
@@ -74,6 +73,11 @@
 					cityName: '深圳'
 				} ]
 			};
+		},
+		computed:{
+			cityName:function(){
+				return this.$store.state.global.globalData.cityName
+			}
 		}
 	}
 </script>

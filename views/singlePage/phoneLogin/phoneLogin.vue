@@ -7,13 +7,13 @@
 			<view class="border login-input">
 				<u-input placeholder="请输入密码" type="password" v-model="password" :custom-style="inputStyle"></u-input>
 			</view>
-			
+
 			<!-- <view class="border login-code">
 				<u-input placeholder="请输入验证码" v-model="vcode" :custom-style="inputStyle"></u-input>
 				<view class="vcode" v-if="vcodeStatus" @click="getVcode">获取验证码</view>
 				<view class="vcode" v-else>{{count+'s'}}</view>
 			</view> -->
-			
+
 		</view>
 		<view class="login-button-content">
 			<button class="usable-button button" v-if="verify" @click="login">登录</button>
@@ -26,7 +26,8 @@
 	import {
 		registerCustomer,
 		registerCust,
-		loginByMobile
+		loginByMobile,
+		loginByMobileNoCode
 	} from '../../../src/api/userApi/userApi.js'
 	export default {
 		data() {
@@ -40,8 +41,8 @@
 				mobile: '15501876709',
 				vcode: '',
 				buttonStatus: false,
-				password:'',
-				loginType:2 // 1验证码 2密码
+				password: '',
+				loginType: 2 // 1验证码 2密码
 			};
 		},
 		methods: {
@@ -65,18 +66,22 @@
 			// 注册
 			async register() {
 				let res = await registerCust({
-					mobile:this.mobile,
-					sysAccount:"SYSTEM",
-					code:this.vcode
+					mobile: this.mobile,
+					sysAccount: "SYSTEM",
+					code: this.vcode
 				})
 				console.log(res)
 			},
 			// 登录
 			async login() {
-				let res = await loginByMobile({
-					mobile:this.mobile,
-					type:this.loginType,
-					code:this.password
+				// let res = await loginByMobile({
+				// 	mobile:this.mobile,
+				// 	type:this.loginType,
+				// 	code:this.password
+				// })
+				// console.log(res)
+				let res = await loginByMobileNoCode({
+					mobile: this.mobile
 				})
 				console.log(res)
 			}

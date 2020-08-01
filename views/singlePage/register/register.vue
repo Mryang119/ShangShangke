@@ -4,9 +4,9 @@
 			<view class="border login-input">
 				<u-input placeholder="请输入手机号" v-model="mobile" :custom-style="inputStyle"></u-input>
 			</view>
-			<view class="border login-input">
+			<!-- <view class="border login-input">
 				<u-input placeholder="请输入密码" type="password" v-model="password" :custom-style="inputStyle"></u-input>
-			</view>
+			</view> -->
 			<view class="border login-code">
 				<u-input placeholder="请输入验证码" v-model="vcode" :custom-style="inputStyle"></u-input>
 				<view class="vcode" v-if="vcodeStatus" @click="getVcode">获取验证码</view>
@@ -14,9 +14,10 @@
 			</view>
 		</view>
 		<view class="login-button-content">
-			<button class="usable-button button" v-if="verify" @click="register">注册</button>
-			<view class="forbidden-button button" v-else>注册</view>
+			<button class="usable-button button" v-if="verify" @click="register">绑定手机号</button>
+			<view class="forbidden-button button" v-else>绑定手机号</view>
 		</view>
+		<u-toast ref="uToast" />
 	</view>
 </template>
 
@@ -24,7 +25,8 @@
 	import {
 		registerCustomer,
 		registerCust,
-		loginByMobile
+		loginByMobile,
+		customerLogin
 	} from '../../../src/api/userApi/userApi.js'
 	export default {
 		data() {
@@ -37,11 +39,15 @@
 				time: null,
 				mobile: '15501876709',
 				vcode: '',
-				password:'',
+				// password: '',
 				buttonStatus: false
 			};
 		},
 		methods: {
+			test() {
+
+
+			},
 			// 获取验证码
 			async getVcode() {
 				let res = await registerCustomer({
@@ -59,15 +65,32 @@
 					this.count--
 				}, 100)
 			},
-			// 注册
+			// 登录
 			async register() {
-				let res = await registerCust({
-					mobile:this.mobile,
-					sysAccount:"SYSTEM",
-					pwd:this.password,
-					code:this.vcode
-				})
-				console.log(res)
+				try {
+
+					let res = await customerLogin({
+						mobile: this.mobile,
+						sysAccount: "SYSTEM",
+						openId: this.$store.state.global.globalData.openid,
+						smsNumber: this.vcode
+					})
+					uni.setStorageSync('loginDatas', res.data.data)
+					this.$refs.uToast.show({
+						title: '登录成功',
+						type: 'success',
+						callback: function() {
+							uni.switchTab({
+								url: '../../tabBar/my/my'
+							})
+						}
+					})
+				} catch (e) {
+					this.$refs.uToast.show({
+						title: '登录失败',
+						type: 'error'
+					})
+				}
 			}
 		},
 		onLoad() {},
@@ -77,8 +100,7 @@
 				let reg = /^1(3|4|5|6|7|8|9)\d{9}$/
 				let mobileTrue = reg.test(this.mobile)
 				let vcodeTrue = this.vcode.length == 6 ? true : false
-				let passwordTrue = this.password.length == 6 ? true : false
-				return mobileTrue && vcodeTrue && passwordTrue
+				return mobileTrue && vcodeTrue
 			}
 		}
 	}
@@ -145,4 +167,3 @@
 		}
 	}
 </style>
-

@@ -1,4 +1,5 @@
 <!-- 订单信息 -->
+<!-- name:陈铄源 -->
 <template>
 	<view class="orderNewContent">
 		<view class="orderNewsText">订单信息</view>
@@ -53,7 +54,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	// 订单信息
 	.orderNewContent {
 		width: 744rpx;

@@ -43,7 +43,7 @@ const getSeckillMoreInfo = (data) => {
 		url: 'dby/homeInfo/getSeckillMoreInfo'
 	})
 }
-
+// 获取优惠券信息
 const getCouponList = (data) => {
 	return http({
 		data: {

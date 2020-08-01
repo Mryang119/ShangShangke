@@ -1,4 +1,6 @@
 <template>
+	<!-- name:杨大锐 -->
+	<!-- 商家优先展示三款产品组件 -->
 	<view class="c_searchNearbyShowItem">
 		<!-- 标题log部分 -->
 		<view class="top-container">

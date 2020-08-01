@@ -1,4 +1,5 @@
 <!-- 限时秒杀——商品详情——确认订单 -->
+<!-- name:陈铄源 -->
 <template>
 	<view class="orderContainer">
 		<!-- 店名/商品/数量/券/优惠/金额 -->
@@ -13,7 +14,7 @@
 				</view>
 				<!--  商品名字和价格-->
 				<view class="shopCon">
-					<view class="conName">限时新品双人冰爽餐</view>
+					<view class="conName">{{shopType}}</view>
 					<view class="priceCon">
 						<view class="price">￥{{nowPrice}}</view>
 						<view class="priceDelete">￥{{beforePrice}}</view>
@@ -24,30 +25,35 @@
 			<view class="goodsNum">
 				<view class="text">购买数量</view>
 				<view class="num">
-					<u-number-box :input-width="80" :input-height="58" :min="1" :disabled-input="true" :bg-color="bgColor"></u-number-box>
+					<u-number-box v-model="nowNumber" :input-width="80" :input-height="58" :min="1" :disabled-input="true" :bg-color="bgColor"></u-number-box>
 				</view>
 			</view>
 			<!-- 平台优惠券 -->
-			<navigator class="goodsCoupon" :url="chooseCoupon">
+			<view class="goodsCoupon" @click="toChooseCoupon">
 				<view class="text">平台优惠券</view>
 				<view class="couponCon">
-					<view class="num">{{platformCoupon}}</view>
+					<!-- v-if="usableList.length===0" -->
+					<!-- <view class="noUse">暂无可用</view> -->
+					<!-- v-else -->
+					<view class="usable">2个可用</view>
 					<image src="@/static/images/iconfont/more.png"></image>
 				</view>
-
-			</navigator>
+			</view>
 			<!-- 店铺优惠 -->
 			<view class="goodsCoupon" @click="isShow">
 				<view class="text">店铺优惠</view>
 				<view class="couponCon">
-					<view class="num">{{shopCoupon}}</view>
+					<!-- v-if="usableList.length===0" -->
+					<view class="noUse">暂无可用</view>
+					<!-- v-else -->
+					<!-- <view class="usable">2个可用</view> -->
 					<image src="@/static/images/iconfont/more.png"></image>
 				</view>
 			</view>
 			<!-- 总金额 -->
 			<view class="totalPrice">
 				<view class="text">小计</view>
-				<view class="price">￥1.00</view>
+				<view class="price">￥{{sumPrice}}</view>
 			</view>
 		</view>
 		<!-- 底部优惠券模态框 -->
@@ -82,18 +88,15 @@
 				shopName: '韩国年糕料理（海岸城店）', // 店名
 				shopImg: '../../../static/images/Product/shangpintu.png', //商品图片
 				shopType: '限时新品双人冰爽餐', // 商品类型
-				nowPrice: '1.00', // 现在的价格
+				nowPrice: '79.00', // 现在的价格
 				beforePrice: '399.00', // 以前的价格
-				platformCoupon: '暂无可用', // 平台优惠券
-				shopCoupon: '暂无可用', // 店铺优惠
-				sumPrice: '79.00' // 总的金额
+				nowNumber:1     // 订单当前的选购数量起始为1 
 			}
 		},
 		components: {
 			orderCoupon
 		},
 		methods: {
-
 			// 控制模态框的显示隐藏
 			isShow() {
 				this.show = !this.show
@@ -114,12 +117,25 @@
 						console.log('fail:' + JSON.stringify(err));
 					}
 				})
+			},
+			// 跳转到选择优惠券页面
+			toChooseCoupon(){
+				uni.navigateTo({
+					url:`/views/singlePage/chooseCoupon/chooseCoupon?sumPrice=${this.sumPrice}`
+				})
+			}
+		},
+		computed:{
+			sumPrice(){
+				let countumPrice = this.nowNumber * this.nowPrice
+				let sumPrice = parseFloat(countumPrice).toFixed(2)
+				return sumPrice
 			}
 		}
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	.orderContainer {
 		width: 750rpx;
 		height: 1448rpx;
@@ -261,12 +277,21 @@
 					display: flex;
 					align-items: center;
 
-					.num {
-						font-size: 14px;
+					.noUse {
+						font-size: 28rpx;
 						font-family: PingFang SC;
 						font-weight: 400;
-						line-height: 16px;
+						line-height: 32rpx;
 						color: rgba(112, 112, 112, 1);
+						letter-spacing: 3rpx;
+					}
+					.usable{
+						font-size:28rpx;
+						font-family:PingFang SC;
+						font-weight:540;
+						line-height:32rpx;
+						color:rgba(255,47,47,1);
+						letter-spacing: 3rpx;
 					}
 
 					image {

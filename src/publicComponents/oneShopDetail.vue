@@ -1,4 +1,5 @@
 <!-- 单个商品详情信息 -->
+<!-- name:陈铄源 -->
 <template>
 	<view class="goods">
 		<view class="goodsImg">
@@ -44,7 +45,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	// 商品信息
 	.goods{
 		width: 690rpx;
@@ -52,8 +53,8 @@
 		background:rgba(255,255,255,1);
 		border-radius:12rpx;
 		display: flex;
-		border-bottom:1px solid rgba(243,243,243,1);
 		align-items: center;
+		border-bottom: 1px solid rgba(243,243,243,1);
 		.goodsImg{
 			width: 182rpx;
 			height: 180rpx;

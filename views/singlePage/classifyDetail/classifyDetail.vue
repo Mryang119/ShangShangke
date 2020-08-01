@@ -1,4 +1,6 @@
 <template>
+	<!-- name:杨大锐 -->
+	<!-- 分类页面 -->
 	<view class="s_classifyDetail">
 		<view class="search">
 			<u-search placeholder="发现店铺/商品"></u-search>

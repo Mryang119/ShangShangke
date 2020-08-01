@@ -2,26 +2,25 @@
 	<!-- 更多组件 -->
 	<view class="c_more">
 		<navigator class="c-more-text" :url="url">
-			更多{{"  "}}
-			<image src="@/static/images/iconfont/more.png" mode="" />
-			</navigator>
-		
+			<text>更多</text>
+			<image class="image" src="@/static/images/iconfont/more.png" mode="" />
+		</navigator>
 	</view>
 </template>
 
 <script>
 	export default {
-		props:{
-			url:{
-				type:String,
-				default:'../../singlePage/everydayRob/everydayRob'
+		props: {
+			url: {
+				type: String,
+				default: '../../singlePage/everydayRob/everydayRob'
 			}
 		},
-		methods:{
-			toMore(){
+		methods: {
+			toMore() {
 				console.log('1111')
 				uni.navigateTo({
-					url:'../../../singlePage/dailyGoods/dailyGoods'
+					url: '../../../singlePage/dailyGoods/dailyGoods'
 				})
 			}
 		}
@@ -39,9 +38,12 @@
 		top: 50%;
 		transform: translateY(-50%);
 		right: 0;
-		image {
+
+		.image {
 			width: 8.5rpx;
 			height: 16.94rpx;
+			margin-bottom: 2.5rpx;
+			margin-left: 13rpx;
 		}
 	}
 </style>

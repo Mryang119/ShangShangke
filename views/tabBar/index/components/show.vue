@@ -10,7 +10,7 @@
 				<br />
 				<!-- 赠品不显示价格 -->
 				<view v-if="type!==8" class="show-item-price">
-					￥{{price}}
+					￥{{price.toFixed(2)}}
 				</view>
 				<view class="show-item-message">
 					{{message}}
@@ -50,11 +50,11 @@
 			imgUrl: {
 				type: String,
 				default: '../../../../static/images/Product/shangpingtu.png'
+			},
+			pdcId:{ // 商品id
+				type:[Number,String],
+				required:true
 			}
-			// pdcId:{ // 商品id
-			// 	type:String,
-			// 	require:true
-			// }
 		},
 		methods:{
 			toDetail(){

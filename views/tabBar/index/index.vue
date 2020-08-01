@@ -21,7 +21,7 @@
 			<!-- 搜索定位分类部分 -->
 			<view class="topNav">
 				<navigator url="../../singlePage/position/position" class="position">
-					<position :city="city"></position>
+					<position :cityName="$store.state.global.globalData.cityName"></position>
 				</navigator>
 				<view class="searchBar" @click="toSearch">
 					<image src="@/static/images/iconfont/search.png" mode=""></image>
@@ -65,31 +65,13 @@
 					<view class="textBg getCoupon-titleBar-item">
 						抢大额优惠券
 					</view>
-					<more class="more"></more>
+					<more url='../../singlePage/getCoupon/getCoupon'></more>
 				</view>
 				<!-- 横向滚动部分 -->
 				<scroll-view scroll-x="true" class="scorll-H">
-					<view class="scorll-H-container">
-						<view class="scorll-item" v-for="(item,index) in list" :key="index" :class="{'scorll-item-active':temp.indexOf(index)!==-1}">
-							<view class="scorll-item-son radiusBox">
-								<text>{{item.store}}</text>
-							</view>
-							<view class="scorll-item-son priceTextBox">
-								<text :style="{fontSize:'28rpx',color:'#624118'}">￥</text>
-								<text :style="{fontSize:'44rpx',lineHeight:'38rpx',color:'#624118'}">{{item.price}}</text>
-								<br />
-								<text :style="{fontSize:'20rpx',color:'#624118'}">{{item.typeMessge}}</text>
-								<br />
-								<text :style="{fontSize:'20rpx',color:'#624118'}">{{item.store}}</text>
-							</view>
-							<view class="scorll-item-son lijilingqu" v-if="temp.indexOf(index)==-1" @click="click(index)">
-								<text :style="{fontSize:'24rpx'}">立即</text>
-								<br />
-								<text :style="{fontSize:'24rpx'}">领取</text>
-							</view>
-							<view class="scorll-item-son yilingqu" v-else @click="toUse(index)">
-								<text :style="{fontSize:'24rpx'}">去使用</text>
-							</view>
+					<view class="scorll-H-container" :style="{width:scrollWidth+'rpx'}">
+						<view class="scorll-item" v-for="(item,index) in couponHome" :key="item" @click="changeStatus(index)">
+							<coupon :company="item.company" :labelName="item.mktCoupons[0].labelName" :status="item.status" :logo="item.logo"></coupon>
 						</view>
 					</view>
 				</scroll-view>
@@ -111,9 +93,9 @@
 				</view>
 				<scroll-view scroll-x="true" class="scorll-H-S">
 					<!-- 宽度 商品数量*组件宽度+总边距 -->
-					<view class="scorll-H-S-container">
-						<view class="scorll-H-S-container-item" @click="toDtail(index)" v-for="(item,index) in 10" :key="index">
-							<spitem></spitem>
+					<view class="scorll-H-S-container" :style="{width:killWidth+'rpx'}">
+						<view class="scorll-H-S-container-item" @click="toDtail(index)" v-for="(item,index) in seckillHome" :key="index">
+							<spitem :pdcId="item.pdcId" :imgUrl="item.imageAddr" :price="item.promotionPrice"></spitem>
 						</view>
 					</view>
 				</scroll-view>
@@ -122,7 +104,7 @@
 			<view class="groupPurchase">
 				<view class="groupPurchase-titleBar">
 					<view class="groupPurchase-titleBar-text">超值拼团</view>
-					<more></more>
+					<more url="../../singlePage/groupPurchase/groupPurchase"></more>
 				</view>
 				<scroll-view scroll-x="true" class="scorll-H-S">
 					<!-- 宽度 商品数量*组件宽度+总边距 -->
@@ -172,6 +154,7 @@
 	import spitem from '@/src/publicComponents/spitem.vue'
 	import buy from './components/buy.vue'
 	import give from './components/give.vue'
+	import coupon from './components/coupon.vue'
 	// 引入百度地图
 	import bmap from '@/common/bmap-wx.min.js'
 	// 模拟数据
@@ -196,7 +179,8 @@
 			shopItem,
 			spitem,
 			buy,
-			give
+			give,
+			coupon
 		},
 		data() {
 			return {
@@ -206,22 +190,25 @@
 				duration: 500,
 				interval: 2000,
 				// 轮播图配置↑
-				city: '未定位',
+				cityName: this.$store.state.global.globalData.cityName,
 				list: list,
 				temp: [],
 				time: null,
 				cp: 'buy',
-				showItemList1: showItemList, // 数据1
-				showItemList2: showItemList, // 数据2
 				ajaxList: showItemList, // 
-				endPage1: 5, // 买就送死数据最大页数
-				startPage1: 1, // 买就送死数据开始页数
-				endPage2: 5, // 买就送死数据最大页数
-				startPage2: 1, // 买就送死数据开始页数
+				showItemList1: [], // 买赠列表
+				startPage1: 1, // 买赠起始页
+				buylength: 0, // 买赠数据长度
+
+				showItemList2: [], // 数满列表
+				startPage2: 1, // 满减起始页
+				givelength: 0, // 满减数据长度
+
 				status1: 'loading',
 				status2: 'loading',
 
 				// 百度地图数据⬇
+				ak: 'qC1AHsQNj44vE3ctEIi4IXLZBgHYf33F',
 				BMap: null,
 				markers: [],
 				latitude: '', // 经度
@@ -231,7 +218,7 @@
 
 				// 首页模块数据⬇
 				circs: null, // 商圈id
-				couponHome: null, //优惠券
+				couponHome: [], //优惠券
 				newExclusiveHome: [], //新人专享
 				seckillHome: [], //秒杀
 				groupHome: [], //团购
@@ -243,29 +230,24 @@
 			}
 		},
 		methods: {
-			// 立即领取
-			click(i) {
-				if (this.temp.length >= 10) return
-				this.temp.push(i)
-				console.log('立即领取')
-			},
+
 			// 去使用
-			toUse(i) {
-				console.log('去使用', i)
+			changeStatus(i) {
+				this.couponHome[i].status = 1
 			},
 			// 立即领取的切换类名
 			toggl(e) {
 				console.log(e)
 				this.cp = e
 			},
-			
+
 			// 跳转搜索
 			toSearch() {
 				uni.navigateTo({
 					url: '../../singlePage/search/search?type=index'
 				})
 			},
-			
+
 			// 跳转商品详情
 			toDtail(id) {
 				uni.navigateTo({
@@ -277,7 +259,7 @@
 				var that = this;
 				//新建百度地图对象
 				this.BMap = new bmap.BMapWX({
-					ak: 'AQNjDWwRffaoqtGkNxfAQmwic9mtkS8w'
+					ak: that.ak
 				});
 				return new Promise((resolve, reject) => {
 					uni.authorize({
@@ -293,10 +275,18 @@
 								that.latitude = wxMarkerData[0].latitude
 								that.longitude = wxMarkerData[0].longitude
 								var reg = /.+?(省|市|自治区|自治州|县|区)/g;
-								that.city = wxMarkerData[0].address.match(reg)[1].replace('市', '')
 								// 存储一份到仓库
-								that.$store.state.global.globalData.cityName = wxMarkerData[0].address.match(reg)[1].replace('市', '')
-								
+								that.$store.commit('saveGlobal', {
+									key: 'cityName',
+									value: wxMarkerData[0].address.match(reg)[1].replace('市', '')
+								})
+								const globalKey = ['latitude', 'longitude']
+								globalKey.forEach(k => {
+									that.$store.commit('saveGlobal', {
+										key: k,
+										value: wxMarkerData[0][k]
+									})
+								})
 								resolve(data)
 							}
 							that.BMap.regeocoding({
@@ -326,7 +316,10 @@
 					lon: this.longitude
 				})
 				this.circs = res.data.data
-				this.$store.state.global.globalData.circs = res.data.data
+				this.$store.commit('saveGlobal', {
+					key: 'circs',
+					value: res.data.data
+				})
 				return Promise.resolve(res)
 			},
 			// 获取首页模块相关数据
@@ -346,21 +339,44 @@
 				datas.forEach(item => {
 					this[item] = res.data.data[item]
 				})
-
+				// 给优惠券列表添加一个status
+				this.couponHome.map(item => {
+					this.$set(item, 'status', 0)
+				})
 				return Promise.resolve(res)
 			},
-			// 获取更多活动信息
+			// 获取更多活动
 			async getCircInfo() {
-				let res = await getCircCampaignInfo({
+				let res1 = await getCircCampaignInfo({
 					circs: this.circs,
 					campaignType: 4,
-					pageNum: 1,
+					pageNum: this.startPage1,
 					pageSize: 10
 				})
+				this.showItemList1 = res1.data.data
+				let res2 = await getCircCampaignInfo({
+					circs: this.circs,
+					campaignType: 3,
+					pageNum: this.startPage2,
+					pageSize: 10
+				})
+				this.showItemList2 = res2.data.data
+				let res3 = await getCircCampaignInfo({
+					circs: this.circs,
+					campaignType: 2,
+					pageSize: 10,
+					pageNum: 1
+				})
+				console.log(res3)
+				return Promise.resolve(res1, res2, res3)
+			},
+			async getCouponLists() {
+				let res = await getCouponList({})
 				console.log(res)
 				return Promise.resolve(res)
 			}
 		},
+
 		async onLoad() {
 			// 获取位置
 			await this.getLocation()
@@ -368,37 +384,68 @@
 			await this.getCity()
 			// 获取商圈
 			await this.getCirc()
+			// 获取优惠券
+			await this.getCouponLists()
 			// 获取首页相关模块
 			await this.getHomeModule()
 			// 获取优惠券
 			await getCouponList()
 			// 获取更多活动信息
 			await this.getCircInfo()
-			console.log(this.$store.state.global)
+
 		},
 		onReady() {
 
 		},
+		computed: {
+			// 计算优惠券x轴容器宽度
+			scrollWidth: function() {
+				if (this.couponHome.length == 0) return 0
+				let len = Math.ceil(this.couponHome.length / 2)
+				return len * 182 * 2 + len * 20
+			},
+			killWidth: function() {
+				return this.seckillHome.length * 102 * 2 + this.seckillHome.length * 16
+			}
+		},
 		// 触碰底部懒加载
-		onReachBottom: function() {
+		onReachBottom: async function() {
 			// 模拟请求数据
-			if (this.cp === 'buy' && this.endPage1 > this.startPage1) {
-				this.status1 = 'loading'
+			// 请求回来的数据长度小于十代表已经无了
+			if (this.cp === 'buy' && this.buylength >= 10) {
 				this.startPage1++
-				setTimeout(() => {
-					let fakeAjaxList = JSON.parse(JSON.stringify(this.ajaxList))
-					this.showItemList1 = this.showItemList1.concat(fakeAjaxList)
-				}, 1000)
+				let res = await getCircCampaignInfo({
+					circs: this.circs,
+					campaignType: 4,
+					pageNum: this.startPage1,
+					pageSize: 10
+				})
+				this.buylength = res.data.data.length
+
+				this.showItemList1 = this.showItemList1.concat(res.data.data)
 			} else {
 				this.status1 = 'noMore'
 			}
-			if (this.cp === 'give' && this.endPage2 > this.startPage2) {
-				this.status2 = 'loading'
+			// if (this.cp === 'buy' && this.endPage1 > this.startPage1) {
+			// 	this.status1 = 'loading'
+			// 	this.startPage1++
+			// 	setTimeout(() => {
+			// 		let fakeAjaxList = JSON.parse(JSON.stringify(this.ajaxList))
+			// 		this.showItemList1 = this.showItemList1.concat(fakeAjaxList)
+			// 	}, 1000)
+			// } else {
+			// 	this.status1 = 'noMore'
+			// }
+			if (this.cp === 'give' && this.givelength >= 10) {
 				this.startPage2++
-				setTimeout(() => {
-					let fakeAjaxList = JSON.parse(JSON.stringify(this.ajaxList))
-					this.showItemList2 = this.showItemList2.concat(fakeAjaxList)
-				}, 1000)
+				let res = await getCircCampaignInfo({
+					circs: this.circs,
+					campaignType: 3,
+					pageNum: this.startPage2,
+					pageSize: 10
+				})
+				this.givelength = res.data.data.length
+				this.showItemList2 = this.showItemList1.concat(res.data.data)
 			} else {
 				this.status2 = 'noMore'
 			}
@@ -608,7 +655,6 @@
 					margin-top: 20rpx;
 
 					.scorll-H-container {
-						width: 1920rpx;
 						height: 268rpx;
 						display: flex;
 						flex-wrap: wrap;
@@ -618,48 +664,50 @@
 						.scorll-item {
 							width: 364rpx;
 							height: 124rpx;
-							background: url(@/static/images/Product/youhuiquanlijilingqu.png);
 							margin-right: 20rpx;
-							background-size: cover;
-							padding: 14rpx;
-							box-sizing: border-box;
-							position: relative;
-							line-height: 24rpx;
+							// background: url(@/static/images/Product/youhuiquanlijilingqu.png);
+							// margin-right: 20rpx;
+							// background-size: cover;
+							// padding: 14rpx;
+							// box-sizing: border-box;
+							// position: relative;
+							// line-height: 24rpx;
 
-							.scorll-item-son {
-								position: absolute;
-								top: 50%;
-								transform: translateY(-50%);
-							}
+							// .scorll-item-son {
+							// 	position: absolute;
+							// 	top: 50%;
+							// 	transform: translateY(-50%);
+							// }
 
-							.priceTextBox {
-								left: 124rpx;
-							}
+							// .priceTextBox {
+							// 	left: 124rpx;
+							// }
 
-							.radiusBox {
-								width: 96rpx;
-								height: 96rpx;
-								border-radius: 50%;
-								background-color: red;
-								line-height: 96rpx;
-								text-align: center;
-								font-size: 20rpx;
-								color: #FFF;
-							}
+							// .radiusBox {
+							// 	width: 96rpx;
+							// 	height: 96rpx;
+							// 	line-height: 96rpx;
 
-							.yilingqu {
-								color: #621818;
-								left: 266rpx;
-								font-weight: bold;
-							}
+							// 	.image {
+							// 		width: 100%;
+							// 		height: 100%;
+							// 		border-radius: 50%;
+							// 	}
+							// }
 
-							.lijilingqu {
-								color: #624118;
-								line-height: 26rpx;
-								left: 276rpx;
-								font-weight: bold;
+							// .yilingqu {
+							// 	color: #621818;
+							// 	left: 266rpx;
+							// 	font-weight: bold;
+							// }
 
-							}
+							// .lijilingqu {
+							// 	color: #624118;
+							// 	line-height: 26rpx;
+							// 	left: 276rpx;
+							// 	font-weight: bold;
+
+							// }
 						}
 
 						.scorll-item-active {

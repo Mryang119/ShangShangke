@@ -1,4 +1,5 @@
 <!-- 支付页面 -->
+<!-- name:陈铄源 -->
 <template>
 	<view class="payContainer">
 		<!-- 商品信息和价格 -->
@@ -40,7 +41,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	.payContainer{
 		height: 1448rpx;
 		background:rgba(246,246,246,1);

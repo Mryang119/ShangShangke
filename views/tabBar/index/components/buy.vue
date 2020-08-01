@@ -1,18 +1,22 @@
 <template>
 	<!-- 买就送 -->
 	<view class="c_buy">
-		<!-- 	<view class="flex-item" v-for="(item,index) in showItemList" :key="index">
-			<show :type="item"></show>
-		</view> -->
+
 		<view class="flexBox">
 			<view class="block-content">
-				<view class="block" v-for="item1 in list1 " :key="item1.image">
-					<show :type="item1.type" :imgUrl="item1.image"></show>
+				<view class="block" v-for="item2 in list2" :key="item2">
+					<view class="incident" @click="toDetail(item2.basPntMoreVOS[0].pdcId,item2.campaignType)">
+						<show :type="item2.campaignType" :title="item2.basPntMoreVOS[0].pdcName" :pdcId="item2.basPntMoreVOS[0].pdcId"
+						 :imgUrl="item2.logo" :store="item2.company" :price="item2.basPntMoreVOS[0].promotionPrice"></show>
+					</view>
 				</view>
 			</view>
 			<view class="block-content">
-				<view class="block" v-for="item2 in list2" :key="item2.image">
-					<show :type="item2.type" :imgUrl="item2.image"></show>
+				<view class="block" v-for="item1 in list1 " :key="item1.logo">
+					<view class="incident" @click="toDetail(item1.basPntMoreVOS[0].pdcId,item1.campaignType)">
+						<show :type="item1.campaignType" :title="item1.basPntMoreVOS[0].pdcName" :pdcId="item1.basPntMoreVOS[0].pdcId"
+						 :imgUrl="item1.logo" :store="item1.company" :price="item1.basPntMoreVOS[0].promotionPrice"></show>
+					</view>
 				</view>
 			</view>
 		</view>
@@ -59,6 +63,12 @@
 						this.list2.push(this.cloneList[i])
 					}
 				}
+			},
+			// 去详情页
+			toDetail(id, campaignType) {
+				uni.navigateTo({
+					url: `../../singlePage/productDetail/productDetail?pdcId=${id}&campaignType=${campaignType}`
+				})
 			}
 		},
 		watch: {
@@ -85,8 +95,8 @@
 				.block {
 					margin-bottom: 20rpx;
 					overflow: hidden;
-					backface-visibility: hidden; 
-					transform: translate3d(0, 0, 0); 
+					backface-visibility: hidden;
+					transform: translate3d(0, 0, 0);
 				}
 			}
 		}

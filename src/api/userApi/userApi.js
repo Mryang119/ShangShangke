@@ -21,17 +21,62 @@ function registerCust(data) {
 // 用户登录
 function loginByMobile(data) {
 	return http({
-		method:'post',
-		data:{
-			sysAccount:"SYSTEM",
+		method: 'post',
+		data: {
+			sysAccount: "SYSTEM",
 			...data
 		},
-		url:'dby/sysuser/loginByMobile'
+		url: 'dby/sysuser/loginByMobile'
+	})
+}
+
+// 手机直接登录不需要验证码
+
+function loginByMobileNoCode(data) {
+	return http({
+		method: 'post',
+		data: {
+			...data,
+			sysAccount: 'TESTSYSACCOUNT',
+			parentNo: '0'
+		},
+		url: "backstages/sysuser/loginByMobileNoCode"
+	})
+}
+
+// 微信登录环境   /backstages/sysuser/customerLogin
+function customerLogin(data) {
+	return http({
+		url:'/backstages/sysuser/customerLogin',
+		data,
+		method:'post'
+	})
+}
+
+// 获取个人信息  /dby/homeInfo/getUserInfo
+function getUserInfo(data) {
+	return http({
+		url:'/dby/homeInfo/getUserInfo',
+		data,
+		method:'post'
+	})
+}
+
+// 获取订单列表  dby/homeInfo/getCustOrderInfo
+function getCustOrderInfo(data) {
+	return http({
+		url:'dby/homeInfo/getCustOrderInfo',
+		data,
+		method:'post'
 	})
 }
 
 export {
 	registerCustomer,
 	registerCust,
-	loginByMobile
+	loginByMobile,
+	loginByMobileNoCode,
+	customerLogin,
+	getUserInfo,
+	getCustOrderInfo
 }

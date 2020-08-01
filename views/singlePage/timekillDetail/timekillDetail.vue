@@ -1,6 +1,6 @@
 <template>
 	<!-- 限时秒杀 -->
-	<view class="s_timekillDetail">
+	<view class="s_timekillDetail" :style="{height:fatherHeight*2+'rpx'}">
 		<view class="top-title-contianer">
 			<view class="img-container">
 				<image src="@/static/images/Product/xianshimiaosha.png" mode="" class="img"></image>
@@ -25,7 +25,15 @@
 			</view>
 		</view>
 		<view class="tabs-content">
-			<u-tabs name="name" :list="list" :is-scroll="false" :current="current" @change="change"></u-tabs>
+			<view class="line-container">
+				<view class="line"></view>
+				<view class="line"></view>
+				<view class="line"></view>
+				<view class="line"></view>
+			</view>
+			<u-tabs name="name" bg-color="#F6F6F6" :list="list" :is-scroll="false" :current="current" @change="change"></u-tabs>
+		</view>
+		<view class="commodity-box">
 			<view class="commodity-contianer" v-for="(item,index) in 4" :key="index">
 				<timeKillRobItem></timeKillRobItem>
 			</view>
@@ -48,7 +56,7 @@
 			return {
 				timeList: [],
 				length: 0,
-				list:[{
+				list: [{
 					name: '全部'
 				}, {
 					name: '美食'
@@ -59,7 +67,8 @@
 				}, {
 					name: '生活'
 				}, ],
-				current:0
+				current: 0,
+				fatherHeight: 0
 			};
 		},
 		methods: {
@@ -79,7 +88,7 @@
 						this.timeList.push({
 							time: `${i}:00`, // 用于展示
 							now: true, // 用于状态
-							millisecond: nowDate + j * hoursMili // 转化毫秒数给傻逼后端
+							millisecond: nowDate + j * hoursMili // 转化毫秒数给后端
 						})
 					} else {
 						this.timeList.push({
@@ -104,6 +113,10 @@
 			// 	pageSize: 5
 			// })
 			this.getFakeDates()
+			const query = uni.createSelectorQuery().in(this);
+			query.select('.commodity-box').boundingClientRect(data => {
+				this.fatherHeight = data.top + data.height
+			}).exec();
 		}
 	}
 </script>
@@ -213,11 +226,39 @@
 			position: absolute;
 			top: 1438rpx;
 			width: 750rpx;
-			padding: 0 20rpx;
 			background-color: #F6F6F6;
-			.commodity-contianer {
-				margin-bottom: 20rpx;
+
+			.line-container {
+				position: absolute;
+				width: 458rpx;
+				height: 80rpx;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				box-sizing: border-box;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				.line {
+					width: 2rpx;
+					height: 28rpx;
+					background-color: #E4E4E4;
+				}
 			}
 		}
+
+		.commodity-box {
+			padding: 0 20rpx;
+			position: absolute;
+			top: 1540rpx;
+
+			.commodity-contianer {
+				margin-bottom: 20rpx;
+				border-radius: 12rpx;
+				overflow: hidden;
+			}
+		}
+
 	}
 </style>

@@ -1,7 +1,8 @@
 <!-- 每日一品商品详情 -->
+<!-- name:陈铄源 -->
 <template>
 	
-	<!-- v-else-if="option.type==='oneDayEat || group'" -->
+	<!-- v-if="option.type==='oneDayEat || group'" -->
 	<!-- progressCon进度条  v-if="option.type==='free'" -->
 	<view class="dailyGoodsProductDetail">
 		<view class="dailyGoodsPrice">
@@ -14,9 +15,10 @@
 		<view class="dailyGoodsText">{{goodsText}}</view>
 		<view class="progressCon">
 			<u-line-progress class="progress" :percent="hasRobbed" :show-percent="false"
-				:round="true" active-color="#fb2b03" height="14">
+				:round="true" :active-color="hasRobbed !==100 ?'#fb2b03' :'#ff9c9c'" height="14">
 			</u-line-progress>
-			<view class="hasRobbed">已抢{{hasRobbed}}%</view>
+			<view class="hasRobbed" v-if="hasRobbed !==100">已抢{{hasRobbed}}%</view>
+			<view class="hasRobbedFinish" v-else>已抢完</view>
 		</view>
 	</view>
 	
@@ -31,12 +33,12 @@
 				default:299.00
 			},
 			beforePrice:{    //之前的价格
-				type:Number,
-				default:11.00
+				type:String,
+				default:'11.00'
 			},
 			monthSale:{     // 月售数量
-				type:Number,
-				default:2333
+				type:String,
+				default:'2333'
 			},
 			goodsText:{     //商品描述
 				type:String,
@@ -44,7 +46,7 @@
 			},
 			hasRobbed:{    // 天天免费抢已抢进度
 				type:Number,
-				default:50
+				default:80
 			} 
 		},
 		data(){
@@ -55,11 +57,11 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	// 每日一品-商品详情
 	.dailyGoodsProductDetail {
 		width: 750rpx;
-		height: 164rpx;
+		height: 200rpx;
 		background: rgba(255, 255, 255, 1);
 		padding: 0 30rpx;
 		margin-bottom: 20rpx;
@@ -113,15 +115,23 @@
 	
 		.progressCon {
 			width: 690rpx;
-			height: 88rpx;
+			height: 44rpx;
 			display: flex;
-			justify-content: space-between;
+			align-items: center;
 	
 			.progress {
 				width: 560rpx;
+				margin-right: 30rpx;
 			}
 	
 			.hasRobbed {
+				font-size: 24rpx;
+				font-family: PingFang SC;
+				font-weight: 400;
+				line-height: 28rpx;
+				color: rgba(251, 43, 3, 1);
+			}
+			.hasRobbedFinish{
 				font-size: 24rpx;
 				font-family: PingFang SC;
 				font-weight: 400;

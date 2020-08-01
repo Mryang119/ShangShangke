@@ -1,4 +1,5 @@
 <!-- 拼团 -->
+<!-- name:陈铄源 -->
 <template>
 	<!-- v-if="option.type==='group'" -->
 	<view class="group">
@@ -10,7 +11,7 @@
 			</view>
 		</view>
 		<view class="grouping">
-			<view class="oneGroup"  v-for="(item,index) in 2" :key="index">
+			<view class="oneGroup" v-for="(item,index) in 2" :key="index">
 				<view class="userImg">
 					<image src="@/static/images/tabBarImage/myLoginHeader.png"></image>
 					<view class="userName">{{groupName}}</view>
@@ -18,49 +19,49 @@
 				<view class="toGroupCon">
 					<view class="shortCon">
 						<view class="shortPeople">还差<view class="people">{{shortPeople}}人</view>拼成</view>
-						<view class="shortTime"> 
+						<view class="shortTime">
 							剩余<u-count-down :timestamp="timestamp" color="#5F5C5F" font-size="24" :show-days="false"></u-count-down>
 						</view>
 					</view>
-					<navigator class="toGroupBtn" :url="groupBookingDetail">去拼团</navigator>
+					<navigator class="toGroupBtn" :url="spellGroupDetail">去拼团</navigator>
 				</view>
-							
+
 			</view>
 		</view>
 	</view>
-	
+
 </template>
 
 <script>
-	export default{
-		name:'groupBooking',
-		props:{
-			groupPeople:{      //拼团人数
-				type:Number,
-				default:10
+	export default {
+		name: 'groupBooking',
+		props: {
+			groupPeople: { //拼团人数
+				type: Number,
+				default: 10
 			},
-			groupName:{
-				type:String,
-				default:'吴亦凡'
+			groupName: {
+				type: String,
+				default: '吴亦凡'
 			},
-			shortPeople:{
-				type:Number,
-				default:1
+			shortPeople: {
+				type: Number,
+				default: 1
 			},
-			timestamp:{       //拼团倒计时时间
-				type:Number,
-				default:86300
+			timestamp: { //拼团倒计时时间
+				type: Number,
+				default: 86300
 			}
 		},
-		data(){
-			return{
-				groupBookingDetail:'../../singlePage/groupBookingDetail/groupBookingDetail'
+		data() {
+			return {
+				spellGroupDetail: '../../singlePage/spellGroupDetail/spellGroupDetail'
 			}
 		}
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	// 拼团
 	.group {
 		width: 750rpx;
@@ -68,14 +69,14 @@
 		background: #FFFFFF;
 		margin-bottom: 20rpx;
 		padding: 0 30rpx;
-	
+
 		// 拼团人数
 		.groupMore {
 			height: 92rpx;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-	
+
 			.people {
 				font-size: 28rpx;
 				font-family: PingFang SC;
@@ -83,11 +84,11 @@
 				line-height: 32rpx;
 				color: rgba(51, 51, 51, 1);
 			}
-	
+
 			.more {
 				display: flex;
 				align-items: center;
-	
+
 				.text {
 					font-size: 24rpx;
 					font-family: PingFang SC;
@@ -95,7 +96,7 @@
 					line-height: 28rpx;
 					color: rgba(133, 133, 133, 1);
 				}
-	
+
 				image {
 					width: 8.5rpx;
 					height: 16.94rpx;
@@ -103,61 +104,61 @@
 				}
 			}
 		}
-	
+
 		// 拼团内容
 		.grouping {
 			width: 690rpx;
 			height: 292rpx;
-	
+
 			.oneGroup {
 				height: 146rpx;
 				border-top: 2rpx solid rgba(243, 243, 243, 1);
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-	
+
 				.userImg {
 					height: 146rpx;
 					display: flex;
 					align-items: center;
-	
+
 					image {
 						width: 86rpx;
 						height: 86rpx;
 						border-radius: 50%;
 						margin-right: 20rpx;
 					}
-	
+
 					.userName {
 						font-size: 28rpx;
 						font-family: PingFang SC;
 						font-weight: 400;
 						line-height: 32rpx;
 						color: rgba(51, 51, 51, 1);
-	
+
 					}
 				}
-	
+
 				.toGroupCon {
 					width: 308rpx;
 					display: flex;
-	
+
 					.shortCon {
 						text-align: right;
-	
+
 						.shortPeople {
 							font-size: 24rpx;
 							font-family: PingFang SC;
 							font-weight: 400;
 							line-height: 28rpx;
 							color: rgba(51, 51, 51, 1);
-	
+
 							.people {
 								color: rgba(246, 54, 57, 1);
 								display: inline;
 							}
 						}
-	
+
 						.shortTime {
 							font-size: 24rpx;
 							font-family: PingFang SC;
@@ -166,7 +167,7 @@
 							color: rgba(102, 102, 102, 1);
 						}
 					}
-	
+
 					.toGroupBtn {
 						width: 110rpx;
 						height: 50rpx;

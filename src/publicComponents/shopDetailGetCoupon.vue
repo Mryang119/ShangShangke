@@ -1,3 +1,5 @@
+<!-- 商品详情-领取优惠券 -->
+<!-- name:陈铄源 -->
 <template>
 	<view>
 		<view :class="item.state===1 ? 'coupon':'hasCoupon'" v-for="(item,index) in afterList" :key="index">
@@ -51,7 +53,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	// 优惠券
 	.coupon {
 		width: 690rpx;

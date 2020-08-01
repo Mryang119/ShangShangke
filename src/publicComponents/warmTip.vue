@@ -1,3 +1,4 @@
+<!-- name:陈铄源 -->
 <template>
 	<!-- 温馨提示 -->
 	<view class="warmTip">
@@ -47,7 +48,7 @@
 	}
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 	// 温馨提示
 	.warmTip {
 		width: 750rpx;

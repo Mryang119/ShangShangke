@@ -2,18 +2,18 @@
 	<!-- 定位模块 -->
 	<view class="c_position">
 		<view class="postiton-event">
-			<text class="city">{{city}}</text>
-			<text v-if="city!=='未定位'" class="iconfont myionfont icon-iconfonticonfonti2"></text>
+			<text class="city">{{cityName}}</text>
+			<text v-if="cityName!=='未定位'" class="iconfont myionfont icon-iconfonticonfonti2"></text>
 		</view>
 	</view>
 </template>
 
 <script>
 	export default {
-		props: {
-			city: {
-				type: String,
-				default: "未定位"
+
+		computed: {
+			cityName: function() {
+				return this.$store.state.global.globalData.cityName
 			}
 		}
 	}

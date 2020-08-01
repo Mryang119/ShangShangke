@@ -24,7 +24,8 @@
 		{
 			"path": "views/tabBar/discover/discover",
 			"style": {
-				"navigationBarTitleText": "发现"
+				"navigationBarTitleText": "发现",
+				"navigationStyle": "custom"
 			}
 		},
 		{
@@ -79,7 +80,9 @@
 		{
 			"path": "views/singlePage/groupPurchase/groupPurchase",
 			"style": {
-				"navigationBarTitleText": "超值团购"
+				"navigationBarTitleText": "超值拼团",
+				"navigationBarBackgroundColor": "#E33030",
+				"navigationBarTextStyle": "white"
 			}
 		},
 		{
@@ -153,12 +156,13 @@
 			"path": "views/singlePage/timekillDetail/timekillDetail",
 			"style": {
 				"navigationBarTitleText": "限时秒杀",
-				"navigationBarBackgroundColor": "#FE4C4F"
+				"navigationBarBackgroundColor": "#FE4C4F",
+				"navigationBarTextStyle": "white"
 			}
 
 		},
 		{
-			"path": "views/singlePage/groupBookingDetail/groupBookingDetail",
+			"path": "views/singlePage/spellGroupDetail/spellGroupDetail",
 			"style": {
 				"navigationBarTitleText": "拼团详情"
 			}
@@ -180,7 +184,7 @@
 			"path": "views/singlePage/phoneLogin/phoneLogin",
 
 			"style": {
-				"navigationBarTitleText":"手机登录"
+				"navigationBarTitleText": "手机登录"
 			}
 		},
 		{
@@ -188,8 +192,43 @@
 			"style": {
 				"navigationBarTitleText": "订单详情"
 			}
+
+		},
+		{
+			"path": "views/singlePage/userEdit/userEdit",
+			"style": {
+				"navigationBarTitleText": "编辑资料"
+			}
+		},
+		{
+			"path": "views/singlePage/applyRefund/applyRefund",
+			"style": {
+				"navigationBarTitleText": "申请退款"
+			}
+		},
+		{
+			"path": "views/singlePage/applyRefundWarmTip/applyRefundWarmTip",
+			"style": {
+				"navigationBarTitleText": "申请退款"
+			}
+		},
+		{
+			"path": "views/singlePage/myFocus/myFocus",
+			"style": {
+				"navigationBarTitleText": "我的关注"
+			}
+		},
+		{
+            "path" : "views/singlePage/productDetail/productDetail",
+            "style" : {}
+        },
+		{
+			"path": "views/singlePage/applyStore/applyStore",
+			"style": {
+				"navigationBarTitleText": "适用门店"
+			}
 		}
-	],
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
