@@ -185,7 +185,8 @@
 		getCityList,
 		getHomeModuleMessages,
 		getCircList,
-		getCircCampaignInfo
+		getCircCampaignInfo,
+		getCouponList
 	} from '../../../src/api/homeApi/homeApi.js'
 	export default {
 		components: {
@@ -369,6 +370,8 @@
 			await this.getCirc()
 			// 获取首页相关模块
 			await this.getHomeModule()
+			// 获取优惠券
+			await getCouponList()
 			// 获取更多活动信息
 			await this.getCircInfo()
 			console.log(this.$store.state.global)
