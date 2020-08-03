@@ -110,7 +110,7 @@
 	.c_killDetail {
 		width: 750rpx;
 		background-color: #F6F6F6;
-
+		
 		.swiper-content {
 			width: 750rpx;
 			height: 550rpx;

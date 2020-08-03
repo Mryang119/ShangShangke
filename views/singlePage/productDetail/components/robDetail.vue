@@ -1,6 +1,7 @@
 <template>
 	<!-- 买赠页面 -->
 	<view class="c_buyDetail">
+		<view>天天免费抢详情</view>
 		<buyButton></buyButton>
 		<!-- 轮播图区域 -->
 		<view class="swiper-content">
@@ -27,15 +28,40 @@
 				<view class="product-name">
 					{{productDetais.basDuctList.productName}}
 				</view>
+				<!-- 百分比进度条 -->
+				<view class="progress-container">
+					<view class="progress">
+						<u-line-progress inactive-color="#FFF" :show-percent="false" :percent="70" height="14" :round="true" active-color="#FB2B03"></u-line-progress>
+					</view>
+					<text class="text">已抢70%</text>
+				</view>
 			</view>
 		</view>
 		<!-- 店铺标签 -->
 		<view class="store-content">
 			<storeTag></storeTag>
 		</view>
-		<!-- 活动详情以及规则 -->
-		<view class="rule-content">
-			<promotionRule></promotionRule>
+		<!-- 好物介绍 -->
+		<view class="good-text-content">
+			<view class="title">
+				好物介绍
+			</view>
+			<view class="text-detail">
+				以小麦粉为主要原料，以酵母、鸡蛋、油脂、糖、盐等为辅料，加水调制成面团，经过分割、成形、醒发、焙烤、冷却等过程加工而成的焙烤食品。
+			</view>
+		</view>
+		<!-- 规格选择 -->
+		<view class="cell-content">
+			<uni-list :border="false">
+				<uni-list-item link>
+					<view slot="default">
+						<text class="title">规格</text>
+						<text class="text">
+							挑选商品规格
+						</text>
+					</view>
+				</uni-list-item>
+			</uni-list>
 		</view>
 		<!-- 详情图 -->
 		<view class="image-content">
@@ -52,16 +78,15 @@
 <script>
 	// 组件
 	import storeTag from '@/src/publicComponents/storeTag.vue'
-	import promotionRule from '@/src/publicComponents/promotionRule.vue'
+	// import promotionRule from '@/src/publicComponents/promotionRule.vue'
 	import buyButton from '@/src/publicComponents/buyButton.vue'
 	// api
 	import {
 		getProductSkuList
-	} from '../../../../src/api/productApi/productApi.js'
+	} from '@/src/api/productApi/productApi.js'
 	export default {
 		components: {
 			storeTag,
-			promotionRule,
 			buyButton
 		},
 		props: {
@@ -100,9 +125,15 @@
 		width: 750rpx;
 		background-color: #F6F6F6;
 
+		.title {
+			font-weight: bold;
+			color: #333333;
+			font-size: 32rpx;
+		}
+
 		.swiper-content {
 			width: 750rpx;
-			height: 714rpx;
+			height: 748rpx;
 			display: flex;
 			flex-direction: column;
 			background-color: #FFF;
@@ -161,6 +192,21 @@
 					font-weight: bold;
 				}
 
+				.progress-container {
+					width: 100%;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+
+					.progress {
+						width: 560rpx;
+					}
+
+					.text {
+						font-size: 24rpx;
+						color: #FB2B03;
+					}
+				}
 			}
 		}
 
@@ -169,8 +215,23 @@
 			margin-bottom: 20rpx;
 		}
 
-		.rule-content {
+		.good-text-content {
 			margin-bottom: 20rpx;
+			background-color: #FFF;
+			padding: 30rpx;
+			.text-detail {
+				margin-top: 14rpx;
+				font-size: 24rpx;
+				color: #707070;
+			} 
+		}
+		.cell-content {
+			margin-bottom: 20rpx;
+			.text {
+				color: #A9A9A9;
+				font-size: 28rpx;
+				margin-left: 26rpx;
+			}
 		}
 
 		.image-content {

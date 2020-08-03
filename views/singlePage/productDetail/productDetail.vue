@@ -12,6 +12,9 @@
 		<view class="groupDetail-content" v-else-if="campaignType==2">
 			<groupDetail :pdcID="pdcId"></groupDetail>
 		</view>
+		<view class="robDetail-content" v-else-if="campaignType==99">
+			<robDetail :pdcID="pdcId"></robDetail>
+		</view>
 	</view>
 </template>
 
@@ -20,6 +23,7 @@
 	import buyDetail from './components/buyDetail.vue'
 	import killDetail from './components/killDetail.vue'
 	import groupDetail from './components/groupDetail.vue'
+	import robDetail from './components/robDetail.vue'
 	// api
 	import {
 		getProductSkuList
@@ -28,11 +32,12 @@
 		components: {
 			buyDetail,
 			killDetail,
-			groupDetail
+			groupDetail,
+			robDetail
 		},
 		data() {
 			return {
-				campaignType: 2,
+				campaignType: 99,
 				pdcId: 123123123213
 			};
 		},

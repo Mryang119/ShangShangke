@@ -22,7 +22,7 @@
 	import shopAddressPhone from '@/src/publicComponents/shopAddressPhone.vue'
 	export default{
 		props:{
-			shopNumber:{             //适用门店数量
+			shopNumber:{  //适用门店数量
 				type:String,
 				default:'10'
 			}
