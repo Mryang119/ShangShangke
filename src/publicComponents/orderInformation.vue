@@ -61,6 +61,7 @@
 		height: 370rpx;
 		background: #FFFFFF;
 		padding: 0 30rpx;
+		margin-top: 20rpx;
 	
 		.orderNewsText {
 			width: 690rpx;

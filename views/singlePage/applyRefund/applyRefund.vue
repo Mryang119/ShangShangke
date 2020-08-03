@@ -4,13 +4,13 @@
 	<view class="Refundontainer">
 		<view class="container">
 			<view class="refundText">请选择退款原因</view>
-			<label class="uni-list-cell uni-list-cell-pd " v-for="(item, index) in items" :key="index">
+			<label class="uni-list-cell uni-list-cell-pd " v-for="(item, index) in resultList" :key="index">
 				<view class="resultText">{{item.name}}</view>
 				<view>
 					<radio class="arc" :value="item.value" color='#24A7FF' :checked="item.checked" @click="isAcativy(index)" />
 				</view>
 			</label>
-			<navigator class="applyRefundBtn" @click="btn" :url="applyRefundWarmTip">申请退款</navigator>
+			<view class="applyRefundBtn" @click="refundBtn">申请退款</view>
 		</view>
 	</view>
 </template>
@@ -19,7 +19,7 @@
 	export default {
 		data() {
 			return {
-				items: [{
+				resultList: [{
 						value: '1',
 						name: '商家营业但不接待',
 						checked: false,
@@ -47,7 +47,7 @@
 					{
 						value: '6',
 						name: '去过了，不太满意',
-						checked: true
+						checked: false
 					},
 					{
 						value: '7',
@@ -59,23 +59,23 @@
 						name: '商家装修/转让',
 						checked: false,
 					}
-				],
-				// current: 1,
-				applyRefundWarmTip: '../../singlePage/applyRefundWarmTip/applyRefundWarmTip'
-
+				]
 			}
 		},
 		methods: {
 			isAcativy(index) {
 				console.log(index)
-				this.items[index].checked = !this.items[index].checked
+				this.resultList[index].checked = !this.resultList[index].checked
 			},
-			btn() {
-				let list = [...this.items]
+			refundBtn() {
+				let list = [...this.resultList]
 				let list1 = list.filter((item, index) => {
 					return item.checked
 				})
 				console.log(list1)
+				uni.redirectTo({
+					url:'../../singlePage/applyRefundWarmTip/applyRefundWarmTip'
+				})
 			}
 		}
 

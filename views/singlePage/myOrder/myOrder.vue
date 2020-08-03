@@ -15,11 +15,11 @@
 			<image src="@/static/images/iconfont/dingdanBg.png"></image>
 			<view class="noOrder">还没有相关订单</view>
 		</view>
-		<view class="orderItem" v-for="item in currentArr" :key="item.id" @click="goDetail(item)" v-else>
+		<view class="orderItem" v-for="(item,index) in currentArr" :key="index" @click="goOrderDetail(item,index)" v-else>
 			<view class="shopCon">
 				<view class="shopNameCon">
 					<view class="shopName">{{item.shopName}}</view>
-					<image src="../../../static/images/iconfont/more.png"></image>
+					<image src="/static/images/iconfont/more.png"></image>
 
 				</view>
 				<view class="text">{{item.orderType}}</view>
@@ -39,7 +39,7 @@
 					</view>
 				</view>
 				<view class="toPay">
-					<navigator class="payBtnOne" :url="orderDetail" v-if="item.orderType==='待付款'">去付款</navigator>
+					<view class="payBtnOne" v-if="item.orderType==='待付款'">去付款</view>
 					<navigator class="payBtnTwo" :url="timeKillProductDetail" v-else-if="item.orderType!=='待使用'">再来一单</navigator>
 				</view>
 			</view>
@@ -69,7 +69,7 @@
 				}, {
 					name: '已完成'
 				}],
-orderList: [{
+				orderList: [{
 					shopName: '韩国年糕料理（海岸城店）',
 					priceText: '100元代金券',
 					priceNumber: '79.90',
@@ -142,7 +142,6 @@ orderList: [{
 					orderType: '已退款'
 				}],
 				current: 0,
-				orderDetail: '../../singlePage/orderDetail/orderDetail', //跳转到待付款订单详情 
 				timeKillProductDetail: '../../singlePage/timeKillProductDetail/timeKillProductDetail', //跳转到商品详情页面
 				toSearch: '../../singlePage/search/search' // 跳转到搜索页面
 
@@ -153,12 +152,15 @@ orderList: [{
 				this.current = index;
 				console.log(this.current)
 			},
-			// 跳转传参(传唯一标识)
-			goDetail(item) {
-				uni.navigateTo({
-					url: '/views/singlePage/orderDetail/orderDetail?id=1'
-					// url:`/views/singlePage/orderDetail/orderDetail?id=${item.id}`
-				})
+			// 跳转订单详情传参(传唯一标识)
+			goOrderDetail(item,index) {
+				let orderType = this.currentArr[index].orderType
+				if (orderType) {
+					uni.navigateTo({
+						url: `/views/singlePage/orderDetail/orderDetail?type=${orderType}`
+					})
+				}
+				
 			}
 		},
 		computed: {
@@ -215,6 +217,7 @@ orderList: [{
 			width: 750rpx;
 			height: 180rpx;
 			background: #FFFFFF;
+			margin-bottom: 20rpx;
 			padding: 0 30rpx;
 			display: flex;
 			flex-direction: column;
@@ -271,7 +274,7 @@ orderList: [{
 			width: 750rpx;
 			height: 348rpx;
 			background: #FFFFFF;
-			margin-top: 20rpx;
+			margin-bottom: 20rpx;
 			padding: 0 30rpx;
 
 			.shopCon {

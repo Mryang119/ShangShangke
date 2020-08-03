@@ -2,8 +2,8 @@
 <!-- name:陈铄源 -->
 <template>
 	<!-- 适用门店 -->
-	<view class="applyStore" @click="toApplyStore">
-		<view class="applyStoreButton">
+	<view class="applyStore" >
+		<view class="applyStoreButton" @click="toApplyStore">
 			<view class="applyStoreContent">
 				<span class="applyStoreText">适用门店</span>
 				<span class="applyStoreNumber">({{shopNumber}})</span>
