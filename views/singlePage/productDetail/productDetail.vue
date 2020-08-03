@@ -9,6 +9,9 @@
 		<view class="killDetail-content" v-else-if="campaignType==1">
 			<killDetail :pdcID="pdcId"></killDetail>
 		</view>
+		<view class="groupDetail-content" v-else-if="campaignType==2">
+			<groupDetail :pdcID="pdcId"></groupDetail>
+		</view>
 	</view>
 </template>
 
@@ -16,6 +19,7 @@
 	// 组件
 	import buyDetail from './components/buyDetail.vue'
 	import killDetail from './components/killDetail.vue'
+	import groupDetail from './components/groupDetail.vue'
 	// api
 	import {
 		getProductSkuList
@@ -23,18 +27,19 @@
 	export default {
 		components: {
 			buyDetail,
-			killDetail
+			killDetail,
+			groupDetail
 		},
 		data() {
 			return {
-				campaignType: 0,
-				pdcId: 0
+				campaignType: 2,
+				pdcId: 123123123213
 			};
 		},
 		onLoad(e) {
 			console.log(e)
-			this.campaignType = e.campaignType
-			this.pdcId = e.pdcId
+			// this.campaignType = e.campaignType
+			// this.pdcId = e.pdcId
 		}
 	}
 </script>
