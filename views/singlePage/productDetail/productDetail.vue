@@ -15,6 +15,9 @@
 		<view class="robDetail-content" v-else-if="campaignType==99">
 			<robDetail :pdcID="pdcId"></robDetail>
 		</view>
+		<view class="robDetail-content" v-else-if="campaignType==98">
+			<everydayDetail :pdcID="pdcId"></everydayDetail>
+		</view>
 	</view>
 </template>
 
@@ -24,6 +27,7 @@
 	import killDetail from './components/killDetail.vue'
 	import groupDetail from './components/groupDetail.vue'
 	import robDetail from './components/robDetail.vue'
+	import everydayDetail from './components/everydayDetail.vue'
 	// api
 	import {
 		getProductSkuList
@@ -33,11 +37,12 @@
 			buyDetail,
 			killDetail,
 			groupDetail,
-			robDetail
+			robDetail,
+			everydayDetail
 		},
 		data() {
 			return {
-				campaignType: 99,
+				campaignType: 98,
 				pdcId: 123123123213
 			};
 		},
