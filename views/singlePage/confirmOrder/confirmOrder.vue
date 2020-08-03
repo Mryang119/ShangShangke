@@ -35,7 +35,7 @@
 					<!-- v-if="usableList.length===0" -->
 					<!-- <view class="noUse">暂无可用</view> -->
 					<!-- v-else -->
-					<view class="usable">2个可用</view>
+					<view class="usable">2个可用</view>   <!-- usableList.length -->
 					<image src="@/static/images/iconfont/more.png"></image>
 				</view>
 			</view>

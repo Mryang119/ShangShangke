@@ -8,7 +8,7 @@
 				<image src="@/static/images/iconfont/search.png"></image>
 				<view class="fakerInput">搜索我的订单</view>
 			</navigator>
-			<u-tabs active-color='#000000' inactive-color="#000000" :list="list" :bold='true' :is-scroll="false" :current="current"
+			<u-tabs active-color='#000000' inactive-color="#000000" :list="tabsList" :bold='true' :is-scroll="false" :current="current"
 			 @change="change" :bar-style="{backgroundImage: 'linear-gradient(to right,#92D0F9,#26A7FC)',height:6+'rpx'}"></u-tabs>
 		</view>
 		<view class="orderBg" v-if="currentArr.length=== 0">
@@ -39,8 +39,8 @@
 					</view>
 				</view>
 				<view class="toPay">
-					<view class="payBtnOne" v-if="item.orderType==='待付款'">去付款</view>
-					<navigator class="payBtnTwo" :url="timeKillProductDetail" v-else-if="item.orderType!=='待使用'">再来一单</navigator>
+					<view class="payBtnOne" v-if="item.orderType==='待付款'" @click.stop.prevent="toPay">去付款</view>
+					<view class="payBtnTwo" v-else-if="item.orderType!=='待使用'" @click.stop.prevent="toShopDetail">再来一单</view>
 				</view>
 			</view>
 		</view>
@@ -60,7 +60,7 @@
 	export default {
 		data() {
 			return {
-				list: [{
+				tabsList: [{
 					name: '全部'
 				}, {
 					name: '待付款'
@@ -142,7 +142,6 @@
 					orderType: '已退款'
 				}],
 				current: 0,
-				timeKillProductDetail: '../../singlePage/timeKillProductDetail/timeKillProductDetail', //跳转到商品详情页面
 				toSearch: '../../singlePage/search/search' // 跳转到搜索页面
 
 			}
@@ -160,7 +159,17 @@
 						url: `/views/singlePage/orderDetail/orderDetail?type=${orderType}`
 					})
 				}
-
+			},
+			toShopDetail(){       //再来一单，跳转到商品详情
+				uni.navigateTo({
+					url:'/views/singlePage/timeKillProductDetail/timeKillProductDetail'
+				})
+			},
+			toPay(){         // 去付款，跳转支付页面
+				uni.requestPayment({
+					
+				})
+				console.log('支付')
 			}
 		},
 		computed: {
