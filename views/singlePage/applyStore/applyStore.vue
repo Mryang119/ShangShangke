@@ -5,7 +5,7 @@
 		<view class="applyStoreAddress">
 			<view class="storeAddress">
 				<view class="addrImg"><image src="../../../static/images/iconfont/dingwei.png"></image></view>
-				<view class="cityName">{{cityName}}市</view>
+				<view class="cityName">{{cityName}}</view>
 				<view class="iconImg"><image src="../../../static/images/iconfont/xiajiantoubig.png"></image></view>
 			</view>
 			<shopAddressPhone v-for="(item,index) in 5" :key="index" />

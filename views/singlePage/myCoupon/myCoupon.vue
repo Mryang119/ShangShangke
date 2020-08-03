@@ -30,7 +30,7 @@
 						<view class="fullTime">有效期至：{{item.fullTime}}</view>
 					</view>
 					<!-- 去使用 -->
-					<navigator class="toUse" :url="timeKillProductDetail">去使用</navigator>
+					<view class="toUse" @click="toShopDetail">去使用</view>
 				</view>
 				<!-- 左上角商品类型 -->
 				<view class="goodsType">
@@ -55,7 +55,6 @@
 					name: '已过期'
 				}],
 				current: 0,   // tabs的索引
-				timeKillProductDetail:'../../singlePage/timeKillProductDetail/timeKillProductDetail',  // 点击去使用跳到商品详情
 				couponList:[{
 					shopName:'海底捞沃尔玛蓝山店',
 					couponNumber:'100',
@@ -87,6 +86,11 @@
 			change(index) {
 				this.current = index;
 				console.log(this.current)
+			},
+			toShopDetail(){
+				uni.navigateTo({
+					url:'/views/singlePage/timeKillProductDetail/timeKillProductDetail'   // 点击去使用跳到商品详情
+				})
 			}
 		}
 	}

@@ -153,14 +153,14 @@
 				console.log(this.current)
 			},
 			// 跳转订单详情传参(传唯一标识)
-			goOrderDetail(item,index) {
+			goOrderDetail(item, index) {
 				let orderType = this.currentArr[index].orderType
 				if (orderType) {
 					uni.navigateTo({
 						url: `/views/singlePage/orderDetail/orderDetail?type=${orderType}`
 					})
 				}
-				
+
 			}
 		},
 		computed: {
@@ -195,15 +195,6 @@
 				})
 			}
 		}
-		// onLoad(){
-		// 	uni.request({
-		// 		method:'GET',
-		// 		url:'xxx',
-		// 		success(res) {
-		// 			this.orderList = res.data
-		// 		}
-		// 	})
-		// }
 	}
 </script>
 

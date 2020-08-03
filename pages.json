@@ -94,7 +94,8 @@
 		{
 			"path": "views/singlePage/myOrder/myOrder",
 			"style": {
-				"navigationBarTitleText": "我的订单"
+				"navigationBarTitleText": "我的订单",
+				"enablePullDownRefresh": true 
 			}
 		},
 		{

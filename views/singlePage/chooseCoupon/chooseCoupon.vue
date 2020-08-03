@@ -21,8 +21,8 @@
 				<view class="chooseCoupon">
 					<!-- 满减/有效期 -->
 					<view class="fullDelete">
-						<view class="full">满{{item.fullPrice}}元可用</view>
-						<view class="fullTime">有效期至:{{item.usefulLife}}</view>
+						<view class="full">{{item.fullPrice}}</view>
+						<view class="fullTime">{{item.usefulLife}}</view>
 					</view>
 					<view class="chooseCon">
 						<u-icon :name="item.IconType ?'checkmark-circle-fill':'checkmark-circle'" color="#FF2F2F" size="38" @click="toggleIcon(item,index)"></u-icon>
@@ -52,8 +52,8 @@
 				<view class="chooseCoupon">
 					<!-- 满减/有效期 -->
 					<view class="fullDelete">
-						<view class="full">满{{item.fullPrice}}元可用</view>
-						<view class="fullTime">有效期至:{{item.usefulLife}}</view>
+						<view class="full">{{item.fullPrice}}</view>
+						<view class="fullTime">{{item.usefulLife}}</view>
 					</view>
 				</view>
 				<!-- 左上角商品类型 -->
@@ -73,27 +73,27 @@
 				usableList: [{       // 店铺可用优惠券数组
 					shopName:'海底捞沃尔玛蓝山店',   // 店铺名字
 					couponPrice:'100',    //代金券价格
-					fullPrice:'1000',     //满1000才能用
-					usefulLife:'2020-06-31',   // 优惠券有效期
+					fullPrice:'满1000元可用',     //满1000才能用
+					usefulLife:'有效期至:2020-06-31',   // 优惠券有效期
 					useType:'全品类可用'    //可用类型
 				}, {
 					shopName:'海底捞沃尔玛蓝山店',   // 店铺名字
 					couponPrice:'100',    //代金券价格
-					fullPrice:'1000',     //满1000才能用
-					usefulLife:'2020-06-31',   // 优惠券有效期
+					fullPrice:'满1000元可用',     //满1000才能用
+					usefulLife:'有效期至:2020-06-31',   // 优惠券有效期
 					useType:'全品类可用'    //可用类型
 				}],
 				unusableList: [{          // 店铺不可用优惠券	数组
 					shopName:'海底捞沃尔玛蓝山店',   // 店铺名字
 					couponPrice:'100',    //代金券价格
-					fullPrice:'1000',     //满1000才能用
-					usefulLife:'2020-06-31',   // 优惠券有效期
+					fullPrice:'满1000元可用',     //满1000才能用
+					usefulLife:'有效期至:2020-06-31',   // 优惠券有效期
 					useType:'折扣商品不可用'    //不可用类型
 				}, {
 					shopName:'海底捞沃尔玛蓝山店',   // 店铺名字
 					couponPrice:'100',    //代金券价格
-					fullPrice:'1000',     //满1000才能用
-					usefulLife:'2020-06-31',   // 优惠券有效期
+					fullPrice:'满1000元可用',     //满1000才能用
+					usefulLife:'有效期至:2020-06-31',   // 优惠券有效期
 					useType:'折扣商品不可用'    //不可用类型
 				}]
 			}
