@@ -1,5 +1,6 @@
 <template>
 	<!-- 登录页 -->
+	<!--name:杨大锐 -->
 	<view class="s_login">
 		<view class="logo">
 			<image class="image" src="@/static/images/Product/logo.png" mode=""></image>
