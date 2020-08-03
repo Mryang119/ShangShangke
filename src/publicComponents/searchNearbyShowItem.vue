@@ -28,7 +28,7 @@
 		<view class="bottom-container">
 			<view class="bottom-list-item" v-for="(item,index) in commodityList" :key="index">
 				<view class="img-box">
-					<image :src="item.imgUrl" mode=""></image>
+					<u-image border-radius="8" :src="item.imgUrl" height="160" width="210" mode=""></u-image>
 				</view>
 				<view class="bottom-list-item-title">{{item.title}}</view>
 				<view class="bottom-list-item-price">{{item.price}}</view>
@@ -58,15 +58,15 @@
 					return [{
 						title: '酱香大杂烩酱香个啥么玩意凑个溢出隐藏',
 						price: '￥79.90',
-						imgUrl: '/static/images/Product/commodityItem.png'
+						imgUrl: 'https://tse1-mm.cn.bing.net/th/id/OIP.CkoDSf-wcofF42nJxu9rgQHaE6?w=240&h=180&c=7&o=5&dpr=1.25&pid=1.7'
 					}, {
 						title: '酱香大杂烩酱香个啥么玩意凑个溢出隐藏',
 						price: '￥79.90',
-						imgUrl: '/static/images/Product/commodityItem.png'
+						imgUrl: 'https://tse2-mm.cn.bing.net/th/id/OIP.J0fdE1wuKQwLYvHTs3UkRAHaE8?w=239&h=180&c=7&o=5&dpr=1.25&pid=1.7'
 					}, {
 						title: '酱香大杂烩酱香个啥么玩意凑个溢出隐藏',
 						price: '￥79.90',
-						imgUrl: '/static/images/Product/commodityItem.png'
+						imgUrl: 'https://tse1-mm.cn.bing.net/th/id/OIP.xonlg8nocMk6irmOyPlNOQHaE8?w=257&h=180&c=7&o=5&dpr=1.25&pid=1.7'
 					}]
 				}
 			}
@@ -92,10 +92,7 @@
 				width: 210rpx;
 				
 				.img-box {
-					image {
-						width: 210rpx;
-						height: 160rpx;
-					}
+					
 				}
 				.bottom-list-item-title {
 					width: 188rpx;

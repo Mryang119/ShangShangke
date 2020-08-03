@@ -1,6 +1,7 @@
 <template>
 	<!-- 买赠页面 -->
 	<view class="c_buyDetail">
+		<view>每日一品详情</view>
 		<buyButton></buyButton>
 		<!-- 轮播图区域 -->
 		<view class="swiper-content">
@@ -33,15 +34,33 @@
 		<view class="store-content">
 			<storeTag></storeTag>
 		</view>
-		<!-- 活动详情以及规则 -->
-		<view class="rule-content">
-			<promotionRule></promotionRule>
+		<!-- 好物介绍 -->
+		<view class="good-text-content">
+			<view class="title">
+				好物介绍
+			</view>
+			<view class="text-detail">
+				以小麦粉为主要原料，以酵母、鸡蛋、油脂、糖、盐等为辅料，加水调制成面团，经过分割、成形、醒发、焙烤、冷却等过程加工而成的焙烤食品。
+			</view>
+		</view>
+		<!-- 规格选择 -->
+		<view class="cell-content">
+			<uni-list :border="false">
+				<uni-list-item link>
+					<view slot="default">
+						<text class="title">规格</text>
+						<text class="text">
+							挑选商品规格
+						</text>
+					</view>
+				</uni-list-item>
+			</uni-list>
 		</view>
 		<!-- 详情图 -->
 		<view class="image-content">
 			<view class="title">商品详情</view>
 			<view class="image-container">
-				<view class="image-item" v-for="(item,index) in list2" :key="index">
+				<view class="image-item" v-for="(item,index) in list" :key="index">
 					<u-image height="550rpx" :lazy-load="false" :src="item.image"></u-image>
 				</view>
 			</view>
@@ -52,16 +71,14 @@
 <script>
 	// 组件
 	import storeTag from '@/src/publicComponents/storeTag.vue'
-	import promotionRule from '@/src/publicComponents/promotionRule.vue'
 	import buyButton from '@/src/publicComponents/buyButton.vue'
 	// api
 	import {
 		getProductSkuList
-	} from '../../../../src/api/productApi/productApi.js'
+	} from '@/src/api/productApi/productApi.js'
 	export default {
 		components: {
 			storeTag,
-			promotionRule,
 			buyButton
 		},
 		props: {
@@ -72,8 +89,7 @@
 		data() {
 			return {
 				productDetais: null,
-				list: [],
-				list2: []
+				list: []
 			}
 		},
 		async created() {
@@ -87,9 +103,6 @@
 				this.list.push({
 					image: res.data.data.basDuctList.imageUrl
 				})
-				this.list2.push({
-					image: res.data.data.basDuctList.imageUrl
-				})
 			}
 		}
 	}
@@ -100,9 +113,15 @@
 		width: 750rpx;
 		background-color: #F6F6F6;
 
+		.title {
+			font-weight: bold;
+			color: #333333;
+			font-size: 32rpx;
+		}
+
 		.swiper-content {
 			width: 750rpx;
-			height: 714rpx;
+			height:714rpx;
 			display: flex;
 			flex-direction: column;
 			background-color: #FFF;
@@ -161,6 +180,21 @@
 					font-weight: bold;
 				}
 
+				.progress-container {
+					width: 100%;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+
+					.progress {
+						width: 560rpx;
+					}
+
+					.text {
+						font-size: 24rpx;
+						color: #FB2B03;
+					}
+				}
 			}
 		}
 
@@ -169,8 +203,23 @@
 			margin-bottom: 20rpx;
 		}
 
-		.rule-content {
+		.good-text-content {
 			margin-bottom: 20rpx;
+			background-color: #FFF;
+			padding: 30rpx;
+			.text-detail {
+				margin-top: 14rpx;
+				font-size: 24rpx;
+				color: #707070;
+			} 
+		}
+		.cell-content {
+			margin-bottom: 20rpx;
+			.text {
+				color: #A9A9A9;
+				font-size: 28rpx;
+				margin-left: 26rpx;
+			}
 		}
 
 		.image-content {

@@ -21,7 +21,9 @@
 			border-color: #FFFFFF !important;
 		}
 	}
-
+	.u-progress {
+		border: 2rpx solid #FB2B03 !important;
+	}
 	.c_cityList {
 		.u-index-bar {
 			.u-index-bar__sidebar {

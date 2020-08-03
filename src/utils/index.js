@@ -2,7 +2,8 @@
 
 function isLogin() {
 	const loginDatas = uni.getStorageSync('loginDatas')
-	if (loginDatas) {
+	let strLoginDatas = JSON.stringify(loginDatas)
+	if (loginDatas && strLoginDatas != '{}') {
 		return true
 	} else {
 		return false

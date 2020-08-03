@@ -26,10 +26,7 @@
 		</view>
 		<view class="tabs-content">
 			<view class="line-container">
-				<view class="line"></view>
-				<view class="line"></view>
-				<view class="line"></view>
-				<view class="line"></view>
+				<view class="line" v-for="(item,index) in 4" :key="index"></view>
 			</view>
 			<u-tabs name="name" bg-color="#F6F6F6" :list="list" :is-scroll="false" :current="current" @change="change"></u-tabs>
 		</view>

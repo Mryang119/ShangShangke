@@ -94,7 +94,8 @@
 				<scroll-view scroll-x="true" class="scorll-H-S">
 					<!-- 宽度 商品数量*组件宽度+总边距 -->
 					<view class="scorll-H-S-container" :style="{width:killWidth+'rpx'}">
-						<view class="scorll-H-S-container-item" @click="toDtail(index)" v-for="(item,index) in seckillHome" :key="index">
+						<view class="scorll-H-S-container-item" @click="toDtail(item.pdcId,item.campaignType)" v-for="(item,index) in seckillHome"
+						 :key="index">
 							<spitem :pdcId="item.pdcId" :imgUrl="item.imageAddr" :price="item.promotionPrice"></spitem>
 						</view>
 					</view>
@@ -169,7 +170,6 @@
 		getHomeModuleMessages,
 		getCircList,
 		getCircCampaignInfo,
-		getSeckillMoreInfo,
 		getCouponList
 	} from '../../../src/api/homeApi/homeApi.js'
 	export default {
@@ -250,9 +250,9 @@
 			},
 
 			// 跳转商品详情
-			toDtail(id) {
+			toDtail(id, campaignType) {
 				uni.navigateTo({
-					url: `../../singlePage/timeKillProductDetail/timeKillProductDetail?pdcId=${id}`
+					url: `../../singlePage/productDetail/productDetail?pdcId=${id}&campaignType=${campaignType}`
 				})
 			},
 			// 获取定位
@@ -389,6 +389,8 @@
 			await this.getCouponLists()
 			// 获取首页相关模块
 			await this.getHomeModule()
+			// 获取优惠券
+			await getCouponList()
 			// 获取更多活动信息
 			await this.getCircInfo()
 
@@ -404,7 +406,7 @@
 				return len * 182 * 2 + len * 20
 			},
 			killWidth: function() {
-				return this.seckillHome.length*102*2+this.seckillHome.length*16
+				return this.seckillHome.length * 102 * 2 + this.seckillHome.length * 16
 			}
 		},
 		// 触碰底部懒加载

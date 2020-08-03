@@ -5,7 +5,7 @@
 		<scroll-view scroll-y="true" class="left-tab-container">
 			<view class="left-tab">
 				<view class="tab-item" :class="{'active-tab-item' :selectIndex===index}" v-for="(item,index) in classifyList"
-				 @click="postionClass(index)" :key="item">
+				 @click="postionClass(index)" :key="index">
 					{{item.title}}
 				</view>
 			</view>

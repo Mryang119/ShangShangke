@@ -109,7 +109,7 @@
 	} from '../../../src/utils/index.js'
 	import {
 		getUserInfo
-	} from '../../../src/api/userApi/userApi.js'
+	} from '@/src/api/userApi/userApi.js'
 	export default {
 		data() {
 			return {
@@ -135,7 +135,7 @@
 			// 去编辑页
 			toUserEdit() {
 				uni.navigateTo({
-					url: '../../singlePage/userEdit/userEdit'
+					url: '../../singlePage/setting/setting'
 				})
 			},
 			// 跳转
@@ -159,17 +159,16 @@
 			}
 		},
 		async onShow() {
-			let loginDatas = uni.getStorageSync('loginDatas')
-
-			if (loginDatas) { // 登录了
+			if (isLogin()) { // 登录了
 				this.loginStatus = true
-				console.log('一登陆')
+				const loginDatas = uni.getStorageSync('loginDatas')
 				// 判断缓存有否
 				let userDatas = uni.getStorageSync('userDatas')
-				if (userDatas) { // 缓存取
+				if (userDatas && JSON.stringify(userDatas) != '{}') { // 缓存取
 					this.userName = userDatas.userName
 					this.userImgUrl = userDatas.userImgUrl
-				} else { // 请求取
+				} else {
+					// 请求取
 					try {
 						let res = await getUserInfo({
 							mobile: loginDatas.mobile
@@ -184,9 +183,11 @@
 						console.log('获取个人信息失败')
 					}
 				}
-
 			} else {
 				console.log('未登录')
+				this.loginStatus = false
+				this.userName = ''
+				this.userImgUrl = ''
 			}
 		}
 	}
