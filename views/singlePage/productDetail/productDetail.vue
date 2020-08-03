@@ -42,14 +42,14 @@
 		},
 		data() {
 			return {
-				campaignType: 98,
-				pdcId: 123123123213
+				campaignType: 0,
+				pdcId: 0
 			};
 		},
 		onLoad(e) {
 			console.log(e)
-			// this.campaignType = e.campaignType
-			// this.pdcId = e.pdcId
+			this.campaignType = e.campaignType
+			this.pdcId = e.pdcId
 		}
 	}
 </script>

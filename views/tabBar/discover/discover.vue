@@ -49,8 +49,7 @@
 	.s_discover {
 		width: 750rpx;
 		.nav-bar {
-			height: auto;
-			border-bottom: 4rpx solid #C0C4CC;
+			border-bottom: 4rpx solid #EDEDED;
 		}
 		.tabs-content {
 			width: 92%;
@@ -70,6 +69,7 @@
 			}
 		}
 		.shop-content {
+			
 			width: 750rpx;
 		}
 	}
