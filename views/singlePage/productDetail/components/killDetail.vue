@@ -39,13 +39,20 @@
 			<promotionRule></promotionRule>
 		</view>
 		<!-- 商品详情 -->
-		<ul>
-			<li>111</li>
-			<li>111</li>
-			<li>111</li>
-			<li>111</li>
-			<li>111</li>
-		</ul>
+		<view class="product-content">
+			<view class="text">商品详情</view>
+			<uni-list :border="false">
+				<uni-list-item  title="• 限时新品双人冰爽餐">
+					<view slot="right">
+						￥100.00
+					</view>
+				</uni-list-item>
+			</uni-list>
+		</view>
+		<!-- 亚萨西提示 -->
+		<view class="yasaxi-tips-content">
+			<warmTip></warmTip>
+		</view>
 	</view>
 </template>
 
@@ -54,6 +61,7 @@
 	import storeTag from '@/src/publicComponents/storeTag.vue'
 	import promotionRule from '@/src/publicComponents/promotionRule.vue'
 	import buyButton from '@/src/publicComponents/buyButton.vue'
+	import warmTip from '@/src/publicComponents/warmTip.vue'
 	// api
 	import {
 		getProductSkuList
@@ -62,7 +70,8 @@
 		components: {
 			storeTag,
 			promotionRule,
-			buyButton
+			buyButton,
+			warmTip
 		},
 		props: {
 			pdcId: {
@@ -178,6 +187,21 @@
 
 		.rule-content {
 			margin-bottom: 20rpx;
+		}
+		.product-content {
+			background-color: #FFFFFF;
+			box-sizing: border-box;
+			padding-top: 30rpx;
+			margin-bottom: 20rpx;
+			.text {
+				font-size: 32rpx;
+				color: #333333;
+				font-weight: bold;
+				margin-left: 28rpx;
+			}
+		}
+		.yasaxi-tips-content {
+			
 		}
 	}
 </style>
