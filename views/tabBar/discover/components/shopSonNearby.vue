@@ -34,7 +34,7 @@
 		</view>
 		<!-- 商家列表 -->
 		<view class="store-list-content">
-			<view class="store-list-item" v-for="(item,index) in 4">
+			<view class="store-list-item" v-for="(item,index) in 4" :key="index">
 				<searchNearbyShowItem></searchNearbyShowItem>
 			</view>
 		</view>
