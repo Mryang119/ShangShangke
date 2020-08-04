@@ -11,13 +11,13 @@
 		</view>
 		<view class="shopDetailCon">
 			<!-- 店铺 -->
-			<view class="shopDetail" v-for="(item,index) in shopList" :key="index" v-if="current===0">
+			<view class="shopDetail" v-for="(item,index) in shopList" :key="index" v-if="current===0" @click="toCollectShop(item,index)">
 				<view class="shopImg"><image :src="item.shopImg"></image></view>
 				<view class="detailCon">
 					<view class="shopName">{{item.shopName}}</view>
 					<view class="shopScore">
 						<view class="score">评分:</view>
-						<u-rate :count="5" v-model="value" disabled="true" size="24" active-color="#FFAE44"></u-rate>
+						<uni-rate class="shopRate" allow-half :value="item.value" size="12" activeColor="#FFAE44" :margin="3"/>
 						<view class="shopValue">{{item.value}}</view>
 					</view>
 					<view class="shopAddress">
@@ -57,13 +57,12 @@
 					name: '作品'
 				}],
 				current: 0,  //tabs 当前索引值
-				value:5   ,// 评分默认值
 				isShow:false,
 				shopList:[
 					{
 					shopImg:'../../../static/images/Product/shangpintu.png',  //商家头像
 					shopName:'海底捞（海岸城店）',  //商家名字
-					value:'5.0',        //商家评分
+					value:'3.5',        //商家评分
 					shopMeter:'500m',        //商家距离
 					shopAddress:'文新思路34号海岸城西座F2座806'  //商家地址
 				},{
@@ -98,7 +97,7 @@
 			}
 		},
 		methods: {
-			change(index) {
+			change(index) {            // 点击导航跳转对应的收藏
 				this.current = index;
 				console.log(this.current)
 				// if(this.current===0){
@@ -130,7 +129,11 @@
 				// 	})
 				// }
 				
+			},
+			toCollectShop(item,index){      // 点击跳转到收藏的商家主页
+				
 			}
+			
 		},
 		computed:{
 			isShowImg(){
@@ -233,10 +236,13 @@
 						.score{
 							margin-right: 4rpx;
 						}
+						.shopRate{
+							height: 0;
+						}
 						.shopValue{
 							font-size: 18rpx;
 							color:rgba(255,174,68,1);
-							margin-left: 2rpx;
+							margin-left: 10rpx;
 						}
 					}
 					.shopAddress{
