@@ -28,7 +28,7 @@
 				</view>
 			</view>
 			<!-- 商品 -->
-			<view class="shopDetail" v-for="(item,index) in productList" :key="index"  v-if="current===1">
+			<view class="shopDetail" v-for="(item,index) in productList" :key="index"  v-if="current===1" @click="toCollectShopDetail(item,index)">
 				<view class="shopImg"><image :src="item.productImg"></image></view>
 				<view class="detailCon">
 					<view class="goodsName">{{item.productName}}</view>
@@ -130,8 +130,11 @@
 				// }
 				
 			},
-			toCollectShop(item,index){      // 点击跳转到收藏的商家主页
-				
+			toCollectShop(item,index){      // 跳转到收藏的商家主页
+				// 接口
+			},
+			toCollectShopDetail(item,index){        // 跳转到收藏的单品
+				// 接口
 			}
 			
 		},

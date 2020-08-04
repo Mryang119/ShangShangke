@@ -66,7 +66,10 @@
 		<!-- 提示信息 -->
 		<view class="orderTip">
 			<image src="@/static/images/iconfont/tishi.png"></image>
-			<view class="text">本单即将7天后过期，请尽快使用！</view>
+			<view class="text" v-if="orderCountDownTime !== 0">本单即将
+			<u-count-down :timestamp="orderCountDownTime" separator="zh" font-size="28" :autoplay="false" color="#24a7ff" separator-size="28" separator-color="#24a7ff" :show-hours="false" :show-minutes="false" :show-seconds="false"></u-count-down>
+			后过期，请尽快使用！</view>
+			<view class="text" v-else>本单已过期!</view>
 		</view>
 		<view class="toBuy" @click="toPay">
 			<view class="toBuy">
@@ -90,7 +93,8 @@
 				shopType: '限时新品双人冰爽餐', // 商品类型
 				nowPrice: '79.00', // 现在的价格
 				beforePrice: '399.00', // 以前的价格
-				nowNumber:1     // 订单当前的选购数量起始为1 
+				nowNumber:1,     // 订单当前的选购数量起始为1 
+				orderCountDownTime:604799     // 倒计时时间
 			}
 		},
 		components: {
@@ -130,6 +134,11 @@
 				let countumPrice = this.nowNumber * this.nowPrice
 				let sumPrice = parseFloat(countumPrice).toFixed(2)
 				return sumPrice
+			}
+		},
+		onLoad(options) {
+			if(options.type){
+				this.$refs.uCountDown.start();
 			}
 		}
 	}
