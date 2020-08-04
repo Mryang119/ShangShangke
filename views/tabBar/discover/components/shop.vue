@@ -9,10 +9,10 @@
 			 :current="current" @change="change"></u-tabs>
 		</view>
 
-		<view class="shopSonNearby-content" v-if="current===0">
+		<view class="shopSonNearby-content" v-show="current==0">
 			<shopSonNearby></shopSonNearby>
 		</view>
-		<view class="shopSonFocus-content" v-else>
+		<view class="shopSonFocus-content" v-show="current==1">
 			<shopSonFocus></shopSonFocus>
 		</view>
 	</view>
@@ -52,7 +52,8 @@
 
 		.tabs-content {
 			width: 100%;
-			padding: 0 155rpx;
+			padding-left: 155rpx;
+			padding-right: 168rpx;
 		}
 	}
 </style>

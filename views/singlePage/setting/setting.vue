@@ -4,7 +4,7 @@
 	<view class="s_setting">
 		<view class="list-content">
 			<uni-list :border="false">
-				<uni-list-item title="资料编辑" link to="../../singlePage/userEdit/userEdit">
+				<uni-list-item title="资料编辑" link @click="toEdit">
 
 				</uni-list-item>
 			</uni-list>
@@ -41,6 +41,11 @@
 			},
 			cancel() {
 				this.show = false
+			},
+			toEdit(){
+				uni.navigateTo({
+					url:'../userEdit/userEdit'
+				})
 			}
 		}
 	}

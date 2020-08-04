@@ -94,8 +94,7 @@
 		{
 			"path": "views/singlePage/myOrder/myOrder",
 			"style": {
-				"navigationBarTitleText": "我的订单",
-				"enablePullDownRefresh": true 
+				"navigationBarTitleText": "我的订单"
 			}
 		},
 		{
@@ -157,7 +156,7 @@
 			"path": "views/singlePage/timekillDetail/timekillDetail",
 			"style": {
 				"navigationBarTitleText": "限时秒杀",
-				"navigationBarBackgroundColor": "#FE4C4F",
+				"navigationBarBackgroundColor": "#E33030",
 				"navigationBarTextStyle": "white"
 			}
 
@@ -215,7 +214,7 @@
 		{
 			"path": "views/singlePage/productDetail/productDetail",
 			"style": {
-				"navigationBarTitleText":"商品详情"
+				"navigationBarTitleText": "商品详情"
 			}
 		},
 		{
@@ -226,7 +225,17 @@
 		}, {
 			"path": "views/singlePage/setting/setting",
 			"style": {
-				"navigationBarTitleText":"设置"
+				"navigationBarTitleText": "设置"
+			}
+		}, {
+			"path": "views/singlePage/userEditName/userEditName",
+			"style": {
+				"navigationBarTitleText": "更改昵称"
+			}
+		}, {
+			"path": "views/singlePage/userEditRemark/userEditRemark",
+			"style": {
+				"navigationBarTitleText": "个人简介"
 			}
 		}
 	],

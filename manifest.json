@@ -59,7 +59,8 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "wxe89e1d2db3a1255a",
+        "appid" : "wxe89e1d2db3a1255a", // 企业id
+        // "appid" : "wxf24670de15a1dd00", // 个人id
         "setting" : {
             "urlCheck" : false,
             "es6" : true,

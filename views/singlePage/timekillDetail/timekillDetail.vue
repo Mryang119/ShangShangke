@@ -1,7 +1,8 @@
 <template>
+	<!-- name:杨大锐 -->
 	<!-- 限时秒杀 -->
 	<view class="s_timekillDetail" :style="{height:fatherHeight*2+'rpx'}">
-		<view class="top-title-contianer">
+		<view class="top-title-content">
 			<view class="img-container">
 				<image src="@/static/images/Product/xianshimiaosha.png" mode="" class="img"></image>
 			</view>
@@ -16,6 +17,11 @@
 						<view class="time">{{item.time}}</view>
 						<view class="status">{{item.now?'抢购中':'即将开始'}}</view>
 					</view>
+				</view>
+				<view class="residue-time-container">
+					<text :style="{marginRight:'12rpx'}">剩余</text>
+					<u-count-down separator-color="#FFF" font-size="28" :show-days="false" color="#FFF" :timestamp="residueTime"
+					 bg-color="rgba(255,255,255,0)" :autoplay="true"></u-count-down>
 				</view>
 			</scroll-view>
 		</view>
@@ -65,7 +71,8 @@
 					name: '生活'
 				}, ],
 				current: 0,
-				fatherHeight: 0
+				fatherHeight: 0,
+				residueTime: 0
 			};
 		},
 		methods: {
@@ -114,6 +121,16 @@
 			query.select('.commodity-box').boundingClientRect(data => {
 				this.fatherHeight = data.top + data.height
 			}).exec();
+		},
+		onShow() {
+			// 1 分(分钟)=60000 毫秒
+			// 1 秒=1000 毫秒
+			let date = new Date()
+			let m = date.getMinutes() // 当前分钟
+			// let s = date.getSeconds() // 当前秒
+			let hoursMili = (60 - m)
+			this.residueTime = hoursMili * 60
+			console.log(hoursMili)
 		}
 	}
 </script>
@@ -124,11 +141,12 @@
 		width: 750rpx;
 		background-color: #F6F6F6;
 
-		.top-title-contianer {
+		.top-title-content {
 			width: 750rpx;
 			position: absolute;
 			height: 580rpx;
-			background: rgba(254, 76, 79, 1);
+			// background: rgba(254, 76, 79, 1);
+			background-image: linear-gradient(to bottom, #E33030, #FF4F4F);
 			border-radius: 0 0 54rpx 54rpx;
 
 			.time-list-title {
@@ -169,6 +187,16 @@
 						text-align: center;
 						font-weight: bold;
 					}
+				}
+
+				.residue-time-container {
+					display: flex;
+					color: #FFF;
+					font-size: 28rpx;
+					font-weight: bold;
+					align-items: center;
+					justify-content: center;
+					margin-top: 20rpx;
 				}
 
 				.upcoming-status {

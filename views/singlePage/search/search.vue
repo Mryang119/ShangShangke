@@ -1,5 +1,6 @@
 <template>
 	<!-- 搜索页面 -->
+	<!-- name:杨大锐 -->
 	<view class="s_search" :class="{indexClass:pageType==='index',discoverClass:pageType==='discover'}">
 		<u-toast ref="uToast" />
 		<u-modal v-model="show" show-cancel-button="true" @confirm="confirm" @cancel="cancel" :content="content"></u-modal>

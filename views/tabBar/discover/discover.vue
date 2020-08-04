@@ -10,7 +10,7 @@
 				</view>
 			</uniNavBar>
 		</view>
-		<view class="shop-content" v-if="current===0">
+		<view class="shop-content" v-show="current===0">
 			<shop></shop>
 		</view>
 	</view>
@@ -48,6 +48,7 @@
 <style lang="less" scoped>
 	.s_discover {
 		width: 750rpx;
+		background-color: #FFF;
 		.nav-bar {
 			border-bottom: 4rpx solid #EDEDED;
 		}
