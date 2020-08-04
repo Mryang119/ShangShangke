@@ -30,9 +30,19 @@
 						吴亦凡
 					</view>
 				</uni-list-item>
-				<uni-list-item title="性别" link>
-					<view slot="right" class="right-text-black">
-						男
+				<uni-list-item title="性别" link @click="changeSex">
+					<view slot="right" class="sex-selcet right-text-black">
+						{{sex}}
+						<!-- 选择男女框 -->
+						<view class="select-content" v-if="sexSelectBox">
+							<view class="select-item" @click.stop="changeSexItem('男')">
+								男<u-icon name="checkmark" v-if="sex==='男'"></u-icon>
+							</view>
+							<view class="line"></view>
+							<view class="select-item" @click.stop="changeSexItem('女')">
+								女<u-icon name="checkmark" v-if="sex==='女'"></u-icon>
+							</view>
+						</view>
 					</view>
 				</uni-list-item>
 				<uni-list-item title="生日" link @click="changeBirthday">
@@ -60,7 +70,9 @@
 				birthday: '', // 生日
 				userRemark: '1123', // 个人简介
 				imageUrl: '',
-				show: false
+				sex: "男",
+				show: false,
+				sexSelectBox: false
 			};
 		},
 		onShow() {
@@ -83,6 +95,14 @@
 			},
 			birthdaYcancel() {
 				this.show = false
+			},
+			// 更改性别
+			changeSex() {
+				this.sexSelectBox = true
+			},
+			changeSexItem(v) {
+				this.sexSelectBox = false
+				this.sex = v
 			}
 		}
 	}
@@ -131,6 +151,38 @@
 
 		.user-edit-content {
 			margin-top: 20rpx;
+
+			.sex-selcet {
+				position: relative;
+
+
+
+				.select-content {
+					position: absolute;
+					width: 156rpx;
+					height: 152rpx;
+					background: url(@/static/images/iconfont/sexSelectbg.png);
+					background-size: cover;
+					right: -30rpx;
+					bottom: -150rpx;
+					opacity: 1;
+					color: #FFF;
+					font-size: 28rpx;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					align-items: center;
+					padding: 34rpx 18rpx 20rpx;
+					z-index: 99;
+
+					.line {
+						width: 118rpx;
+						height: 2rpx;
+						background-color: #FFF;
+					}
+
+				}
+			}
 		}
 	}
 </style>

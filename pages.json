@@ -156,7 +156,7 @@
 			"path": "views/singlePage/timekillDetail/timekillDetail",
 			"style": {
 				"navigationBarTitleText": "限时秒杀",
-				"navigationBarBackgroundColor": "#FE4C4F",
+				"navigationBarBackgroundColor": "#E33030",
 				"navigationBarTextStyle": "white"
 			}
 

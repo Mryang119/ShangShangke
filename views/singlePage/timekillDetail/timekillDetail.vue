@@ -2,7 +2,7 @@
 	<!-- name:杨大锐 -->
 	<!-- 限时秒杀 -->
 	<view class="s_timekillDetail" :style="{height:fatherHeight*2+'rpx'}">
-		<view class="top-title-contianer">
+		<view class="top-title-content">
 			<view class="img-container">
 				<image src="@/static/images/Product/xianshimiaosha.png" mode="" class="img"></image>
 			</view>
@@ -125,11 +125,12 @@
 		width: 750rpx;
 		background-color: #F6F6F6;
 
-		.top-title-contianer {
+		.top-title-content {
 			width: 750rpx;
 			position: absolute;
 			height: 580rpx;
-			background: rgba(254, 76, 79, 1);
+			// background: rgba(254, 76, 79, 1);
+			background-image: linear-gradient(to bottom, #E33030, #FF4F4F);
 			border-radius: 0 0 54rpx 54rpx;
 
 			.time-list-title {

@@ -2,11 +2,11 @@
 	<!-- 分类 -->
 	<view class="s_classify">
 		<!-- 搜索条 -->
-		<view class="searchBar">
+		<view class="searbar-content">
 			<u-search placeholder="发现店铺/商品" :show-action="false"></u-search>
 		</view>
 		<!-- 左侧tab栏 -->
-		<view class="Tab-container">
+		<view class="tab-content">
 			<scroll-view scroll-y="true" :height="classifyList.length*60*2+'rpx'" class="scroll-cotainer">
 				<view class="tab-item-container" @click="toggleSelect(index)" :class="{'tab-item-active':index===selectIndex}"
 				 v-for="(item,index) in classifyList" :key="index">
@@ -91,8 +91,8 @@
 	.s_classify {
 		width: 100%;
 		height: 100%;
-
-		.searchBar {
+		background-color: #FFF;
+		.searbar-content {
 			box-sizing: border-box;
 
 			height: 6.63vh;
@@ -100,7 +100,7 @@
 			border-bottom: 1px solid #F3F3F3;
 		}
 
-		.Tab-container {
+		.tab-content {
 			height: 92.14vh;
 			width: 100vw;
 			margin-top: 1.23vh;
