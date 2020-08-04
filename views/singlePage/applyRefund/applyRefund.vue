@@ -4,10 +4,10 @@
 	<view class="Refundontainer">
 		<view class="container">
 			<view class="refundText">请选择退款原因</view>
-			<label class="uni-list-cell uni-list-cell-pd " v-for="(item, index) in resultList" :key="index">
+			<label class="uni-list-cell uni-list-cell-pd " v-for="(item, index) in resultList" :key="index" @click="isAcativy(index)">
 				<view class="resultText">{{item.name}}</view>
 				<view>
-					<radio class="arc" :value="item.value" color='#24A7FF' :checked="item.checked" @click="isAcativy(index)" />
+					<radio class="arc" :value="item.value" color='#24A7FF' :checked="item.checked" />
 				</view>
 			</label>
 			<view class="applyRefundBtn" @click="refundBtn">申请退款</view>
