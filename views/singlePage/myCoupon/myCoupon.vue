@@ -55,7 +55,7 @@
 					name: '已过期'
 				}],
 				current: 0,   // tabs的索引
-				couponList:[{
+				couponList:[{      // 卡券列表
 					shopName:'海底捞沃尔玛蓝山店',
 					couponNumber:'100',
 					fullNumber:'满1000元可用',
@@ -113,6 +113,9 @@
 						return this.couponList
 				}
 			}
+		},
+		onLoad() {
+			
 		}
 	}
 </script>

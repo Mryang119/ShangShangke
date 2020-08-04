@@ -29,9 +29,9 @@
 					拼团倒计时:
 					<u-count-down :timestamp="item.spellGroupCountDown" separator="colon" separator-size="28" separator-color="#333333"></u-count-down>
 				</view>
-				<view class="inviteBtn" v-if="item.spellGroupType==='已支付，待成团'" @click="inviteFriends">邀请好友参团</view>
-				<view class="inviteBtn" v-if="item.spellGroupType==='组团失败，已回归'" @click="againInvite">再次发起拼团</view>
-				<view class="inviteBtnTo" v-if="item.spellGroupType==='组团成功'" @click="toUse">进店使用</view>
+				<view class="inviteBtn" v-if="item.spellGroupType==='已支付，待成团'" @click.stop="inviteFriends">邀请好友参团</view>
+				<view class="inviteBtn" v-if="item.spellGroupType==='组团失败，已回归'" @click.stop="againInvite">再次发起拼团</view>
+				<view class="inviteBtnTo" v-if="item.spellGroupType==='组团成功'" @click.stop="toUse">进店使用</view>
 			</view>
 		</view>
 	</view>
