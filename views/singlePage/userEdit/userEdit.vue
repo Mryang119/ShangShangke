@@ -2,6 +2,7 @@
 	<!-- 编辑页 -->
 	<!-- name:杨大锐 -->
 	<view class="s_userEdit">
+
 		<view class="head-content">
 			<u-image shape="circle" width="156" height="156" src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2949404657,2698831741&fm=26&gp=0.jpg"></u-image>
 			<view class="change-head">
@@ -34,9 +35,9 @@
 						男
 					</view>
 				</uni-list-item>
-				<uni-list-item title="生日" link>
+				<uni-list-item title="生日" link @click="changeBirthday">
 					<view slot="right" class="right-text-black" :class="{'right-text':birthday===''}">
-						请输入生日
+						{{birthday!==''? birthday:'请输入生日'}}
 					</view>
 				</uni-list-item>
 				<uni-list-item title="个人简介" link @click="toUserEdit('userEditRemark')">
@@ -46,6 +47,7 @@
 				</uni-list-item>
 			</uni-list>
 		</view>
+		<u-picker v-model="show" mode="time" @confirm="birthdaYconfirm" @cancel="birthdaYcancel"></u-picker>
 	</view>
 </template>
 
@@ -53,17 +55,34 @@
 	export default {
 		data() {
 			return {
-				date: '',
-				moblie: '',
-				birthday: '',
-				userRemark: '1123'
+				date: '', // 注册时间
+				moblie: '', // 手机号码
+				birthday: '', // 生日
+				userRemark: '1123', // 个人简介
+				imageUrl: '',
+				show: false
 			};
+		},
+		onShow() {
+
 		},
 		methods: {
 			toUserEdit(page) {
 				uni.navigateTo({
 					url: `../${page}/${page}`
 				})
+			},
+			// 修改生日
+			changeBirthday() {
+				this.show = true
+			},
+			birthdaYconfirm(e) {
+				console.log(e)
+				this.show = false
+				this.birthday = `${e.year}-${e.month}-${e.day}`
+			},
+			birthdaYcancel() {
+				this.show = false
 			}
 		}
 	}
