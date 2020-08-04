@@ -189,13 +189,6 @@
 			}
 		},
 		{
-			"path": "views/singlePage/pendingOrder/pendingOrder",
-			"style": {
-				"navigationBarTitleText": "订单详情"
-			}
-
-		},
-		{
 			"path": "views/singlePage/userEdit/userEdit",
 			"style": {
 				"navigationBarTitleText": "编辑资料"
