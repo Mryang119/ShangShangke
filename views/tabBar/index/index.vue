@@ -148,7 +148,6 @@
 </template>
 
 <script>
-	import uniNavBar from '../../../components/uni-nav-bar/uni-nav-bar.vue'
 	import position from './components/position.vue'
 	import more from './components/more.vue'
 	import shopItem from '@/src/publicComponents/daydayShop.vue'
@@ -174,7 +173,6 @@
 	} from '../../../src/api/homeApi/homeApi.js'
 	export default {
 		components: {
-			uniNavBar,
 			position,
 			more,
 			shopItem,
@@ -459,7 +457,6 @@
 	@font: PingFang SC;
 
 	.root_index {
-
 		// 自定义标题栏
 		.top_nvaBar_text {
 			font-size: 36rpx;
@@ -530,8 +527,7 @@
 			width: 100%;
 			padding: 20rpx 20rpx;
 			box-sizing: border-box;
-			background-color: #F6F6F6;
-
+			background-image: linear-gradient(to bottom, #FFFFFF, #F6F6F6) !important;
 			// 天天免费抢
 			.everyDayBob {
 				box-sizing: border-box;

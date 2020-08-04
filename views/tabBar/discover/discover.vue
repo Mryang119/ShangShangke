@@ -48,6 +48,7 @@
 <style lang="less" scoped>
 	.s_discover {
 		width: 750rpx;
+		background-color: #FFF;
 		.nav-bar {
 			border-bottom: 4rpx solid #EDEDED;
 		}
