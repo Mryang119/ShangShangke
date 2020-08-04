@@ -64,8 +64,8 @@
 		},
 		methods: {
 			isAcativy(index) {
-				console.log(index)
 				this.resultList[index].checked = !this.resultList[index].checked
+				console.log(index)
 			},
 			refundBtn() {
 				let list = [...this.resultList]
