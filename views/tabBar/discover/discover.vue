@@ -10,7 +10,7 @@
 				</view>
 			</uniNavBar>
 		</view>
-		<view class="shop-content" v-if="current===0">
+		<view class="shop-content" v-show="current===0">
 			<shop></shop>
 		</view>
 	</view>

@@ -54,13 +54,12 @@
 			computedList() {
 				// 切割数组
 				// 计算奇数列偶数列解决位置变换问题
-				this.cloneList = JSON.parse(JSON.stringify(this.showItemList))
-				console.log(this.cloneList)
-				for (let i = 0; i < this.cloneList.length; i++) {
+				const cloneList = JSON.parse(JSON.stringify(this.showItemList))
+				for (let i = 0; i < cloneList.length; i++) {
 					if (i % 2 !== 0) {
-						this.list1.push(this.cloneList[i])
+						this.list1.push(cloneList[i])
 					} else {
-						this.list2.push(this.cloneList[i])
+						this.list2.push(cloneList[i])
 					}
 				}
 			},

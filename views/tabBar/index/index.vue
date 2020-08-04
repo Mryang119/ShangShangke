@@ -209,7 +209,8 @@
 				status2: 'loading',
 
 				// 百度地图数据⬇
-				ak: 'qC1AHsQNj44vE3ctEIi4IXLZBgHYf33F',
+				ak: 'qC1AHsQNj44vE3ctEIi4IXLZBgHYf33F', // 企业ak
+				// ak: 'AQNjDWwRffaoqtGkNxfAQmwic9mtkS8w', // 个人ak
 				BMap: null,
 				markers: [],
 				latitude: '', // 经度

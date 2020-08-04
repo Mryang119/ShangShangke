@@ -1,4 +1,6 @@
 <template>
+	<!-- 注册页 -->
+	<!-- name:杨大锐 -->
 	<view class="s_register">
 		<view class="login-centent">
 			<view class="border login-input">

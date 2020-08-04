@@ -1,4 +1,5 @@
 <template>
+	<!-- name:杨大锐 -->
 	<!-- 限时秒杀 -->
 	<view class="s_timekillDetail" :style="{height:fatherHeight*2+'rpx'}">
 		<view class="top-title-contianer">
