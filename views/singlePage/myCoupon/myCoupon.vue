@@ -9,14 +9,14 @@
 			<image src="@/static/images/iconfont/couponBg.png"></image>
 			<view class="noCoupon">还没有卡券~</view>
 		</view>
-		<view class="useCoupon" v-for="(item,index) in couponList" :key="index">
+		<view class="useCoupon" v-for="(item,index) in couponArr" :key="index">
 			<view class="couponHeader">
 				<view class="headerImg">
 					<image src="@/static/images/Product/shangpintu.png"></image>
 				</view>
 				<view class="headerText">{{item.shopName}}</view>
 			</view>
-			<view class="coupon">
+			<view class="coupon" :style="item.state!==0 && item.state !==1 ? (item.state===2 ?'background:url(../../../static/images/Product/kaquanyishiyongBg.png) no-repeat 0% 0%/100% 100%':'background:url(../../../static/images/Product/kaquanyiguoqiBg.png) no-repeat 0% 0%/100% 100%') : '' ">
 				<!-- ￥100 -->
 				<view class="numCon">
 					<view class="context">￥</view>
@@ -30,7 +30,7 @@
 						<view class="fullTime">有效期至：{{item.fullTime}}</view>
 					</view>
 					<!-- 去使用 -->
-					<view class="toUse" @click="toShopDetail">去使用</view>
+					<view class="toUse" @click="toShopDetail" :style="item.state===2 || item.state===3 ? 'visibility:hidden':''">去使用</view>
 				</view>
 				<!-- 左上角商品类型 -->
 				<view class="goodsType">
@@ -60,25 +60,29 @@
 					couponNumber:'100',
 					fullNumber:'满1000元可用',
 					fullTime:'2020-06-31',
-					couponType:'全品类可用'
+					couponType:'全品类可用',
+					state:1    // 没用过
 				},{
 					shopName:'海底捞沃尔玛蓝山店',
 					couponNumber:'100',
 					fullNumber:'满1000元可用',
 					fullTime:'2020-06-31',
-					couponType:'全品类可用'
+					couponType:'全品类可用',
+					state:2    // 已使用
 				},{
 					shopName:'海底捞沃尔玛蓝山店',
 					couponNumber:'100',
 					fullNumber:'满1000元可用',
 					fullTime:'2020-06-31',
-					couponType:'全品类可用'
+					couponType:'全品类可用',
+					state:3    // 已过期
 				},{
 					shopName:'海底捞沃尔玛蓝山店',
 					couponNumber:'100',
 					fullNumber:'满1000元可用',
 					fullTime:'2020-06-31',
-					couponType:'全品类可用'
+					couponType:'全品类可用',
+					state:0    // 没用过
 				}]
 			}
 		},
@@ -91,6 +95,23 @@
 				uni.navigateTo({
 					url:'/views/singlePage/timeKillProductDetail/timeKillProductDetail'   // 点击去使用跳到商品详情
 				})
+			}
+		},
+		computed:{
+			couponArr(){
+				switch(this.current){
+					case 1:
+						const noUseCoupon = this.couponList.filter(item =>item.state ===1)
+						return noUseCoupon
+					case 2:
+						const usedCoupon = this.couponList.filter(item =>item.state ===2)
+						return usedCoupon
+					case 3:
+						const paseTimeCoupon = this.couponList.filter(item =>item.state ===3)
+						return paseTimeCoupon
+					default:
+						return this.couponList
+				}
 			}
 		}
 	}
@@ -239,6 +260,9 @@
 						line-height: 60rpx;
 						text-align: center;
 						color:rgba(255,47,47,1);
+						font-size:24rpx;
+						font-family:PingFang SC;
+						font-weight:400;
 					}
 				}
 		
