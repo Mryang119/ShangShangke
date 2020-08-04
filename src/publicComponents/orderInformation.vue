@@ -15,40 +15,54 @@
 			<span>订单编号</span>
 			<view class="orderNewsSerial">
 				<span>{{orderReference}}</span>
-				<view class="orderNewsCopy">复制</view>
+				<view class="orderNewsCopy" @click="cloneBtn(orderReference)">复制</view>
 			</view>
 		</view>
 		<view class="orderNewsName">
 			<span>下单时间</span>
 			<span>{{orderTime}}</span>
 		</view>
-		
+
 	</view>
 </template>
 
 <script>
-	export default{
-		props:{
-			orderNumber:{       // 订单数量
-				type:Number,
-				default:1
+	export default {
+		props: {
+			orderNumber: { // 订单数量
+				type: Number,
+				default: 1
 			},
-			orderNumPrice:{      //订单总价
-				type:String,
-				default:'79.00'
+			orderNumPrice: { //订单总价
+				type: String,
+				default: '79.00'
 			},
-			orderReference:{     // 订单编号
-				type:String,
-				default:'34828342376473'
+			orderReference: { // 订单编号
+				type: String,
+				default: '34828342376473'
 			},
-			orderTime:{           //下单时间
-				type:String,
-				default:'2020-09-09 12:30'
+			orderTime: { //下单时间
+				type: String,
+				default: '2020-09-09 12:30'
 			}
 		},
-		data(){
-			return{
-				
+		data() {
+			return {
+
+			}
+		},
+		methods: {
+			cloneBtn(orderReference) {
+				uni.setClipboardData({
+					data: orderReference,
+					success: () => {
+						uni.showToast({
+							title: '复制成功',
+							duration:800,
+							icon:'none'
+						})
+					}
+				})
 			}
 		}
 	}
@@ -62,7 +76,7 @@
 		background: #FFFFFF;
 		padding: 0 30rpx;
 		margin-top: 20rpx;
-	
+
 		.orderNewsText {
 			width: 690rpx;
 			height: 98rpx;
@@ -74,7 +88,7 @@
 			display: flex;
 			align-items: center;
 		}
-	
+
 		.orderNewsName {
 			width: 690rpx;
 			height: 68rpx;
@@ -86,19 +100,19 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-	
+
 			.orderNewsSerial {
 				width: 298rpx;
 				height: 40rpx;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-	
+
 				.orderNewsCopy {
 					font-size: 28rpx;
 					font-family: PingFang SC;
 					font-weight: bold;
-					line-height: 32rpx;
+					line-height: 34rpx;
 					color: rgba(51, 51, 51, 1);
 				}
 			}
