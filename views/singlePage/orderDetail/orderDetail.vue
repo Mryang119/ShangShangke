@@ -54,7 +54,8 @@
 			<navigator class="refundBtn" :url="applyRefund">申请退款</navigator>
 		</view>
 		<u-modal v-model="show" show-cancel-button="true" :content="content" :show-title="false" confirm-color="#007AFF"
-		 cancel-color="#007AFF" :content-style="{color:'#000000',fontSize:'32rpx',fontWeight:'bold'}" @confirm="confirm">
+		 cancel-color="#007AFF" :content-style="{color:'#000000',fontSize:'32rpx',fontWeight:'bold'}" @confirm="confirm"
+		 :cancel-style="{borderRadius:'2rpx solid rgba(60,60,67,0.29)'}" :confirm-style="{borderRadius:'2rpx solid rgba(60,60,67,0.29)'}">
 		</u-modal>
 		<!-- 取消订单提示 -->
 		<u-toast ref="uTips" />
