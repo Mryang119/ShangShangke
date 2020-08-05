@@ -92,7 +92,7 @@
 			toSpellGroupDetail(item, index) {
 				let spellGroupType = this.userList[index].spellGroupType
 				if (spellGroupType) {
-					uni.redirectTo({
+					uni.navigateTo({
 						url: `/views/singlePage/spellGroupDetail/spellGroupDetail?type=${spellGroupType}`
 					})
 				}
