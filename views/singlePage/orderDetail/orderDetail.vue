@@ -25,11 +25,11 @@
 					<view class="useText">待使用</view>
 				</view>
 				<view class="code">
-					<image src="../../../static/images/iconfont/erweima.png"></image>
+					<image src="@/static/images/iconfont/erweima.png"></image>
 					<view class="textUse">（请到店出示二维码使用）</view>
 				</view>
 				<view class="codeNumber">{{codeNumber}}</view>
-				<view class="cancelCon"><view class="cancelIcon" @click="closeCodeModal"><image src="../../../static/images/iconfont/guanbiBtn.png"></image></view></view>
+				<view class="cancelCon"><view class="cancelIcon" @click="closeCodeModal"><image src="@/static/images/iconfont/guanbiBtn.png"></image></view></view>
 			</view>
 		</view>
 		<!-- 适用门店 -->
@@ -51,7 +51,7 @@
 		</view>
 		<!-- 待使用——申请退款— -->
 		<view class="applyRefund" v-if="type==='待使用'">
-			<navigator class="refundBtn" :url="applyRefund">申请退款</navigator>
+			<view class="refundBtn" @click="applyRefund">申请退款</view>
 		</view>
 		<u-modal v-model="show" show-cancel-button="true" :content="content" :show-title="false" confirm-color="#007AFF"
 		 cancel-color="#007AFF" :content-style="{color:'#000000',fontSize:'32rpx',fontWeight:'bold'}" @confirm="confirm"
@@ -79,8 +79,7 @@
 				isShow:false,   // 出示二维码状态，默认为false（不展示）
 				cashCoupon:'100元代金券',  //二维码代金券
 				useTime:'有效期至:2020-06-09',  // 二维码有效期
-				codeNumber:'74838273',   //二维码编号
-				applyRefund:'../../singlePage/applyRefund/applyRefund'  //跳转申请退款页面
+				codeNumber:'74838273'   //二维码编号
 			}
 		},
 		components: {
@@ -93,8 +92,8 @@
 				this.$refs.uTips.show({
 					title: '订单已成功取消'
 				});
-				this.state=false
-				this.cancelState = true
+				this.state=false		//底部取消订单和去付款模块隐藏
+				this.cancelState = true    // 状态改变，待付款订单改为已取消订单
 				
 			},
 			open() {          // 点击取消订单出现提示
@@ -108,6 +107,11 @@
 			},
 			closeCodeModal(){      // 点击关闭二维码模态框
 				this.isShow = false
+			},
+			applyRefund(){      // 申请退款
+				uni.navigateTo({
+					url:'../../singlePage/applyRefund/applyRefund'  //跳转申请退款页面
+				})
 			}
 		},
 		onLoad(options) {
