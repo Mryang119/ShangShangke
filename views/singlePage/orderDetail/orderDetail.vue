@@ -4,7 +4,7 @@
 	<!-- 最外层 -->
 	<view class="orderContainer">
 		<!-- 待付款订单 -->
-		<view class="noPay">
+		<view class="noPay" :style="type==='已完成' ? 'background:url(../../../static/images/Product/wodedingdanyishiyongBg.png) no-repeat 0% 0%/100% 100%' : ''">
 			<view class="noPayText" v-if="type==='待付款'">待付款订单</view>
 			<view class="noPayText" v-if="type==='待使用'">待使用订单</view>
 			<view class="noPayText" v-if="type==='已完成'">已使用订单</view>
@@ -72,7 +72,7 @@
 				show: false,
 				content: '是否取消订单', // 取消订单模态框文本
 				orderNumPrice: '79.00', //订单总价
-				state:true,
+				state:true,   // 底部取消订单和去付款样式，默认为显示
 				type:'' ,//我的订单传过来的字段
 				isShow:false,   // 出示二维码状态，默认为false（不展示）
 				cashCoupon:'100元代金券',  //二维码代金券
@@ -127,7 +127,7 @@
 			width: 750rpx;
 			padding-left: 30rpx;
 			background: #FFFFFF;
-
+			height: 382rpx;
 			.noPayText {
 				width: 690rpx;
 				height: 104rpx;
