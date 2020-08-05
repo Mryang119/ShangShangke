@@ -20,8 +20,8 @@
 				</view>
 				<view class="residue-time-container">
 					<text :style="{marginRight:'12rpx'}">剩余</text>
-					<u-count-down separator-color="#FFF" font-size="28" :show-days="false" color="#FFF" :timestamp="residueTime"
-					 bg-color="rgba(255,255,255,0)" :autoplay="true"></u-count-down>
+					<u-count-down separator-color="#FFF" font-size="28" :show-days="false" color="#FFF" :timestamp="timestamp"
+					 bg-color="rgba(255,255,255,0)"></u-count-down>
 				</view>
 			</scroll-view>
 		</view>
@@ -72,7 +72,7 @@
 				}, ],
 				current: 0,
 				fatherHeight: 0,
-				residueTime: 0
+				timestamp: -1
 			};
 		},
 		methods: {
@@ -127,10 +127,10 @@
 			// 1 秒=1000 毫秒
 			let date = new Date()
 			let m = date.getMinutes() // 当前分钟
-			// let s = date.getSeconds() // 当前秒
+			let s = date.getSeconds() // 当前秒
 			let hoursMili = (60 - m)
-			this.residueTime = hoursMili * 60
-			console.log(hoursMili)
+			this.timestamp = hoursMili * 60 + (60 - s)
+			console.log(this.timestamp)
 		}
 	}
 </script>

@@ -2,10 +2,10 @@
 	<!-- 编辑页 -->
 	<!-- name:杨大锐 -->
 	<view class="s_userEdit">
-
+		<!-- //:file-list="fileList" -->
 		<view class="head-content">
-			<u-image shape="circle" width="156" height="156" src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2949404657,2698831741&fm=26&gp=0.jpg"></u-image>
-			<view class="change-head">
+			<u-image shape="circle" width="156" height="156" :src="imageUrl"></u-image>
+			<view class="change-head" @click="changeUserImg">
 				更改头像
 			</view>
 		</view>
@@ -27,7 +27,7 @@
 			<uni-list>
 				<uni-list-item title="昵称" link @click="toUserEdit('userEditName')">
 					<view slot="right" class="right-text-black">
-						吴亦凡
+						{{userName}}
 					</view>
 				</uni-list-item>
 				<uni-list-item title="性别" link @click="changeSex">
@@ -62,20 +62,46 @@
 </template>
 
 <script>
+	import {
+		upload,
+		updateImgAddr
+	} from '@/src/api/userApi/userApi.js'
+	import {
+		isLogin
+	} from '@/src/utils/index.js'
 	export default {
 		data() {
 			return {
+				userName: '',
 				date: '', // 注册时间
 				moblie: '', // 手机号码
 				birthday: '', // 生日
 				userRemark: '1123', // 个人简介
-				imageUrl: '',
+				imageUrl: 'https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2949404657,2698831741&fm=26&gp=0.jpg',
 				sex: "男",
 				show: false,
 				sexSelectBox: false
 			};
 		},
 		onShow() {
+			if (isLogin()) {
+				try {
+					let loginDatas = uni.getStorageSync('loginDatas').putCustomer
+					this.userName = loginDatas.custName
+					this.moblie = loginDatas.moblie
+					this.date = loginDatas.regDate
+					this.imageUrl = loginDatas.imgAddr
+				} catch (e) {
+					uni.showModal({
+						title: '错误',
+						content: `未知错误，请重新登录`
+					})
+				}
+			} else {
+				uni.switchTab({
+					url: '../../tabBar/index/index'
+				})
+			}
 
 		},
 		methods: {
@@ -103,6 +129,39 @@
 			changeSexItem(v) {
 				this.sexSelectBox = false
 				this.sex = v
+			},
+			changeUserImg() {
+				//  吊起选择图片
+				uni.chooseImage({
+					count: 1,
+					success: (res) => {
+						console.log(res)
+						this.imageUrl = res.tempFilePaths[0]
+						uni.uploadFile({
+							url: "http://47.113.113.254:8081/backstage/file/upload",
+							name: 'file',
+							filePath: this.imageUrl,
+							success: async (res2) => {
+								// 图片在服务器地址
+								let data = JSON.parse(res2.data)
+								let imgAddr = data.data[0]
+								let res3 = await updateImgAddr({
+									imgAddr
+								})
+								// 更新一下本地缓存
+								let newUserDatas = uni.getStorageSync('loginDatas')
+								newUserDatas.putCustomer.imgAddr = imgAddr
+								uni.setStorageSync('loginDatas', newUserDatas)
+							},
+							fail(err) {
+								console.log(err)
+							}
+						})
+					},
+					fail: (error) => {
+						console.log(error)
+					}
+				})
 			}
 		}
 	}

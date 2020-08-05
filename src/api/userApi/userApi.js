@@ -1,4 +1,9 @@
 import http from '../../http/index.js'
+// 检测是否登录
+import {
+	isLogin
+} from '../../utils/index.js'
+
 
 // 注册验证码
 function registerCustomer(data) {
@@ -47,30 +52,63 @@ function loginByMobileNoCode(data) {
 // 微信登录环境   /backstages/sysuser/customerLogin
 function customerLogin(data) {
 	return http({
-		url:'/backstages/sysuser/customerLogin',
+		url: '/backstages/sysuser/customerLogin',
 		data,
-		method:'post'
+		method: 'post'
 	})
 }
 
 // 获取个人信息  /dby/homeInfo/getUserInfo
 function getUserInfo(data) {
 	return http({
-		url:'/dby/homeInfo/getUserInfo',
+		url: '/dby/homeInfo/getUserInfo',
 		data,
-		method:'post'
+		method: 'post'
 	})
 }
 
 // 获取订单列表  dby/homeInfo/getCustOrderInfo
 function getCustOrderInfo(data) {
 	return http({
-		url:'dby/homeInfo/getCustOrderInfo',
+		url: 'dby/homeInfo/getCustOrderInfo',
 		data,
-		method:'post'
+		method: 'post'
 	})
 }
 
+// backstage/file/upload  
+// 图片上传接口
+function upload(data) {
+	return http({
+		url: 'backstage/file/upload',
+		data,
+		method: 'post'
+	})
+}
+
+// 修改用户资料接口 dby/homeInfo/updateImgAddr
+
+function updateImgAddr(data) {
+	
+	if (isLogin()) {
+		let loginDatas = uni.getStorageSync('loginDatas')
+		
+		return http({
+			data:{
+				...data,
+				mobile:loginDatas.mobile
+			},
+			method: 'post',
+			url: "dby/homeInfo/updateImgAddr"
+		})
+	} else {
+		uni.showModal({
+			title: '请求出错',
+			content: `您未登录`
+		})
+	}
+
+}
 export {
 	registerCustomer,
 	registerCust,
@@ -78,5 +116,7 @@ export {
 	loginByMobileNoCode,
 	customerLogin,
 	getUserInfo,
-	getCustOrderInfo
+	getCustOrderInfo,
+	upload,
+	updateImgAddr
 }

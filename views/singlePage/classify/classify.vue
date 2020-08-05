@@ -28,7 +28,7 @@
 						</view>
 						<view class="item-button-container">
 							<navigator class="item-button" hover-class="hover-button" v-for="(item1,index1) in item.children" :key="index1"
-								:url="'../classifyDetail/classifyDetail?className='+item1">
+							 :url="'../classifyDetail/classifyDetail?className='+item1">
 								{{item1}}
 							</navigator>
 						</view>
@@ -92,6 +92,7 @@
 		width: 100%;
 		height: 100%;
 		background-color: #FFF;
+
 		.searbar-content {
 			box-sizing: border-box;
 
@@ -149,7 +150,7 @@
 				// 右侧分类
 				height: 100%;
 				box-sizing: border-box;
-				padding: 30rpx 36rpx 30rpx 34rpx;
+				padding: 30rpx 15rpx 30rpx 34rpx;
 
 				// 广告区域
 				.bannerAd {
@@ -180,7 +181,6 @@
 					.item-button-container {
 						display: flex;
 						flex-wrap: wrap;
-						margin-left: -14rpx;
 
 						.item-button {
 							margin-bottom: 14rpx;
@@ -192,7 +192,7 @@
 							font-size: 24rpx;
 							text-align: center;
 							line-height: 60rpx;
-							margin-right: 14rpx;
+							margin-right: 13rpx;
 						}
 
 						.hover-button {

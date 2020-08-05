@@ -161,28 +161,30 @@
 		async onShow() {
 			if (isLogin()) { // 登录了
 				this.loginStatus = true
-				const loginDatas = uni.getStorageSync('loginDatas')
-				// 判断缓存有否
-				let userDatas = uni.getStorageSync('userDatas')
-				if (userDatas && JSON.stringify(userDatas) != '{}') { // 缓存取
-					this.userName = userDatas.userName
-					this.userImgUrl = userDatas.userImgUrl
-				} else {
-					// 请求取
-					try {
-						let res = await getUserInfo({
-							mobile: loginDatas.mobile
-						})
-						this.userName = res.data.data.pntCust.custName
-						this.userImgUrl = res.data.data.pntCust.imgAddr
-						uni.setStorageSync('userDatas', {
-							userName: res.data.data.pntCust.custName || "",
-							userImgUrl: res.data.data.pntCust.imgAddr || ""
-						})
-					} catch (e) {
-						console.log('获取个人信息失败')
-					}
-				}
+				const loginDatas = uni.getStorageSync('loginDatas').putCustomer
+				this.userName = loginDatas.custName
+				this.userImgUrl = loginDatas.imgAddr
+				// // 判断缓存有否
+				// let userDatas = uni.getStorageSync('userDatas')
+				// if (userDatas && JSON.stringify(userDatas) != '{}') { // 缓存取
+				// 	this.userName = userDatas.userName
+				// 	this.userImgUrl = userDatas.userImgUrl
+				// } else {
+				// 	// 请求取
+				// 	try {
+				// 		let res = await getUserInfo({
+				// 			mobile: loginDatas.mobile
+				// 		})
+				// 		this.userName = res.data.data.pntCust.custName
+				// 		this.userImgUrl = res.data.data.pntCust.imgAddr
+				// 		uni.setStorageSync('userDatas', {
+				// 			userName: res.data.data.pntCust.custName || "",
+				// 			userImgUrl: res.data.data.pntCust.imgAddr || ""
+				// 		})
+				// 	} catch (e) {
+				// 		console.log('获取个人信息失败')
+				// 	}
+				// }
 			} else {
 				console.log('未登录')
 				this.loginStatus = false
