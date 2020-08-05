@@ -9,7 +9,9 @@
 				<view class="applyStoreDoorplate">{{shopPlace}}</view>
 			</view>
 		</view>
-		<image class="applyStorePhone" src="@/static/images/iconfont/phone.png" @click="takePhone"></image>
+		<view class="applyStoreCon" @click="takePhone">
+			<image class="applyStorePhone" src="@/static/images/iconfont/phone.png" ></image>
+		</view>
 	</view>
 </template>
 
@@ -45,6 +47,7 @@
 				// 		})
 				// 	}
 				// })
+				console.log('拨打商家电话')
 			}
 		}
 	}
@@ -92,11 +95,17 @@
 			}
 		}
 		
-		// 电话
-		.applyStorePhone {
-			width: 40rpx;
-			height: 44.46rpx;
+		.applyStoreCon{
+			width: 60rpx;
+			height: 100rpx;
+			line-height: 100rpx;
+			// 电话
+			.applyStorePhone {
+				width: 40rpx;
+				height: 44.46rpx;
+			}
 		}
+		
 	}
 		
 </style>

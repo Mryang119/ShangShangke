@@ -132,9 +132,11 @@
 			},
 			toCollectShop(item,index){      // 跳转到收藏的商家主页
 				// 接口
+				console.log('跳转到收藏的商家店铺')
 			},
 			toCollectShopDetail(item,index){        // 跳转到收藏的单品
 				// 接口
+				console.log('跳转到收藏的商品')
 			}
 			
 		},

@@ -6,7 +6,9 @@
 			<view class="storeAddress">
 				<view class="addrImg"><image src="../../../static/images/iconfont/dingwei.png"></image></view>
 				<view class="cityName">{{cityName}}</view>
-				<view class="iconImg"><image src="../../../static/images/iconfont/xiajiantoubig.png"></image></view>
+				<view class="iconImg" @click="toggle()">
+					<image src="../../../static/images/iconfont/xiajiantoubig.png"></image>
+				</view>
 			</view>
 			<shopAddressPhone v-for="(item,index) in 5" :key="index" />
 		</view>
@@ -21,6 +23,13 @@
 				
 			}
 			
+		},
+		methods:{
+			toggle(){
+				uni.navigateTo({
+					url:'../position/position'
+				})
+			}
 		},
 		components:{
 			shopAddressPhone

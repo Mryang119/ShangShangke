@@ -80,7 +80,7 @@
 		},
 		methods:{
 			checkMySpellGroup(){
-				uni.navigateTo({
+				uni.navigateBack({
 					url:'/views/singlePage/mySpellGroup/mySpellGroup'
 				})
 			}
