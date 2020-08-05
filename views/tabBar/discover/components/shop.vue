@@ -52,7 +52,7 @@
 
 		.tabs-content {
 			width: 100%;
-			padding-left: 155rpx;
+			padding-left: 158rpx;
 			padding-right: 168rpx;
 		}
 	}

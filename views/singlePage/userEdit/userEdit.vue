@@ -2,7 +2,6 @@
 	<!-- 编辑页 -->
 	<!-- name:杨大锐 -->
 	<view class="s_userEdit">
-		<!-- //:file-list="fileList" -->
 		<view class="head-content">
 			<u-image shape="circle" width="156" height="156" :src="imageUrl"></u-image>
 			<view class="change-head" @click="changeUserImg">

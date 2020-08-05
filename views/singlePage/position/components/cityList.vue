@@ -2,9 +2,9 @@
 	<view class="c_cityList">
 		<u-modal v-model="show" :content="content" @cancel="cancel" @confirm="confirm"></u-modal>
 		<u-index-list :scrollTop="scrollTop">
-			<view v-for="(item, index) in indexList" :key="item">
+			<view v-for="(item, index) in indexList" :key="item.key">
 				<u-index-anchor :index="item.key" />
-				<view class="list-cell" v-for="(item1,index1) in item.children" :key="item1" @click="save(item1.name,item1.lat,item1.lng)">
+				<view class="list-cell" v-for="(item1,index1) in item.children" :key="item1.name" @click="save(item1.name,item1.lat,item1.lng)">
 					{{item1.name}}
 				</view>
 			</view>
@@ -60,6 +60,7 @@
 			}
 		},
 		created() {
+			// 转化数据格式方便渲染
 			const cityList = this.$store.state.global.globalData.cityList
 			cityList.forEach((item, index) => {
 				Object.keys(item).forEach((k) => {
@@ -69,7 +70,6 @@
 					})
 				})
 			})
-			console.log(this.indexList)
 		}
 	}
 </script>

@@ -92,7 +92,6 @@ function updateImgAddr(data) {
 	
 	if (isLogin()) {
 		let loginDatas = uni.getStorageSync('loginDatas')
-		
 		return http({
 			data:{
 				...data,

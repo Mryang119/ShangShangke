@@ -29,7 +29,7 @@
 		registerCust,
 		loginByMobile,
 		customerLogin
-	} from '../../../src/api/userApi/userApi.js'
+	} from '@/src/api/userApi/userApi.js'
 	export default {
 		data() {
 			return {
