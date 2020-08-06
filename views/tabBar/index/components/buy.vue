@@ -24,11 +24,9 @@
 	</view>
 </template>
 <script>
-	import uniLoadMore from "@/components/uni-load-more/uni-load-more.vue"
 	import show from './show.vue'
 	export default {
 		components: {
-			uniLoadMore,
 			show
 		},
 		data() {

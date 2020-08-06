@@ -13,6 +13,7 @@
 		<view class="shop-content" v-show="current===0">
 			<shop></shop>
 		</view>
+		<store-swiper></store-swiper>
 	</view>
 </template>
 
@@ -27,18 +28,16 @@
 		data() {
 			return {
 				current: 0,
-				current2:0,
-				list:[
-					{
-						name:'关注'
-					},{
-						name:'附近'
-					}
-				]
+				current2: 0,
+				list: [{
+					name: '关注'
+				}, {
+					name: '附近'
+				}]
 			}
 		},
-		methods:{
-			change(i){
+		methods: {
+			change(i) {
 				this.current2 = i
 			}
 		}
@@ -49,9 +48,11 @@
 	.s_discover {
 		width: 750rpx;
 		background-color: #FFF;
+
 		.nav-bar {
 			border-bottom: 4rpx solid #EDEDED;
 		}
+
 		.tabs-content {
 			width: 92%;
 			display: flex;
@@ -69,8 +70,9 @@
 				color: #24A7FF;
 			}
 		}
+
 		.shop-content {
-			
+
 			width: 750rpx;
 		}
 	}
