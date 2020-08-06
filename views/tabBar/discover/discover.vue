@@ -13,7 +13,6 @@
 		<view class="shop-content" v-show="current===0">
 			<shop></shop>
 		</view>
-		<store-swiper></store-swiper>
 	</view>
 </template>
 

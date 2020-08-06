@@ -1,11 +1,8 @@
 <template>
 	<!-- 商城轮播图组件 -->
+	<!-- name:杨大锐 -->
 	<view class="store-swiper-root">
-		<swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="2000" :duration="500">
-			<swiper-item v-for="(item,index) in list" :key="index">
-				<view class="swiper-item uni-bg-red" :style="{backgroundColor:item}">{{item}}</view>
-			</swiper-item>
-		</swiper>
+		<u-swiper :list="list"></u-swiper>
 	</view>
 </template>
 
@@ -16,8 +13,18 @@
 				type: Array,
 				required: true,
 				default: function() {
-					return [
-						'red', 'green', 'blue'
+					return [{
+							image: 'https://tse1-mm.cn.bing.net/th/id/OIP.4rApcfYm_6jCLIjnilPijAHaFm?w=275&h=208&c=7&o=5&dpr=1.25&pid=1.7',
+							title: '昨夜星辰昨夜风，画楼西畔桂堂东'
+						},
+						{
+							image: 'https://tse4-mm.cn.bing.net/th/id/OIP.ex_lH4yE1ZFHFMTvyVDt6AFUC3?w=340&h=183&c=7&o=5&dpr=1.25&pid=1.7',
+							title: '身无彩凤双飞翼，心有灵犀一点通'
+						},
+						{
+							image: 'https://tse3-mm.cn.bing.net/th/id/OIP.GRODwVbALIOjHKHdvlUjdwHaFj?w=257&h=193&c=7&o=5&dpr=1.25&pid=1.7',
+							title: '谁念西风独自凉，萧萧黄叶闭疏窗，沉思往事立残阳'
+						}
 					]
 				}
 			}
@@ -26,15 +33,5 @@
 </script>
 
 <style lang="less" scoped>
-	.store-swiper-root {
-		.swiper {
-			width: 750rpx;
-			height: 300rpx;
-
-			.swiper-item {
-				width: 750rpx;
-				height: 300rpx;
-			}
-		}
-	}
+	.store-swiper-root {}
 </style>

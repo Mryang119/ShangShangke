@@ -237,6 +237,12 @@
 			"style": {
 				"navigationBarTitleText": "个人简介"
 			}
+		},
+		{
+			"path": "views/storeView/storeView",
+			"style": {
+				"navigationBarTitleText": "店铺首页"
+			}
 		}
 	],
 	"globalStyle": {
@@ -281,7 +287,7 @@
 		"autoscan": true,
 		"custom": { // 匹配node_modules内的vue文件
 			"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue",
-			"^store-(.*)":"@/store-modules/components/store-$1/store-$1.vue"
+			"^store-(.*)": "@/store-modules/components/store-$1/store-$1.vue"
 		}
 	}
 }
