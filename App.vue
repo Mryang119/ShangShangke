@@ -15,10 +15,11 @@
 <style lang="scss">
 	/* @import '@/uview-ui/index.scss'; */
 	@import "uview-ui/index.scss";
+
 	.save-button {
 		width: 690rpx;
 		height: 82rpx;
-		border-radius:12rpx;
+		border-radius: 12rpx;
 		background-color: #24A7FF;
 		text-align: center;
 		line-height: 82rpx;
@@ -26,11 +27,21 @@
 		font-weight: bold;
 		font-size: 32rpx;
 	}
+
+	// 页面背景颜色
 	page {
 		background-color: #F6F6F6;
 		// background-image: linear-gradient(to bottom, #FFFFFF, #F6F6F6) !important;
 	}
 
+	// 吸顶类名
+	.sticky {
+		position: fixed !important;
+		top: 0;
+		left: 0;
+		z-index: 999;
+	}
+	
 	.uni-navbar {
 		.uni-navbar--border.uni-navbar--border.data-v-4afea59e {
 			border-color: #FFFFFF !important;

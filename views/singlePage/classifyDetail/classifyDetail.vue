@@ -8,58 +8,59 @@
 		<view class="banner-cotent">
 			<image class="img" src="@/static/images/Product/fenleiBanner.png" mode=""></image>
 		</view>
-		<u-sticky offset-top="0">
-			<view class="filter-container">
-				<view class="filter-box">
-					<view class="filter-line">
-						<view class="filter-item className" @click="dipatch('className','classification')" :class="{'active':isActiveForm.className}">
-							<view>分类
-								<u-icon name="arrow-down" v-if="!isActiveForm.className"></u-icon>
-								<u-icon name="arrow-up" v-else></u-icon>
-							</view>
-						</view>
-						<view class="filter-item nearbys" @click="dipatch('nearbys','nearbys')" :class="{'active':isActiveForm.nearbys}">
-							<view>附近
-								<u-icon name="arrow-down" v-if="!isActiveForm.nearbys"></u-icon>
-								<u-icon name="arrow-up" v-else></u-icon>
-							</view>
-						</view>
-						<view class="filter-item smartSort" @click="dipatch('smartSort','smartSort')" :class="{'active':isActiveForm.smartSort}">
-							<view>智能排序
-								<u-icon name="arrow-down" v-if="!isActiveForm.smartSort"></u-icon>
-								<u-icon name="arrow-up" v-else></u-icon>
-							</view>
-						</view>
-						<view class="filter-item filters" @click="dipatch('filters','filters')" :class="{'active':isActiveForm.filters}">
-							<view>筛选
-								<u-icon name="arrow-down" v-if="!isActiveForm.filters"></u-icon>
-								<u-icon name="arrow-up" v-else></u-icon>
-							</view>
+		<!-- 筛选条 -->
+		<view class="filter-container" id="sticky" :class="{'sticky':isFixed}">
+			<view class="filter-box">
+				<view class="filter-line">
+					<view class="filter-item className" @click="dipatch('className','classification')" :class="{'active':isActiveForm.className}">
+						<view>分类
+							<u-icon name="arrow-down" v-if="!isActiveForm.className"></u-icon>
+							<u-icon name="arrow-up" v-else></u-icon>
 						</view>
 					</view>
-					<!-- Popup -->
-					<popup :show="show" v-on:input="show = $event" :top="92" :elScrollTop="elScrollTop">
-						<classification v-if="currentComponent==='classification'"></classification>
-						<nearby v-else-if="currentComponent==='nearbys'"></nearby>
-						<smartSort v-else-if="currentComponent==='smartSort'"></smartSort>
-						<filters v-else-if="currentComponent==='filters'"></filters>
-					</popup>
+					<view class="filter-item nearbys" @click="dipatch('nearbys','nearbys')" :class="{'active':isActiveForm.nearbys}">
+						<view>附近
+							<u-icon name="arrow-down" v-if="!isActiveForm.nearbys"></u-icon>
+							<u-icon name="arrow-up" v-else></u-icon>
+						</view>
+					</view>
+					<view class="filter-item smartSort" @click="dipatch('smartSort','smartSort')" :class="{'active':isActiveForm.smartSort}">
+						<view>智能排序
+							<u-icon name="arrow-down" v-if="!isActiveForm.smartSort"></u-icon>
+							<u-icon name="arrow-up" v-else></u-icon>
+						</view>
+					</view>
+					<view class="filter-item filters" @click="dipatch('filters','filters')" :class="{'active':isActiveForm.filters}">
+						<view>筛选
+							<u-icon name="arrow-down" v-if="!isActiveForm.filters"></u-icon>
+							<u-icon name="arrow-up" v-else></u-icon>
+						</view>
+					</view>
 				</view>
-
+				<!-- Popup -->
+				<popup :show="show" v-on:input="show = $event" :top="92" :elScrollTop="elScrollTop">
+					<classification v-if="currentComponent==='classification'"></classification>
+					<nearby v-else-if="currentComponent==='nearbys'"></nearby>
+					<smartSort v-else-if="currentComponent==='smartSort'"></smartSort>
+					<filters v-else-if="currentComponent==='filters'"></filters>
+				</popup>
 			</view>
-		</u-sticky>
-		<view class="box" :style="{width:750+'rpx',height:9999+'rpx'}"></view>
+		</view>
 	</view>
 
 </template>
 
 <script>
+	// 组件
 	import popup from './components/popup.vue'
 	import classification from './components/classification.vue'
 	import nearby from './components/nearby.vue'
 	import smartSort from './components/smartSort.vue'
 	import filters from './components/filters.vue'
+	// 函数复用
+	import mixin from '@/src/mixin/mixin.js'
 	export default {
+		mixins: [mixin],
 		components: {
 			popup,
 			classification,
@@ -110,7 +111,7 @@
 				}
 			}
 		},
-		onLoad(e){
+		onLoad(e) {
 			console.log(e)
 		}
 	}

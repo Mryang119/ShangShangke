@@ -2,12 +2,14 @@
 	<!-- 商城轮播图组件 -->
 	<!-- name:杨大锐 -->
 	<view class="store-swiper-root">
-		<u-swiper :list="list"></u-swiper>
+		<u-swiper :list="list" @click="toDetail"></u-swiper>
 	</view>
 </template>
 
 <script>
+	import mixin from '../../libs/mixin.js'
 	export default {
+		mixins:[mixin],
 		props: {
 			list: {
 				type: Array,
