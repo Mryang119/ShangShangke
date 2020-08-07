@@ -1,11 +1,11 @@
 <template>
 	<!-- 自由宫格 -->
 	<view class="store-freedom-grid-root">
-		<view class="input-content">
+		<!-- <view class="input-content">
 			<input placeholder="输入行" v-model="row" type="number">
 			<input placeholder="输入列" v-model="column" type="number">
 			<input placeholder="输入元素数量" type="number" v-model="els">
-		</view>
+		</view> -->
 		<view class="store-freedom-grid-padding-box">
 			<view class="store-freedom-grid-content" :style="{
 				'grid-template-columns': `repeat(${column},${scaleGridItemWidth}rpx)`,
@@ -51,9 +51,9 @@
 		// },
 		data() {
 			return {
-				row: '',
-				column: '',
-				els: '',
+				row: 2,
+				column: 4,
+				els: 8,
 				elList: []
 			}
 		},
