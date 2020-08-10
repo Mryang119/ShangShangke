@@ -81,7 +81,7 @@
 					<image class="myLoginEstimateImg" src="@/static/images/iconfont/more.png"></image>
 				</view>
 				<u-line color="#F3F3F3" length="325rpx" margin="0 26rpx" />
-				<view class="myLoginEstimateLi">
+				<view class="myLoginEstimateLi" @click="navigateTo('../../singlePage/myTidings/myTidings')">
 					<span class="myLoginEstimateText">我的动态</span>
 					<image class="myLoginEstimateImg" src="@/static/images/iconfont/more.png"></image>
 				</view>

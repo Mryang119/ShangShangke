@@ -243,6 +243,12 @@
 			"style": {
 				"navigationBarTitleText": "店铺首页"
 			}
+		},
+		{
+			"path": "views/singlePage/myTidings/myTidings",
+			"style": {
+				"navigationBarTitleText": "我的动态"
+			}
 		}
 	],
 	"globalStyle": {
