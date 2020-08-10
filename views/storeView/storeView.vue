@@ -3,29 +3,34 @@
 	<!-- name:杨大锐 -->
 	<view class="store-index-root">
 		<!-- 轮播图 -->
-		<view class="store-modules-content" :style="{order:findPackType(4)}">
+		<view class="store-modules-content">
 			<store-swiper></store-swiper>
 		</view>
 		<!-- 商户广告 -->
-		<view class="store-modules-content" :style="{order:findPackType(5)}">
+		<view class="store-modules-content">
 			<store-banner></store-banner>
 		</view>
 		<!-- 标签栏 -->
-		<view class="store-modules-content" :style="{order:findPackType(3)}">
+		<view class="store-modules-content">
 			<store-freedom-grid></store-freedom-grid>
 		</view>
 		<!-- 图文一大两小 -->
-		<view class="store-modules-content" :style="{order:findPackType(10)}">
+		<view class="store-modules-content">
 			<store-image-text></store-image-text>
 		</view>
 		<!-- 横向滚动展示商品组件 -->
 		<view class="store-modules-content">
 			<store-scroll-x></store-scroll-x>
 		</view>
+		<!-- tabs栏 -->
+		<view class="store-modules-content">
+			<store-tabs></store-tabs>
+		</view>
 	</view>
 </template>
 
 <script>
+	// :style="{order:findPackType(3)}" 排序
 	export default {
 		data() {
 			return {

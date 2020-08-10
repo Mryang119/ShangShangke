@@ -61,10 +61,9 @@
 		}
 
 		.product-name {
-			width: 218rpx;
+			width: 90%;
 			margin-bottom: 16rpx;
 			word-break: break-all;
-			height: 82rpx;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			display: -webkit-box;
