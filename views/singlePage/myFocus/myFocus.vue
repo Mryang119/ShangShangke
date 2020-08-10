@@ -13,7 +13,7 @@
 		</view>
 		<!-- 未关注列表 -->
 		<view class="myFocusBg" v-if="userList.length=== 0">
-			<image src="../../static/image/1.png"></image>
+			<image src="../../../static/images/iconfont/myFocusBg.png"></image>
 			<view class="noFocus">还没有相关数据~</view>
 		</view>
 		<view class="userDetail" v-for="(item,index) in userList" :key="index">
@@ -69,27 +69,7 @@
 						userDescribe: '吃吃喝喝玩玩乐乐大碗宽面', // 用户介绍
 						state: true // 默认得状态（样式/按钮）
 					}
-				],
-				userList:[
-					{
-						userImg: '/static/images/tabBarImage/myLoginHeader.png', // 用户头像
-						userName: '吴亦凡', //用户名字
-						userDescribe: '吃吃喝喝玩玩乐乐大碗宽面', // 用户介绍
-						state: true // 默认得状态（样式/按钮）
-					},
-					{
-						userImg: '/static/images/tabBarImage/myLoginHeader.png', // 用户头像
-						userName: '吴亦凡', //用户名字
-						userDescribe: '吃吃喝喝玩玩乐乐大碗宽面', // 用户介绍
-						state: true // 默认得状态（样式/按钮）
-					},
-					{
-						userImg: '/static/images/tabBarImage/myLoginHeader.png', // 用户头像
-						userName: '吴亦凡', //用户名字
-						userDescribe: '吃吃喝喝玩玩乐乐大碗宽面', // 用户介绍
-						state: true // 默认得状态（样式/按钮）
-					},
-					]
+				]
 			}
 		},
 		methods: {
