@@ -18,9 +18,12 @@
 		<view class="store-modules-content" :style="{order:findPackType(10)}">
 			<store-image-text></store-image-text>
 		</view>
+		<!-- 横向滚动展示商品组件 -->
+		<view class="store-modules-content">
+			<store-scroll-x></store-scroll-x>
+		</view>
 	</view>
 </template>
-
 
 <script>
 	export default {
@@ -43,6 +46,7 @@
 		},
 		methods: {
 			// 这个函数用于找到list数组当中的对应的对象成员
+			// 主要作用是排序
 			findPackType(type) {
 				for (let i = 0; i < this.list.length; i++) {
 					if (this.list[i].packType === type) {

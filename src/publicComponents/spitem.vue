@@ -5,7 +5,7 @@
 		<view class="eventContainer">
 			<!-- 图片区域 -->
 			<view class="sp-item-img">
-				<image :src="imgUrl" mode=""></image>
+				<image class="image" :src="imgUrl" mode=""></image>
 			</view>
 			<!-- 商品标题 -->
 			<view class="sp-item-title">
@@ -54,7 +54,7 @@
 		width: 204rpx;
 
 		.sp-item-img {
-			image {
+			.image {
 				width: 204rpx;
 				height: 204rpx;
 			}
