@@ -9,7 +9,7 @@
 			</u-sticky>
 			<view class="store-tabs-product-contaienr">
 				<view class="store-tabs-product-item" v-for="(item,index) in 6" :key="index">
-					<productContainer :imageWidth="167" :imageHeight="167"></productContainer>
+					<product-container :imageWidth="167" :imageHeight="167"></product-container>
 				</view>
 			</view>
 		</view>

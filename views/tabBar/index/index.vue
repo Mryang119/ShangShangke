@@ -379,6 +379,12 @@
 		},
 
 		async onLoad() {
+			uni.showLoading({
+				title: '数据加载中',
+				duration: 50000,
+				icon: 'loading',
+				mask:true
+			})
 			// 获取位置
 			await this.getLocation()
 			// 获取城市列表
@@ -393,6 +399,7 @@
 			await getCouponList()
 			// 获取更多活动信息
 			await this.getCircInfo()
+			uni.hideLoading()
 		},
 		onReady() {
 
