@@ -20,7 +20,7 @@
 		</view>
 		<!-- 横向滚动展示商品组件 -->
 		<view class="store-modules-content">
-			<store-scroll-x></store-scroll-x>
+			<store-scroll-x :title="'今日爆款'"></store-scroll-x>
 		</view>
 		<!-- tabs栏 -->
 		<view class="store-modules-content">

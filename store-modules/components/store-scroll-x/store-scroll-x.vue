@@ -1,7 +1,7 @@
 <template>
 	<view class="store-scroll-x-root">
 		<view class="store-scroll-x-content">
-			<view class="store-scroll-title" v-if="title">{{title}}</view>
+			<view class="store-scroll-title" v-if="title!=''">{{title}}</view>
 			<scroll-view scroll-x="true" class="scroll-view-H">
 				<view class="store-scroll-container" :style="{width:scrollwidth+'rpx'}">
 					<view class="store-scroll-item-container" v-for="(item,index) in lists" :key="index">
@@ -45,7 +45,7 @@
 			},
 			title:{
 				type:String,
-				default:"今日爆款"
+				default:""
 			},
 			
 		},
