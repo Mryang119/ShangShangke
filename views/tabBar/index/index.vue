@@ -263,6 +263,7 @@
 					ak: that.ak
 				});
 				return new Promise((resolve, reject) => {
+					// 小程序吊起权限校验
 					uni.authorize({
 						scope: 'scope.userLocation',
 						success() {
@@ -386,7 +387,7 @@
 				mask:true
 			})
 			// 获取位置
-			await this.getLocation()
+			// await this.getLocation()
 			// 获取城市列表
 			await this.getCity()
 			// 获取商圈
