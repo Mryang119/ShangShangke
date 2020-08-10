@@ -16,6 +16,13 @@
 	/* @import '@/uview-ui/index.scss'; */
 	@import "uview-ui/index.scss";
 
+	// 溢出隐藏省略号
+	.shenglue {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap
+	}
+
 	.save-button {
 		width: 690rpx;
 		height: 82rpx;
@@ -41,7 +48,7 @@
 		left: 0;
 		z-index: 999;
 	}
-	
+
 	.uni-navbar {
 		.uni-navbar--border.uni-navbar--border.data-v-4afea59e {
 			border-color: #FFFFFF !important;

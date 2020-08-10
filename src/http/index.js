@@ -6,11 +6,11 @@ export default function http({
 	tips = "数据加载中"
 }) {
 	return new Promise((resolve, reject) => {
-		uni.showLoading({
-			title: tips,
-			duration: 50000,
-			icon: 'loading'
-		})
+		// uni.showLoading({
+		// 	title: tips,
+		// 	duration: 50000,
+		// 	icon: 'loading'
+		// })
 		uni.request({
 			method,
 			url: `${URL}${url}`,
@@ -18,7 +18,7 @@ export default function http({
 			dataType: 'json',
 			success: (res) => {
 				if (res.data.returnCode == '1') {
-					uni.hideLoading()
+					// uni.hideLoading()
 					resolve(res)
 				} else {
 					uni.hideLoading()

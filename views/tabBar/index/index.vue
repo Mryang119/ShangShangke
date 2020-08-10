@@ -148,6 +148,7 @@
 </template>
 
 <script>
+	// 组件
 	import position from './components/position.vue'
 	import more from './components/more.vue'
 	import shopItem from '@/src/publicComponents/daydayShop.vue'
@@ -159,10 +160,11 @@
 	import bmap from '@/common/bmap-wx.min.js'
 	// 模拟数据
 	import {
-		list,
 		dataList,
 		showItemList
 	} from '@/src/utils/fakeData.js'
+	// 工具函数
+	import {ScrollWidth} from '@/src/utils/index.js'
 	// api
 	import {
 		getCityList,
@@ -190,7 +192,6 @@
 				interval: 2000,
 				// 轮播图配置↑
 				cityName: this.$store.state.global.globalData.cityName,
-				list: list,
 				temp: [],
 				time: null,
 				cp: 'buy',
@@ -354,21 +355,21 @@
 					pageSize: 10
 				})
 				this.showItemList1 = res1.data.data
-				let res2 = await getCircCampaignInfo({
-					circs: this.circs,
-					campaignType: 3,
-					pageNum: this.startPage2,
-					pageSize: 10
-				})
-				this.showItemList2 = res2.data.data
-				let res3 = await getCircCampaignInfo({
-					circs: this.circs,
-					campaignType: 2,
-					pageSize: 10,
-					pageNum: 1
-				})
-				console.log(res3)
-				return Promise.resolve(res1, res2, res3)
+				// let res2 = await getCircCampaignInfo({
+				// 	circs: this.circs,
+				// 	campaignType: 3,
+				// 	pageNum: this.startPage2,
+				// 	pageSize: 10
+				// })
+				// this.showItemList2 = res2.data.data
+				// let res3 = await getCircCampaignInfo({
+				// 	circs: this.circs,
+				// 	campaignType: 2,
+				// 	pageSize: 10,
+				// 	pageNum: 1
+				// })
+				// console.log(res3)
+				return Promise.resolve(res1)
 			},
 			async getCouponLists() {
 				let res = await getCouponList({})
@@ -378,6 +379,12 @@
 		},
 
 		async onLoad() {
+			uni.showLoading({
+				title: '数据加载中',
+				duration: 50000,
+				icon: 'loading',
+				mask:true
+			})
 			// 获取位置
 			await this.getLocation()
 			// 获取城市列表
@@ -392,7 +399,7 @@
 			await getCouponList()
 			// 获取更多活动信息
 			await this.getCircInfo()
-
+			uni.hideLoading()
 		},
 		onReady() {
 
@@ -400,12 +407,11 @@
 		computed: {
 			// 计算优惠券x轴容器宽度
 			scrollWidth: function() {
-				if (this.couponHome.length == 0) return 0
 				let len = Math.ceil(this.couponHome.length / 2)
-				return len * 182 * 2 + len * 20
+				return ScrollWidth(len,182,20)
 			},
 			killWidth: function() {
-				return this.seckillHome.length * 102 * 2 + this.seckillHome.length * 16
+				return ScrollWidth(this.seckillHome.length,102,16)
 			}
 		},
 		// 触碰底部懒加载

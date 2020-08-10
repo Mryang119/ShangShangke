@@ -48,14 +48,6 @@
 		methods: {
 			computedList() {
 				// 切割数组
-				//计算起始位置和结束位
-				// let length = this.showItemList.length
-				// let list1End = Math.floor(length / 2)
-				// console.log(list1End)
-				// let list2End = length
-				// console.log(list2End)
-				// this.list1 = this.showItemList.slice(0, list1End)
-				// this.list2 = this.showItemList.slice(list1End, list2End)
 				// 计算奇数列偶数列解决位置变换问题
 				this.cloneList = JSON.parse(JSON.stringify(this.showItemList))
 				for (let i = 0; i < this.cloneList.length; i++) {

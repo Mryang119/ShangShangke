@@ -3,13 +3,16 @@
 	<!-- name:杨大锐 -->
 	<view class="store-banner-root">
 		<view class="store-banner-content" :style="{height:height+'rpx'}">
-			<u-image :src="image" width="100%" :height="height">
+			<u-image :src="image" width="100%" :height="height" :border-radius="height">
 			</u-image>
 		</view>
 	</view>
 </template>
 
 <script>
+	// 组件两种模式 不带标题表现为ad广告，图形呈圆形
+	// 带标题与不带标题
+	
 	export default {
 		props: {
 			height: {

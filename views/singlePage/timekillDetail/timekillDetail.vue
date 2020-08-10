@@ -18,12 +18,12 @@
 						<view class="status">{{item.now?'抢购中':'即将开始'}}</view>
 					</view>
 				</view>
-				<view class="residue-time-container">
-					<text :style="{marginRight:'12rpx'}">剩余</text>
-					<u-count-down separator-color="#FFF" font-size="28" :show-days="false" color="#FFF" :timestamp="timestamp"
-					 bg-color="rgba(255,255,255,0)"></u-count-down>
-				</view>
 			</scroll-view>
+			<view class="residue-time-container">
+				<text :style="{marginRight:'12rpx'}">剩余</text>
+				<u-count-down separator-color="#FFF" font-size="28" :show-days="false" color="#FFF" :timestamp="timestamp"
+				 bg-color="rgba(255,255,255,0)"></u-count-down>
+			</view>
 		</view>
 		<view class="commodity-content">
 			<view class="commodity-item" v-for="(item,index) in 4" :key="index">
@@ -141,6 +141,16 @@
 		width: 750rpx;
 		background-color: #F6F6F6;
 
+		.residue-time-container {
+			display: flex;
+			color: #FFF;
+			font-size: 28rpx;
+			font-weight: bold;
+			align-items: center;
+			justify-content: center;
+			margin-top: 20rpx;
+		}
+
 		.top-title-content {
 			width: 750rpx;
 			position: absolute;
@@ -189,15 +199,7 @@
 					}
 				}
 
-				.residue-time-container {
-					display: flex;
-					color: #FFF;
-					font-size: 28rpx;
-					font-weight: bold;
-					align-items: center;
-					justify-content: center;
-					margin-top: 20rpx;
-				}
+
 
 				.upcoming-status {
 
