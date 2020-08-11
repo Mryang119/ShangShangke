@@ -18,7 +18,8 @@
         },
         /* 模块配置 */
         "modules" : {
-            "OAuth" : {}
+            "OAuth" : {},
+            "Geolocation" : {}
         },
         /* 应用发布信息 */
         "distribute" : {
@@ -52,7 +53,16 @@
             /* ios打包配置 */
             "ios" : {},
             /* SDK配置 */
-            "sdkConfigs" : {}
+            "sdkConfigs" : {
+                "oauth" : {},
+                "geolocation" : {
+                    "baidu" : {
+                        "__platform__" : [ "android" ],
+                        "appkey_ios" : "",
+                        "appkey_android" : "MSXd6D9PT8zs7F9d5Nf24DbcrHcxQGY2"
+                    }
+                }
+            }
         }
     },
     /* 快应用特有相关 */
@@ -60,6 +70,7 @@
     /* 小程序特有相关 */
     "mp-weixin" : {
         "appid" : "wxe89e1d2db3a1255a", // 企业id
+
         // "appid" : "wxf24670de15a1dd00", // 个人id
         "setting" : {
             "urlCheck" : false,

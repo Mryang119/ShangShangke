@@ -1,9 +1,8 @@
 <template>
 	<!-- 秒杀商品详情页面 -->
 	<view class="c_killDetail">
-		<buyButton></buyButton>
+		<buyButton :price="199"></buyButton>
 		<!-- 轮播图区域 -->
-		<view>秒杀详情</view>
 		<view class="swiper-content">
 			<view class="swiper">
 				<u-swiper :list="list" mode="number" indicator-pos="bottomRight" height="550"></u-swiper>
@@ -14,7 +13,7 @@
 			<view class="price-container">
 				<view class="price">
 					<text :style="{'font-size':30+'rpx'}">￥</text>
-					<text>{{productDetais.basDuctList.salePrice||price.toFixed(2)}}</text>
+					<text>{{price.toFixed(2)}}</text>
 				</view>
 				<view class="old-price">
 					￥11.00
@@ -22,13 +21,13 @@
 			</view>
 			<view class="time-container">
 				<view class="text">距离结束还剩</view>
-				<u-count-down ref="uCountDown" bg-color="#F10000" separator-color="#F10000" color="#FFFFFF" :timestamp="86400"
+				<u-count-down ref="uCountDown" bg-color="#F10000" separator-color="#F10000" color="#FFFFFF" :timestamp="timestamp"
 				 :autoplay="true" font-size="30"></u-count-down>
 			</view>
 		</view>
 		<!-- 商品名字 -->
 		<view class="product-name-content">
-			{{productDetais.basDuctList.productName||'抹茶柚子千层 抹茶柚子千层 新鲜出炉 抹茶柚子千层 抹茶柚子千层 新鲜出炉'}}
+			{{'抹茶柚子千层 抹茶柚子千层 新鲜出炉 抹茶柚子千层 抹茶柚子千层 新鲜出炉'}}
 		</view>
 		<!-- 店铺标签 -->
 		<view class="store-content">
@@ -42,7 +41,7 @@
 		<view class="product-content">
 			<view class="text">商品详情</view>
 			<uni-list :border="false">
-				<uni-list-item  title="• 限时新品双人冰爽餐">
+				<uni-list-item title="• 限时新品双人冰爽餐">
 					<view slot="right">
 						￥100.00
 					</view>
@@ -80,27 +79,32 @@
 		},
 		data() {
 			return {
-				productDetais: null,
+				productDetais: {},
 				list: [],
-				list2: [],
 				timestamp: 86400,
 				price: 200
 			}
 		},
-		async created() {
+		async mounted () {
 			let res = await getProductSkuList({
 				productId: this.pdcId
 			})
 			console.log(res)
 			this.productDetais = res.data.data
 			// 模拟一份轮播图
-			for (var i = 0; i <= 3; i++) {
-				this.list.push({
-					image: res.data.data.basDuctList.imageUrl
-				})
-				this.list2.push({
-					image: res.data.data.basDuctList.imageUrl
-				})
+			if(res.data.data.basDuctList.imageUrl) {
+				for (var i = 0; i < 3; i++) {
+					this.list.push({
+						image: res.data.data.basDuctList.imageUrl
+					})
+				}
+			} else {
+				for (var i = 0; i < 3; i++) {
+					console.log('不存在,默认')
+					this.list.push({
+						image: "https://aecpm.alicdn.com/simba/img/TB1XotJXQfb_uJkSnhJSuvdDVXa.jpg"
+					})
+				}
 			}
 		}
 	}
@@ -110,7 +114,7 @@
 	.c_killDetail {
 		width: 750rpx;
 		background-color: #F6F6F6;
-		
+
 		.swiper-content {
 			width: 750rpx;
 			height: 550rpx;
@@ -188,11 +192,13 @@
 		.rule-content {
 			margin-bottom: 20rpx;
 		}
+
 		.product-content {
 			background-color: #FFFFFF;
 			box-sizing: border-box;
 			padding-top: 30rpx;
 			margin-bottom: 20rpx;
+
 			.text {
 				font-size: 32rpx;
 				color: #333333;
@@ -200,8 +206,7 @@
 				margin-left: 28rpx;
 			}
 		}
-		.yasaxi-tips-content {
-			
-		}
+
+		.yasaxi-tips-content {}
 	}
 </style>

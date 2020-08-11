@@ -81,15 +81,15 @@
 				],
 				productList:[
 					{
-					productImg:'../../../static/images/Product/commodityItem.png',  //商品头像
+					productImg:'../../../static/images/Product/shangpintu.png',  //商品头像
 					productName:'九龙金玉雪顶奶茶',  // 商品名字
 					productPrice:'1.00'  // 商品价格
 				},{
-					productImg:'../../../static/images/Product/commodityItem.png',  //商品头像
+					productImg:'../../../static/images/Product/shangpintu.png',  //商品头像
 					productName:'九龙金玉雪顶奶茶',  // 商品名字
 					productPrice:'1.00'  // 商品价格
 				},{
-					productImg:'../../../static/images/Product/commodityItem.png',  //商品头像
+					productImg:'../../../static/images/Product/shangpintu.png',  //商品头像
 					productName:'九龙金玉雪顶奶茶',  // 商品名字
 					productPrice:'1.00'  // 商品价格
 				}

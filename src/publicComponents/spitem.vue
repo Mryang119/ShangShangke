@@ -41,7 +41,7 @@
 			},
 			imgUrl:{
 				type:String,
-				default:'../../static/images/Product/shangpingtu.png'
+				default:'/static/images/Product/shangpingtu.png'
 			}
 		},
 		methods:{

@@ -68,25 +68,28 @@
 						userDescribe: '吃吃喝喝玩玩乐乐大碗宽面', // 用户介绍
 						state: true // 默认得状态（样式/按钮）
 					}
-				],
-				userList: [{
-						userImg: '/static/images/tabBarImage/myLoginHeader.png', // 用户头像
-						userName: '吴亦凡', //用户名字
-						userDescribe: '吃吃喝喝玩玩乐乐大碗宽面', // 用户介绍
-						state: true // 默认得状态（样式/按钮）
-					},
-					{
-						userImg: '/static/images/tabBarImage/myLoginHeader.png', // 用户头像
-						userName: '吴亦凡', //用户名字
-						userDescribe: '吃吃喝喝玩玩乐乐大碗宽面', // 用户介绍
-						state: true // 默认得状态（样式/按钮）
-					},
-					{
-						userImg: '/static/images/tabBarImage/myLoginHeader.png', // 用户头像
-						userName: '吴亦凡', //用户名字
-						userDescribe: '吃吃喝喝玩玩乐乐大碗宽面', // 用户介绍
-						state: true // 默认得状态（样式/按钮）
-					},
+// <<<<<<< HEAD
+// 				],
+// 				userList: [{
+// 						userImg: '/static/images/tabBarImage/myLoginHeader.png', // 用户头像
+// 						userName: '吴亦凡', //用户名字
+// 						userDescribe: '吃吃喝喝玩玩乐乐大碗宽面', // 用户介绍
+// 						state: true // 默认得状态（样式/按钮）
+// 					},
+// 					{
+// 						userImg: '/static/images/tabBarImage/myLoginHeader.png', // 用户头像
+// 						userName: '吴亦凡', //用户名字
+// 						userDescribe: '吃吃喝喝玩玩乐乐大碗宽面', // 用户介绍
+// 						state: true // 默认得状态（样式/按钮）
+// 					},
+// 					{
+// 						userImg: '/static/images/tabBarImage/myLoginHeader.png', // 用户头像
+// 						userName: '吴亦凡', //用户名字
+// 						userDescribe: '吃吃喝喝玩玩乐乐大碗宽面', // 用户介绍
+// 						state: true // 默认得状态（样式/按钮）
+// 					},
+// =======
+// >>>>>>> 849c47577cf44650dc0d153128f3c4f037b48527
 				]
 			}
 		},

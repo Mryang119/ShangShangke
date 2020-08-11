@@ -243,6 +243,12 @@
 			"style": {
 				"navigationBarTitleText": "店铺首页"
 			}
+		},
+		{
+			"path": "views/singlePage/myTidings/myTidings",
+			"style": {
+				"navigationBarTitleText": "我的动态"
+			}
 		}
 	],
 	"globalStyle": {
@@ -289,5 +295,15 @@
 			"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue",
 			"^store-(.*)": "@/store-modules/components/store-$1/store-$1.vue"
 		}
+	},
+	"condition" : { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [
+			{
+				"name": "", //模式名称
+				"path": "views/singlePage/register/register", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到
+			}
+		]
 	}
 }

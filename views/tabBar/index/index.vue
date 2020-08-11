@@ -70,7 +70,7 @@
 				<!-- 横向滚动部分 -->
 				<scroll-view scroll-x="true" class="scorll-H">
 					<view class="scorll-H-container" :style="{width:scrollWidth+'rpx'}">
-						<view class="scorll-item" v-for="(item,index) in couponHome" :key="item" @click="changeStatus(index)">
+						<view class="scorll-item" v-for="(item,index) in couponHome" :key="item.mktCoupons[0].labelName" @click="changeStatus(index)">
 							<coupon :company="item.company" :labelName="item.mktCoupons[0].labelName" :status="item.status" :logo="item.logo"></coupon>
 						</view>
 					</view>
@@ -156,15 +156,15 @@
 	import buy from './components/buy.vue'
 	import give from './components/give.vue'
 	import coupon from './components/coupon.vue'
-	// 引入百度地图
-	import bmap from '@/common/bmap-wx.min.js'
+	// // 引入百度地图
+	// import bmap from '@/common/bmap-wx.min.js'
 	// 模拟数据
 	import {
 		dataList,
 		showItemList
 	} from '@/src/utils/fakeData.js'
 	// 工具函数
-	import {ScrollWidth} from '@/src/utils/index.js'
+	import {ScrollWidth,getLocations} from '@/src/utils/index.js'
 	// api
 	import {
 		getCityList,
@@ -207,18 +207,8 @@
 				status1: 'loading',
 				status2: 'loading',
 
-				// 百度地图数据⬇
-				ak: 'qC1AHsQNj44vE3ctEIi4IXLZBgHYf33F', // 企业ak
-				// ak: 'AQNjDWwRffaoqtGkNxfAQmwic9mtkS8w', // 个人ak
-				BMap: null,
-				markers: [],
-				latitude: '', // 经度
-				longitude: '', // 纬度
-				rgcData: {},
-				// 百度地图数据⬆
-
 				// 首页模块数据⬇
-				circs: null, // 商圈id
+				circs: "", // 商圈id
 				couponHome: [], //优惠券
 				newExclusiveHome: [], //新人专享
 				seckillHome: [], //秒杀
@@ -255,52 +245,6 @@
 					url: `../../singlePage/productDetail/productDetail?pdcId=${id}&campaignType=${campaignType}`
 				})
 			},
-			// 获取定位
-			getLocation() {
-				var that = this;
-				//新建百度地图对象
-				this.BMap = new bmap.BMapWX({
-					ak: that.ak
-				});
-				return new Promise((resolve, reject) => {
-					// 小程序吊起权限校验
-					uni.authorize({
-						scope: 'scope.userLocation',
-						success() {
-							var fail = function(data) {
-								reject(data)
-							};
-							var success = function(data) {
-								console.log('百度定位', data)
-								let wxMarkerData = data.wxMarkerData;
-								that.markers = wxMarkerData
-								that.latitude = wxMarkerData[0].latitude
-								that.longitude = wxMarkerData[0].longitude
-								var reg = /.+?(省|市|自治区|自治州|县|区)/g;
-								// 存储一份到仓库
-								that.$store.commit('saveGlobal', {
-									key: 'cityName',
-									value: wxMarkerData[0].address.match(reg)[1].replace('市', '')
-								})
-								const globalKey = ['latitude', 'longitude']
-								globalKey.forEach(k => {
-									that.$store.commit('saveGlobal', {
-										key: k,
-										value: wxMarkerData[0][k]
-									})
-								})
-								resolve(data)
-							}
-							that.BMap.regeocoding({
-								fail: fail,
-								success: success
-							});
-						}
-					})
-				})
-
-
-			},
 			// 获取城市列表存入仓库
 			async getCity() {
 				let res = await getCityList({
@@ -313,9 +257,9 @@
 			async getCirc() {
 				let res = await getCircList({
 					mobile: '15501876709',
-					city: this.city,
-					lat: this.latitude,
-					lon: this.longitude
+					city: this.$store.state.global.globalData.cityName,
+					lat: this.$store.state.global.globalData.latitude,
+					lon: this.$store.state.global.globalData.longitude
 				})
 				this.circs = res.data.data
 				this.$store.commit('saveGlobal', {
@@ -387,20 +331,27 @@
 				mask:true
 			})
 			// 获取位置
-			// await this.getLocation()
-			// 获取城市列表
-			await this.getCity()
-			// 获取商圈
-			await this.getCirc()
-			// 获取优惠券
-			await this.getCouponLists()
-			// 获取首页相关模块
-			await this.getHomeModule()
-			// 获取优惠券
-			await getCouponList()
-			// 获取更多活动信息
-			await this.getCircInfo()
-			uni.hideLoading()
+			try {
+				await getLocations(this)()
+			} catch(e) {
+				console.log(e)
+			} finally {
+				// await this.getLocation()
+				// 获取城市列表
+				await this.getCity()
+				// 获取商圈
+				await this.getCirc()
+				// 获取优惠券
+				await this.getCouponLists()
+				// 获取首页相关模块
+				await this.getHomeModule()
+				// 获取优惠券
+				await getCouponList()
+				// 获取更多活动信息
+				await this.getCircInfo()
+				uni.hideLoading()
+			}
+			
 		},
 		onReady() {
 
