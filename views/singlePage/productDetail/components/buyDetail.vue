@@ -14,18 +14,18 @@
 					<view class="price-left-container">
 						<view class="promotion-price">
 							<text class="price" :style="{fontSize:30+'rpx'}">￥</text>
-							<text>{{productDetais.basDuctList.salePrice}}</text>
+							<text v-if="productDetais.basDuctList.salePrice!==''">{{productDetais.basDuctList.salePrice}}</text>
 						</view>
-						<view class="old-price">￥11.00</view>
+						<view class="old-price"><text>￥11.00</text></view>
 					</view>
 					<!-- 月售 -->
-					<view class="sla-count">
-						月售{{productDetais.basDuctList.salCount}}
+					<view class="sla-count" v-if="productDetais.basDuctList.salCount">
+						<text>月售{{productDetais.basDuctList.salCount}}</text>
 					</view>
 				</view>
 				<!-- 商品名字 -->
-				<view class="product-name">
-					{{productDetais.basDuctList.productName}}
+				<view class="product-name" v-if="productDetais.basDuctList.productName">
+					<text>{{productDetais.basDuctList.productName}}</text>
 				</view>
 			</view>
 		</view>
@@ -41,7 +41,7 @@
 		<view class="image-content">
 			<view class="title">商品详情</view>
 			<view class="image-container">
-				<view class="image-item" v-for="(item,index) in list2" :key="index">
+				<view class="image-item" v-for="(item,index) in list" :key="index">
 					<u-image height="550rpx" :lazy-load="false" :src="item.image"></u-image>
 				</view>
 			</view>
@@ -71,12 +71,17 @@
 		},
 		data() {
 			return {
-				productDetais: null,
+				productDetais: {
+					basDuctList: {
+						salePrice: "",
+						salCount: "",
+						productName: ""
+					}
+				},
 				list: [],
-				list2: []
 			}
 		},
-		async created() {
+		async mounted() {
 			let res = await getProductSkuList({
 				productId: this.pdcId
 			})
@@ -85,9 +90,6 @@
 			// 模拟一份轮播图
 			for (var i = 0; i <= 3; i++) {
 				this.list.push({
-					image: res.data.data.basDuctList.imageUrl
-				})
-				this.list2.push({
 					image: res.data.data.basDuctList.imageUrl
 				})
 			}
