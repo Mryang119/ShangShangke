@@ -9,12 +9,12 @@
 		<!-- 拼团成功和待成功 -->
 		<view class="spellGroupSuccessCon" v-if="type==='已支付，待成团' || type==='组团成功'">
 			<!-- 还差几人成团 -->
-			<view class="groupPeople" v-if="userList.length!==3">
+			<view class="groupPeople" v-if="type === '已支付，待成团'">
 				<!-- 正在拼团中 -->
 				<!-- v-if="" -->
 				<view class="groupping">
 					<view class="countDown">
-						<u-count-down :timestamp="86400" separator="colon" separator-size="42" separator-color="#FE3B2B" font-size="32"
+						<u-count-down :timestamp="timestamp" separator="colon" separator-size="42" separator-color="#FE3B2B" font-size="32"
 						 color="#FFFFFF" bg-color="#FE3B2B" :show-days="false"></u-count-down>
 					</view>
 					<view class="shortPeople">3人成团,还差<view class="num">{{num}}</view>人</view>
@@ -26,14 +26,14 @@
 			<view class="groupUser">
 				<view class="oneGroupUser" v-for="(item,index) in userList" :key="index">
 					<view class="userImg">
-						<image :src="withInviteImg"></image>
+						<image :src="item.withInviteImg"></image>
 					</view>
-					<view class="userName">{{userName}}</view>
+					<view class="userName">{{item.userName}}</view>
 				</view>
 			</view>
 			<!-- 邀请好友拼团 -->	
-			<view class="inviteFriends" v-if="userList.length!==3">
-				<view class="inviteBtn">邀请好友拼团</view>
+			<view class="inviteFriends" v-if="type === '已支付，待成团' ">
+				<view class="inviteBtn" @click="inviteBtn">邀请好友拼团</view>
 			</view>
 			<!-- 查看我的拼团 -->
 			<view class="inviteFriends" v-else @click="checkMySpellGroup">
@@ -67,10 +67,18 @@
 	export default{
 		data(){
 			return{
+				timestamp:'86400',   // 倒计时时间
 				num:'1',  //还差几人
-				userList:[{},{},{}],  // 用户列表
-				withInviteImg:'../../../static/images/iconfont/weizhitouxiang.png',  //带邀请用户头像
-				userName:'待邀请...',  // 用户名
+				userList:[{          // 用户列表
+					withInviteImg:'../../../static/images/tabBarImage/myLoginHeader.png',  //带邀请用户头像
+					userName:'上官婉儿',  // 用户名
+				},{
+					withInviteImg:'../../../static/images/tabBarImage/myLoginHeader.png',  //带邀请用户头像
+					userName:'鲁班大师',  // 用户名
+				},{
+					withInviteImg:'../../../static/images/iconfont/weizhitouxiang.png',  //带邀请用户头像
+					userName:'雷霆嘎巴',  // 用户名
+				}], 
 				groupType:'拼团失败',  //拼团状态
 				orderNumber:'293247384734',   // 订单编号
 				orderPrice:'66.66',     //订单金额
@@ -83,6 +91,9 @@
 				uni.navigateBack({
 					url:'/views/singlePage/mySpellGroup/mySpellGroup'
 				})
+			},
+			inviteBtn(){
+				console.log('邀请好友')
 			}
 		},
 		components:{
