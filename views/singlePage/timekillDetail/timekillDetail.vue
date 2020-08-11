@@ -1,7 +1,7 @@
 <template>
 	<!-- name:杨大锐 -->
 	<!-- 限时秒杀 -->
-	<view class="s_timekillDetail" :style="{height:fatherHeight*2+'rpx'}">
+	<view class="s_timekillDetail">
 		<view class="top-title-content">
 			<view class="img-container">
 				<image src="@/static/images/Product/xianshimiaosha.png" mode="" class="img"></image>
@@ -13,7 +13,7 @@
 						<br />
 						热抢
 					</view>
-					<view class="timestamp" :class="{'upcoming-status':item.now===false}" v-for="(item,index) in timeList" :key="item">
+					<view class="timestamp" :class="{'upcoming-status':item.now===false}" v-for="(item,index) in timeList" :key="index">
 						<view class="time">{{item.time}}</view>
 						<view class="status">{{item.now?'抢购中':'即将开始'}}</view>
 					</view>
@@ -47,7 +47,7 @@
 <script>
 	import {
 		getSeckillMoreInfo
-	} from '../../../src/api/homeApi/homeApi.js'
+	} from '@/src/api/homeApi/homeApi.js'
 	import timeKillCommodity from './components/timeKillCommodity.vue'
 	import timeKillRobItem from './components/timeKillRobItem.vue'
 	export default {
@@ -117,10 +117,10 @@
 			// 	pageSize: 5
 			// })
 			this.getFakeDates()
-			const query = uni.createSelectorQuery().in(this);
-			query.select('.commodity-box').boundingClientRect(data => {
-				this.fatherHeight = data.top + data.height
-			}).exec();
+			// const query = uni.createSelectorQuery().in(this);
+			// query.select('.commodity-box').boundingClientRect(data => {
+			// 	this.fatherHeight = data.top + data.height
+			// }).exec();
 		},
 		onShow() {
 			// 1 分(分钟)=60000 毫秒
