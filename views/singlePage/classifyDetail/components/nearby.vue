@@ -2,7 +2,7 @@
 	<!-- 附近筛选 -->
 	<view class="c_nearby">
 		<scroll-view scroll-y="true" class="tab-container">
-			<view class="tab-item" :class="{'active-tab-item':index===currentIndex}" v-for="(item,index) in nearbys" :key="item"
+			<view class="tab-item" :class="{'active-tab-item':index===currentIndex}" v-for="(item,index) in nearbys" :key="index"
 			 @click="toggleIndex(item.title,index)">
 				{{item.title}}
 			</view>

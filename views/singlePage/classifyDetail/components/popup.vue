@@ -31,7 +31,8 @@
 			},
 			top: {
 				type: Number,
-				required: true
+				required: true,
+				default:0
 			},
 			height:{
 				type:Number,
