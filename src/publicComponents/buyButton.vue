@@ -28,10 +28,11 @@
 		props: {
 			price: {
 				type: Number,
-				default: 1.00
+				default: 1
 			},
 			pdcId: {
-				type: String
+				type: String,
+				default:'12312312321'
 			},
 			status: {
 				type: Number,

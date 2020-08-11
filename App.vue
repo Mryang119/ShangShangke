@@ -15,7 +15,7 @@
 <style lang="scss">
 	/* @import '@/uview-ui/index.scss'; */
 	@import "uview-ui/index.scss";
-
+	@import '@/style/iconfont.css';
 	// 溢出隐藏省略号
 	.shenglue {
 		overflow: hidden;
