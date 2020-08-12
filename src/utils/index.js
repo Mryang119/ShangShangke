@@ -70,6 +70,7 @@ function getLocations(that) {
 							key: 'cityName',
 							value: wxMarkerData[0].address.match(reg)[1].replace('市', '')
 						})
+						// 存贮经纬度
 						const globalKey = ['latitude', 'longitude']
 						globalKey.forEach(k => {
 							that.$store.commit('saveGlobal', {
@@ -96,10 +97,21 @@ function getLocations(that) {
 		return new Promise((resolve, reject) => {
 			uni.getLocation({
 				geocode: true,
-				type: "gcj02",
-				success: (res) => {
-					console.log('app获取成功', res)
-					resolve(res)
+				success: (e) => {
+					console.log('APP', e)
+					const globalKey = ['latitude', 'longitude']
+					globalKey.forEach(k => {
+						that.$store.commit('saveGlobal', {
+							key: k,
+							value: e[k]
+						})
+					})
+					// 存储城市名
+					that.$store.commit('saveGlobal', {
+						key: 'cityName',
+						value: e.address.city.replace('市', '')
+					})
+					resolve(e)
 				},
 				fail: (err) => {
 					reject(err)

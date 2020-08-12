@@ -5,7 +5,7 @@
 		<view class="tab">
 			<u-tabs active-color='#000000' inactive-color="#000000" :list="tabList" :bold='true' :is-scroll="false" :current="current" @change="change" :bar-style="{backgroundImage: 'linear-gradient(to right,#92D0F9,#26A7FC)',height:6+'rpx'}"></u-tabs>
 		</view>
-		<view class="couponBg" v-if="currentArr.length=== 0">
+		<view class="couponBg" v-if="couponArr.length=== 0">
 			<image src="@/static/images/iconfont/couponBg.png"></image>
 			<view class="noCoupon">还没有卡券~</view>
 		</view>
