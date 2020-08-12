@@ -100,9 +100,6 @@
 					newShopList[index].likeState = false
 					item.likeNumber--
 				} else {
-					newShopList.forEach(item => {
-						item.likeState = false
-					})
 					newShopList[index].likeState = true
 					item.likeNumber++
 				}
