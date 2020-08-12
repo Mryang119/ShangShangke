@@ -115,10 +115,10 @@
 			newShopList() {
 				switch (this.current) {
 					case 1:
-						const videoResult = this.shopList.filter(item => item.videoState === true)
+						const videoResult = this.shopList.filter(item => item.videoIconState === true)
 						return videoResult
 					case 2:
-						const pictureResult = this.shopList.filter(item => item.videoState === false)
+						const pictureResult = this.shopList.filter(item => item.videoIconState === false)
 						return pictureResult
 					default:
 						return this.shopList
