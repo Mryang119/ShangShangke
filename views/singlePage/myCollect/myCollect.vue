@@ -17,7 +17,7 @@
 					<view class="shopName">{{item.shopName}}</view>
 					<view class="shopScore">
 						<view class="score">评分:</view>
-						<uni-rate class="shopRate" allow-half :value="item.value" size="12" activeColor="#FFAE44" :margin="3"/>
+						<uni-rate class="shopRate" allow-half :value="item.value" size="12" activeColor="#FFAE44" :margin="3" :disabled="true"/>
 						<view class="shopValue">{{item.value}}</view>
 					</view>
 					<view class="shopAddress">
