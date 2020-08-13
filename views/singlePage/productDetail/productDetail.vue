@@ -18,6 +18,7 @@
 		<view class="robDetail-content" v-else-if="campaignType==98">
 			<everydayDetail :pdcID="pdcId"></everydayDetail>
 		</view>
+		<view class="hieght" :style="{height:98+'rpx'}"></view>
 	</view>
 </template>
 
@@ -56,6 +57,5 @@
 
 <style lang="less">
 	.s_productDetail {
-		margin-bottom: 98rpx;
 	}
 </style>

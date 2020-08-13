@@ -1,6 +1,7 @@
 <template>
 	<!-- 店铺首页 -->
 	<!-- name:杨大锐 -->
+	
 	<view class="store-index-root">
 		<!-- 轮播图 -->
 		<view class="store-modules-content">

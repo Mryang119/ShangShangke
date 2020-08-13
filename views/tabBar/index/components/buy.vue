@@ -46,7 +46,7 @@
 
 		created() {
 			this.computedList()
-		},
+		},	
 		methods: {
 			computedList() {
 				// 切割数组

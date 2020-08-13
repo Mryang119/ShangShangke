@@ -68,6 +68,7 @@
 			height: 80rpx;
 			position: relative;
 			margin-bottom: 20rpx;
+
 			.line-content {
 				position: absolute;
 				width: 458rpx;
