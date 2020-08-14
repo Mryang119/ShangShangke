@@ -2,15 +2,6 @@
 	<!-- name:杨大锐 -->
 	<!-- 店铺-附近 -->
 	<view class="c_shopSonNearby">
-		<!-- 搜索分类部分 -->
-		<view class="search-content">
-			<view class="search-container">
-				<u-search placeholder="发现店铺/商品" :show-action="false" v-model="keyword"></u-search>
-			</view>
-			<view class="class-container">
-				<u-icon name="list-dot" size="50" color="#24a7ff"></u-icon>
-			</view>
-		</view>
 		<!-- 新店开张推荐 -->
 		<view class="new-stores-content">
 			<scroll-view class="new-stores-scroll-H" scroll-x="true">
@@ -103,25 +94,7 @@
 	.c_shopSonNearby {
 		width: 750rpx;
 		overflow: hidden;
-		.search-content {
-			display: flex;
-			padding-left: 20rpx;
-			padding-right: 36rpx;
-			margin-top: 30rpx;
-
-			.search-container {
-				width: 602rpx;
-				height: 64rpx;
-			}
-
-			.class-container {
-				flex: 1;
-				display: flex;
-				align-items: center;
-				justify-content: flex-end;
-			}
-		}
-
+		
 		.new-stores-content {
 			height: 194rpx;
 			padding-left: 20rpx;

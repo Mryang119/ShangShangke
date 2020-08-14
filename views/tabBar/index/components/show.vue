@@ -5,19 +5,17 @@
 			<image class="image" :src="imgUrl" mode=""></image>
 			<view class="show-item-textContent">
 				<view class="show-item-title">
-					{{title}}
+					<text>{{title}}</text>
 				</view>
-				<br />
 				<!-- 赠品不显示价格 -->
 				<view v-if="type!==8" class="show-item-price">
-					￥{{price.toFixed(2)}}
+					<text>￥{{price.toFixed(2)}}</text>
 				</view>
 				<view class="show-item-message">
-					{{message}}
+					<text>{{message}}</text>
 				</view>
-				<br />
 				<text class="show-item-store">
-					{{store}}
+					<text>{{store}}</text>
 				</text>
 			</view>
 		</view>
@@ -74,8 +72,6 @@
 		overflow: hidden;
 
 		.show-item-container {
-			border-radius:16rpx 16rpx 0px 0px;
-			overflow: hidden;
 			.image {
 				width: 346rpx;
 				height: 326rpx;
@@ -83,6 +79,8 @@
 			}
 			.show-item-textContent {
 				padding: 14rpx 34rpx 20rpx 20rpx;
+				display: flex;
+				flex-direction: column;
 				.show-item-title {
 					font-size: 28rpx;
 					color: #272727;
@@ -91,13 +89,13 @@
 					overflow: hidden;
 					text-overflow: ellipsis;
 					white-space: nowrap;
-					margin-bottom: 10rpx;
 				}
 
 				.show-item-message {
 					width: 284rpx;
 					color: #FD8F3A;
 					font-size: 24rpx;
+					margin-bottom: 6rpx;
 				}
 
 				.show-item-store {
@@ -106,11 +104,10 @@
 				}
 
 				.show-item-price {
-					margin-top: 10rpx;
-					margin-bottom: 10rpx;
 					font-size: 32rpx;
 					font-weight: bold;
 					color: #FF2F2F;
+					margin-bottom: 6rpx;
 				}
 			}
 		}

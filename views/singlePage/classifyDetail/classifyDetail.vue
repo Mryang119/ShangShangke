@@ -97,7 +97,6 @@
 			const that = this
 			const query = uni.createSelectorQuery().in(this);
 			query.select('.filter-container').boundingClientRect(data => {
-				console.log(data)
 				that.elScrollTop = data.top + data.height
 			}).exec();
 		},

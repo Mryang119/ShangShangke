@@ -3,7 +3,8 @@ export default function http({
 	url,
 	method,
 	data,
-	tips = "数据加载中"
+	tips = "数据加载中",
+	timeout = 5000
 }) {
 	return new Promise((resolve, reject) => {
 		// uni.showLoading({
@@ -16,6 +17,7 @@ export default function http({
 			url: `${URL}${url}`,
 			data,
 			dataType: 'json',
+			timeout,
 			success: (res) => {
 				if (res.data.returnCode == '1') {
 					// uni.hideLoading()

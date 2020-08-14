@@ -2,14 +2,13 @@
 	<!-- name:杨大锐 -->
 	<!-- 发现 -->
 	<view class="s_discover">
-		<view class="nav-bar">
+		
 			<uniNavBar :fixed="true" :status-bar="true">
 				<view class="tabs-content">
 					<view class="tab-item" :class="{'active':current===0}" @click="current=0">店铺</view>
 					<view :class="{'active':current===1}" @click="current=1">发现</view>
 				</view>
 			</uniNavBar>
-		</view>
 		<view class="shop-content" v-show="current===0">
 			<shop></shop>
 		</view>
@@ -18,7 +17,10 @@
 
 <script>
 	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue"
+	// 店铺页
 	import shop from './components/shop.vue'
+	// 发现页
+	
 	export default {
 		components: {
 			uniNavBar,

@@ -1,6 +1,6 @@
 <template>
 	<view class="c_cityList">
-		<u-modal v-model="show" :content="content" @cancel="cancel" @confirm="confirm"></u-modal>
+		<u-modal v-model="show" :content="content" :show-cancel-button="true" @cancel="cancel" @confirm="confirm"></u-modal>
 		<u-index-list :scrollTop="scrollTop">
 			<view v-for="(item, index) in indexList" :key="item.key">
 				<u-index-anchor :index="item.key" />

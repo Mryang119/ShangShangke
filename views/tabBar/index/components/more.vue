@@ -3,7 +3,7 @@
 	<view class="c_more">
 		<navigator class="c-more-text" :url="url">
 			<text>更多</text>
-			<image class="image" src="@/static/images/iconfont/more.png" mode="" />
+			<image class="image" src="/static/images/iconfont/more.png" mode="" />
 		</navigator>
 	</view>
 </template>
@@ -38,7 +38,10 @@
 		top: 50%;
 		transform: translateY(-50%);
 		right: 0;
-
+		.c-more-text {
+		display: flex;
+		align-items: center;
+		}
 		.image {
 			width: 8.5rpx;
 			height: 16.94rpx;

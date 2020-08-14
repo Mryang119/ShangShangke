@@ -8,7 +8,15 @@
 			 :active-item-style="{'font-size':32+'rpx',color:'#333333'}" font-size="28" inactive-color="#666666" :is-scroll="false"
 			 :current="current" @change="change"></u-tabs>
 		</view>
-
+		<!-- 搜索分类部分 -->
+		<view class="search-content">
+			<view class="search-container">
+				<u-search placeholder="发现店铺/商品" :show-action="false" v-model="keyword"></u-search>
+			</view>
+			<view class="class-container" v-if="current==0">
+				<u-icon name="list-dot" size="50" color="#24a7ff"></u-icon>
+			</view>
+		</view>
 		<view class="shopSonNearby-content" v-show="current==0">
 			<shopSonNearby></shopSonNearby>
 		</view>
@@ -19,8 +27,10 @@
 </template>
 
 <script>
+	// 店铺:附近,关注页面
 	import shopSonFocus from './shopSonFocus.vue'
 	import shopSonNearby from './shopSonNearby.vue'
+	
 	export default {
 		components: {
 			shopSonFocus,
@@ -29,6 +39,7 @@
 		data() {
 			return {
 				current: 0,
+				keyword: '',
 				list: [{
 						name: '附近'
 					},
@@ -49,6 +60,28 @@
 <style lang="less" scoped>
 	.c_shop {
 		width: 100%;
+
+		.search-content {
+			display: flex;
+			padding-left: 20rpx;
+			padding-right: 36rpx;
+			margin-top: 30rpx;
+			align-items: center;
+			justify-content: space-between;
+			margin-bottom: 20rpx;
+			.search-container {
+				flex: 1;
+			}
+
+			.class-container {
+				width: 50rpx;
+				height: 50rpx;
+				display: flex;
+				align-items: center;
+				justify-content: flex-end;
+				margin-left: 34rpx;
+			}
+		}
 
 		.tabs-content {
 			width: 100%;

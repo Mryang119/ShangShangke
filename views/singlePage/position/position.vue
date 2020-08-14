@@ -87,10 +87,9 @@
 <style lang="less">
 	.s_position {
 		.searchBar {
-			margin-top: 20rpx;
-			box-sizing: border-box;
-			padding: 0 30rpx;
-			margin-bottom: 20rpx;
+			// box-sizing: border-box;
+			padding: 20rpx 30rpx;
+			background-color: #FFF;
 		}
 
 		.now-city {
@@ -102,6 +101,7 @@
 			font-weight: bold;
 			line-height: 92rpx;
 			padding-left: 30rpx;
+			background-color: #FFF;
 		}
 
 		.hotCity-oldCity {
