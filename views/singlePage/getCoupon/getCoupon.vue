@@ -8,7 +8,7 @@
 			<view class="line-content">
 				<view class="line" v-for="(item,index) in 4" :key="index"></view>
 			</view>
-			<u-tabs :list="list" :current="current" bg-color="#F6F6F6" :active-item-style="{'font-size':33+'rpx'}" :is-scroll="false"
+			<u-tabs :list="list" :current="current" bg-color="#F6F6F6" :active-item-style="{fontSize:'33rpx'}" :is-scroll="false"
 			 @change="change"></u-tabs>
 		</view>
 		<view class="coupon-content" :key="index" v-for="(item,index) in 4">
