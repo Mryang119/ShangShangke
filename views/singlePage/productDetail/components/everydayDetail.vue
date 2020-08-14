@@ -2,7 +2,6 @@
 	<!-- 买赠页面 -->
 	<view class="c_buyDetail">
 		<view>每日一品详情</view>
-		<buyButton></buyButton>
 		<!-- 轮播图区域 -->
 		<view class="swiper-content">
 			<view class="swiper">
@@ -71,15 +70,13 @@
 <script>
 	// 组件
 	import storeTag from '@/src/publicComponents/storeTag.vue'
-	import buyButton from '@/src/publicComponents/buyButton.vue'
 	// api
 	import {
 		getProductSkuList
 	} from '@/src/api/productApi/productApi.js'
 	export default {
 		components: {
-			storeTag,
-			buyButton
+			storeTag
 		},
 		props: {
 			pdcId: {

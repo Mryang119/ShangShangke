@@ -18,7 +18,7 @@
 				<br />
 				<text :style="{fontSize:'24rpx'}">领取</text>
 			</view>
-			<view class="scorll-item-son yilingqu" v-else @click="toUse(index)">
+			<view class="scorll-item-son yilingqu" v-else @click="toUse">
 				<text :style="{fontSize:'24rpx'}">去使用</text>
 			</view>
 		</view>
@@ -40,8 +40,11 @@
 			},
 			logo: {
 				type: String
+			},
+			couponId:{
+				type:[Number,String],
+				default:12731823681
 			}
-
 		},
 		data() {
 			return {
@@ -50,8 +53,8 @@
 		},
 		methods: {
 			// 立即领取
-			toUse(i) {
-				console.log('使用')
+			toUse() {
+				console.log('使用',this.couponId)
 			}
 		}
 	}

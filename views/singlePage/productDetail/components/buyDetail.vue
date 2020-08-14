@@ -1,7 +1,6 @@
 <template>
 	<!-- 买赠页面 -->
 	<view class="c_buyDetail">
-		<buyButton></buyButton>
 		<!-- 轮播图区域 -->
 		<view class="swiper-content">
 			<view class="swiper">
@@ -53,7 +52,6 @@
 	// 组件
 	import storeTag from '@/src/publicComponents/storeTag.vue'
 	import promotionRule from '@/src/publicComponents/promotionRule.vue'
-	import buyButton from '@/src/publicComponents/buyButton.vue'
 	// api
 	import {
 		getProductSkuList
@@ -61,8 +59,7 @@
 	export default {
 		components: {
 			storeTag,
-			promotionRule,
-			buyButton
+			promotionRule
 		},
 		props: {
 			pdcId: {

@@ -1,7 +1,6 @@
 <template>
 	<!-- 秒杀商品详情页面 -->
 	<view class="c_killDetail">
-		<buyButton :price="199"></buyButton>
 		<!-- 轮播图区域 -->
 		<view class="swiper-content">
 			<view class="swiper">
@@ -59,7 +58,6 @@
 	// 组件
 	import storeTag from '@/src/publicComponents/storeTag.vue'
 	import promotionRule from '@/src/publicComponents/promotionRule.vue'
-	import buyButton from '@/src/publicComponents/buyButton.vue'
 	import warmTip from '@/src/publicComponents/warmTip.vue'
 	// api
 	import {
@@ -69,7 +67,6 @@
 		components: {
 			storeTag,
 			promotionRule,
-			buyButton,
 			warmTip
 		},
 		props: {

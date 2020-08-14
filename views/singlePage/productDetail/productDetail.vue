@@ -2,6 +2,7 @@
 	<!-- name:杨大锐 -->
 	<!-- 商品详情页 -->
 	<view class="s_productDetail">
+		<buyButton @changeStatus="changeStatus" :status="status"></buyButton>
 		<!-- 买赠 -->
 		<view class="buy-content" v-if="campaignType==4">
 			<buyDetail :pdcId="pdcId"></buyDetail>
@@ -29,6 +30,7 @@
 	import groupDetail from './components/groupDetail.vue'
 	import robDetail from './components/robDetail.vue'
 	import everydayDetail from './components/everydayDetail.vue'
+	import buyButton from '@/src/publicComponents/buyButton.vue'
 	// api
 	import {
 		getProductSkuList
@@ -39,13 +41,22 @@
 			killDetail,
 			groupDetail,
 			robDetail,
-			everydayDetail
+			everydayDetail,
+			buyButton
 		},
 		data() {
 			return {
 				campaignType: 0,
-				pdcId: 0
+				pdcId: 0,
+				status:1
 			};
+		},
+		methods:{
+			changeStatus(e) {
+				console.log(e)
+				this.status = e
+				console.log(this.status)
+			}
 		},
 		onLoad(e) {
 			console.log(e)

@@ -6,8 +6,8 @@
 			<view class="icon-item" v-for="(item,index) in icons" :key="index">
 				<u-icon label-pos="bottom" color="#686868" :name="item.name" size="44" :label="item.text" font-size="22"></u-icon>
 			</view>
-			<view class="icon-item">
-				<u-icon label-pos="bottom" color="#686868" name="star" size="44" label="收藏" font-size="22" v-if="status===0"></u-icon>
+			<view class="icon-item" @click="changeStatus">
+				<u-icon label-pos="bottom" color="#686868" name="star" size="44" label="收藏" font-size="22" v-if="status==0"></u-icon>
 				<u-icon label-pos="bottom" color="#ff8800" name="star-fill" size="44" label="收藏" font-size="22" v-else></u-icon>
 			</view>
 		</view>
@@ -24,6 +24,10 @@
 </template>
 
 <script>
+	/**
+	 * @method:changeStatus
+	 * @description 
+	 */
 	export default {
 		props: {
 			price: {
@@ -32,7 +36,7 @@
 			},
 			pdcId: {
 				type: String,
-				default:'12312312321'
+				default: '12312312321'
 			},
 			status: {
 				type: Number,
@@ -51,6 +55,12 @@
 
 			}
 		},
+		methods: {
+			changeStatus() {
+				let e = this.status == 1 ? 0 : 1
+				this.$emit('changeStatus', e)
+			}
+		}
 	}
 </script>
 

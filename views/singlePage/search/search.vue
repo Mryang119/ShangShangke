@@ -3,7 +3,7 @@
 	<!-- name:杨大锐 -->
 	<view class="s_search" :class="{indexClass:pageType==='index',discoverClass:pageType==='discover'}">
 		<u-toast ref="uToast" />
-		<u-modal v-model="show" show-cancel-button="true" @confirm="confirm" @cancel="cancel" :content="content"></u-modal>
+		<u-modal v-model="show" :show-cancel-button="true" @confirm="confirm" @cancel="cancel" :content="content"></u-modal>
 
 		<view class="searchBar">
 			<u-search @search="search" placeholder="日照香炉生紫烟" v-model="keyword"></u-search>
