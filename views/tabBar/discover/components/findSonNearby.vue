@@ -20,6 +20,33 @@
 				</view>
 			</scroll-view>
 		</view>
+		<!-- 瀑布流列表 -->
+		<view class="waterfall">
+			<view class="column-list">
+				<view class="column-list-item" v-for="(item) in list1" :key="item.key">
+					<waterfallItem
+					:title="item.title"
+					:imageUrl="item.image"
+					:likeInfo="item.likeInfo"
+					:userImage="item.userImage"
+					:siteDatas="item.siteDatas",
+					:tags="item.tags"
+					></waterfallItem>
+				</view>
+			</view>
+			<view class="column-list">
+				<view class="column-list-item" v-for="(item) in list2" :key="item.key">
+					<waterfallItem
+					:title="item.title"
+					:imageUrl="item.image"
+					:likeInfo="item.likeInfo"
+					:userImage="item.userImage"
+					:siteDatas="item.siteDatas"
+					:tags="item.tags"
+					></waterfallItem>
+				</view>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -30,9 +57,15 @@
 	} from '@/src/utils/index.js'
 	// 假数据
 	import {
-		classifyList
+		classifyList,
+		waterfallList
 	} from '@/src/utils/fakeData.js'
+	// 组件
+	import waterfallItem from '@/src/publicComponents/waterfallItem.vue'
 	export default {
+		components:{
+			waterfallItem
+		},
 		data() {
 			return {
 				newStores: [{
@@ -52,12 +85,27 @@
 					image: "https://s1.ax1x.com/2020/07/31/al1xPg.png"
 				}],
 				classifyList,
-				classSelectIndex: 0
+				classSelectIndex: 0,
+				waterfallList,
+				list1: [],
+				list2: []
 			};
 		},
-		methods:{
-			select(i){
+		created() {
+			this.oddList()
+		},
+		methods: {
+			select(i) {
 				this.classSelectIndex = i
+			},
+			oddList() {
+				this.waterfallList.map((item, index) => {
+					if (index % 2 != 0) {
+						this.list1.push(item)
+					} else {
+						this.list2.push(item)
+					}
+				})
 			}
 		},
 		computed: {
@@ -74,6 +122,25 @@
 </script>
 
 <style lang="less">
+	.waterfall {
+		width: 100%;
+		display: flex;
+		background-color: #F6F6F6;
+		justify-content: space-between;
+		padding: 0 20rpx;
+		.column-list {
+			display: flex;
+			flex-direction: column;
+		}
+		.column-list-item {
+			width: 348rpx;
+			border-radius: 12rpx;
+			background-color: #FFF;
+			height: auto;
+			margin-bottom: 20rpx;
+		}
+	}
+
 	.new-stores-content {
 		height: 194rpx;
 		padding-left: 20rpx;
@@ -81,7 +148,6 @@
 		.new-stores-scroll-H {
 			width: 100%;
 			height: 194rpx;
-			margin-top: 30rpx;
 
 			.new-stores-scroll-H-contianer {
 				display: flex;
@@ -106,9 +172,10 @@
 	}
 
 	.class-button-content {
-		height: 48rpx;
-		margin-top: 30rpx;
-		margin-bottom: 20rpx;
+		height: 98rpx;
+		display: flex;
+		align-items: center;
+		overflow: hidden;
 
 		.class-button-scroll-H {
 			padding-left: 20rpx;

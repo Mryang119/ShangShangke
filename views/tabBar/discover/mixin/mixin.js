@@ -9,6 +9,12 @@ import {
 
 
 const mixin = {
+	data() {
+		return {
+			list1:[],
+			list2:[]
+		}
+	},
 	
 }
 

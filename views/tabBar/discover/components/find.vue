@@ -14,11 +14,19 @@
 				<u-icon name="list-dot" size="50" color="#24a7ff"></u-icon>
 			</view>
 		</view>
+		<!-- 附近 -->
+		<view class="tabs-item-content" v-show="current===0">
+			<findSonNearby></findSonNearby>
+		</view>
 	</view>
 </template>
 
 <script>
+	import findSonNearby from './findSonNearby.vue'
 	export default {
+		components:{
+			findSonNearby
+		},
 		data() {
 			return {
 				list: [{
@@ -41,7 +49,7 @@
 		methods: {
 			change(i) {
 				this.current = i
-			  console.log(this.current)
+				this.$emit('now',i)
 			}
 		}
 	}

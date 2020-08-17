@@ -102,7 +102,6 @@
 			.new-stores-scroll-H {
 				width: 100%;
 				height: 194rpx;
-				margin-top: 30rpx;
 
 				.new-stores-scroll-H-contianer {
 					display: flex;

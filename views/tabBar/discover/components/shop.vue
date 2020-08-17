@@ -52,6 +52,7 @@
 		methods: {
 			change(i) {
 				this.current = i
+				this.$emit('now',i)
 			}
 		}
 	}
@@ -65,10 +66,9 @@
 			display: flex;
 			padding-left: 20rpx;
 			padding-right: 36rpx;
-			margin-top: 30rpx;
 			align-items: center;
 			justify-content: space-between;
-			margin-bottom: 20rpx;
+			height: 120rpx;
 			.search-container {
 				flex: 1;
 			}

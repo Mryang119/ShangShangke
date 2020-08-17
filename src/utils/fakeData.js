@@ -236,40 +236,80 @@ const groups = [{
 const waterfallList = [
 	{
 		title:"深圳最好吃的火锅！",
-		site:"深圳上梅林",
-		distance:400,
+		siteDatas:{
+			site:'深圳上梅林',
+			distance:400
+		},
 		userImage:"https://profile.csdnimg.cn/1/D/D/3_dkr380205984",
-		like:123,
+		likeInfo:{
+			like:123,
+			status:0
+		},
 		userName:'彭于晏',
 		key:Date.now()+Math.random()*999,
-		image:"https://g-search3.alicdn.com/img/bao/uploaded/i4/i2/2641868119/O1CN01vGGTcn29qYH28gdgV_!!0-item_pic.jpg_360x360Q90.jpg"
+		image:"https://g-search3.alicdn.com/img/bao/uploaded/i4/i2/2641868119/O1CN01vGGTcn29qYH28gdgV_!!0-item_pic.jpg_360x360Q90.jpg",
+		tags:[
+			'火锅',
+			'好吃的火锅',
+			'推荐'
+		]
 	},{
 		title:"刚出炉真的是热乎乎香喷喷软绵绵超好吃~！",
-		site:"深圳上梅林",
-		distance:400,
+		siteDatas:{
+			site:'深圳上梅林',
+			distance:400
+		},
 		userName:'彭于晏',
 		userImage:"https://profile.csdnimg.cn/1/D/D/3_dkr380205984",
-		like:123,
+		likeInfo:{
+			like:123,
+			status:0
+		},
 		key:Date.now()+Math.random()*999,
-		image:"https://g-search3.alicdn.com/img/bao/uploaded/i4/i1/2641599952/O1CN016cf6Bb2NO4GNNJrGs_!!0-item_pic.jpg_360x360Q90.jpg"
+		image:"https://g-search3.alicdn.com/img/bao/uploaded/i4/i1/2641599952/O1CN016cf6Bb2NO4GNNJrGs_!!0-item_pic.jpg_360x360Q90.jpg",
+		tags:[
+			'火锅',
+			'好吃的火锅',
+			'推荐'
+		]
 	},{
 		title:"深圳最好吃的火锅~！",
-		site:"深圳上梅林",
-		distance:400,
+		siteDatas:{
+			site:'深圳上梅林',
+			distance:400
+		},
 		userName:'彭于晏',
 		userImage:"https://profile.csdnimg.cn/1/D/D/3_dkr380205984",
-		like:123,
+		likeInfo:{
+			like:123,
+			status:0
+		},
 		key:Date.now()+Math.random()*999,
-		image:"https://g-search1.alicdn.com/img/bao/uploaded/i4/i4/2065839946/O1CN018zYv742NLJst8S2hR_!!0-item_pic.jpg_360x360Q90.jpg"
+		image:"https://g-search1.alicdn.com/img/bao/uploaded/i4/i4/2065839946/O1CN018zYv742NLJst8S2hR_!!0-item_pic.jpg_360x360Q90.jpg",
+		tags:[
+			'火锅',
+			'好吃的火锅',
+			'推荐'
+		]
 	},{
 		title:"刚出炉真的是热乎乎香喷喷软绵绵超好吃~！",
-		site:"深圳上梅林",
-		distance:400,
+		siteDatas:{
+			site:'深圳上梅林',
+			distance:400
+		},
 		userName:'彭于晏',
 		userImage:"https://profile.csdnimg.cn/1/D/D/3_dkr380205984",
-		like:123,
+		likeInfo:{
+			like:123,
+			status:1
+		},
 		key:Date.now()+Math.random()*999,
-		image:"https://g-search1.alicdn.com/img/bao/uploaded/i4/i4/3325705083/O1CN01cPTMqf1nQ3oqHajXS_!!3325705083-0-lubanu-s.jpg_360x360Q90.jpg"
+		image:"https://g-search1.alicdn.com/img/bao/uploaded/i4/i4/3325705083/O1CN01cPTMqf1nQ3oqHajXS_!!3325705083-0-lubanu-s.jpg_360x360Q90.jpg",
+		tags:[
+			'火锅',
+			'好吃的火锅',
+			'推荐'
+		]
 	},
 ]
 export {

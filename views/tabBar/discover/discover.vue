@@ -2,18 +2,17 @@
 	<!-- name:杨大锐 -->
 	<!-- 发现 -->
 	<view class="s_discover">
-		
-			<uniNavBar :fixed="true" :status-bar="true">
-				<view class="tabs-content">
-					<view class="tab-item" :class="{'active':current===0}" @click="current=0">店铺</view>
-					<view :class="{'active':current===1}" @click="current=1">发现</view>
-				</view>
-			</uniNavBar>
+		<uniNavBar :fixed="true" :status-bar="true">
+			<view class="tabs-content">
+				<view class="tab-item" :class="{'active':current===0}" @click="current=0">店铺</view>
+				<view :class="{'active':current===1}" @click="current=1">发现</view>
+			</view>
+		</uniNavBar>
 		<view class="shop-content" v-show="current===0">
-			<shop></shop>
+			<shop @now="now"></shop>
 		</view>
 		<view class="shop-content" v-if="current===1">
-			<find></find>
+			<find @now="now"></find>
 		</view>
 	</view>
 </template>
@@ -33,17 +32,18 @@
 		data() {
 			return {
 				current: 0,
-				current2: 0,
 				list: [{
 					name: '关注'
 				}, {
 					name: '附近'
-				}]
+				}],
+				sonCurrent: 0 // 子tabs的current
 			}
 		},
 		methods: {
-			change(i) {
-				this.current2 = i
+			now(i) {
+				// this.sonCurrent = i
+				console.log(i)
 			}
 		}
 	}
