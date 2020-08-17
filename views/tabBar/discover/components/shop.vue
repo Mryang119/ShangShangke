@@ -5,7 +5,7 @@
 		<!-- tabs部分 -->
 		<view class="tabs-content">
 			<u-tabs :list="list" :bar-style="{ 'background-image': 'linear-gradient(to right, #92D0F9, #26A7FC)'}"
-			 :active-item-style="{'font-size':32+'rpx',color:'#333333'}" font-size="28" inactive-color="#666666" :is-scroll="false"
+			 :active-item-style="{'font-size':32+'rpx'}" active-color="#333333" font-size="28" inactive-color="#666666" :is-scroll="false"
 			 :current="current" @change="change"></u-tabs>
 		</view>
 		<!-- 搜索分类部分 -->

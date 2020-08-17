@@ -1,7 +1,7 @@
 <template>
 	<!-- 店铺首页 -->
 	<!-- name:杨大锐 -->
-	
+
 	<view class="store-index-root">
 		<!-- 轮播图 -->
 		<view class="store-modules-content">
@@ -27,11 +27,20 @@
 		<view class="store-modules-content">
 			<store-tabs></store-tabs>
 		</view>
+		<!-- 测试仓库 -->
+		<view>
+			<text>{{globalData.cityName}}</text>
+			<view @click="change">点击修改</view>
+			
+		</view>
 	</view>
 </template>
 
 <script>
 	// :style="{order:findPackType(3)}" 排序
+	import {
+		mapState
+	} from 'vuex'
 	export default {
 		data() {
 			return {
@@ -59,12 +68,27 @@
 						return this.list[i].index
 					}
 				}
+			},
+			change() {
+				this.$store.commit('saveGlobal', {
+					key: 'cityName',
+					value: '上海市'
+				})
+				// console.log(this.$store)
 			}
+		},
+		computed: {
+			...mapState({
+				globalData: state => state.global.globalData
+			})
 		}
 	}
 </script>
 
 <style lang="less" scoped>
+	.Img {
+		width: 200rpx;
+	}
 	.store-index-root {
 		display: flex;
 		flex-direction: column;

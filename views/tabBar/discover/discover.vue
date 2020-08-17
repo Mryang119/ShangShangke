@@ -12,6 +12,9 @@
 		<view class="shop-content" v-show="current===0">
 			<shop></shop>
 		</view>
+		<view class="shop-content" v-if="current===1">
+			<find></find>
+		</view>
 	</view>
 </template>
 
@@ -20,11 +23,12 @@
 	// 店铺页
 	import shop from './components/shop.vue'
 	// 发现页
-	
+	import find from './components/find.vue'
 	export default {
 		components: {
 			uniNavBar,
-			shop
+			shop,
+			find
 		},
 		data() {
 			return {

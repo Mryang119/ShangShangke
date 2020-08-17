@@ -13,7 +13,7 @@
 				<text :style="{fontSize:18+'rpx',color:'#FFAE44'}">{{current.toFixed(1)}}</text>
 			</view>
 		</view>
-		<view class="right-content">
+		<view class="right-content" @click="toSotreDetail">
 			<view class="button">
 				进店逛逛
 			</view>
@@ -37,6 +37,17 @@
 			current: {
 				type: Number,
 				default: 4
+			}
+		},
+		data() {
+			return {
+			}
+		},
+		methods:{
+			toSotreDetail() {
+				uni.navigateTo({
+					url:'/views/storeView/storeView'
+				})
 			}
 		}
 	}
