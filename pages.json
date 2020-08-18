@@ -3,6 +3,7 @@
 
 		{
 			"path": "views/tabBar/index/index",
+			"root": "index",
 			"style": {
 				"navigationBarTitleText": "上上客",
 				"navigationStyle": "custom"
@@ -23,6 +24,7 @@
 		},
 		{
 			"path": "views/tabBar/discover/discover",
+			"root": "discover",
 			"style": {
 				"navigationBarTitleText": "发现",
 				"navigationStyle": "custom"
@@ -296,6 +298,7 @@
 			"^store-(.*)": "@/store-modules/components/store-$1/store-$1.vue"
 		}
 	}
+	// 分包加载
 	// "condition" : { //模式配置，仅开发期间生效
 	// 	"current": 0, //当前激活的模式(list 的索引项)
 	// 	"list": [

@@ -86,18 +86,22 @@
 		font-size: 24rpx;
 		color: #333333;
 	}
-
+	.right-container {
+		display: flex;
+		align-items: center;
+	}
 	.item-cell {
 		padding: 0 20rpx;
 		display: flex;
 		align-items: center;
 		flex-wrap: wrap;
+		margin-top: 8rpx;
 	}
 
 	.image-cell {
 		.image {
 			width: 348rpx;
-
+			border-radius: 12rpx 12rpx 0 0;
 		}
 	}
 

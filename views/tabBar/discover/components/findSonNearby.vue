@@ -29,7 +29,7 @@
 					:imageUrl="item.image"
 					:likeInfo="item.likeInfo"
 					:userImage="item.userImage"
-					:siteDatas="item.siteDatas",
+					:siteDatas="item.siteDatas"
 					:tags="item.tags"
 					></waterfallItem>
 				</view>
@@ -128,6 +128,7 @@
 		background-color: #F6F6F6;
 		justify-content: space-between;
 		padding: 0 20rpx;
+		padding-top: 20rpx;
 		.column-list {
 			display: flex;
 			flex-direction: column;
