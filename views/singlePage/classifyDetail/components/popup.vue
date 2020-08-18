@@ -6,7 +6,7 @@
 
 			</view>
 			<view class="popup-container"  :style="{top:top+'rpx'}">
-				<slot>默认内容</slot>
+				<slot><text>默认内容</text></slot>
 			</view>
 		</view>
 	</view>

@@ -5,19 +5,19 @@
 		<view class="head-content">
 			<u-image shape="circle" width="156" height="156" :src="imageUrl"></u-image>
 			<view class="change-head" @click="changeUserImg">
-				更改头像
+				<text>更改头像</text>
 			</view>
 		</view>
 		<view class="not-change-content">
 			<uni-list>
 				<uni-list-item :showArrow="false" title="注册时间">
 					<view slot="right" class="right-text">
-						{{date||'2020-04-28'}}
+						<text>{{date||'2020-04-28'}}</text>
 					</view>
 				</uni-list-item>
 				<uni-list-item :showArrow="false" title="注册手机号">
 					<view slot="right" class="right-text">
-						{{moblie||'13222223333'}}
+						<text>{{moblie||'13222223333'}}</text>
 					</view>
 				</uni-list-item>
 			</uni-list>
@@ -26,32 +26,32 @@
 			<uni-list>
 				<uni-list-item title="昵称" link @click="toUserEdit('userEditName')">
 					<view slot="right" class="right-text-black">
-						{{userName}}
+						<text>{{userName}}</text>
 					</view>
 				</uni-list-item>
 				<uni-list-item title="性别" link @click="changeSex">
 					<view slot="right" class="sex-selcet right-text-black">
-						{{sex}}
+						<text>{{sex}}</text>
 						<!-- 选择男女框 -->
 						<view class="select-content" v-if="sexSelectBox">
 							<view class="select-item" @click.stop="changeSexItem('男')">
-								男<u-icon name="checkmark" v-if="sex==='男'"></u-icon>
+								<text>男</text><u-icon name="checkmark" v-if="sex==='男'"></u-icon>
 							</view>
 							<view class="line"></view>
 							<view class="select-item" @click.stop="changeSexItem('女')">
-								女<u-icon name="checkmark" v-if="sex==='女'"></u-icon>
+								<text>女</text><u-icon name="checkmark" v-if="sex==='女'"></u-icon>
 							</view>
 						</view>
 					</view>
 				</uni-list-item>
 				<uni-list-item title="生日" link @click="changeBirthday">
 					<view slot="right" class="right-text-black" :class="{'right-text':birthday===''}">
-						{{birthday!==''? birthday:'请输入生日'}}
+						<text>{{birthday!==''? birthday:'请输入生日'}}</text>
 					</view>
 				</uni-list-item>
 				<uni-list-item title="个人简介" link @click="toUserEdit('userEditRemark')">
 					<view slot="right" class="right-text-black" :class="{'right-text':userRemark===''}">
-						{{userRemark!==''?'已填写':'未填写'}}
+						<text>{{userRemark!==''?'已填写':'未填写'}}</text>
 					</view>
 				</uni-list-item>
 			</uni-list>

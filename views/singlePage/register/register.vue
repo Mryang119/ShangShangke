@@ -11,13 +11,13 @@
 			</view> -->
 			<view class="border login-code">
 				<u-input placeholder="请输入验证码" v-model="vcode" :custom-style="inputStyle"></u-input>
-				<view class="vcode" v-if="vcodeStatus" @click="getVcode">获取验证码</view>
-				<view class="vcode" v-else>{{count+'s'}}</view>
+				<view class="vcode" v-if="vcodeStatus" @click="getVcode"><text>获取验证码</text></view>
+				<view class="vcode" v-else><text>{{count+'s'}}</text></view>
 			</view>
 		</view>
 		<view class="login-button-content">
-			<button class="usable-button button" v-if="verify" @click="register">绑定手机号</button>
-			<view class="forbidden-button button" v-else>绑定手机号</view>
+			<button class="usable-button button" v-if="verify" @click="register"><text>绑定手机号</text></button>
+			<view class="forbidden-button button" v-else><text>绑定手机号</text></view>
 		</view>
 		<u-toast ref="uToast" />
 	</view>

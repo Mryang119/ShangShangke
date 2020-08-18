@@ -5,15 +5,15 @@
 		<view class="coupon" v-for="(item,index) in usableList" :key="index">
 			<!-- ￥100 -->
 			<view class="numCon">
-				<view class="context">￥</view>
-				<view class="num">{{couponPrice}}</view>
+				<view class="context"><text>￥</text></view>
+				<view class="num"><text>{{couponPrice}}</text></view>
 			</view>
 			<!-- 满减/有效期/选中 -->
 			<view class="chooseCoupon">
 				<!-- 满减/有效期 -->
 				<view class="fullDelete">
-					<view class="full">满{{fullPrice}}元可用</view>
-					<view class="fullTime">有效期至：{{usefulTime}}</view>
+					<view class="full"><text>满{{fullPrice}}元可用</text></view>
+					<view class="fullTime"><text>有效期至：{{usefulTime}}</text></view>
 				</view>
 				<view class="chooseCon" @click="toggleIcon(item,index)">
 					<u-icon v-if="item.IconType" name="checkmark-circle-fill" color="#FF2F2F" size="38"></u-icon>
@@ -22,7 +22,7 @@
 			</view>
 			<!-- 左上角商品类型 -->
 			<view class="goodsType">
-				<view class="goodsText">{{useType}}</view>
+				<view class="goodsText"><text>{{useType}}</text></view>
 			</view>
 		</view>
 

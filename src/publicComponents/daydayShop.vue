@@ -7,16 +7,16 @@
 		</view>
 		<view class="text-content">
 			<view class="item-title">
-				{{title}}
+				<text>{{title}}</text>
 			</view>
 			<view class="item-site">
 				<image src="@/static/images/iconfont/position.png"></image>
 				<text>{{site}}</text>
 				<view v-if="distance<500" class="distance">
-					{{"<"}}500m
+					<text>{{"<"}}500m</text>
 				</view>
 				<view class="distance" v-else-if="distance>500">
-					{{">"}}500m
+					<text>{{">"}}500m</text>
 				</view>
 			</view>
 			<view class="item-price">
@@ -40,10 +40,10 @@
 				<!-- 计算百分比 -->
 				<!-- 未抢完-文字 -->
 				<view class="percentage-content" v-if="now!==sum">
-					已抢{{percentage}}%
+					<text>已抢{{percentage}}%</text>
 				</view>
 				<view class="percentage-content-No" v-if="now>=sum">
-					已抢完
+					<text>已抢完</text>
 				</view>
 				<!-- 计算绘画图表 -->
 				<!-- 未抢完-图表 -->

@@ -2,25 +2,25 @@
 <!-- name:陈铄源 -->
 <template>
 	<view class="orderNewContent">
-		<view class="orderNewsText">订单信息</view>
+		<view class="orderNewsText"><text>订单信息</text></view>
 		<view class="orderNewsName">
-			<span>订单数量</span>
-			<span>{{orderNumber}}</span>
+			<span><text>订单数量</text></span>
+			<span><text>{{orderNumber}}</text></span>
 		</view>
 		<view class="orderNewsName">
-			<span>订单总价</span>
-			<span>￥{{orderNumPrice}}</span>
+			<span><text>订单总价</text></span>
+			<span><text>￥{{orderNumPrice}}</text></span>
 		</view>
 		<view class="orderNewsName">
-			<span>订单编号</span>
+			<span><text>订单编号</text></span>
 			<view class="orderNewsSerial">
-				<span>{{orderReference}}</span>
-				<view class="orderNewsCopy" @click="cloneBtn(orderReference)">复制</view>
+				<span><text>{{orderReference}}</text></span>
+				<view class="orderNewsCopy" @click="cloneBtn(orderReference)"><text>复制</text></view>
 			</view>
 		</view>
 		<view class="orderNewsName">
-			<span>下单时间</span>
-			<span>{{orderTime}}</span>
+			<span><text>下单时间</text></span>
+			<span><text>{{orderTime}}</text></span>
 		</view>
 
 	</view>

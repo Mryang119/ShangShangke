@@ -12,7 +12,7 @@
 				<view class="myLogin" @click="toLogin" v-if="!loginStatus">
 					<image class="myLoginHeader" src="@/static/images/tabBarImage/myLoginHeader.png"></image>
 					<view class="myLoginRight">
-						<span class="myLoginText">点击登录</span>
+						<span class="myLoginText"><text>点击登录</text></span>
 						<image class="myLoginMore" src="@/static/images/iconfont/more.png"></image>
 					</view>
 				</view>
@@ -25,12 +25,12 @@
 					<!-- 用户名与粉丝关注 -->
 					<view class="user-name-and-follow">
 						<view class="user-name">
-							{{userName}}
+							<text>{{userName}}</text>
 						</view>
 						<view class="user-follow">
-							<view>{{'粉丝:'+userFans}}</view>
+							<view><text>{{'粉丝:'+userFans}}</text></view>
 							<view class="line"></view>
-							<view>{{'关注:'+userFocus}}</view>
+							<view><text>{{'关注:'+userFocus}}</text></view>
 						</view>
 					</view>
 					<!--右箭头 -->
@@ -45,25 +45,25 @@
 							<view class="myLoginOrderTu">
 								<image class="myLoginOrderImg" src="@/static/images/iconfont/dingdan.png"></image>
 							</view>
-							<span class="myLoginOrderText">我的订单</span>
+							<span class="myLoginOrderText"><text>我的订单</text></span>
 						</view>
 						<view class="myLoginOrderLi" @click="navigateTo('../../singlePage/myCoupon/myCoupon')">
 							<view class="myLoginOrderTu">
 								<image class="myLoginOrderImg" src="@/static/images/iconfont/kaquan.png"></image>
 							</view>
-							<span class="myLoginOrderText">我的卡券</span>
+							<span class="myLoginOrderText"><text>我的卡券</text></span>
 						</view>
 						<view class="myLoginOrderLi" @click="navigateTo('../../singlePage/myCollect/myCollect')">
 							<view class="myLoginOrderTu">
 								<image class="myLoginOrderImg" src="@/static/images/iconfont/shoucang.png"></image>
 							</view>
-							<span class="myLoginOrderText">我的收藏</span>
+							<span class="myLoginOrderText"><text>我的收藏</text></span>
 						</view>
 						<view class="myLoginOrderLi" @click="navigateTo('../../singlePage/mySpellGroup/mySpellGroup')">
 							<view class="myLoginOrderTu">
 								<image class="myLoginOrderImg" src="@/static/images/iconfont/pintuan.png"></image>
 							</view>
-							<span class="myLoginOrderText">我的拼团</span>
+							<span class="myLoginOrderText"><text>我的拼团</text></span>
 						</view>
 					</view>
 				</view>
@@ -72,29 +72,29 @@
 			<!-- 评价-->
 			<view class="myLoginEstimate">
 				<view class="myLoginEstimateLi">
-					<span class="myLoginEstimateText">我的评价</span>
+					<span class="myLoginEstimateText"><text>我的评价</text></span>
 					<image class="myLoginEstimateImg" src="@/static/images/iconfont/more.png"></image>
 				</view>
 				<u-line color="#F3F3F3" length="325rpx" margin="0 26rpx" />
 				<view class="myLoginEstimateLi">
-					<span class="myLoginEstimateText">我的足迹</span>
+					<span class="myLoginEstimateText"><text>我的足迹</text></span>
 					<image class="myLoginEstimateImg" src="@/static/images/iconfont/more.png"></image>
 				</view>
 				<u-line color="#F3F3F3" length="325rpx" margin="0 26rpx" />
 				<view class="myLoginEstimateLi" @click="navigateTo('../../singlePage/myTidings/myTidings')">
-					<span class="myLoginEstimateText">我的动态</span>
+					<span class="myLoginEstimateText"><text>我的动态</text></span>
 					<image class="myLoginEstimateImg" src="@/static/images/iconfont/more.png"></image>
 				</view>
 			</view>
 			<!-- 客服/商家 -->
 			<view class="myLoginService">
 				<view class="myLoginServiceLi">
-					<span class="myLoginServiceText">我的客服</span>
+					<span class="myLoginServiceText"><text>我的客服</text></span>
 					<image class="myLoginServiceImg" src="@/static/images/iconfont/more.png"></image>
 				</view>
 				<u-line color="#F3F3F3" length="325rpx" margin="0 26rpx" />
 				<view class="myLoginServiceLi">
-					<span class="myLoginServiceText">商家加盟</span>
+					<span class="myLoginServiceText"><text>商家加盟</text></span>
 					<image class="myLoginServiceImg" src="@/static/images/iconfont/more.png"></image>
 				</view>
 			</view>

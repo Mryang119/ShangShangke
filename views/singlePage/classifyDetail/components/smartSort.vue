@@ -3,7 +3,7 @@
 		<view class="smartSort-cotainer">
 			<view class="smartSort-item" @click="saveSmartSort(item)" :class="{'active-smartSort-item':currentSort===item}"
 			 v-for="(item,index) in smartSort" :key="item">
-				{{item}}
+				<text>{{item}}</text>
 			</view>
 		</view>
 	</view>

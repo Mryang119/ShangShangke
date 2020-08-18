@@ -4,9 +4,9 @@
 	<!-- v-if="option.type==='group'" -->
 	<view class="group">
 		<view class="groupMore">
-			<view class="people">{{groupPeople}}人正在拼团，可直接参与</view>
+			<view class="people"><text>{{groupPeople}}人正在拼团，可直接参与</text></view>
 			<view class="more">
-				<view class="text">查看更多</view>
+				<view class="text"><text>查看更多</text></view>
 				<image src="@/static/images/iconfont/more.png"></image>
 			</view>
 		</view>
@@ -14,16 +14,16 @@
 			<view class="oneGroup" v-for="(item,index) in 2" :key="index">
 				<view class="userImg">
 					<image src="@/static/images/tabBarImage/myLoginHeader.png"></image>
-					<view class="userName">{{groupName}}</view>
+					<view class="userName"><text>{{groupName}}</text></view>
 				</view>
 				<view class="toGroupCon">
 					<view class="shortCon">
-						<view class="shortPeople">还差<view class="people">{{shortPeople}}人</view>拼成</view>
+						<view class="shortPeople"><text>还差<view class="people">{{shortPeople}}人</view>拼成</text></view>
 						<view class="shortTime">
-							剩余<u-count-down :timestamp="timestamp" color="#5F5C5F" font-size="24" :show-days="false"></u-count-down>
+							<text>剩余</text><u-count-down :timestamp="timestamp" color="#5F5C5F" font-size="24" :show-days="false"></u-count-down>
 						</view>
 					</view>
-					<navigator class="toGroupBtn" :url="spellGroupDetail">去拼团</navigator>
+					<navigator class="toGroupBtn" :url="spellGroupDetail"><text>去拼团</text></navigator>
 				</view>
 
 			</view>

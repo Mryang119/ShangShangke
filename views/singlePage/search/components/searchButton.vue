@@ -1,7 +1,7 @@
 <template>
 	<view class="c_searchButton">
 		<image v-if="isHot" src="@/static/images/iconfont/hotIcon.png" mode=""></image>
-		<view class="text">{{text}}</view>
+		<view class="text"><text>{{text}}</text></view>
 	</view>
 </template>
 

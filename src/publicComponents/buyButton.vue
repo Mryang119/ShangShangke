@@ -17,7 +17,7 @@
 				<text class="price">{{price.toFixed(2)}}</text>
 			</view>
 			<view class="text">
-				立即购买
+				<text>立即购买</text>
 			</view>
 		</view>
 	</view>

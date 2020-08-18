@@ -20,12 +20,12 @@
 					</view>
 					<!-- 月售 -->
 					<view class="sla-count">
-						月售{{productDetais.basDuctList.salCount}}
+						<text>月售{{productDetais.basDuctList.salCount}}</text>
 					</view>
 				</view>
 				<!-- 商品名字 -->
 				<view class="product-name">
-					{{productDetais.basDuctList.productName}}
+					<text>{{productDetais.basDuctList.productName}}</text>
 				</view>
 			</view>
 		</view>
@@ -36,10 +36,10 @@
 		<!-- 好物介绍 -->
 		<view class="good-text-content">
 			<view class="title">
-				好物介绍
+				<text>好物介绍</text>
 			</view>
 			<view class="text-detail">
-				以小麦粉为主要原料，以酵母、鸡蛋、油脂、糖、盐等为辅料，加水调制成面团，经过分割、成形、醒发、焙烤、冷却等过程加工而成的焙烤食品。
+				<text>以小麦粉为主要原料，以酵母、鸡蛋、油脂、糖、盐等为辅料，加水调制成面团，经过分割、成形、醒发、焙烤、冷却等过程加工而成的焙烤食品。</text>
 			</view>
 		</view>
 		<!-- 规格选择 -->
@@ -57,7 +57,7 @@
 		</view>
 		<!-- 详情图 -->
 		<view class="image-content">
-			<view class="title">商品详情</view>
+			<view class="title"><text>商品详情</text></view>
 			<view class="image-container">
 				<view class="image-item" v-for="(item,index) in list" :key="index">
 					<u-image height="550rpx" :lazy-load="false" :src="item.image"></u-image>

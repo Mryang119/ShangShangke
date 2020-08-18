@@ -4,13 +4,13 @@
 		<scroll-view scroll-y="true" class="tab-container">
 			<view class="tab-item" :class="{'active-tab-item':index===currentIndex}" v-for="(item,index) in nearbys" :key="index"
 			 @click="toggleIndex(item.title,index)">
-				{{item.title}}
+				<text>{{item.title}}</text>
 			</view>
 		</scroll-view>
 		<scroll-view scroll-y="true" class="distance-container">
 			<view class="distance-item" :class="{'active-distance-item':currentAreaIndex==item}" @click="saveArea(item,index)"
 			 v-for="(item,index) in children" :key="index">
-				{{item}}
+				<text>{{item}}</text>
 			</view>
 		</scroll-view>
 	</view>

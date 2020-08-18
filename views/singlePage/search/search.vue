@@ -11,7 +11,7 @@
 		<view class="search-container">
 			<!-- 热门搜索 -->
 			<view class="hotSearchi-title">
-				热门搜索
+				<text>热门搜索</text>
 			</view>
 			<view class="searchButton-container">
 				<view class="flex-box">
@@ -22,7 +22,7 @@
 			</view>
 			<!-- 历史记录 -->
 			<view class="history-title">
-				<view class="text">历史记录</view>
+				<view class="text"><text>历史记录</text></view>
 				<view class="img" @click="open">
 					<image src="@/static/images/iconfont/deletIcon.png" mode=""></image>
 				</view>
@@ -40,7 +40,7 @@
 		<!-- 附近商户列表 -->
 		<view class="nearby-container" v-if="pageType==='index'">
 			<view class="nearby-title">
-				附近
+				<text>附近</text>
 			</view>
 			<view class="list-container" v-for="(item,index) in 4" :key="index">
 				<searchNearbyShowItem></searchNearbyShowItem>

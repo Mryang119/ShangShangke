@@ -2,7 +2,7 @@
 	<!-- 秒杀商品详情页面 -->
 	<view class="c_killDetail">
 		<!-- 轮播图区域 -->
-		<view>团购详情1</view>
+		<view><text>团购详情1</text></view>
 		<view class="swiper-content">
 			<view class="swiper">
 				<u-swiper :list="list" mode="number" indicator-pos="bottomRight" height="550"></u-swiper>
@@ -16,16 +16,16 @@
 						<text class="price" :style="{fontSize:30+'rpx'}">￥</text>
 						<text>{{productDetais.basDuctList.salePrice||'233.00'}}</text>
 					</view>
-					<view class="old-price">￥11.00</view>
+					<view class="old-price"><text>￥11.00</text></view>
 				</view>
 				<!-- 月售 -->
 				<view class="sla-count">
-					月售{{productDetais.basDuctList.salCount||2333}}
+					<text>月售{{productDetais.basDuctList.salCount||2333}}</text>
 				</view>
 			</view>
 			<!-- 商品名字 -->
 			<view class="product-name">
-				{{productDetais.basDuctList.productName||'抹茶柚子千层 抹茶柚子千层 新鲜出炉'}}
+				<text>{{productDetais.basDuctList.productName||'抹茶柚子千层 抹茶柚子千层 新鲜出炉'}}</text>
 			</view>
 		</view>
 		<!-- 店铺标签 -->
@@ -38,11 +38,11 @@
 		</view>
 		<!-- 商品详情 -->
 		<view class="product-content">
-			<view class="text">商品详情</view>
+			<view class="text"><text>商品详情</text></view>
 			<uni-list :border="false">
 				<uni-list-item title="• 限时新品双人冰爽餐">
 					<view slot="right">
-						￥100.00
+						<text>￥100.00</text>
 					</view>
 				</uni-list-item>
 			</uni-list>
@@ -51,7 +51,7 @@
 		<view class="group-content">
 			<uni-list :border="false">
 				<uni-list-item>
-					<view slot="default">10人正在拼团，可直接参与</view>
+					<view slot="default"><text>10人正在拼团，可直接参与</text></view>
 					<view slot="right">
 						<view class="context">
 							<text>查看更多</text>

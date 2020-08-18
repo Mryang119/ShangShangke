@@ -5,7 +5,7 @@
 			<view v-for="(item, index) in indexList" :key="item.key">
 				<u-index-anchor :index="item.key" />
 				<view class="list-cell" v-for="(item1,index1) in item.children" :key="item1.name" @click="save(item1.name,item1.lat,item1.lng)">
-					{{item1.name}}
+					<text>{{item1.name}}</text>
 				</view>
 			</view>
 		</u-index-list>

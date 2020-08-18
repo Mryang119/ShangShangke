@@ -17,46 +17,46 @@
 						<u-count-down :timestamp="timestamp" separator="colon" separator-size="42" separator-color="#FE3B2B" font-size="32"
 						 color="#FFFFFF" bg-color="#FE3B2B" :show-days="false"></u-count-down>
 					</view>
-					<view class="shortPeople">3人成团,还差<view class="num">{{num}}</view>人</view>
+					<view class="shortPeople"><text>3人成团,还差</text><view class="num"><text>{{num}}</text></view><text>人</text></view>
 				</view>
 			</view>
 			<!-- 拼团成功 -->
-			<view class="groupSuccess" v-else>拼团成功！</view>
+			<view class="groupSuccess" v-else><text>拼团成功！</text></view>
 			<!-- 用户个人信息 -->
 			<view class="groupUser">
 				<view class="oneGroupUser" v-for="(item,index) in userList" :key="index">
 					<view class="userImg">
 						<image :src="item.withInviteImg"></image>
 					</view>
-					<view class="userName">{{item.userName}}</view>
+					<view class="userName"><text>{{item.userName}}</text></view>
 				</view>
 			</view>
 			<!-- 邀请好友拼团 -->
 			<view class="inviteFriends" v-if="type === '已支付，待成团' ">
-				<button class="inviteBtn" @click="inviteBtn" open-type="share">邀请好友拼团</button>
+				<button class="inviteBtn" @click="inviteBtn" open-type="share"><text>邀请好友拼团</text></button>
 			</view>
 			<!-- 查看我的拼团 -->
 			<view class="inviteFriends" v-else @click="checkMySpellGroup">
-				<view class="inviteBtn">查看我的拼团</view>
+				<view class="inviteBtn"><text>查看我的拼团</text></view>
 			</view>
 		</view>
 		<!-- 拼团失败 -->
 		<view class="spellGroupFailCon" v-if="type==='组团失败，已回归'">
 			<view class="orderType">
-				<view class="text">订单状态:</view>
-				<view class="type">{{groupType}}</view>
+				<view class="text"><text>订单状态:</text></view>
+				<view class="type"><text>{{groupType}}</text></view>
 			</view>
 			<view class="orderType">
-				<view class="text">订单编号:</view>
-				<view class="type">{{orderNumber}}</view>
+				<view class="text"><text>订单编号:</text></view>
+				<view class="type"><text>{{orderNumber}}</text></view>
 			</view>
 			<view class="orderType">
-				<view class="text">订单金额:</view>
-				<view class="type">￥{{orderPrice}}</view>
+				<view class="text"><text>订单金额:</text></view>
+				<view class="type"><text>￥{{orderPrice}}</text></view>
 			</view>
 			<view class="orderType">
-				<view class="text">订单方式:</view>
-				<view class="type">{{payWay}}</view>
+				<view class="text"><text>订单方式:</text></view>
+				<view class="type"><text>{{payWay}}</text></view>
 			</view>
 		</view>
 	</view>
@@ -68,7 +68,7 @@
 		data() {
 			return {
 				timestamp: '86400', // 倒计时时间
-				num: '1', //还差几人
+				num: 1, //还差几人
 				userList: [{ // 用户列表		
 					withInviteImg: '../../../static/images/tabBarImage/myLoginHeader.png', //带邀请用户头像
 					userName: '上官婉儿', // 用户名

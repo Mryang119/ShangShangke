@@ -4,34 +4,34 @@
 	<view class="mySpellGroup">
 		<view class="mySpellGroup" v-if="userList.length=== 0">
 			<image src="@/static/images/iconfont/mySpellGroupBg.png"></image>
-			<view class="noSpellGroup">还没有拼团~</view>
+			<view class="noSpellGroup"><text>还没有拼团~</text></view>
 		</view>
 		<view class="spellInformation" v-for="(item,index) in userList" :key="index" @click="toSpellGroupDetail(item,index)">
 			<view class="spellGroupTime">
-				<view class="Time">{{item.spellGroupTime}}</view>
-				<view class="text">{{item.spellGroupType}}</view>
+				<view class="Time"><text>{{item.spellGroupTime}}</text></view>
+				<view class="text"><text>{{item.spellGroupType}}</text></view>
 			</view>
 			<view class="goods">
 				<view class="goodsImg">
 					<image :src="item.goodsImg"></image>
 				</view>
 				<view class="content">
-					<view class="text">{{item.goodsName}}</view>
-					<view class="goodsType">{{item.goodsType}}</view>
+					<view class="text"><text>{{item.goodsName}}</text></view>
+					<view class="goodsType"><text>{{item.goodsType}}</text></view>
 					<view class="price">
-						<view class="nowPrice">￥{{item.nowPrice}}</view>
-						<view class="beforePrice">￥{{item.beforePrice}}</view>
+						<view class="nowPrice"><text>￥{{item.nowPrice}}</text></view>
+						<view class="beforePrice"><text>￥{{item.beforePrice}}</text></view>
 					</view>
 				</view>
 			</view>
 			<view class="countDownTime">
 				<view class="countDown">
-					拼团倒计时:
+					<text>拼团倒计时:</text>
 					<u-count-down :timestamp="item.spellGroupCountDown" separator="colon" separator-size="28" separator-color="#333333"></u-count-down>
 				</view>
-				<view class="inviteBtn" v-if="item.spellGroupType==='已支付，待成团'" @click.stop="inviteFriends">邀请好友参团</view>
-				<view class="inviteBtn" v-if="item.spellGroupType==='组团失败，已回归'" @click.stop="againInvite">再次发起拼团</view>
-				<view class="inviteBtnTo" v-if="item.spellGroupType==='组团成功'" @click.stop="toUse">进店使用</view>
+				<view class="inviteBtn" v-if="item.spellGroupType==='已支付，待成团'" @click.stop="inviteFriends"><text>邀请好友参团</text></view>
+				<view class="inviteBtn" v-if="item.spellGroupType==='组团失败，已回归'" @click.stop="againInvite"><text>再次发起拼团</text></view>
+				<view class="inviteBtnTo" v-if="item.spellGroupType==='组团成功'" @click.stop="toUse"><text>进店使用</text></view>
 			</view>
 		</view>
 	</view>

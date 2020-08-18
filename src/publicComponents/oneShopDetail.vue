@@ -6,11 +6,11 @@
 			<image :src="goodsImg"></image>
 		</view>
 		<view class="content">
-			<view class="text">{{goodsName}}</view>
-			<view class="goodsType">{{goodsType}}</view>
+			<view class="text"><text>{{goodsName}}</text></view>
+			<view class="goodsType"><text>{{goodsType}}</text></view>
 			<view class="price">
-				<view class="nowPrice">￥{{nowPrice}}</view>
-				<view class="beforePrice">￥{{beforePrice}}</view>
+				<view class="nowPrice"><text>￥{{nowPrice}}</text></view>
+				<view class="beforePrice"><text>￥{{beforePrice}}</text></view>
 			</view>
 		</view>
 	</view>

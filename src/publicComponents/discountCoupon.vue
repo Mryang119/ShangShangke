@@ -4,17 +4,17 @@
 	<view class="c_discountCoupon">
 		<view class="title-content">
 			<view class="title-img">
-				海底捞
+				<text>海底捞</text>
 			</view>
 			<view class="store-title">
-				{{store}}
+				<text>{{store}}</text>
 			</view>
 		</view>
 		<view class="message-content" :class="{'qushiyongBg':status==1}">
 			<!-- 左侧区域 -->
 			<view class="left-container">
 				<view class="top-tag">
-					{{type}}
+					<text>{{type}}</text>
 				</view>
 				<view class="price">
 					<text :style="{fontSize:30+'rpx'}">￥</text>
@@ -22,12 +22,12 @@
 				</view>
 			</view>
 			<view class="center-container">
-				<view class="explain" :style="{fontWeight:'bold',fontSize:28+'rpx'}">{{explain}}</view>
-				<view class="period">{{period}}</view>
+				<view class="explain" :style="{fontWeight:'bold',fontSize:28+'rpx'}"><text>{{explain}}</text></view>
+				<view class="period"><text>{{period}}</text></view>
 			</view>
 			<view class="right-container">
-				<view class="button lijilingqu" v-if="status==0" @click="Now">立即领取</view>
-				<view class="button qushiyong" v-else @click="Await">去使用</view>
+				<view class="button lijilingqu" v-if="status==0" @click="Now"><text>立即领取</text></view>
+				<view class="button qushiyong" v-else @click="Await"><text>去使用</text></view>
 			</view>
 		</view>
 	</view>

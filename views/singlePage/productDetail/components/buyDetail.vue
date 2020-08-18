@@ -38,7 +38,7 @@
 		</view>
 		<!-- 详情图 -->
 		<view class="image-content">
-			<view class="title">商品详情</view>
+			<view class="title"><text>商品详情</text></view>
 			<view class="image-container">
 				<view class="image-item" v-for="(item,index) in list" :key="index">
 					<u-image height="550rpx" :lazy-load="false" :src="item.image"></u-image>

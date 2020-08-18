@@ -5,24 +5,24 @@
 		<view class="listContainer">
 			<view class="tidingsBg" v-if="newShopList.length=== 0">
 				<image src="@/static/images/iconfont/myTidingsBg.png"></image>
-				<view class="noTidings">还没有发布相关动态~</view>
+				<view class="noTidings"><text>还没有发布相关动态~</text></view>
 			</view>
 			<view class="bothList" v-for="(item,index) in newShopList" :key="index">
 				<view class="shopImg">
 					<image :src="item.shopImg"></image>
 				</view>
 				<view class="shopEvaluateCon">
-					<view class="shopEvaluate">{{item.shopEvaluate}}</view>
+					<view class="shopEvaluate"><text>{{item.shopEvaluate}}</text></view>
 					<view class="userInfo">
 						<view class="user">
 							<view class="userImg">
 								<image :src="item.userImg"></image>
 							</view>
-							<view class="userName">{{item.userName}}</view>
+							<view class="userName"><text>{{item.userName}}</text></view>
 						</view>
 						<view class="giveLike">
 							<u-icon :name="item.likeState?'thumb-up-fill':'thumb-up'" size="28" color="#24A7FF" @click="likeBtn(item,index)"></u-icon>
-							<view class="likeNumber">{{item.likeNumber}}</view>
+							<view class="likeNumber"><text>{{item.likeNumber}}</text></view>
 						</view>
 					</view>
 				</view>

@@ -9,7 +9,7 @@
 				<view class="everyDayRob-content">
 					<view class="titleBar">
 						<view class="line"></view>
-						<view class="text">超多商品免费领取</view>
+						<view class="text"><text>超多商品免费领取</text></view>
 						<view class="line"></view>
 					</view>
 					<!-- 列表项 -->

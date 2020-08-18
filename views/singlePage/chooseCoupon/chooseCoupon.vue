@@ -3,26 +3,26 @@
 <template>
 	<!-- 最外层 -->
 	<view class="container">
-		<view class="useText">此单可用优惠券（{{usableList.length}}张）</view>
+		<view class="useText"><text>此单可用优惠券（{{usableList.length}}张）</text></view>
 		<view class="useCoupon" v-for="(item,index) in usableList" :key="index">
 			<view class="couponHeader">
 				<view class="headerImg">
 					<image src="@/static/images/Product/shangpintu.png"></image>
 				</view>
-				<view class="headerText">{{item.shopName}}</view>
+				<view class="headerText"><text>{{item.shopName}}</text></view>
 			</view>
 			<view class="coupon">
 				<!-- ￥100 -->
 				<view class="numCon">
-					<view class="context">￥</view>
-					<view class="num">{{item.couponPrice}}</view>
+					<view class="context"><text>￥</text></view>
+					<view class="num"><text>{{item.couponPrice}}</text></view>
 				</view>
 				<!-- 满减/有效期/选中 -->
 				<view class="chooseCoupon">
 					<!-- 满减/有效期 -->
 					<view class="fullDelete">
-						<view class="full">{{item.fullPrice}}</view>
-						<view class="fullTime">{{item.usefulLife}}</view>
+						<view class="full"><text>{{item.fullPrice}}</text></view>
+						<view class="fullTime"><text>{{item.usefulLife}}</text></view>
 					</view>
 					<view class="chooseCon">
 						<u-icon :name="item.IconType ?'checkmark-circle-fill':'checkmark-circle'" color="#FF2F2F" size="38" @click="toggleIcon(item,index)"></u-icon>
@@ -30,35 +30,35 @@
 				</view>
 				<!-- 左上角商品类型 -->
 				<view class="goodsType">
-					<view class="goodsText">{{item.useType}}</view>
+					<view class="goodsText"><text>{{item.useType}}</text></view>
 				</view>
 			</view>
 		</view>
-		<view class="noUseText">此单不可用优惠券（{{unusableList.length}}张）</view>
+		<view class="noUseText"><text>此单不可用优惠券（{{unusableList.length}}张）</text></view>
 		<view class="useCoupon" v-for="(item,index) in unusableList" :key="index">
 			<view class="couponHeader">
 				<view class="headerImg">
 					<image src="@/static/images/Product/shangpintu.png"></image>
 				</view>
-				<view class="headerText">{{item.shopName}}</view>
+				<view class="headerText"><text>{{item.shopName}}</text></view>
 			</view>
 			<view class="coupon">
 				<!-- ￥100 -->
 				<view class="numCon">
-					<view class="context">￥</view>
-					<view class="num">{{item.couponPrice}}</view>
+					<view class="context"><text>￥</text></view>
+					<view class="num"><text>{{item.couponPrice}}</text></view>
 				</view>
 				<!-- 满减/有效期/选中 -->
 				<view class="chooseCoupon">
 					<!-- 满减/有效期 -->
 					<view class="fullDelete">
-						<view class="full">{{item.fullPrice}}</view>
-						<view class="fullTime">{{item.usefulLife}}</view>
+						<view class="full"><text>{{item.fullPrice}}</text></view>
+						<view class="fullTime"><text>{{item.usefulLife}}</text></view>
 					</view>
 				</view>
 				<!-- 左上角商品类型 -->
 				<view class="goodsType">
-					<view class="goodsText">{{item.useType}}</view>
+					<view class="goodsText"><text>{{item.useType}}</text></view>
 				</view>
 			</view>
 		</view>

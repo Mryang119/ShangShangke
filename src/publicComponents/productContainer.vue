@@ -7,10 +7,10 @@
 				<u-image :width="imageWidth*2" :height="imageHeight*2" class="image" :src="imageUrl"></u-image>
 			</view>
 			<view class="product-name">
-				{{productName}}
+				<text>{{productName}}</text>
 			</view>
 			<view class="product-price">
-				{{price}}
+				<text>{{price}}</text>
 			</view>
 		</view>
 	</view>

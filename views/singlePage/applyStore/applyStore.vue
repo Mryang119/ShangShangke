@@ -5,7 +5,7 @@
 		<view class="applyStoreAddress">
 			<view class="storeAddress">
 				<view class="addrImg"><image src="../../../static/images/iconfont/dingwei.png"></image></view>
-				<view class="cityName">{{cityName}}</view>
+				<view class="cityName"><text>{{cityName}}</text></view>
 				<view class="iconImg" @click="toggle()">
 					<image src="../../../static/images/iconfont/xiajiantoubig.png"></image>
 				</view>

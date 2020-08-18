@@ -14,7 +14,7 @@
 				<view class="grid-item-container" v-for="(item,index) in elList" :key="index">
 					<view class="grid-item">
 						<view class="grid-item-icon"></view>
-						<view class="title">item{{index+1}}</view>
+						<view class="title"><text>item{{index+1}}</text></view>
 					</view>
 				</view>
 			</view>

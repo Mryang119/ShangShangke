@@ -13,25 +13,25 @@
 			<view class="filter-box">
 				<view class="filter-line">
 					<view class="filter-item className" @click="dipatch('className','classification')" :class="{'active':isActiveForm.className}">
-						<view>分类
+						<view><text>分类</text>
 							<u-icon name="arrow-down" v-if="!isActiveForm.className"></u-icon>
 							<u-icon name="arrow-up" v-else></u-icon>
 						</view>
 					</view>
 					<view class="filter-item nearbys" @click="dipatch('nearbys','nearbys')" :class="{'active':isActiveForm.nearbys}">
-						<view>附近
+						<view><text>附近</text>
 							<u-icon name="arrow-down" v-if="!isActiveForm.nearbys"></u-icon>
 							<u-icon name="arrow-up" v-else></u-icon>
 						</view>
 					</view>
 					<view class="filter-item smartSort" @click="dipatch('smartSort','smartSort')" :class="{'active':isActiveForm.smartSort}">
-						<view>智能排序
+						<view><text>智能排序</text>
 							<u-icon name="arrow-down" v-if="!isActiveForm.smartSort"></u-icon>
 							<u-icon name="arrow-up" v-else></u-icon>
 						</view>
 					</view>
 					<view class="filter-item filters" @click="dipatch('filters','filters')" :class="{'active':isActiveForm.filters}">
-						<view>筛选
+						<view><text>筛选</text>
 							<u-icon name="arrow-down" v-if="!isActiveForm.filters"></u-icon>
 							<u-icon name="arrow-up" v-else></u-icon>
 						</view>

@@ -7,7 +7,7 @@
 		<view class="text-container">
 			<!-- 商品标题 -->
 			<view class="commodity-title">
-				{{title}}
+				<text>{{title}}</text>
 			</view>
 			<!-- 商品地点 -->
 			<view class="site-content">
@@ -19,7 +19,7 @@
 				<view class="graphics">
 					<view class="progress" :class="{'not':inventory===nowInventory}" :style="{width:percentage+'%'}"></view>
 				</view>
-				<view class="message">{{messageText}}</view>
+				<view class="message"><text>{{messageText}}</text></view>
 
 			</view>
 			<!-- 价格展示部分 -->
@@ -34,11 +34,11 @@
 				</view>
 				<!-- 马上抢 -->
 				<view class="button usable" v-if="inventory>nowInventory">
-					马上抢<u-icon name="arrow-right"></u-icon>
+					<text>马上抢</text><u-icon name="arrow-right"></u-icon>
 				</view>
 				<!-- 已抢完 -->
 				<view class="button not" v-else>
-					已抢完
+					<text>已抢完</text>
 				</view>
 			</view>
 		</view>
