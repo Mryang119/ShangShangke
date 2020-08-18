@@ -1,4 +1,6 @@
 <template>
+	<!-- 自由高度配合瀑布流展示组件 -->
+	<!-- name:杨大锐 -->
 	<view class="c_waterfallItem">
 		<view class="waterfall-item-content">
 			<!-- 组件封面 -->
@@ -100,7 +102,7 @@
 
 	.image-cell {
 		.image {
-			width: 348rpx;
+			width: 100%;
 			border-radius: 12rpx 12rpx 0 0;
 		}
 	}

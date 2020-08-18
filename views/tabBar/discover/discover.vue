@@ -4,8 +4,8 @@
 	<view class="s_discover">
 		<uniNavBar :fixed="true" :status-bar="true">
 			<view class="tabs-content">
-				<view class="tab-item" :class="{'active':current===0}" @click="current=0">店铺</view>
-				<view :class="{'active':current===1}" @click="current=1">发现</view>
+				<view class="tab-item" :class="{'active':current===0}" @click="current=0"><text>店铺</text></view>
+				<view :class="{'active':current===1}" @click="current=1"><text>发现</text></view>
 			</view>
 		</uniNavBar>
 		<view class="shop-content" v-show="current===0">
@@ -53,7 +53,8 @@
 	.s_discover {
 		width: 750rpx;
 		background-color: #FFF;
-
+		display: flex;
+		flex-direction: row;
 		.nav-bar {
 			border-bottom: 4rpx solid #EDEDED;
 		}

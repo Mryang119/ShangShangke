@@ -6,7 +6,7 @@
 			<image class="image" :src="logo"></image>
 		</view>
 		<view class="center-content">
-			<view class="store-name">{{storeName}}</view>
+			<view class="store-name"><text>{{storeName}}</text></view>
 			<view class="rate">
 				<text :style="{fontSize:24+'rpx',color:'#272727'}">评分:</text>
 				<u-rate size="22" active-color="#FFAE44" :count="5" :disabled="true" :current="current"></u-rate>
@@ -15,7 +15,7 @@
 		</view>
 		<view class="right-content" @click="toSotreDetail">
 			<view class="button">
-				进店逛逛
+				<text>进店逛逛</text>
 			</view>
 		</view>
 	</view>

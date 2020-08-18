@@ -15,7 +15,7 @@
 				<view class="class-button-H-contianer" :style="{width: classScrollWidth+'rpx'}">
 					<view class="class-button-item" v-for="(item,index) in classifyList" :key="index" :class="{'class-button-item-active':classSelectIndex===index}"
 					 @click="select(index)">
-						{{item.title}}
+						<text>{{item.title}}</text>
 					</view>
 				</view>
 			</scroll-view>
@@ -83,6 +83,7 @@
 		methods: {
 			select(i) {
 				this.classSelectIndex = i
+				console.log('请求更新列表')
 			}
 		},
 		computed: {
