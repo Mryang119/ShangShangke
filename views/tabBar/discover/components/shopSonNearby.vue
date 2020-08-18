@@ -126,9 +126,10 @@
 		}
 
 		.class-button-content {
-			height: 48rpx;
-			margin-top: 30rpx;
-			margin-bottom: 20rpx;
+			height: 98rpx;
+			display: flex;
+			align-items: center;
+			overflow: hidden;
 			.class-button-scroll-H {
 				padding-left: 20rpx;
 

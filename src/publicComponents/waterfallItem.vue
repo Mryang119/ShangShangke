@@ -10,7 +10,7 @@
 				<text>{{title}}</text>
 			</view>
 			<!-- 标签信息 -->
-			<view class="tag-cell item-cell">
+			<view class="tag-cell item-cell" v-if="tags">
 				<view class="tags-item" v-for="(item,index) in tags" :key="index">
 					<u-icon name="tags" font-size="24" color="#666666"></u-icon>
 					<text>{{item}}</text>

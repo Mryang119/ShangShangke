@@ -288,8 +288,7 @@ const waterfallList = [
 		image:"https://g-search1.alicdn.com/img/bao/uploaded/i4/i4/2065839946/O1CN018zYv742NLJst8S2hR_!!0-item_pic.jpg_360x360Q90.jpg",
 		tags:[
 			'火锅',
-			'好吃的火锅',
-			'推荐'
+			'好吃的'
 		]
 	},{
 		title:"刚出炉真的是热乎乎香喷喷软绵绵超好吃~！",
@@ -304,12 +303,7 @@ const waterfallList = [
 			status:1
 		},
 		key:Date.now()+Math.random()*999,
-		image:"https://g-search1.alicdn.com/img/bao/uploaded/i4/i4/3325705083/O1CN01cPTMqf1nQ3oqHajXS_!!3325705083-0-lubanu-s.jpg_360x360Q90.jpg",
-		tags:[
-			'火锅',
-			'好吃的火锅',
-			'推荐'
-		]
+		image:"https://g-search1.alicdn.com/img/bao/uploaded/i4/i4/3325705083/O1CN01cPTMqf1nQ3oqHajXS_!!3325705083-0-lubanu-s.jpg_360x360Q90.jpg"
 	},
 ]
 export {

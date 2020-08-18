@@ -24,26 +24,14 @@
 		<view class="waterfall">
 			<view class="column-list">
 				<view class="column-list-item" v-for="(item) in list1" :key="item.key">
-					<waterfallItem
-					:title="item.title"
-					:imageUrl="item.image"
-					:likeInfo="item.likeInfo"
-					:userImage="item.userImage"
-					:siteDatas="item.siteDatas"
-					:tags="item.tags"
-					></waterfallItem>
+					<waterfallItem :title="item.title" :imageUrl="item.image" :likeInfo="item.likeInfo" :userImage="item.userImage"
+					 :siteDatas="item.siteDatas" :tags="item.tags"></waterfallItem>
 				</view>
 			</view>
 			<view class="column-list">
 				<view class="column-list-item" v-for="(item) in list2" :key="item.key">
-					<waterfallItem
-					:title="item.title"
-					:imageUrl="item.image"
-					:likeInfo="item.likeInfo"
-					:userImage="item.userImage"
-					:siteDatas="item.siteDatas"
-					:tags="item.tags"
-					></waterfallItem>
+					<waterfallItem :title="item.title" :imageUrl="item.image" :likeInfo="item.likeInfo" :userImage="item.userImage"
+					 :siteDatas="item.siteDatas" :tags="item.tags"></waterfallItem>
 				</view>
 			</view>
 		</view>
@@ -61,11 +49,15 @@
 		waterfallList
 	} from '@/src/utils/fakeData.js'
 	// 组件
+	// import waterfall from '@/src/publicComponents/waterfall.vue'
 	import waterfallItem from '@/src/publicComponents/waterfallItem.vue'
+	// 复用mixin
+	import mixin from '../mixin/mixin.js'
 	export default {
 		components:{
 			waterfallItem
 		},
+		mixins:[mixin],
 		data() {
 			return {
 				newStores: [{
@@ -85,27 +77,12 @@
 					image: "https://s1.ax1x.com/2020/07/31/al1xPg.png"
 				}],
 				classifyList,
-				classSelectIndex: 0,
-				waterfallList,
-				list1: [],
-				list2: []
+				classSelectIndex: 0
 			};
-		},
-		created() {
-			this.oddList()
 		},
 		methods: {
 			select(i) {
 				this.classSelectIndex = i
-			},
-			oddList() {
-				this.waterfallList.map((item, index) => {
-					if (index % 2 != 0) {
-						this.list1.push(item)
-					} else {
-						this.list2.push(item)
-					}
-				})
 			}
 		},
 		computed: {
@@ -122,6 +99,7 @@
 </script>
 
 <style lang="less">
+	//  瀑布流
 	.waterfall {
 		width: 100%;
 		display: flex;
@@ -129,10 +107,12 @@
 		justify-content: space-between;
 		padding: 0 20rpx;
 		padding-top: 20rpx;
+	
 		.column-list {
 			display: flex;
 			flex-direction: column;
 		}
+	
 		.column-list-item {
 			width: 348rpx;
 			border-radius: 12rpx;

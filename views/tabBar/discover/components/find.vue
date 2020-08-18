@@ -2,7 +2,7 @@
 	<view class="c_find">
 		<!-- tabs栏 -->
 		<view class="tabs-content">
-			<u-tabs :list="list" :is-scroll="false" :bar-style="style" :active-item-style="activeItemStyle"
+			<u-tabs :list="list"  :is-scroll="false" :bar-style="style" :active-item-style="activeItemStyle"
 			 font-size="28" active-color="#333333" inactive-color="#666666" :current="current" @change="change"></u-tabs>
 		</view>
 		<!-- 搜索分类部分 -->
@@ -18,14 +18,19 @@
 		<view class="tabs-item-content" v-show="current===0">
 			<findSonNearby></findSonNearby>
 		</view>
+		<view class="tabs-item-content" v-show="current===2">
+			<findSonHot></findSonHot>
+		</view>
 	</view>
 </template>
 
 <script>
 	import findSonNearby from './findSonNearby.vue'
+	import findSonHot from './findSonHot.vue'
 	export default {
 		components:{
-			findSonNearby
+			findSonNearby,
+			findSonHot
 		},
 		data() {
 			return {
