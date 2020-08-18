@@ -5,7 +5,7 @@
 			<view class="popup-mask"  :style="{top:elScrollTop+'px'}" @click="close">
 
 			</view>
-			<view class="popup-container"  :style="{top:top+'rpx'}">
+			<view class="popup-container"  :style="{top:elScrollTop+'px'}">
 				<slot>默认内容</slot>
 			</view>
 		</view>
@@ -54,6 +54,11 @@
 <style lang="less">
 	.c_popup {
 		transition: all 0.3s linear;
+		// position: fixed;
+		// top: 0;
+		// bottom: 0;
+		// left: 0;
+		// right: 0;
 		.popup-mask {
 			position: fixed;
 			bottom: 0;
@@ -62,11 +67,12 @@
 			// top: 0;
 			background:rgba(0,0,0,1);
 			opacity:0.5;
+			z-index: 98;
 		}
 		.popup-container {
 			width: 750rpx;
 			background-color: #fff;
-			position: absolute;
+			position: fixed;
 			top: 0;
 			z-index: 99;
 			

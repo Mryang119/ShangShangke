@@ -53,8 +53,6 @@
 	.s_discover {
 		width: 750rpx;
 		background-color: #FFF;
-		display: flex;
-		flex-direction: row;
 		.nav-bar {
 			border-bottom: 4rpx solid #EDEDED;
 		}

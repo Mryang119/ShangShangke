@@ -9,43 +9,46 @@
 			<image class="img" src="@/static/images/Product/fenleiBanner.png" mode=""></image>
 		</view>
 		<!-- 筛选条 -->
-		<view class="filter-container" id="sticky" :class="{'sticky':isFixed}">
-			<view class="filter-box">
-				<view class="filter-line">
-					<view class="filter-item className" @click="dipatch('className','classification')" :class="{'active':isActiveForm.className}">
-						<view>分类
-							<u-icon name="arrow-down" v-if="!isActiveForm.className"></u-icon>
-							<u-icon name="arrow-up" v-else></u-icon>
+		<u-sticky :offset-top="0">
+			<view class="filter-container">
+				<view class="filter-box">
+					<view class="filter-line">
+						<view class="filter-item className" @click="dipatch('className','classification')" :class="{'active':isActiveForm.className}">
+							<view>分类
+								<u-icon name="arrow-down" v-if="!isActiveForm.className"></u-icon>
+								<u-icon name="arrow-up" v-else></u-icon>
+							</view>
 						</view>
-					</view>
-					<view class="filter-item nearbys" @click="dipatch('nearbys','nearbys')" :class="{'active':isActiveForm.nearbys}">
-						<view>附近
-							<u-icon name="arrow-down" v-if="!isActiveForm.nearbys"></u-icon>
-							<u-icon name="arrow-up" v-else></u-icon>
+						<view class="filter-item nearbys" @click="dipatch('nearbys','nearbys')" :class="{'active':isActiveForm.nearbys}">
+							<view>附近
+								<u-icon name="arrow-down" v-if="!isActiveForm.nearbys"></u-icon>
+								<u-icon name="arrow-up" v-else></u-icon>
+							</view>
 						</view>
-					</view>
-					<view class="filter-item smartSort" @click="dipatch('smartSort','smartSort')" :class="{'active':isActiveForm.smartSort}">
-						<view>智能排序
-							<u-icon name="arrow-down" v-if="!isActiveForm.smartSort"></u-icon>
-							<u-icon name="arrow-up" v-else></u-icon>
+						<view class="filter-item smartSort" @click="dipatch('smartSort','smartSort')" :class="{'active':isActiveForm.smartSort}">
+							<view>智能排序
+								<u-icon name="arrow-down" v-if="!isActiveForm.smartSort"></u-icon>
+								<u-icon name="arrow-up" v-else></u-icon>
+							</view>
 						</view>
-					</view>
-					<view class="filter-item filters" @click="dipatch('filters','filters')" :class="{'active':isActiveForm.filters}">
-						<view>筛选
-							<u-icon name="arrow-down" v-if="!isActiveForm.filters"></u-icon>
-							<u-icon name="arrow-up" v-else></u-icon>
+						<view class="filter-item filters" @click="dipatch('filters','filters')" :class="{'active':isActiveForm.filters}">
+							<view>筛选
+								<u-icon name="arrow-down" v-if="!isActiveForm.filters"></u-icon>
+								<u-icon name="arrow-up" v-else></u-icon>
+							</view>
 						</view>
 					</view>
 				</view>
-				<!-- Popup -->
-				<popup :show="show" v-on:input="show = $event" :top="92" :elScrollTop="elScrollTop">
-					<classification v-if="currentComponent==='classification'"></classification>
-					<nearby v-else-if="currentComponent==='nearbys'"></nearby>
-					<smartSort v-else-if="currentComponent==='smartSort'"></smartSort>
-					<filters v-else-if="currentComponent==='filters'"></filters>
-				</popup>
 			</view>
-		</view>
+		</u-sticky>
+		<!-- Popup -->
+		<popup :show="show" v-on:input="show = $event" :top="top" :elScrollTop="elScrollTop">
+			<classification v-if="currentComponent==='classification'"></classification>
+			<nearby v-else-if="currentComponent==='nearbys'"></nearby>
+			<smartSort v-else-if="currentComponent==='smartSort'"></smartSort>
+			<filters v-else-if="currentComponent==='filters'"></filters>
+		</popup>
+		<view :style="{height:20000+'rpx'}"></view>
 	</view>
 
 </template>
@@ -58,9 +61,9 @@
 	import smartSort from './components/smartSort.vue'
 	import filters from './components/filters.vue'
 	// 函数复用
-	import mixin from '@/src/mixin/mixin.js'
+	// import mixin from '@/src/mixin/mixin.js'
 	export default {
-		mixins: [mixin],
+		// mixins: [mixin],
 		components: {
 			popup,
 			classification,
@@ -74,7 +77,8 @@
 				show: false,
 				elScrollTop: 0,
 				classifySelectIndex: '',
-				currentComponent: ''
+				currentComponent: '',
+				top: 0
 			};
 		},
 		onLoad(option) {},
@@ -93,11 +97,23 @@
 				this.classifySelectIndex = i
 			}
 		},
-		mounted() {
+		onShow() {
+			this.$store.commit('testActive', {
+				type: 'className'
+			})
 			const that = this
 			const query = uni.createSelectorQuery().in(this);
 			query.select('.filter-container').boundingClientRect(data => {
 				that.elScrollTop = data.top + data.height
+				that.top = data.height
+			}).exec();
+		},
+		onPageScroll(e) {
+			const that = this
+			const query = uni.createSelectorQuery().in(this);
+			query.select('.filter-container').boundingClientRect(data => {
+				that.elScrollTop = data.top + data.height
+				that.top = data.height
 			}).exec();
 		},
 		watch: {
@@ -117,6 +133,8 @@
 </script>
 
 <style lang="less">
+	.popup-content {}
+
 	.s_classifyDetail {
 		box-sizing: border-box;
 
@@ -148,7 +166,7 @@
 			padding-top: 30rpx;
 			padding-bottom: 30rpx;
 			background-color: #FFFFFF;
-
+			z-index: 999;
 			.filter-box {
 				width: 100%;
 				box-sizing: border-box;
