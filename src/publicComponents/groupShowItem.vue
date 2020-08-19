@@ -4,7 +4,7 @@
 	<view class="c_groupShowItem">
 		<view class="left-content">
 			<view class="image-container">
-				<view class="tag" v-if="tag!==''">{{tag}}</view>
+				<view class="tag" v-if="tag!==''"><text>{{tag}}</text></view>
 				<image class="image" src="../../static/images/Product/shangpingtu.png" mode=""></image>
 			</view>
 		</view>
@@ -16,7 +16,7 @@
 				</text>
 			</view>
 			<view class="product-message">
-				{{productMessage}}
+				<text>{{productMessage}}</text>
 			</view>
 			<view class="price-button">
 				<view class="text-price">
@@ -26,8 +26,8 @@
 					</text>
 				</view>
 				<view class="button">
-					<view class="text">2人团</view>
-					<view class="text">去开团</view>
+					<view class="text"><text>2人团</text></view>
+					<view class="text"><text>去开团</text></view>
 				</view>
 			</view>
 		</view>

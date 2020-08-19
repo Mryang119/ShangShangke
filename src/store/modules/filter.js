@@ -67,6 +67,13 @@ const mutations = {
 				state.isActiveForm[key] = false
 			}
 		}
+	},
+	// 重置
+	resetSelectFrom(state){
+		let resetData = ['无','附近','智能排序',[]]
+		Object.keys(state.selectFilterForm).forEach((key,index)=>{
+			state.selectFilterForm[key] = resetData[index]
+		})
 	}
 }
 export default {

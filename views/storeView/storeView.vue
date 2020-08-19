@@ -30,7 +30,7 @@
 		<!-- 测试仓库 -->
 		<view>
 			<text>{{globalData.cityName}}</text>
-			<view @click="change">点击修改</view>
+			<view @click="change"><text>点击修改</text></view>
 			
 		</view>
 	</view>

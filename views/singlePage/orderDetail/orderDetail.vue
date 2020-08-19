@@ -5,13 +5,13 @@
 	<view class="orderContainer">
 		<!-- 待付款订单 -->
 		<view class="noPay" :style="(type==='已完成' ? 'background:url(../../../static/images/Product/wodedingdanyishiyongBg.png) no-repeat 0% 0%/100% 100%' : '') || (type==='待付款'? 'height:300rpx':'')">
-			<view class="noPayText" v-if="type==='待付款'">{{cancelState ? '已取消订单' :'待付款订单'}}</view>
-			<view class="noPayText" v-if="type==='待使用'">待使用订单</view>
-			<view class="noPayText" v-if="type==='已完成'">已使用订单</view>
-			<view class="noPayText" v-if="type==='已退款'">已退款</view>
+			<view class="noPayText" v-if="type==='待付款'"><text>{{cancelState ? '已取消订单' :'待付款订单'}}</text></view>
+			<view class="noPayText" v-if="type==='待使用'"><text>待使用订单</text></view>
+			<view class="noPayText" v-if="type==='已完成'"><text>已使用订单</text></view>
+			<view class="noPayText" v-if="type==='已退款'"><text>已退款</text></view>
 			<couponMessage />
 			<view class="showOrderCode" v-if="type==='待使用'">
-				<view class="showOrderCodeBtn"  @click="refundBtn">出示订单券码</view>
+				<view class="showOrderCodeBtn"  @click="refundBtn"><text>出示订单券码</text></view>
 			</view>
 		</view>
 		<!-- 出示二维码 -->
@@ -19,16 +19,16 @@
 			<view class="codeModal" >
 				<view class="codeText">
 					<view class="textCon">
-						<view class="couponText">{{cashCoupon}}</view>
-						<view class="timeText">{{useTime}}</view>
+						<view class="couponText"><text>{{cashCoupon}}</text></view>
+						<view class="timeText"><text>{{useTime}}</text></view>
 					</view>
-					<view class="useText">待使用</view>
+					<view class="useText"><text>待使用</text></view>
 				</view>
 				<view class="code">
 					<image src="@/static/images/iconfont/erweima.png"></image>
-					<view class="textUse">（请到店出示二维码使用）</view>
+					<view class="textUse"><text>（请到店出示二维码使用）</text></view>
 				</view>
-				<view class="codeNumber">{{codeNumber}}</view>
+				<view class="codeNumber"><text>{{codeNumber}}</text></view>
 				<view class="cancelCon"><view class="cancelIcon" @click="closeCodeModal"><image src="@/static/images/iconfont/guanbiBtn.png"></image></view></view>
 			</view>
 		</view>
@@ -42,16 +42,16 @@
 		<view class="orderNewsButton" v-if="state===true && type==='待付款'">
 
 			<button @click="open" @confirm="confirm" class="orderNewsCancel">
-				取消订单
+				<text>取消订单</text>
 			</button>
 			<button class="orderNewsPay">
-				<span class="orderNewsPayMoney">￥{{orderNumPrice}}</span>
-				<span class="orderNewsPayTo">待付款</span>
+				<span class="orderNewsPayMoney"><text>￥{{orderNumPrice}}</text></span>
+				<span class="orderNewsPayTo"><text>待付款</text></span>
 			</button>
 		</view>
 		<!-- 待使用——申请退款— -->
 		<view class="applyRefund" v-if="type==='待使用'">
-			<view class="refundBtn" @click="applyRefund">申请退款</view>
+			<view class="refundBtn" @click="applyRefund"><text>申请退款</text></view>
 		</view>
 		<u-modal v-model="show" show-cancel-button="true" :content="content" :show-title="false" confirm-color="#007AFF"
 		 cancel-color="#007AFF" :content-style="{color:'#000000',fontSize:'32rpx',fontWeight:'bold'}" @confirm="confirm"

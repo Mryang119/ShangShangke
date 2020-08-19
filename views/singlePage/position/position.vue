@@ -8,12 +8,12 @@
 		</view>
 		<!-- 当前 -->
 		<view class="now-city">
-			当前:{{cityName}}
+			<text>当前:{{cityName}}</text>
 		</view>
 		<!-- 历史定位and热门城市 -->
 		<view class="hotCity-oldCity">
 			<view class="oldCity-content">
-				<view class="text">定位/最近访问</view>
+				<view class="text"><text>定位/最近访问</text></view>
 			</view>
 			<!-- 历史定位 -->
 			<view class="oldCity-contianer">
@@ -22,7 +22,7 @@
 				</view>
 			</view>
 			<view class="hotCity-content">
-				<view class="text">热门城市</view>
+				<view class="text"><text>热门城市</text></view>
 			</view>
 			<view class="hotCity-container">
 				<view class="oldButton" v-for="(item,index) in hotCity" :key="index">

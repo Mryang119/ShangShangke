@@ -13,7 +13,7 @@
 		props: {
 			list: {
 				type: Array,
-				required: true,
+				// required: true,
 				default: function() {
 					return [{
 							image: 'https://tse1-mm.cn.bing.net/th/id/OIP.4rApcfYm_6jCLIjnilPijAHaFm?w=275&h=208&c=7&o=5&dpr=1.25&pid=1.7',

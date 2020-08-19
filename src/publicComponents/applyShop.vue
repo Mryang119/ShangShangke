@@ -5,8 +5,8 @@
 	<view class="applyStore" >
 		<view class="applyStoreButton" @click="toApplyStore">
 			<view class="applyStoreContent">
-				<span class="applyStoreText">适用门店</span>
-				<span class="applyStoreNumber">({{shopNumber}})</span>
+				<span class="applyStoreText"><text>适用门店</text></span>
+				<span class="applyStoreNumber"><text>({{shopNumber}})</text></span>
 			</view>
 			<!-- 更多图标 -->
 			<image class="applyStoreImg" src="@/static/images/iconfont/more.png"></image>

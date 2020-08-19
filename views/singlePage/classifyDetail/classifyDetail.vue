@@ -14,27 +14,34 @@
 				<view class="filter-box">
 					<view class="filter-line">
 						<view class="filter-item className" @click="dipatch('className','classification')" :class="{'active':isActiveForm.className}">
-							<view>分类
+							<view class="filter-item-icon">
+								<text>分类</text>
+								<image :src="!isActiveForm.className? '/static/images/iconfont/arrow-down.png' : '/static/images/iconfont/arrow-up.png'"
+								 class="image-icon" mode="widthFix"></image>
+								<!-- <image src="@/static/images/iconfont/arrow-up.png" class="image-icon" mode="widthFix"></image>
 								<u-icon name="arrow-down" v-if="!isActiveForm.className"></u-icon>
-								<u-icon name="arrow-up" v-else></u-icon>
+								<u-icon name="arrow-up" v-else></u-icon> -->
 							</view>
 						</view>
 						<view class="filter-item nearbys" @click="dipatch('nearbys','nearbys')" :class="{'active':isActiveForm.nearbys}">
-							<view>附近
-								<u-icon name="arrow-down" v-if="!isActiveForm.nearbys"></u-icon>
-								<u-icon name="arrow-up" v-else></u-icon>
+							<view class="filter-item-icon">
+								<text>附近</text>
+								<image :src="!isActiveForm.nearbys? '/static/images/iconfont/arrow-down.png' : '/static/images/iconfont/arrow-up.png'"
+								 class="image-icon" mode="widthFix"></image>
 							</view>
 						</view>
 						<view class="filter-item smartSort" @click="dipatch('smartSort','smartSort')" :class="{'active':isActiveForm.smartSort}">
-							<view>智能排序
-								<u-icon name="arrow-down" v-if="!isActiveForm.smartSort"></u-icon>
-								<u-icon name="arrow-up" v-else></u-icon>
+							<view class="filter-item-icon">
+								<text>智能排序</text>
+								<image :src="!isActiveForm.smartSort? '/static/images/iconfont/arrow-down.png' : '/static/images/iconfont/arrow-up.png'"
+								 class="image-icon" mode="widthFix"></image>
 							</view>
 						</view>
 						<view class="filter-item filters" @click="dipatch('filters','filters')" :class="{'active':isActiveForm.filters}">
-							<view>筛选
-								<u-icon name="arrow-down" v-if="!isActiveForm.filters"></u-icon>
-								<u-icon name="arrow-up" v-else></u-icon>
+							<view class="filter-item-icon">
+								<text>筛选</text>
+								<image :src="!isActiveForm.filters? '/static/images/iconfont/arrow-down.png' : '/static/images/iconfont/arrow-up.png'"
+								 class="image-icon" mode="widthFix"></image>
 							</view>
 						</view>
 					</view>
@@ -42,7 +49,7 @@
 			</view>
 		</u-sticky>
 		<!-- Popup -->
-		<popup :show="show" v-on:input="show = $event" :top="top" :elScrollTop="elScrollTop">
+		<popup :show="show" v-on:input="show = $event" :elScrollTop="elScrollTop" @reset="reset" @finish="finish">
 			<classification v-if="currentComponent==='classification'"></classification>
 			<nearby v-else-if="currentComponent==='nearbys'"></nearby>
 			<smartSort v-else-if="currentComponent==='smartSort'"></smartSort>
@@ -77,13 +84,24 @@
 				show: false,
 				elScrollTop: 0,
 				classifySelectIndex: '',
-				currentComponent: '',
-				top: 0
+				currentComponent: ''
 			};
 		},
 		onLoad(option) {},
 		methods: {
-
+			// 重置
+			reset(){
+				console.log('重置')
+				this.$store.commit('resetSelectFrom')
+				this.$store.commit('testActive', {
+					type: 'className'
+				})
+				this.show = false
+			},
+			// 确认
+			finish(){
+				this.show = false
+			},
 			// 处理筛选条高亮
 			dipatch(type, currentCp) {
 				this.currentComponent = currentCp
@@ -95,26 +113,24 @@
 			},
 			classifyNow(i) {
 				this.classifySelectIndex = i
+			},
+			// 获取筛选条距离顶部和自身高度
+			getElTop() {
+				const that = this
+				const query = uni.createSelectorQuery().in(this);
+				query.select('.filter-container').boundingClientRect(data => {
+					that.elScrollTop = data.top + data.height
+				}).exec();
 			}
 		},
-		onShow() {
+		mounted() {
 			this.$store.commit('testActive', {
 				type: 'className'
 			})
-			const that = this
-			const query = uni.createSelectorQuery().in(this);
-			query.select('.filter-container').boundingClientRect(data => {
-				that.elScrollTop = data.top + data.height
-				that.top = data.height
-			}).exec();
+			this.getElTop()
 		},
 		onPageScroll(e) {
-			const that = this
-			const query = uni.createSelectorQuery().in(this);
-			query.select('.filter-container').boundingClientRect(data => {
-				that.elScrollTop = data.top + data.height
-				that.top = data.height
-			}).exec();
+			this.getElTop()
 		},
 		watch: {
 			// popup关闭
@@ -135,6 +151,15 @@
 <style lang="less">
 	.popup-content {}
 
+	.image-icon {
+		width: 20.46rpx;
+		height: 12.42rpx;
+		margin-left: 8rpx;
+	}
+	.filter-item-icon {
+		display: flex;
+		align-items: center;
+	}
 	.s_classifyDetail {
 		box-sizing: border-box;
 
@@ -167,6 +192,7 @@
 			padding-bottom: 30rpx;
 			background-color: #FFFFFF;
 			z-index: 999;
+
 			.filter-box {
 				width: 100%;
 				box-sizing: border-box;

@@ -8,21 +8,21 @@
 				<image :src="goodsImg"></image>
 			</view>
 			<view class="content">
-				<view class="text">{{goodsName}}</view>
-				<view class="goodsType">{{goodsType}}</view>
+				<view class="text"><text>{{goodsName}}</text></view>
+				<view class="goodsType"><text>{{goodsType}}</text></view>
 				<view class="price">
-					<view class="nowPrice">￥{{nowPrice}}</view>
-					<view class="beforePrice">￥{{beforePrice}}</view>
+					<view class="nowPrice"><text>￥{{nowPrice}}</text></view>
+					<view class="beforePrice"><text>￥{{beforePrice}}</text></view>
 				</view>
 			</view>
 		</view>
 		<!-- 支付图标 -->
 		<view class="iconType">
 		    <icon type="success" color="#25A5FF" size="73"/>
-		    <text class="text">支付成功</text>
+		    <text class="text"><text>支付成功</text></text>
 		</view>
 		<!-- 查看我的订单按钮 -->
-		<navigator class="payBtn" :url="myOrder">查看我的订单</navigator>
+		<navigator class="payBtn" :url="myOrder"><text>查看我的订单</text></navigator>
 	</view>
 </template>
 

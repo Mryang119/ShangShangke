@@ -6,23 +6,23 @@
 			<!-- 搜索框 -->
 			<navigator class="searchBar" :url="toSearch">
 				<image src="@/static/images/iconfont/search.png"></image>
-				<view class="fakerInput">搜索我的订单</view>
+				<view class="fakerInput"><text>搜索我的订单</text></view>
 			</navigator>
 			<u-tabs active-color='#000000' inactive-color="#000000" :list="tabsList" :bold='true' :is-scroll="false" :current="current"
 			 @change="change" :bar-style="{backgroundImage: 'linear-gradient(to right,#92D0F9,#26A7FC)',height:6+'rpx'}"></u-tabs>
 		</view>
 		<view class="orderBg" v-if="currentArr.length=== 0">
 			<image src="@/static/images/iconfont/dingdanBg.png"></image>
-			<view class="noOrder">还没有相关订单</view>
+			<view class="noOrder"><text>还没有相关订单</text></view>
 		</view>
 		<view class="orderItem" v-for="(item,index) in currentArr" :key="index" @click="goOrderDetail(item,index)" v-else>
 			<view class="shopCon">
 				<view class="shopNameCon">
-					<view class="shopName">{{item.shopName}}</view>
+					<view class="shopName"><text>{{item.shopName}}</text></view>
 					<image src="/static/images/iconfont/more.png"></image>
 
 				</view>
-				<view class="text">{{item.orderType}}</view>
+				<view class="text"><text>{{item.orderType}}</text></view>
 			</view>
 			<view class="orderNews">
 				<view class="orderInformation">
@@ -31,16 +31,16 @@
 					</view>
 					<view class="information">
 						<view class="price">
-							<view class="priceText">{{item.priceText}}</view>
-							<view class="priceNumber">￥{{item.priceNumber}}</view>
+							<view class="priceText"><text>{{item.priceText}}</text></view>
+							<view class="priceNumber"><text>￥{{item.priceNumber}}</text></view>
 						</view>
-						<view class="orderTime">下单时间：{{item.orderTime}}</view>
-						<view class="orderNumber">数量：{{item.orderNumber}}</view>
+						<view class="orderTime"><text>下单时间：{{item.orderTime}}</text></view>
+						<view class="orderNumber"><text>数量：{{item.orderNumber}}</text></view>
 					</view>
 				</view>
 				<view class="toPay">
-					<view class="payBtnOne" v-if="item.orderType==='待付款'" @click.stop.prevent="toPay">去付款</view>
-					<view class="payBtnTwo" v-else-if="item.orderType!=='待使用'" @click.stop.prevent="toShopDetail">再来一单</view>
+					<view class="payBtnOne" v-if="item.orderType==='待付款'" @click.stop.prevent="toPay"><text>去付款</text></view>
+					<view class="payBtnTwo" v-else-if="item.orderType!=='待使用'" @click.stop.prevent="toShopDetail"><text>再来一单</text></view>
 				</view>
 			</view>
 		</view>

@@ -7,18 +7,18 @@
 	<view class="dailyGoodsProductDetail">
 		<view class="dailyGoodsPrice">
 			<view class="priceCon">
-				<view class="nowPrice">￥{{nowPrice}}</view>
-				<view class="beforePrice">￥{{beforePrice}}</view>
+				<view class="nowPrice"><text>￥{{nowPrice}}</text></view>
+				<view class="beforePrice"><text>￥{{beforePrice}}</text></view>
 			</view>
-			<view class="sale">月售{{monthSale}}</view>
+			<view class="sale"><text>月售{{monthSale}}</text></view>
 		</view>
-		<view class="dailyGoodsText">{{goodsText}}</view>
+		<view class="dailyGoodsText"><text>{{goodsText}}</text></view>
 		<view class="progressCon">
 			<u-line-progress class="progress" :percent="hasRobbed" :show-percent="false"
 				:round="true" :active-color="hasRobbed !==100 ?'#fb2b03' :'#ff9c9c'" height="14">
 			</u-line-progress>
-			<view class="hasRobbed" v-if="hasRobbed !==100">已抢{{hasRobbed}}%</view>
-			<view class="hasRobbedFinish" v-else>已抢完</view>
+			<view class="hasRobbed" v-if="hasRobbed !==100"><text>已抢{{hasRobbed}}%</text></view>
+			<view class="hasRobbedFinish" v-else><text>已抢完</text></view>
 		</view>
 	</view>
 	

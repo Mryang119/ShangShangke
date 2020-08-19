@@ -15,18 +15,18 @@
 					<text>{{price.toFixed(2)}}</text>
 				</view>
 				<view class="old-price">
-					￥11.00
+					<text>￥11.00</text>
 				</view>
 			</view>
 			<view class="time-container">
-				<view class="text">距离结束还剩</view>
+				<view class="text"><text>距离结束还剩</text></view>
 				<u-count-down ref="uCountDown" bg-color="#F10000" separator-color="#F10000" color="#FFFFFF" :timestamp="timestamp"
 				 :autoplay="true" font-size="30"></u-count-down>
 			</view>
 		</view>
 		<!-- 商品名字 -->
 		<view class="product-name-content">
-			{{'抹茶柚子千层 抹茶柚子千层 新鲜出炉 抹茶柚子千层 抹茶柚子千层 新鲜出炉'}}
+			<text>{{'抹茶柚子千层 抹茶柚子千层 新鲜出炉 抹茶柚子千层 抹茶柚子千层 新鲜出炉'}}</text>
 		</view>
 		<!-- 店铺标签 -->
 		<view class="store-content">
@@ -38,11 +38,11 @@
 		</view>
 		<!-- 商品详情 -->
 		<view class="product-content">
-			<view class="text">商品详情</view>
+			<view class="text"><text>商品详情</text></view>
 			<uni-list :border="false">
 				<uni-list-item title="• 限时新品双人冰爽餐">
 					<view slot="right">
-						￥100.00
+						<text>￥100.00</text>
 					</view>
 				</uni-list-item>
 			</uni-list>

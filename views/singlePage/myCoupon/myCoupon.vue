@@ -7,34 +7,34 @@
 		</view>
 		<view class="couponBg" v-if="couponArr.length=== 0">
 			<image src="@/static/images/iconfont/couponBg.png"></image>
-			<view class="noCoupon">还没有卡券~</view>
+			<view class="noCoupon"><text>还没有卡券~</text></view>
 		</view>
 		<view class="useCoupon" v-for="(item,index) in couponArr" :key="index">
 			<view class="couponHeader">
 				<view class="headerImg">
 					<image src="@/static/images/Product/shangpintu.png"></image>
 				</view>
-				<view class="headerText">{{item.shopName}}</view>
+				<view class="headerText"><text>{{item.shopName}}</text></view>
 			</view>
 			<view class="coupon" :style="item.state!==0 && item.state !==1 ? (item.state===2 ?'background:url(../../../static/images/Product/kaquanyishiyongBg.png) no-repeat 0% 0%/100% 100%':'background:url(../../../static/images/Product/kaquanyiguoqiBg.png) no-repeat 0% 0%/100% 100%') : '' ">
 				<!-- ￥100 -->
 				<view class="numCon">
-					<view class="context">￥</view>
-					<view class="num">{{item.couponNumber}}</view>
+					<view class="context"><text>￥</text></view>
+					<view class="num"><text>{{item.couponNumber}}</text></view>
 				</view>
 				<!-- 满减/有效期/选中 -->
 				<view class="chooseCoupon">
 					<!-- 满减/有效期 -->
 					<view class="fullDelete">
-						<view class="full">{{item.fullNumber}}</view>
-						<view class="fullTime">有效期至：{{item.fullTime}}</view>
+						<view class="full"><text>{{item.fullNumber}}</text></view>
+						<view class="fullTime"><text>有效期至：{{item.fullTime}}</text></view>
 					</view>
 					<!-- 去使用 -->
-					<view class="toUse" @click="toShopDetail" :style="item.state===2 || item.state===3 ? 'visibility:hidden':''">去使用</view>
+					<view class="toUse" @click="toShopDetail" :style="item.state===2 || item.state===3 ? 'visibility:hidden':''"><text>去使用</text></view>
 				</view>
 				<!-- 左上角商品类型 -->
 				<view class="goodsType">
-					<view class="goodsText">{{item.couponType}}</view>
+					<view class="goodsText"><text>{{item.couponType}}</text></view>
 				</view>
 			</view>
 		</view>

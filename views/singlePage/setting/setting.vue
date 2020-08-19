@@ -10,7 +10,7 @@
 			</uni-list>
 		</view>
 		<view @click="outLogin" class="out-button-content">
-			退出登录
+			<text>退出登录</text>
 		</view>
 		<u-modal v-model="show" :show-cancel-button="true" @confirm="confirm" @cancel="cancel" content="您确定要退出登录吗"></u-modal>
 	</view>

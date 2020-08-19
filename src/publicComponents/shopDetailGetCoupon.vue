@@ -5,22 +5,22 @@
 		<view :class="item.state===1 ? 'coupon':'hasCoupon'" v-for="(item,index) in afterList" :key="index">
 			<!-- ￥100 -->
 			<view class="numCon">
-				<view class="context">￥</view>
-				<view class="num">{{item.price}}</view>
+				<view class="context"><text>￥</text></view>
+				<view class="num"><text>{{item.price}}</text></view>
 			</view>
 			<!-- 满减/有效期/选中 -->
 			<view class="chooseCoupon">
 				<!-- 满减/有效期 -->
 				<view class="fullDelete">
-					<view class="full">满{{item.fullPrice}}元可用</view>
-					<view class="fullTime">有效期至：{{item.useTime}}</view>
+					<view class="full"><text>满{{item.fullPrice}}元可用</text></view>
+					<view class="fullTime"><text>有效期至：{{item.useTime}}</text></view>
 				</view>
 				<!-- 立即领取 -->
-				<view class="chooseCon" @click="toggleBg(item,index)" v-if="item.state===1">立即领取</view>
+				<view class="chooseCon" @click="toggleBg(item,index)" v-if="item.state===1"><text>立即领取</text></view>
 			</view>
 			<!-- 左上角商品类型 -->
 			<view class="goodsType">
-				<view class="goodsText">{{useType}}</view>
+				<view class="goodsText"><text>{{useType}}</text></view>
 			</view>
 		</view>
 	</view>

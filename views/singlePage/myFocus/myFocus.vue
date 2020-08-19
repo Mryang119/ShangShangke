@@ -6,7 +6,7 @@
 			<!-- 搜索框 -->
 			<navigator class="searchBar" :url="toSearch">
 				<image src="@/static/images/iconfont/search.png"></image>
-				<view class="fakerInput">搜索我的订单</view>
+				<view class="fakerInput"><text>搜索我的订单</text></view>
 			</navigator>
 			<u-tabs class="tabs" :list="tabsList" :bar-style="{backgroundImage: 'linear-gradient(to right,#92D0F9,#26A7FC)',height:6+'rpx'}"
 			 :is-scroll="false" :bold='true' :current="current" @change="change" inactive-color="#000" active-color="#000"></u-tabs>
@@ -14,7 +14,7 @@
 		<!-- 未关注列表 -->
 		<view class="myFocusBg" v-if="userList.length=== 0">
 			<image src="@/static/images/iconfont/myFocusBg.png"></image>
-			<view class="noFocus">还没有相关数据~</view>
+			<view class="noFocus"><text>还没有相关数据~</text></view>
 		</view>
 		<view class="userDetail" v-for="(item,index) in userList" :key="index">
 			<view class="user">
@@ -22,11 +22,11 @@
 					<image :src="item.userImg"></image>
 				</view>
 				<view class="userCon">
-					<view class="userName">{{item.userName}}</view>
-					<view class="userDescribe">{{item.userDescribe}}</view>
+					<view class="userName"><text>{{item.userName}}</text></view>
+					<view class="userDescribe"><text>{{item.userDescribe}}</text></view>
 				</view>
 			</view>
-			<view :class="item.state ?'focusBtn':'cancelFocusBtn'" @click="focusUser(index)">{{item.state ? '关注' :'已关注'}}</view>
+			<view :class="item.state ?'focusBtn':'cancelFocusBtn'" @click="focusUser(index)"><text>{{item.state ? '关注' :'已关注'}}</text></view>
 		</view>
 		<u-modal v-model="show" show-cancel-button="true" :content="content" :show-title="false" confirm-color="#007AFF"
 		 cancel-color="#007AFF" :content-style="{color:'#000000',fontSize:'32rpx',fontWeight:'bold'}" @confirm="confirm">
@@ -68,28 +68,6 @@
 						userDescribe: '吃吃喝喝玩玩乐乐大碗宽面', // 用户介绍
 						state: true // 默认得状态（样式/按钮）
 					}
-// <<<<<<< HEAD
-// 				],
-// 				userList: [{
-// 						userImg: '/static/images/tabBarImage/myLoginHeader.png', // 用户头像
-// 						userName: '吴亦凡', //用户名字
-// 						userDescribe: '吃吃喝喝玩玩乐乐大碗宽面', // 用户介绍
-// 						state: true // 默认得状态（样式/按钮）
-// 					},
-// 					{
-// 						userImg: '/static/images/tabBarImage/myLoginHeader.png', // 用户头像
-// 						userName: '吴亦凡', //用户名字
-// 						userDescribe: '吃吃喝喝玩玩乐乐大碗宽面', // 用户介绍
-// 						state: true // 默认得状态（样式/按钮）
-// 					},
-// 					{
-// 						userImg: '/static/images/tabBarImage/myLoginHeader.png', // 用户头像
-// 						userName: '吴亦凡', //用户名字
-// 						userDescribe: '吃吃喝喝玩玩乐乐大碗宽面', // 用户介绍
-// 						state: true // 默认得状态（样式/按钮）
-// 					},
-// =======
-// >>>>>>> 849c47577cf44650dc0d153128f3c4f037b48527
 				]
 			}
 		},

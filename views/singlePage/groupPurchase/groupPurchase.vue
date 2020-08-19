@@ -7,7 +7,7 @@
 			</view>
 			<view class="title-text-content">
 				<view class="line"></view>
-				<view class="text">超值拼团</view>
+				<view class="text"><text>超值拼团</text></view>
 				<view class="line"></view>
 			</view>
 			<view class="step-content">
@@ -21,29 +21,29 @@
 					<view class="step-icon">
 						<image class="img" src="@/static/images/iconfont/pay.png" mode=""></image>
 					</view>
-					<view class="text">支付开团</view>
-					<view class="text">或者参团</view>
+					<view class="text"><text>支付开团</text></view>
+					<view class="text"><text>或者参团</text></view>
 				</view>
 				<view class="step-item">
 					<view class="step-icon">
 						<image class="img" src="@/static/images/iconfont/message.png" mode=""></image>
 					</view>
-					<view class="text">邀请好</view>
-					<view class="text">友参团</view>
+					<view class="text"><text>邀请好</text></view>
+					<view class="text"><text>友参团</text></view>
 				</view>
 				<view class="step-item">
 					<view class="step-icon">
 						<image class="img" src="@/static/images/iconfont/user.png" mode=""></image>
 					</view>
-					<view class="text">达到拼</view>
-					<view class="text">团人数</view>
+					<view class="text"><text>达到拼</text></view>
+					<view class="text"><text>团人数</text></view>
 				</view>
 				<view class="step-item">
 					<view class="step-icon">
 						<image class="img" src="@/static/images/iconfont/finish.png" mode=""></image>
 					</view>
-					<view class="text">组团</view>
-					<view class="text">成功</view>
+					<view class="text"><text>组团</text></view>
+					<view class="text"><text>成功</text></view>
 				</view>
 			</view>
 		</view>

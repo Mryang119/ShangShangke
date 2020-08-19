@@ -6,7 +6,7 @@
 			<view class="left-tab">
 				<view class="tab-item" :class="{'active-tab-item' :selectIndex===index}" v-for="(item,index) in classifyList"
 				 @click="postionClass(index)" :key="index">
-					{{item.title}}
+					<text>{{item.title}}</text>
 				</view>
 			</view>
 		</scroll-view>
@@ -14,12 +14,12 @@
 		<scroll-view scroll-y="true" scroll-with-animation="true" class="right-classify-container" :scroll-into-view="rightClassify">
 			<view class="right-classify" v-for="(item,index) in classifyList" :id="'right-classify'+index" :key="index">
 				<view class="classify-title">
-					{{item.title}}
+					<text>{{item.title}}</text>
 				</view>
 				<view class="item-flex-box">
 					<view class="flex-item" v-for="(item1,index1) in item.children" :key="index1" :class="{'active-flex-item':classPersons===index+''+index1}"
 					 @click="classPerson(index,index1,item1)">
-						{{item1}}
+						<text>{{item1}}</text>
 					</view>
 				</view>
 			</view>
@@ -32,10 +32,12 @@
 	import {
 		classifyList
 	} from '../../../../src/utils/fakeData.js'
+	import {
+		mapState
+	} from 'vuex'
 	export default {
 		data() {
 			return {
-				classifyList: classifyList,
 				rightClassify: 'right-classify0',
 				selectIndex: 0,
 				classPersons: '00'
@@ -64,6 +66,11 @@
 				}
 
 			}
+		},
+		computed: {
+			...mapState({
+				classifyList: state => state.filter.filterForm.className
+			})
 		}
 	}
 </script>

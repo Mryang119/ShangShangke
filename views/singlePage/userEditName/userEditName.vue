@@ -6,7 +6,7 @@
 			<u-input value="吴亦凡"></u-input>
 		</view>
 		<view class="save-button button-content">
-			保存
+			<text>保存</text>
 		</view>
 	</view>
 </template>

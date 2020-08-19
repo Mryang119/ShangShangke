@@ -7,23 +7,23 @@
 		
 		<view class="myCollectBg" v-if="isShowImg">
 			<image src="@/static/images/iconfont/myCollectBg.png"></image>
-			<view class="noCollect">还没有相关收藏~</view>
+			<view class="noCollect"><text>还没有相关收藏~</text></view>
 		</view>
 		<view class="shopDetailCon">
 			<!-- 店铺 -->
 			<view class="shopDetail" v-for="(item,index) in shopList" :key="index" v-if="current===0" @click="toCollectShop(item,index)">
 				<view class="shopImg"><image :src="item.shopImg"></image></view>
 				<view class="detailCon">
-					<view class="shopName">{{item.shopName}}</view>
+					<view class="shopName"><text>{{item.shopName}}</text></view>
 					<view class="shopScore">
-						<view class="score">评分:</view>
+						<view class="score"><text>评分:</text></view>
 						<uni-rate class="shopRate" allow-half :value="item.value" size="12" activeColor="#FFAE44" :margin="3" :disabled="true"/>
-						<view class="shopValue">{{item.value}}</view>
+						<view class="shopValue"><text>{{item.value}}</text></view>
 					</view>
 					<view class="shopAddress">
-						<view class="meter">{{item.shopMeter}}</view>
-						<view class="line">|</view>
-						<view class="address">{{item.shopAddress}}</view>
+						<view class="meter"><text>{{item.shopMeter}}</text></view>
+						<view class="line"><text>|</text></view>
+						<view class="address"><text>{{item.shopAddress}}</text></view>
 					</view>
 				</view>
 			</view>
@@ -31,8 +31,8 @@
 			<view class="shopDetail" v-for="(item,index) in productList" :key="index"  v-if="current===1" @click="toCollectShopDetail(item,index)">
 				<view class="shopImg"><image :src="item.productImg"></image></view>
 				<view class="detailCon">
-					<view class="goodsName">{{item.productName}}</view>
-					<view class="goodsPrice">￥{{item.productPrice}}</view>
+					<view class="goodsName"><text>{{item.productName}}</text></view>
+					<view class="goodsPrice"><text>￥{{item.productPrice}}</text></view>
 				</view>
 			</view>
 			<!-- 作品 -->

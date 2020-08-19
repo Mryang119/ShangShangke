@@ -2,11 +2,11 @@
 <template>
 	<view class="applyStoreCon">
 		<view class="applyStorePlace">
-			<view class="applyStoreName">{{shopName}}</view>
+			<view class="applyStoreName"><text>{{shopName}}</text></view>
 			<view class="applyStoreAddress">
-				<view class="applyStoreDistance">距您{{distance}}m</view>
-				<span>|</span>
-				<view class="applyStoreDoorplate">{{shopPlace}}</view>
+				<view class="applyStoreDistance"><text>距您{{distance}}m</text></view>
+				<span><text>|</text></span>
+				<view class="applyStoreDoorplate"><text>{{shopPlace}}</text></view>
 			</view>
 		</view>
 		<view class="applyStoreCon" @click="takePhone">

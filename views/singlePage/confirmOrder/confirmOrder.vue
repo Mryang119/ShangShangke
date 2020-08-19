@@ -5,7 +5,7 @@
 		<!-- 店名/商品/数量/券/优惠/金额 -->
 		<view class="orderNews">
 			<!-- 店名 -->
-			<view class="shopName">{{shopName}}</view>
+			<view class="shopName"><text>{{shopName}}</text></view>
 			<!-- 商品信息 -->
 			<view class="goods">
 				<!-- 商品头像图 -->
@@ -14,37 +14,37 @@
 				</view>
 				<!--  商品名字和价格-->
 				<view class="shopCon">
-					<view class="conName">{{shopType}}</view>
+					<view class="conName"><text>{{shopType}}</text></view>
 					<view class="priceCon">
-						<view class="price">￥{{nowPrice}}</view>
-						<view class="priceDelete">￥{{beforePrice}}</view>
+						<view class="price"><text>￥{{nowPrice}}</text></view>
+						<view class="priceDelete"><text>￥{{beforePrice}}</text></view>
 					</view>
 				</view>
 			</view>
 			<!-- 商品数量 -->
 			<view class="goodsNum">
-				<view class="text">购买数量</view>
+				<view class="text"><text>购买数量</text></view>
 				<view class="num">
 					<u-number-box v-model="nowNumber" :input-width="80" :input-height="58" :min="1" :disabled-input="true" :bg-color="bgColor"></u-number-box>
 				</view>
 			</view>
 			<!-- 平台优惠券 -->
 			<view class="goodsCoupon" @click="toChooseCoupon">
-				<view class="text">平台优惠券</view>
+				<view class="text"><text>平台优惠券</text></view>
 				<view class="couponCon">
 					<!-- v-if="usableList.length===0" -->
 					<!-- <view class="noUse">暂无可用</view> -->
 					<!-- v-else -->
-					<view class="usable">2个可用</view>   <!-- usableList.length -->
+					<view class="usable"><text>2个可用</text></view>   <!-- usableList.length -->
 					<image src="@/static/images/iconfont/more.png"></image>
 				</view>
 			</view>
 			<!-- 店铺优惠 -->
 			<view class="goodsCoupon" @click="isShow">
-				<view class="text">店铺优惠</view>
+				<view class="text"><text>店铺优惠</text></view>
 				<view class="couponCon">
 					<!-- v-if="usableList.length===0" -->
-					<view class="noUse">暂无可用</view>
+					<view class="noUse"><text>暂无可用</text></view>
 					<!-- v-else -->
 					<!-- <view class="usable">2个可用</view> -->
 					<image src="@/static/images/iconfont/more.png"></image>
@@ -52,29 +52,32 @@
 			</view>
 			<!-- 总金额 -->
 			<view class="totalPrice">
-				<view class="text">小计</view>
-				<view class="price">￥{{sumPrice}}</view>
+				<view class="text"><text>小计</text></view>
+				<view class="price"><text>￥{{sumPrice}}</text></view>
 			</view>
 		</view>
 		<!-- 底部优惠券模态框 -->
 		<u-popup v-model="show" mode="bottom" border-radius="52" closeable="true" safe-area-inset-bottom="true">
 			<view class="modalBox">
-				<view class="text">优惠</view>
+				<view class="text"><text>优惠</text></view>
 				<orderCoupon />
 			</view>
 		</u-popup>
 		<!-- 提示信息 -->
 		<view class="orderTip">
 			<image src="@/static/images/iconfont/tishi.png"></image>
-			<view class="text" v-if="orderCountDownTime !== 0">本单即将
-			<u-count-down :timestamp="orderCountDownTime" separator="zh" font-size="28" :autoplay="false" color="#24a7ff" separator-size="28" separator-color="#24a7ff" :show-hours="false" :show-minutes="false" :show-seconds="false"></u-count-down>
-			后过期，请尽快使用！</view>
-			<view class="text" v-else>本单已过期!</view>
+			<view class="text" v-if="orderCountDownTime !== 0">
+				
+					<text>本单即将</text>
+					<u-count-down :timestamp="orderCountDownTime" separator="zh" font-size="28" :autoplay="false" color="#24a7ff" separator-size="28" separator-color="#24a7ff" :show-hours="false" :show-minutes="false" :show-seconds="false"></u-count-down>
+					<text>后过期，请尽快使用！</text></view>
+				
+			<view class="text" v-else><text>本单已过期!</text></view>
 		</view>
 		<view class="toBuy" @click="toPay">
 			<view class="toBuy">
-				<view class="price">￥{{sumPrice}}</view>
-				<view class="text">去付款</view>
+				<view class="price"><text>￥{{sumPrice}}</text></view>
+				<view class="text"><text>去付款</text></view>
 			</view>
 		</view>
 	</view>

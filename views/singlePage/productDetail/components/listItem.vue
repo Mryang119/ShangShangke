@@ -4,21 +4,21 @@
 	<view class="c_listItem">
 		<view class="iamge-username-content">
 			<u-image width="86rpx" height="86rpx" shape="circle" :src="imageUrl"></u-image>
-			<view class="user-name">{{userName}}</view>
+			<view class="user-name"><text>{{userName}}</text></view>
 		</view>
 		<view class="time-button-content">
 			<view class="time-text-container">
 				<view class="population">
-					<view>还差</view>
-					<view :style="{color:'#FF2F2F'}">{{population}}人</view>
-					<view>拼成</view>
+					<view><text>还差</text></view>
+					<view :style="{color:'#FF2F2F'}"><text>{{population}}人</text></view>
+					<view><text>拼成</text></view>
 				</view>
 				<view class="count-down">
-					剩余<u-count-down font-size="24" :autoplay="true" :show-days="false" :timestamp="time"></u-count-down>
+					<text>剩余</text><u-count-down font-size="24" :autoplay="true" :show-days="false" :timestamp="time"></u-count-down>
 				</view>
 			</view>
 			<view class="button-container">
-				去拼团
+				<text>去拼团</text>
 			</view>
 		</view>
 	</view>

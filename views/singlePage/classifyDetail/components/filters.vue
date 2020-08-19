@@ -2,11 +2,11 @@
 	<view class="c_filters">
 		<view class="filters-contianer">
 			<view class="filters-item" v-for="(item,index) in fliters" :key="index">
-				<view class="item-title">{{item.title}}</view>
+				<view class="item-title"><text>{{item.title}}</text></view>
 				<view class="item-status-flexContainer">
 					<view class="flex-item" :class="{'active-flex-item':$store.state.filter.selectFilterForm.filters.includes(item1)}" @click="saveFilters(item1)"
 					 v-for="(item1,index1) in item.children" :key="index1">
-						{{item1}}
+						<text>{{item1}}</text>
 					</view>
 				</view>
 			</view>

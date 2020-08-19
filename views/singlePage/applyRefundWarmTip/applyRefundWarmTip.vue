@@ -3,10 +3,10 @@
 <template>
 	<view class="container">
 		<view class="tipContainer">
-			<view class="tipText">温馨提示</view>
-			<view class="text">原路退款时，若订单显示“已退款”，表示款项已经返回原支付方，距离到账时间3-10个工作日</view>
+			<view class="tipText"><text>温馨提示</text></view>
+			<view class="text"><text>原路退款时，若订单显示“已退款”，表示款项已经返回原支付方，距离到账时间3-10个工作日</text></view>
 			<view class="backOrder">
-				<view class="backOrderBtn" @click="backOrder">返回订单</view>
+				<view class="backOrderBtn" @click="backOrder"><text>返回订单</text></view>
 			</view>
 		</view>
 	</view>

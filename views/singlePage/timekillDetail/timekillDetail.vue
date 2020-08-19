@@ -9,13 +9,13 @@
 			<scroll-view scroll-x="true" class="time-list">
 				<view class="scroll-H" :style="{width:length*73*2+160+'rpx',height:50*2+'rpx'}">
 					<view class="time-list-title">
-						限时
+						<text>限时</text>
 						<br />
-						热抢
+						<text>热抢</text>
 					</view>
 					<view class="timestamp" :class="{'upcoming-status':item.now===false}" v-for="(item,index) in timeList" :key="index">
-						<view class="time">{{item.time}}</view>
-						<view class="status">{{item.now?'抢购中':'即将开始'}}</view>
+						<view class="time"><text>{{item.time}}</text></view>
+						<view class="status"><text>{{item.now?'抢购中':'即将开始'}}</text></view>
 					</view>
 				</view>
 			</scroll-view>

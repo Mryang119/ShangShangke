@@ -7,18 +7,18 @@
 			<view class="tag-item-container">
 				<view class="tabel">优惠</view>
 				<view class="tag-item" v-for="item in tags" :key="item">
-					{{item}}
+					<text>{{item}}</text>
 				</view>
 			</view>
 			<view class="more-container">
-				<view class="more">{{tags.length}}个优惠</view>
+				<view class="more"><text>{{tags.length}}个优惠</text></view>
 			</view>
 		</view>
 		<!-- 门店 -->
 		<view class="location-content">
-			<view class="tabel">门店</view>
+			<view class="tabel"><text>门店</text></view>
 			<view class="store-name-loaction">
-				<view class="store-name">{{storeName}}</view>
+				<view class="store-name"><text>{{storeName}}</text></view>
 				<view class="store-loaction">
 					<u-icon color="#707070" name="map"></u-icon>
 					<text>{{loaction}}</text>
@@ -27,8 +27,8 @@
 		</view>
 		<!-- 规则说明 -->
 		<view class="rule-content">
-			<view class="tabel">使用</view>
-			<view class="rile-text">{{rule}}</view>
+			<view class="tabel"><text>使用</text></view>
+			<view class="rile-text"><text>{{rule}}</text></view>
 		</view>
 		
 	</view>

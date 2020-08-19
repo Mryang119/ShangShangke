@@ -11,7 +11,7 @@
 				<view class="tab-item-container" @click="toggleSelect(index)" :class="{'tab-item-active':index===selectIndex}"
 				 v-for="(item,index) in classifyList" :key="index">
 					<view class="line" v-show="selectIndex===index"></view>
-					<view class="tab-item">{{item.title}}</view>
+					<view class="tab-item"><text>{{item.title}}</text></view>
 				</view>
 			</scroll-view>
 			<!-- 左侧分类栏 -->
@@ -24,12 +24,12 @@
 				<view class="classify-item-container" v-for="(item,index) in classifyList" :key="index" :id="'classItemId'+index">
 					<view class="classify-item">
 						<view class="item-className">
-							{{item.title}}
+							<text>{{item.title}}</text>
 						</view>
 						<view class="item-button-container">
 							<navigator class="item-button" hover-class="hover-button" v-for="(item1,index1) in item.children" :key="index1"
 							 :url="'../classifyDetail/classifyDetail?className='+item1">
-								{{item1}}
+								<text>{{item1}}</text>
 							</navigator>
 						</view>
 					</view>

@@ -6,15 +6,15 @@
 			<image class="image" src="@/static/images/Product/logo.png" mode=""></image>
 		</view>
 		<view class="title-h">
-			{{message1}}
+			<text>{{message1}}</text>
 		</view>
 		<view class="message">
-			{{message2}}
+			<text>{{message2}}</text>
 		</view>
 		<view class="button-content">
-			<view class="button wxlogin" v-if="loginStatus" @click="toggleStatus">微信登录</view>
-			<view class="button notlogin" v-if="loginStatus">暂不登录</view>
-			<button class="button wxlogin" open-type="getPhoneNumber" @getphonenumber="getPhoneNumber" v-else type="default">确认授权</button>
+			<view class="button wxlogin" v-if="loginStatus" @click="toggleStatus"><text>微信登录</text></view>
+			<view class="button notlogin" v-if="loginStatus"><text>暂不登录</text></view>
+			<button class="button wxlogin" open-type="getPhoneNumber" @getphonenumber="getPhoneNumber" v-else type="default"><text>确认授权</text></button>
 
 		</view>
 	</view>

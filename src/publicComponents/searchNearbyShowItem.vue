@@ -5,19 +5,19 @@
 		<!-- 标题log部分 -->
 		<view class="top-container">
 			<view class="left-store-img">
-				海底捞
+				<text>海底捞</text>
 			</view>
 			<view class="right-store-messages">
 				<view class="storeTitle">
-					{{title}}
+					<text>{{title}}</text>
 				</view>
 				<view class="score">
-					评分:<u-rate :disabled="true" size="24" :current="score" active-color="#FFAE44"></u-rate>
+					<text>评分:</text><u-rate :disabled="true" size="24" :current="score" active-color="#FFAE44"></u-rate>
 					<text :style="{color:'#FFAE44',fontSize:'18rpx'}">{{''+score.toFixed(1)+''}}</text>
 				</view>
 				<view class="location">
 					<u-icon name="map"></u-icon>
-					<view class="text">{{location}}</view>
+					<view class="text"><text>{{location}}</text></view>
 					<view class="flot-right">
 						<u-icon size="16" name="arrow-right"></u-icon>
 					</view>
@@ -30,8 +30,8 @@
 				<view class="img-box">
 					<u-image border-radius="8" :src="item.imgUrl" height="160" width="210" mode=""></u-image>
 				</view>
-				<view class="bottom-list-item-title">{{item.title}}</view>
-				<view class="bottom-list-item-price">{{item.price}}</view>
+				<view class="bottom-list-item-title"><text>{{item.title}}</text></view>
+				<view class="bottom-list-item-price"><text>{{item.price}}</text></view>
 			</view>
 		</view>
 	</view>

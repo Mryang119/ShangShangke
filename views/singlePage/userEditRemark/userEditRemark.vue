@@ -3,11 +3,11 @@
 		<view class="input-content">
 			<u-input type="textarea" height="494" v-model="value" placeholder="填写简介让大家更了解你~" maxlength="100"></u-input>
 			<view class="count" :class="{'red':value.length>=100}">
-				{{value.length}}/100
+				<text>{{value.length}}/100</text>
 			</view>
 		</view>
 		<view class="save-button button-contnent">
-			保存
+			<text>保存</text>
 		</view>
 	</view>
 </template>

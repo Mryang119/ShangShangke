@@ -4,7 +4,7 @@
 			<image class="image" :src="imageUrl"></image>
 		</view>
 		<view class="right-container">
-			<view class="title-content">{{title}}</view>
+			<view class="title-content"><text>{{title}}</text></view>
 			<view class="site-content">
 				<view>
 					<u-icon name="map"></u-icon>
@@ -17,7 +17,7 @@
 				<view class="graphics" :class="{'graphics-not':messageText==='已抢完'}">
 					<view class="progress" :style="{width:percentage+'%'}"></view>
 				</view>
-				<view class="messageText">{{messageText}}</view>
+				<view class="messageText"><text>{{messageText}}</text></view>
 			</view>
 			<!-- 价格抢按钮 -->
 			<view class="price-content">

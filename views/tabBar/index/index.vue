@@ -25,7 +25,7 @@
 				</navigator>
 				<view class="searchBar" @click="toSearch">
 					<image src="@/static/images/iconfont/search.png" mode=""></image>
-					<view class="fakerInput">搜索商家/商品</view>
+					<view class="fakerInput"><text>搜索商家/商品</text></view>
 				</view>
 				<navigator url="../../singlePage/classify/classify">
 					<image class="classify" src="@/static/images/iconfont/fenlei.png" mode=""></image>
@@ -39,7 +39,7 @@
 				<view class="titleBar">
 					<view class="daydayRob"></view>
 					<view class="titleBar-title">
-						数量有限 先到先得
+						<text>数量有限 先到先得</text>
 					</view>
 					<more></more>
 				</view>
@@ -54,7 +54,7 @@
 			<view class="dailyYipin">
 				<image class="meiriyipin son" src="@/static/images/Product/meiriyipin.png" mode=""></image>
 				<view class="meiriyipin-text son" mode="">
-					每日一品
+					<text>每日一品</text>
 				</view>
 			</view>
 			<!-- 领好券 -->
@@ -63,7 +63,7 @@
 				<view class="getCoupon-titleBar">
 					<text class="getCoupon-titleBar-item linghaoquan">领好券</text>
 					<view class="textBg getCoupon-titleBar-item">
-						抢大额优惠券
+						<text>抢大额优惠券</text>
 					</view>
 					<more url='../../singlePage/getCoupon/getCoupon'></more>
 				</view>
@@ -84,7 +84,7 @@
 
 			<view class="timeKill">
 				<view class="timeKill-titleBar">
-					<view class="title-item title-text">限时秒杀</view>
+					<view class="title-item title-text"><text>限时秒杀</text></view>
 					<view class="title-item time">
 						<u-count-down ref="uCountDown" bg-color="#F10000" separator-color="#F10000" color="#FFFFFF" :timestamp="86400"
 						 :autoplay="true"></u-count-down>
@@ -104,7 +104,7 @@
 			<!-- 超值拼团 -->
 			<view class="groupPurchase">
 				<view class="groupPurchase-titleBar">
-					<view class="groupPurchase-titleBar-text">超值拼团</view>
+					<view class="groupPurchase-titleBar-text"><text>超值拼团</text></view>
 					<more url="../../singlePage/groupPurchase/groupPurchase"></more>
 				</view>
 				<scroll-view scroll-x="true" class="scorll-H-S">

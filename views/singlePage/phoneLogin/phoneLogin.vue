@@ -16,8 +16,8 @@
 
 		</view>
 		<view class="login-button-content">
-			<button class="usable-button button" v-if="verify" @click="login">登录</button>
-			<view class="forbidden-button button" v-else>登录</view>
+			<button class="usable-button button" v-if="verify" @click="login"><text>登录</text></button>
+			<view class="forbidden-button button" v-else><text>登录</text></view>
 		</view>
 	</view>
 </template>

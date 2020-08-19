@@ -6,10 +6,10 @@
 		<image class="couponImg" :src="shopImg"></image>
 		<view class="noPayRight">
 			<view class="noPayRightCon">
-				<view class="noPayCoupon">{{cashCoupon}}元代金券</view>
-				<view class="noPayMoney">￥{{itemPrice}}</view>
+				<view class="noPayCoupon"><text>{{cashCoupon}}元代金券</text></view>
+				<view class="noPayMoney"><text>￥{{itemPrice}}</text></view>
 			</view>
-			<view class="noPayNumer">数量：{{itemNumber}}</view>
+			<view class="noPayNumer"><text>数量：{{itemNumber}}</text></view>
 		</view>
 	</view>
 </template>

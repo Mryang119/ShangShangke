@@ -14,20 +14,20 @@
 			<view class="price">
 				<view class="priceNum">
 					<span class="priceMoney">
-						<span class="priceMoneyIcon">￥</span>
-						<span class="priceMoneyNum">299.00</span>
+						<span class="priceMoneyIcon"><text>￥</text></span>
+						<span class="priceMoneyNum"><text>299.00</text></span>
 					</span>
-					<span class="priceDelete">￥11.00</span>
+					<span class="priceDelete"><text>￥11.00</text></span>
 				</view>
 				<view class="priceTime">
-					<span class="priceText">距结束还剩</span>
+					<span class="priceText"><text>距结束还剩</text></span>
 					<view class="priceReciprocal">
 						<u-count-down :timestamp="86400" separator="colon" separator-size="28" separator-color="#606266" font-size="24"
 						 color="#FFFFFF" bg-color="#FE3B2B" :show-days="false"></u-count-down>
 					</view>
 				</view>
 			</view>
-			<view class="productName">抹茶柚子千层 抹茶柚子千层 新鲜出炉 抹茶柚子千层 抹茶柚子千层 新鲜出炉</view>
+			<view class="productName"><text>抹茶柚子千层 抹茶柚子千层 新鲜出炉 抹茶柚子千层 抹茶柚子千层 新鲜出炉</text></view>
 		</view>
 
 
@@ -46,20 +46,20 @@
 				<view class="inShopCon">
 					<!-- 店家名字 -->
 					<view class="inShopName">
-						SEASONG
+						<text>SEASONG</text>
 					</view>
 					<!-- 店家评分 -->
 					<view class="inShopGrade">
-						<view class="inShopGradeText">评分:</view>
+						<view class="inShopGradeText"><text>评分:</text></view>
 						<u-rate :count="5" v-model="3.5" size="20" active-color="#FFAE44" disabled="true"></u-rate>
-						<view class="inShopRate">{{value}}</view>
+						<view class="inShopRate"><text>{{value}}</text></view>
 					</view>
 				</view>
 
 			</view>
 			<!-- 进店逛逛按钮 -->
 			<view class="inShopBtn">
-				<button type="default" plain="true">进店逛逛</button>
+				<button type="default" plain="true"><text>进店逛逛</text></button>
 			</view>
 		</view>
 
@@ -67,13 +67,13 @@
 		<view class="discount">
 			<!-- 优惠 -->
 			<view class="discountMoney" @click="isShow">
-				<view class="discountText">优惠</view>
+				<view class="discountText"><text>优惠</text></view>
 				<view class="discountCoupon">
 					<view class="couponCon">
-						<view class="coupon">满10减7</view>
-						<view class="coupon">满35减10</view>
+						<view class="coupon"><text>满10减7</text></view>
+						<view class="coupon"><text>满35减10</text></view>
 					</view>
-					<view class="couponNum">2个优惠</view>
+					<view class="couponNum"><text>2个优惠</text></view>
 				</view>
 				<view class="discountMore">
 					<image src="@/static/images/iconfont/more.png"></image>
@@ -81,27 +81,27 @@
 			</view>
 			<!-- 门店 -->
 			<view class="discountPlace">
-				<view class="discountText">门店</view>
+				<view class="discountText"><text>门店</text></view>
 				<!-- 店名和地理位置 -->
 				<view class="shop">
-					<view class="shopName">韩国年糕料理（海岸城店）</view>
+					<view class="shopName"><text>韩国年糕料理（海岸城店）</text></view>
 					<view class="shopCon">
 						<image class="shopImg" src="@/static/images/iconfont/position.png"></image>
-						<view class="shopPlace">文新思路34号海岸城西座F2座806</view>
+						<view class="shopPlace"><text>文新思路34号海岸城西座F2座806</text></view>
 					</view>
 				</view>
 			</view>
 			<!-- 使用 -->
 			<view class="discountUse">
-				<view class="discountText">使用</view>
-				<view class="tip">线上购买后前往门店，餐前出示订单券码</view>
+				<view class="discountText"><text>使用</text></view>
+				<view class="tip"><text>线上购买后前往门店，餐前出示订单券码</text></view>
 			</view>
 		</view>
 
 		<!-- 底部优惠券模态框 -->
 		<u-popup v-model="show" mode="bottom" border-radius="52" closeable="true" safe-area-inset-bottom="true">
 			<view class="modalBox">
-				<view class="text">优惠</view>
+				<view class="text"><text>优惠</text></view>
 				<!-- 优惠券点击领取 -->
 				<shopDetailGetCoupon :distanceList='afterList' />
 			</view>
@@ -113,12 +113,12 @@
 
 		<!-- 商品详情 -->
 		<view class="goodDetail">
-			<view class="text">商品详情</view>
+			<view class="text"><text>商品详情</text></view>
 			<view class="goods">
 				<view class="circle"></view>
 				<view class="goodsCon">
-					<view class="goodsName">限时新品双人冰爽餐</view>
-					<view class="goodsMoney">￥100.00</view>
+					<view class="goodsName"><text>限时新品双人冰爽餐</text></view>
+					<view class="goodsMoney"><text>￥100.00</text></view>
 				</view>
 			</view>
 		</view>
@@ -132,21 +132,21 @@
 			<view class="navCon">
 				<navigator class="NavIcon" :url="myService">
 					<u-icon name="kefu-ermai" class="icon" size="44"></u-icon>
-					<view class="text">客服</view>
+					<view class="text"><text>客服</text></view>
 				</navigator>
 				<view class="NavIcon">
 					<u-icon name="zhuanfa" class="icon" size="44"></u-icon>
-					<view class="text">分享</view>
+					<view class="text"><text>分享</text></view>
 				</view>
 				<view class="NavIcon">
 					<u-icon :name="starName?'star':'star-fill' " class="icon" size="44" :color="starColor?'':'#FF8800'" @click="toggle"></u-icon>
-					<view class="text">收藏</view>
+					<view class="text"><text>收藏</text></view>
 				</view>
 			</view>
 			<!-- 立即购买 -->
 			<navigator class="navBuy" :url="confirmOrder">
-				<view class="buyNum">￥11.00</view>
-				<view class="toBug">立即购买</view>
+				<view class="buyNum"><text>￥11.00</text></view>
+				<view class="toBug"><text>立即购买</text></view>
 			</navigator>
 		</view>
 	</view>
