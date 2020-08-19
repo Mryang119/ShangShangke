@@ -6,18 +6,7 @@
 		<!-- 轮播图包含搜索条区域 -->
 		<view class="swiper-container">
 			<!-- 轮播图 -->
-			<view class="uni-padding-wrap">
-				<view class="page-section swiper">
-					<view class="page-section-spacing">
-						<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval"
-						 indicator-active-color="#FFFFFF" :duration="duration">
-							<swiper-item v-for="(item,index) in CarouselImg" :key="item">
-								<image class="swiperImage" :src="item" mode=""></image>
-							</swiper-item>
-						</swiper>
-					</view>
-				</view>
-			</view>
+			<u-swiper :list="CarouselImg" height="596" border-radius="0" img-mode="heightFix"></u-swiper>
 			<!-- 搜索定位分类部分 -->
 			<view class="topNav">
 				<navigator url="../../singlePage/position/position" class="position">
@@ -144,7 +133,6 @@
 			</view>
 		</view>
 	</view>
-	</view>
 </template>
 
 <script>
@@ -216,7 +204,7 @@
 				fullDiscountHome: [], //满减
 				buyGiftHome: [], //买赠
 				fullGiftHome: [], //满赠
-				CarouselImg: null //轮播图
+				CarouselImg: [] //轮播图
 				// 首页模块数据⬆
 			}
 		},
@@ -273,15 +261,22 @@
 				let res = await getHomeModuleMessages({
 					circs: this.circs
 				})
+				console.log(res.data.data.CarouselImg)
 				let datas = ['couponHome',
 					'newExclusiveHome',
 					'seckillHome',
 					'groupHome',
 					'fullDiscountHome',
 					'buyGiftHome',
-					'fullGiftHome',
-					'CarouselImg'
+					'fullGiftHome'
 				]
+				// 处理轮播图的数据适配uviewui
+				Object.keys(res.data.data.CarouselImg).forEach((key,index)=>{
+					this.CarouselImg.push({
+						image:res.data.data.CarouselImg[key]
+					})
+				})
+				
 				datas.forEach(item => {
 					this[item] = res.data.data[item]
 				})
@@ -300,20 +295,6 @@
 					pageSize: 10
 				})
 				this.showItemList1 = res1.data.data
-				// let res2 = await getCircCampaignInfo({
-				// 	circs: this.circs,
-				// 	campaignType: 3,
-				// 	pageNum: this.startPage2,
-				// 	pageSize: 10
-				// })
-				// this.showItemList2 = res2.data.data
-				// let res3 = await getCircCampaignInfo({
-				// 	circs: this.circs,
-				// 	campaignType: 2,
-				// 	pageSize: 10,
-				// 	pageNum: 1
-				// })
-				// console.log(res3)
 				return Promise.resolve(res1)
 			},
 			async getCouponLists() {
@@ -326,7 +307,7 @@
 		async onLoad() {
 			uni.showLoading({
 				title: '数据加载中',
-				duration: 50000,
+				duration: 3000,
 				icon: 'loading',
 				mask:true
 			})
@@ -384,16 +365,6 @@
 			} else {
 				this.status1 = 'noMore'
 			}
-			// if (this.cp === 'buy' && this.endPage1 > this.startPage1) {
-			// 	this.status1 = 'loading'
-			// 	this.startPage1++
-			// 	setTimeout(() => {
-			// 		let fakeAjaxList = JSON.parse(JSON.stringify(this.ajaxList))
-			// 		this.showItemList1 = this.showItemList1.concat(fakeAjaxList)
-			// 	}, 1000)
-			// } else {
-			// 	this.status1 = 'noMore'
-			// }
 			if (this.cp === 'give' && this.givelength >= 10) {
 				this.startPage2++
 				let res = await getCircCampaignInfo({
@@ -419,7 +390,7 @@
 		.top_nvaBar_text {
 			font-size: 36rpx;
 			font-weight: bold;
-			font-family: PingFang SC;
+			font-family: @font;
 		}
 
 		// 轮播图部分
@@ -429,16 +400,7 @@
 			height: 596rpx;
 			position: relative;
 
-			.swiper {
-				width: 750rpx;
-				height: 596rpx;
-
-				image {
-					width: 100%;
-					height: 100%;
-				}
-			}
-
+			
 			.topNav {
 				width: 100%;
 				position: absolute;
@@ -573,7 +535,6 @@
 					position: relative;
 					height: 42rpx;
 					width: 98%;
-					margin-bottom: ;
 					padding-right: 10rpx;
 					box-sizing: border-box;
 
@@ -621,49 +582,6 @@
 							width: 364rpx;
 							height: 124rpx;
 							margin-right: 20rpx;
-							// background: url(@/static/images/Product/youhuiquanlijilingqu.png);
-							// margin-right: 20rpx;
-							// background-size: cover;
-							// padding: 14rpx;
-							// box-sizing: border-box;
-							// position: relative;
-							// line-height: 24rpx;
-
-							// .scorll-item-son {
-							// 	position: absolute;
-							// 	top: 50%;
-							// 	transform: translateY(-50%);
-							// }
-
-							// .priceTextBox {
-							// 	left: 124rpx;
-							// }
-
-							// .radiusBox {
-							// 	width: 96rpx;
-							// 	height: 96rpx;
-							// 	line-height: 96rpx;
-
-							// 	.image {
-							// 		width: 100%;
-							// 		height: 100%;
-							// 		border-radius: 50%;
-							// 	}
-							// }
-
-							// .yilingqu {
-							// 	color: #621818;
-							// 	left: 266rpx;
-							// 	font-weight: bold;
-							// }
-
-							// .lijilingqu {
-							// 	color: #624118;
-							// 	line-height: 26rpx;
-							// 	left: 276rpx;
-							// 	font-weight: bold;
-
-							// }
 						}
 
 						.scorll-item-active {
