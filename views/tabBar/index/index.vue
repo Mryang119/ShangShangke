@@ -6,11 +6,11 @@
 		<!-- 轮播图包含搜索条区域 -->
 		<view class="swiper-container">
 			<!-- 轮播图 -->
-			<u-swiper :list="CarouselImg" height="596" border-radius="0" img-mode="heightFix"></u-swiper>
+			<u-swiper :list="CarouselImg" height="596" border-radius="0" img-mode="scaleToFill"></u-swiper>
 			<!-- 搜索定位分类部分 -->
 			<view class="topNav">
 				<navigator url="../../singlePage/position/position" class="position">
-					<position :cityName="$store.state.global.globalData.cityName"></position>
+					<position :cityName="cityName"></position>
 				</navigator>
 				<view class="searchBar" @click="toSearch">
 					<image src="@/static/images/iconfont/search.png" mode=""></image>
@@ -24,7 +24,7 @@
 		<!-- 下半部分主体 -->
 		<view class="bottomContainer">
 			<!-- 天天免费抢 -->
-			<view class="everyDayBob">
+			<view class="every-ady-rob-content">
 				<view class="titleBar">
 					<view class="daydayRob"></view>
 					<view class="titleBar-title">
@@ -40,14 +40,14 @@
 				</view>
 			</view>
 			<!-- 每日一品 -->
-			<view class="dailyYipin">
+			<view class="dayil-taste-content">
 				<image class="meiriyipin son" src="@/static/images/Product/meiriyipin.png" mode=""></image>
 				<view class="meiriyipin-text son" mode="">
 					<text>每日一品</text>
 				</view>
 			</view>
 			<!-- 领好券 -->
-			<view class="getCoupon">
+			<view class="getcoupon-content">
 				<!-- 标题部分 -->
 				<view class="getCoupon-titleBar">
 					<text class="getCoupon-titleBar-item linghaoquan">领好券</text>
@@ -66,12 +66,12 @@
 				</scroll-view>
 			</view>
 			<!-- 广告位 -->
-			<view class="bannerAd">
+			<view class="banner-content">
 				<image src="@/static/images/Product/banner4@2x.png" mode=""></image>
 			</view>
 			<!-- 秒杀 -->
 
-			<view class="timeKill">
+			<view class="timeKill-content">
 				<view class="timeKill-titleBar">
 					<view class="title-item title-text"><text>限时秒杀</text></view>
 					<view class="title-item time">
@@ -91,10 +91,11 @@
 				</scroll-view>
 			</view>
 			<!-- 超值拼团 -->
-			<view class="groupPurchase">
+			<view class="groupPurchase-content">
 				<view class="groupPurchase-titleBar">
 					<view class="groupPurchase-titleBar-text"><text>超值拼团</text></view>
 					<more url="../../singlePage/groupPurchase/groupPurchase"></more>
+					<!-- <moduleTitle title="超值拼团" url="../../singlePage/groupPurchase/groupPurchase"></moduleTitle> -->
 				</view>
 				<scroll-view scroll-x="true" class="scorll-H-S">
 					<!-- 宽度 商品数量*组件宽度+总边距 -->
@@ -106,7 +107,7 @@
 				</scroll-view>
 			</view>
 			<!-- 买就送满就减 -->
-			<view class="buyGive">
+			<view class="buyGive-content">
 				<view class="button-container">
 					<view class="toggle-button" @click="toggl('buy')" :class="{'toogle-button-yes':cp==='buy'}">
 						<text class="not-text">买就送</text>
@@ -144,15 +145,19 @@
 	import buy from './components/buy.vue'
 	import give from './components/give.vue'
 	import coupon from './components/coupon.vue'
-	// // 引入百度地图
-	// import bmap from '@/common/bmap-wx.min.js'
-	// 模拟数据
+	// import moduleTitle from './components/moduleTitle.vue'
 	import {
 		dataList,
 		showItemList
 	} from '@/src/utils/fakeData.js'
 	// 工具函数
-	import {ScrollWidth,getLocations} from '@/src/utils/index.js'
+	import {
+		ScrollWidth,
+		getLocations
+	} from '@/src/utils/index.js'
+	import {
+		mapState
+	} from 'vuex'
 	// api
 	import {
 		getCityList,
@@ -169,17 +174,11 @@
 			spitem,
 			buy,
 			give,
-			coupon
+			coupon,
+			// moduleTitle
 		},
 		data() {
 			return {
-				// 轮播图配置↓
-				indicatorDots: true,
-				autoplay: true,
-				duration: 500,
-				interval: 2000,
-				// 轮播图配置↑
-				cityName: this.$store.state.global.globalData.cityName,
 				temp: [],
 				time: null,
 				cp: 'buy',
@@ -245,9 +244,9 @@
 			async getCirc() {
 				let res = await getCircList({
 					mobile: '15501876709',
-					city: this.$store.state.global.globalData.cityName,
-					lat: this.$store.state.global.globalData.latitude,
-					lon: this.$store.state.global.globalData.longitude
+					city: this.cityName,
+					lat: this.latitude,
+					lon: this.longitude
 				})
 				this.circs = res.data.data
 				this.$store.commit('saveGlobal', {
@@ -271,12 +270,12 @@
 					'fullGiftHome'
 				]
 				// 处理轮播图的数据适配uviewui
-				Object.keys(res.data.data.CarouselImg).forEach((key,index)=>{
+				Object.keys(res.data.data.CarouselImg).forEach((key, index) => {
 					this.CarouselImg.push({
-						image:res.data.data.CarouselImg[key]
+						image: res.data.data.CarouselImg[key]
 					})
 				})
-				
+
 				datas.forEach(item => {
 					this[item] = res.data.data[item]
 				})
@@ -309,12 +308,12 @@
 				title: '数据加载中',
 				duration: 3000,
 				icon: 'loading',
-				mask:true
+				mask: true
 			})
 			// 获取位置
 			try {
 				await getLocations(this)()
-			} catch(e) {
+			} catch (e) {
 				console.log(e)
 			} finally {
 				// await this.getLocation()
@@ -332,19 +331,25 @@
 				await this.getCircInfo()
 				uni.hideLoading()
 			}
-			
+
 		},
 		onReady() {
 
 		},
 		computed: {
+			// 仓库键
+			...mapState({
+				cityName: state => state.global.globalData.cityName,
+				latitude: state => state.global.globalData.latitude,
+				longitude: state => state.global.globalData.longitude
+			}),
 			// 计算优惠券x轴容器宽度
 			scrollWidth: function() {
 				let len = Math.ceil(this.couponHome.length / 2)
-				return ScrollWidth(len,182,20)
+				return ScrollWidth(len, 182, 20)
 			},
 			killWidth: function() {
-				return ScrollWidth(this.seckillHome.length,102,16)
+				return ScrollWidth(this.seckillHome.length, 102, 16)
 			}
 		},
 		// 触碰底部懒加载
@@ -386,6 +391,7 @@
 	@font: PingFang SC;
 
 	.root_index {
+
 		// 自定义标题栏
 		.top_nvaBar_text {
 			font-size: 36rpx;
@@ -400,7 +406,7 @@
 			height: 596rpx;
 			position: relative;
 
-			
+
 			.topNav {
 				width: 100%;
 				position: absolute;
@@ -448,8 +454,9 @@
 			padding: 20rpx 20rpx;
 			box-sizing: border-box;
 			background-image: linear-gradient(to bottom, #FFFFFF, #F6F6F6) !important;
+
 			// 天天免费抢
-			.everyDayBob {
+			.every-ady-rob-content {
 				box-sizing: border-box;
 				width: 710rpx;
 				height: 1110rpx;
@@ -489,7 +496,7 @@
 			}
 
 			// 每日一品
-			.dailyYipin {
+			.dayil-taste-content {
 				width: 710rpx;
 				height: 404rpx;
 				margin-top: 20rpx;
@@ -522,7 +529,7 @@
 			}
 
 			// 领好券
-			.getCoupon {
+			.getcoupon-content {
 				width: 710rpx;
 				height: 386rpx;
 				margin-top: 20rpx;
@@ -599,7 +606,7 @@
 			}
 
 			// 广告位
-			.bannerAd {
+			.banner-content {
 				width: 710rpx;
 				height: 232rpx;
 				margin-top: 20rpx;
@@ -611,7 +618,7 @@
 			}
 
 			// 秒杀模块
-			.timeKill {
+			.timeKill-content {
 				width: 710rpx;
 				height: 414rpx;
 				margin-top: 20rpx;
@@ -670,7 +677,7 @@
 			}
 
 			// 超值拼团
-			.groupPurchase {
+			.groupPurchase-content {
 				margin-top: 20rpx;
 				width: 710rpx;
 				height: 414rpx;
@@ -697,7 +704,7 @@
 			}
 
 			// 买就送满就减
-			.buyGive {
+			.buyGive-content {
 				width: 710rpx;
 				margin-top: 24rpx;
 
