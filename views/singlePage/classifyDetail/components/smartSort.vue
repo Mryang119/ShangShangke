@@ -10,29 +10,36 @@
 </template>
 
 <script>
+	import {
+		mapState
+	} from 'vuex'
 	export default {
 		data() {
 			return {
-				smartSort: this.$store.state.filter.filterForm.smartSort,
-				currentSort: this.$store.state.filter.selectFilterForm.smartSort
 			}
 		},
 		methods: {
 			saveSmartSort(item) {
-				this.currentSort = item
 				this.$store.commit('saveSelectDatas', {
 					type: 'smartSort',
 					value: item
 				})
 			}
+		},
+		computed: {
+			...mapState({
+				smartSort: state => state.filter.filterForm.smartSort,
+				currentSort: state => state.filter.selectFilterForm.smartSort
+			})
 		}
 	}
 </script>
 
 <style lang="less" scoped>
 	.c_smartSort {
-		width: 750rpx;	
+		width: 750rpx;
 		box-sizing: border-box;
+
 		.smartSort-cotainer {
 			width: 750rpx;
 			padding-left: 30rpx;

@@ -17,25 +17,26 @@
 </template>
 
 <script>
+	import {
+		mapState
+	} from 'vuex'
 	export default {
 		data() {
 			return {
-				nearbys: this.$store.state.filter.filterForm['nearbys'],
 				children: [],
 				currentIndex: 0,
-				currentArea: '',
-				currentAreaIndex: this.$store.state.filter.selectFilterForm.nearbys
+				currentArea: ''
 			}
 		},
 		created() {
-			this.currentArea = this.$store.state.filter.filterForm['nearbys'][this.currentIndex].title // 获取当前区域名称
-			this.children = this.$store.state.filter.filterForm.nearbys[this.currentIndex].children
+			this.currentArea = this.nearbys[this.currentIndex].title // 初始化显示附近
+			this.children = this.nearbys[this.currentIndex].children
 		},
 		methods: {
 			toggleIndex(e, i) {
 				this.currentIndex = i
 				this.currentArea = e
-				this.children = this.$store.state.filter.filterForm.nearbys[this.currentIndex].children
+				this.children = this.nearbys[this.currentIndex].children
 			},
 			saveArea(a) {
 				console.log(a)
@@ -45,17 +46,20 @@
 						type: "nearbys",
 						value: '附近'
 					})
-					this.currentAreaIndex = '附近'
 				} else {
 					let value = `${a}`
 					this.$store.commit('saveSelectDatas', {
 						type: "nearbys",
 						value: value
 					})
-					this.currentAreaIndex = a
 				}
-				console.log(this.$store.state.filter.selectFilterForm.nearbys)
 			}
+		},
+		computed: {
+			...mapState({
+				nearbys: state => state.filter.filterForm.nearbys,
+				currentAreaIndex: state => state.filter.selectFilterForm.nearbys
+			})
 		}
 	}
 </script>

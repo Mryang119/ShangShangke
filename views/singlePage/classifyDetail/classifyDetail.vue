@@ -18,9 +18,6 @@
 								<text>分类</text>
 								<image :src="!isActiveForm.className? '/static/images/iconfont/arrow-down.png' : '/static/images/iconfont/arrow-up.png'"
 								 class="image-icon" mode="widthFix"></image>
-								<!-- <image src="@/static/images/iconfont/arrow-up.png" class="image-icon" mode="widthFix"></image>
-								<u-icon name="arrow-down" v-if="!isActiveForm.className"></u-icon>
-								<u-icon name="arrow-up" v-else></u-icon> -->
 							</view>
 						</view>
 						<view class="filter-item nearbys" @click="dipatch('nearbys','nearbys')" :class="{'active':isActiveForm.nearbys}">
