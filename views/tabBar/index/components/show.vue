@@ -2,7 +2,7 @@
 	<!-- 买就送满就减商品展示 -->
 	<view class="c_show">
 		<view class="show-item-container" @click="toDetail">
-			<image class="image" :src="imgUrl" mode=""></image>
+			<image class="image" :src="imgUrl" mode="widthFix"></image>
 			<view class="show-item-textContent">
 				<view class="show-item-title">
 					<text>{{title}}</text>
@@ -47,7 +47,7 @@
 			},
 			imgUrl: {
 				type: String,
-				default: '../../../../static/images/Product/shangpingtu.png'
+				default: '/static/images/Product/shangpingtu.png'
 			},
 			pdcId:{ // 商品id
 				type:[Number,String],
@@ -57,7 +57,7 @@
 		methods:{
 			toDetail(){
 				uni.navigateTo({
-					url:`../../../singlePage/timeKillProductDetail/timeKillProductDetail?pdcId=${this.pdcId}&pdcType=${this.type}`
+					url:`views/singlePage/timeKillProductDetail/timeKillProductDetail?pdcId=${this.pdcId}&pdcType=${this.type}`
 				})
 			}
 		}
@@ -74,7 +74,6 @@
 		.show-item-container {
 			.image {
 				width: 346rpx;
-				height: 326rpx;
 				border-radius:16rpx 16rpx 0px 0px;
 			}
 			.show-item-textContent {

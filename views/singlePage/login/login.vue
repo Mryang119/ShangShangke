@@ -13,6 +13,7 @@
 		</view>
 		<view class="button-content">
 			<view class="button wxlogin" v-if="loginStatus" @click="toggleStatus"><text>微信登录</text></view>
+			<view class="button wxlogin" v-if="loginStatus" @click="houmen"><text>后门登录</text></view>
 			<view class="button notlogin" v-if="loginStatus"><text>暂不登录</text></view>
 			<button class="button wxlogin" open-type="getPhoneNumber" @getphonenumber="getPhoneNumber" v-else type="default"><text>确认授权</text></button>
 
@@ -50,7 +51,12 @@
 					})
 				})
 			},
-
+			// 走后门进入登录页
+			houmen() {
+				uni.navigateTo({
+					url: '../register/register'
+				})
+			},
 			// 获取手机号
 			async getPhoneNumber(e) {
 				if (e.detail.errMsg !== 'getUserInfo:fail auth deny') { // 允许授权
@@ -60,7 +66,7 @@
 					this.$store.state.global.globalData.openid = res.data.openid
 					this.$store.state.global.globalData.session_key = res.data.session_key
 					uni.navigateTo({
-						url:'../register/register'
+						url: '../register/register'
 					})
 				} else {
 					return

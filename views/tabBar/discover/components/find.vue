@@ -2,8 +2,8 @@
 	<view class="c_find">
 		<!-- tabs栏 -->
 		<view class="tabs-content">
-			<u-tabs :list="list"  :is-scroll="false" :bar-style="style" :active-item-style="activeItemStyle"
-			 font-size="28" active-color="#333333" inactive-color="#666666" :current="current" @change="change"></u-tabs>
+			<u-tabs :list="list" :is-scroll="false" :bar-style="style" :active-item-style="activeItemStyle" font-size="28"
+			 active-color="#333333" inactive-color="#666666" :current="current" @change="change"></u-tabs>
 		</view>
 		<!-- 搜索分类部分 -->
 		<view class="search-content">
@@ -18,6 +18,9 @@
 		<view class="tabs-item-content" v-show="current===0">
 			<findSonNearby></findSonNearby>
 		</view>
+		<view class="tabs-item-content" v-show="current===1">
+			<findSonFocus></findSonFocus>
+		</view>
 		<view class="tabs-item-content" v-show="current===2">
 			<findSonHot></findSonHot>
 		</view>
@@ -27,10 +30,12 @@
 <script>
 	import findSonNearby from './findSonNearby.vue'
 	import findSonHot from './findSonHot.vue'
+	import findSonFocus from './findSonFocus.vue'
 	export default {
-		components:{
+		components: {
 			findSonNearby,
-			findSonHot
+			findSonHot,
+			findSonFocus
 		},
 		data() {
 			return {
@@ -42,19 +47,19 @@
 					name: '热门'
 				}],
 				current: 0,
-				style:{
+				style: {
 					'background-image': 'linear-gradient(to right, #92D0F9, #26A7FC)'
 				},
-				activeItemStyle:{
-					'font-size':32+'rpx'
+				activeItemStyle: {
+					'font-size': 32 + 'rpx'
 				},
-				keyword:''
+				keyword: ''
 			};
 		},
 		methods: {
 			change(i) {
 				this.current = i
-				this.$emit('now',i)
+				this.$emit('now', i)
 			}
 		}
 	}
@@ -65,6 +70,7 @@
 		width: 100%;
 		box-sizing: border-box;
 	}
+
 	.search-content {
 		display: flex;
 		padding-left: 20rpx;
@@ -74,10 +80,11 @@
 		height: 120rpx;
 		background-color: #FFF;
 		align-items: center;
+
 		.search-container {
 			flex: 1;
 		}
-	
+
 		.class-container {
 			width: 50rpx;
 			height: 50rpx;

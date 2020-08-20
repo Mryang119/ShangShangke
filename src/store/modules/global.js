@@ -6,8 +6,9 @@ const state = () => ({
 		openid: '', // 微信id
 		session_key: '', // 会话密钥
 		latitude: '', // 维度
-		longitude: '' ,// 经度,
-		mobile:'' // 手机
+		longitude: '', // 经度,
+		mobile: '', // 手机,
+		userImage: '' // 用户头像
 	}
 })
 const mutations = {

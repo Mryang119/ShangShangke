@@ -5,6 +5,15 @@ export default {
   },
   onShow: function () {
     console.log("App Show");
+		try {
+			this.$store.commit('saveGlobal',{
+				key:'userImage',
+				value:uni.getStorageSync('loginDatas').putCustomer.imgAddr
+			})
+			console.log('登录存储头像成功')
+		} catch(e) {
+			console.log('未登录',e)
+		}
   },
   onHide: function () {
     console.log("App Hide");

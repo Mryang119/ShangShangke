@@ -8,9 +8,11 @@
 				<view :class="{'active':current===1}" @click="current=1"><text>发现</text></view>
 			</view>
 		</uniNavBar>
+		<!-- 店铺 -->
 		<view class="shop-content" v-show="current===0">
 			<shop @now="now"></shop>
 		</view>
+		<!-- 发现 -->
 		<view class="shop-content" v-if="current===1">
 			<find @now="now"></find>
 		</view>
@@ -53,6 +55,7 @@
 	.s_discover {
 		width: 750rpx;
 		background-color: #FFF;
+
 		.nav-bar {
 			border-bottom: 4rpx solid #EDEDED;
 		}

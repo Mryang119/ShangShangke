@@ -16,13 +16,13 @@
 					<image src="@/static/images/iconfont/search.png" mode=""></image>
 					<view class="fakerInput"><text>搜索商家/商品</text></view>
 				</view>
-				<navigator url="../../singlePage/classify/classify">
-					<image class="classify" src="@/static/images/iconfont/fenlei.png" mode=""></image>
+				<navigator class="classify" url="../../singlePage/classify/classify">
+					<image class="image" src="@/static/images/iconfont/fenlei.png" mode="aspectFill"></image>
 				</navigator>
 			</view>
 		</view>
 		<!-- 下半部分主体 -->
-		<view class="bottomContainer">
+		<view class="bottom-container">
 			<!-- 天天免费抢 -->
 			<view class="every-ady-rob-content">
 				<view class="titleBar">
@@ -390,6 +390,11 @@
 <style lang="less" scoped>
 	@font: PingFang SC;
 
+	.image {
+		width: 100%;
+		height: 100%;
+	}
+
 	.root_index {
 
 		// 自定义标题栏
@@ -449,7 +454,7 @@
 		}
 
 		// 下半部分主体
-		.bottomContainer {
+		.bottom-container {
 			width: 100%;
 			padding: 20rpx 20rpx;
 			box-sizing: border-box;
