@@ -6,12 +6,12 @@
 		<u-modal v-model="show" :show-cancel-button="true" @confirm="confirm" @cancel="cancel" :content="content"></u-modal>
 
 		<view class="searchBar">
-			<u-search @search="search" placeholder="日照香炉生紫烟" v-model="keyword"></u-search>
+			<u-search @search="search" :placeholder="searchType==='orderSearch'?'搜索我的订单':'日照香炉生紫烟'" v-model="keyword"></u-search>
 		</view>
 		<view class="search-container">
 			<!-- 热门搜索 -->
 			<view class="hotSearchi-title">
-				<text>热门搜索</text>
+				<text>{{searchType==='orderSearch'?'历史搜索':'热门搜索'}}</text>
 			</view>
 			<view class="searchButton-container">
 				<view class="flex-box">
@@ -22,7 +22,9 @@
 			</view>
 			<!-- 历史记录 -->
 			<view class="history-title">
-				<view class="text"><text>历史记录</text></view>
+				<view class="text">
+					<text>{{searchType==='orderSearch'?'分类搜索':'历史记录'}}</text>
+				</view>
 				<view class="img" @click="open">
 					<image src="@/static/images/iconfont/deletIcon.png" mode=""></image>
 				</view>
@@ -31,6 +33,7 @@
 				<view class="flex-box">
 					<view class="flex-item" v-for="(item,index) in historyList" :key="index">
 						<searchButton :text="item.text" :isHot="item.isHot"></searchButton>
+						
 					</view>
 					<!-- 展开 -->
 					<!-- 收起 -->
@@ -96,7 +99,8 @@
 					text: '旅游住宿',
 					isHot: false
 				}],
-				pageType: 'index'
+				pageType: 'index',
+				searchType:''  // 订单页面参数
 			};
 		},
 		methods: {
@@ -152,8 +156,9 @@
 			// 		this.historyList = res
 			// 	}
 			// }
-
-
+			
+			// 订单页面传过来得参数
+			this.searchType = option.searchType
 		}
 	}
 </script>

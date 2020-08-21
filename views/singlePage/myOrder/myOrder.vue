@@ -4,10 +4,10 @@
 	<view class="myOrderContaniner">
 		<view class="orderHeader">
 			<!-- 搜索框 -->
-			<navigator class="searchBar" :url="toSearch">
+			<view class="searchBar" @click="toSearch">
 				<image src="@/static/images/iconfont/search.png"></image>
 				<view class="fakerInput"><text>搜索我的订单</text></view>
-			</navigator>
+			</view>
 			<u-tabs active-color='#000000' inactive-color="#000000" :list="tabsList" :bold='true' :is-scroll="false" :current="current"
 			 @change="change" :bar-style="{backgroundImage: 'linear-gradient(to right,#92D0F9,#26A7FC)',height:6+'rpx'}"></u-tabs>
 		</view>
@@ -60,6 +60,7 @@
 	export default {
 		data() {
 			return {
+				searchType:'orderSearch',
 				tabsList: [{
 					name: '全部'
 				}, {
@@ -141,12 +142,18 @@
 					orderNumber: '1',
 					orderType: '已退款'
 				}],
-				current: 0,
-				toSearch: '../../singlePage/search/search' // 跳转到搜索页面
+				current: 0
 
 			}
 		},
 		methods: {
+			toSearch(){
+				let searchType = this.searchType
+				uni.navigateTo({
+					url:`/views/singlePage/search/search?searchType=${this.searchType}` // 跳转到搜索页面
+					// url:'/views/singlePage/search/search'+ searchType // 跳转到搜索页面
+				})
+			},
 			change(index) {
 				this.current = index;
 				console.log(this.current)
