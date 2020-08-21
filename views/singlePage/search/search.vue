@@ -33,7 +33,6 @@
 				<view class="flex-box">
 					<view class="flex-item" v-for="(item,index) in historyList" :key="index">
 						<searchButton :text="item.text" :isHot="item.isHot"></searchButton>
-						
 					</view>
 					<!-- 展开 -->
 					<!-- 收起 -->

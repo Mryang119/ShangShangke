@@ -4,10 +4,7 @@
 	<view class="container">
 		<view class="orderHeader">
 			<!-- 搜索框 -->
-			<navigator class="searchBar" :url="toSearch">
-				<image src="@/static/images/iconfont/search.png"></image>
-				<view class="fakerInput"><text>搜索我的订单</text></view>
-			</navigator>
+			<u-search placeholder="输入用户/店铺名称" :show-action="false" @change="changeValue" @search="searchValue"></u-search>
 			<u-tabs class="tabs" :list="tabsList" :bar-style="{backgroundImage: 'linear-gradient(to right,#92D0F9,#26A7FC)',height:6+'rpx'}"
 			 :is-scroll="false" :bold='true' :current="current" @change="change" inactive-color="#000" active-color="#000"></u-tabs>
 		</view>
@@ -45,11 +42,11 @@
 				}, {
 					name: '粉丝'
 				}],
+				keyword:'',
 				current: 0, //tabs导航索引
 				state: true, //样式文字状态默认为true
 				content: '是否取消关注', // 取消关注模态框文本
 				show: false, //控制模态框弹出，默认为false
-				toSearch: '../../singlePage/search/search', // 跳转到搜索页面
 				userList: [{
 						userImg: '/static/images/tabBarImage/myLoginHeader.png', // 用户头像
 						userName: '吴亦凡', //用户名字
@@ -78,6 +75,14 @@
 				// 参数为三种状态 0推荐 1关注 2粉丝  
 				// userId 假字段 pageSize 是页数 pageNo 是页码
 				// this.reqNavData({state:this.current,usedId:1,pageSize:10,pageNo:1})
+			},
+			// 输入框值得变化
+			changeValue(value){
+				console.log(value)
+			},
+			// 输出输出框的值
+			searchValue(value){
+				console.log(value)
 			},
 			// 获取导航数据接口
 			// reqNavData(data){ // data就是外面的传参的参数
