@@ -150,7 +150,7 @@
 			toSearch(){
 				let searchType = this.searchType
 				uni.navigateTo({
-					url:`/views/singlePage/search/search?searchType=${this.searchType}` // 跳转到搜索页面
+					url:`/views/singlePage/search/search?type=${this.searchType}` // 跳转到搜索页面
 					// url:'/views/singlePage/search/search'+ searchType // 跳转到搜索页面
 				})
 			},

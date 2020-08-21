@@ -157,7 +157,7 @@
 			// }
 			
 			// 订单页面传过来得参数
-			this.searchType = option.searchType
+			this.searchType = option.type
 		}
 	}
 </script>
