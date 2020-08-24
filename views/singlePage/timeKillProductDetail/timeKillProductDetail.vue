@@ -51,7 +51,7 @@
 					<!-- 店家评分 -->
 					<view class="inShopGrade">
 						<view class="inShopGradeText"><text>评分:</text></view>
-						<u-rate :count="5" v-model="3.5" size="20" active-color="#FFAE44" disabled="true"></u-rate>
+						<u-rate :count="5" v-model="3.5" size="20" active-color="#FFAE44" :disabled="true"></u-rate>
 						<view class="inShopRate"><text>{{value}}</text></view>
 					</view>
 				</view>
@@ -59,7 +59,7 @@
 			</view>
 			<!-- 进店逛逛按钮 -->
 			<view class="inShopBtn">
-				<button type="default" plain="true"><text>进店逛逛</text></button>
+				<button type="default" :plain="true"><text>进店逛逛</text></button>
 			</view>
 		</view>
 
@@ -99,7 +99,7 @@
 		</view>
 
 		<!-- 底部优惠券模态框 -->
-		<u-popup v-model="show" mode="bottom" border-radius="52" closeable="true" safe-area-inset-bottom="true">
+		<u-popup v-model="show" mode="bottom" border-radius="52" :closeable="true" :safe-area-inset-bottom="true">
 			<view class="modalBox">
 				<view class="text"><text>优惠</text></view>
 				<!-- 优惠券点击领取 -->
@@ -214,10 +214,13 @@
 		},
 		async onLoad(option) {
 			console.log(option) // killtime
-			let res = await getProductSkuList({
-				productId:option.pdcId
-			})
-			console.log(res)
+			try {
+				let res = await getProductSkuList({
+					productId:option.pdcId
+				})
+			} catch(err) {
+				console.log('网络错误')
+			}
 		}
 	}
 </script>

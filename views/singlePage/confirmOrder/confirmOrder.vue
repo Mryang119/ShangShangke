@@ -57,7 +57,7 @@
 			</view>
 		</view>
 		<!-- 底部优惠券模态框 -->
-		<u-popup v-model="show" mode="bottom" border-radius="52" closeable="true" safe-area-inset-bottom="true">
+		<u-popup v-model="show" mode="bottom" border-radius="52" :closeable="true" :safe-area-inset-bottom="true">
 			<view class="modalBox">
 				<view class="text"><text>优惠</text></view>
 				<orderCoupon />

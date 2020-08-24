@@ -316,7 +316,7 @@
 			} catch (e) {
 				console.log(e)
 			} finally {
-				// await this.getLocation()
+				
 				// 获取城市列表
 				await this.getCity()
 				// 获取商圈
