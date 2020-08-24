@@ -4,34 +4,28 @@
 
 	<view class="store-index-root">
 		<!-- 轮播图 -->
-		<view class="store-modules-content">
+		<view class="store-modules-content" :style="{order:findPackType(4)}">
 			<store-swiper></store-swiper>
 		</view>
 		<!-- 商户广告 -->
-		<view class="store-modules-content">
+		<view class="store-modules-content" :style="{order:findPackType(5)}">
 			<store-banner></store-banner>
 		</view>
-		<!-- 标签栏 -->
-		<view class="store-modules-content">
-			<store-freedom-grid></store-freedom-grid>
-		</view>
 		<!-- 图文一大两小 -->
-		<view class="store-modules-content">
+		<view class="store-modules-content" :style="{order:findPackType(10)}">
 			<store-image-text></store-image-text>
 		</view>
-		<!-- 横向滚动展示商品组件 -->
-		<view class="store-modules-content">
-			<store-scroll-x :title="'今日爆款'"></store-scroll-x>
+		<!-- 标签栏 -->
+		<view class="store-modules-content" :style="{order:findPackType(3)}">
+			<store-freedom-grid></store-freedom-grid>
 		</view>
-		<!-- tabs栏 -->
-		<view class="store-modules-content">
+		<!-- 带tabs栏的容器 -->
+		<view class="store-modules-content" :style="{order:findPackType(12)}">
 			<store-tabs></store-tabs>
 		</view>
-		<!-- 测试仓库 -->
-		<view>
-			<text>{{globalData.cityName}}</text>
-			<view @click="change"><text>点击修改</text></view>
-			
+		<!-- 横向滚动展示商品组件 -->
+		<view class="store-modules-content" :style="{order:findPackType(11)}">
+			<store-scroll-x :title="'今日爆款'"></store-scroll-x>
 		</view>
 	</view>
 </template>
@@ -56,6 +50,12 @@
 				}, {
 					packType: 5, // 商户广告
 					index: 4
+				},{
+					packType: 11, // 横向滚动展示商品组件
+					index: 5
+				},{
+					packType: 12, // 带tabs栏的容器
+					index: 6
 				}]
 			}
 		},
@@ -89,6 +89,7 @@
 	.Img {
 		width: 200rpx;
 	}
+
 	.store-index-root {
 		display: flex;
 		flex-direction: column;

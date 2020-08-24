@@ -11,7 +11,7 @@
 				<u-icon label-pos="bottom" color="#ff8800" name="star-fill" size="44" label="收藏" font-size="22" v-else></u-icon>
 			</view>
 		</view>
-		<view class="buy-button">
+		<view class="buy-button" @click="toPay">
 			<view class="price-container">
 				<text>￥</text>
 				<text class="price">{{price.toFixed(2)}}</text>
@@ -59,6 +59,11 @@
 			changeStatus() {
 				let e = this.status == 1 ? 0 : 1
 				this.$emit('changeStatus', e)
+			},
+			toPay(){
+				uni.navigateTo({
+					url:'/views/singlePage/confirmOrder/confirmOrder'
+				})
 			}
 		}
 	}
